@@ -14,7 +14,7 @@ export function Map({ business, fullAddress }: MapProps) {
 
   useEffect(() => {
     const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
-    
+
     if (!apiKey) {
       setError('Google Maps API key is not configured');
       return;
@@ -23,17 +23,19 @@ export function Map({ business, fullAddress }: MapProps) {
     const loader = new Loader({
       apiKey,
       version: 'weekly',
-      libraries: ['places', 'geocoding']
+      libraries: ['places', 'geocoding', 'marker']
     });
 
-    loader.load().then(() => {
+    loader.load().then(async () => {
       if (mapRef.current) {
         const geocoder = new google.maps.Geocoder();
-        
+
         geocoder.geocode({ address: fullAddress }, (results, status) => {
           if (status === 'OK' && results && results[0]) {
-            const map = new google.maps.Map(mapRef.current, {
-              center: results[0].geometry.location,
+            const location = results[0].geometry.location;
+
+            const map = new google.maps.Map(mapRef.current!, {
+              center: location,
               zoom: 15,
               styles: [
                 {
@@ -49,18 +51,12 @@ export function Map({ business, fullAddress }: MapProps) {
               ]
             });
 
-            const marker = new google.maps.Marker({
+            // Use AdvancedMarkerElement
+            const marker = new google.maps.marker.AdvancedMarkerElement({
               map,
-              position: results[0].geometry.location,
+              position: location,
               title: business.name,
-              icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 10,
-                fillColor: '#E53E3E',
-                fillOpacity: 1,
-                strokeColor: '#ffffff',
-                strokeWeight: 2,
-              }
+              content: createMarkerElement(business.name),
             });
 
             const infoWindow = new google.maps.InfoWindow({
@@ -73,7 +69,7 @@ export function Map({ business, fullAddress }: MapProps) {
             });
 
             marker.addListener('click', () => {
-              infoWindow.open(map, marker);
+              infoWindow.open({ anchor: marker, map });
             });
           } else {
             setError('Could not find location on map');
@@ -105,4 +101,24 @@ export function Map({ business, fullAddress }: MapProps) {
   return (
     <div ref={mapRef} className="w-full h-64 rounded-lg overflow-hidden shadow-md" />
   );
+}
+
+// Helper function to create a custom marker element
+function createMarkerElement(title: string): HTMLElement {
+  const markerEl = document.createElement('div');
+  markerEl.innerHTML = `
+    <div style="
+      background-color: #E53E3E;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    " title="${title}">
+    </div>`;
+  return markerEl;
 }
