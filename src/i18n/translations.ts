@@ -185,6 +185,21 @@ export const translations = {
       ]
     }
   },
+
+  status: {
+    pending: {
+      en: 'Pending Approval',
+      fr: 'En attente d\'approbation'
+    },
+    approved: {
+      en: 'Approved',
+      fr: 'Approuvée'
+    },
+    rejected: {
+      en: 'Rejected',
+      fr: 'Rejetée'
+    }
+  },
   register: {
     en: 'Register Offer',
     fr: 'Inscrire une Offre',
@@ -285,6 +300,10 @@ export const translations = {
       fr: 'Inscrire l\'offre'
     }
   },
+  fetching: {
+    en: 'Fetching boutique details...',
+    fr: 'Chargement des détails de la boutique...'
+  },
   mission: {
     en: 'Empowering Canadian communities by connecting local offers with conscious consumers.',
     fr: 'Favoriser l\'autonomie des communautés canadiennes en connectant les offres locales avec des consommateurs engagés.'
@@ -357,6 +376,18 @@ export const translations = {
     }
   },
   errors: {
+    fetchingBoutique: {
+      en: 'Error fetching boutique details. Please try again.',
+      fr: 'Erreur lors du chargement des détails de la boutique. Veuillez réessayer.'
+    },
+    creatingBoutique: {
+      en: 'Error creating boutique. Please try again.',
+      fr: 'Erreur lors de la création de la boutique. Veuillez réessayer.'
+    },
+    authRequired: {
+      en: 'You must be logged in to create a boutique.',
+      fr: 'Vous devez être connecté pour créer une boutique.'
+    },
     generic: {
       en: 'An error occurred',
       fr: 'Une erreur s\'est produite'
@@ -370,6 +401,57 @@ export const translations = {
       fr: 'Les coordonnées n\'ont pas été trouvées'
     }
   },
+
+  boutique: {
+    defaultName: {
+      en: 'New Boutique',
+      fr: 'Nouvelle boutique'
+    },
+    defaultDescription: {
+      en: 'A new boutique to showcase your products and services',
+      fr: 'Une nouvelle boutique pour présenter vos produits et services'
+    },
+    title: {
+      en: 'My Boutique',
+      fr: 'Ma boutique'
+    },
+    create: {
+      en: 'Create Boutique',
+      fr: 'Créer une boutique'
+    },
+    confirmCreate: {
+      en: 'Confirm Boutique Creation',
+      fr: 'Confirmer la création de la boutique'
+    },
+    createNow: {
+      en: 'Create Now',
+      fr: 'Créer maintenant'
+    },
+    createLater: {
+      en: 'Create Later',
+      fr: 'Créer plus tard'
+    },
+    noBoutique: {
+      en: 'You have not created a boutique yet.',
+      fr: 'Vous n\'avez pas encore créé de boutique.'
+    },
+    status: {
+      pending: {
+        en: 'Pending',
+        fr: 'En attente'
+      },
+      approved: {
+        en: 'Approved',
+        fr: 'Approuvé'
+      },
+      rejected: {
+        en: 'Rejected',
+        fr: 'Rejeté'
+      }
+    }
+  },
+  
+  
   common: {
     cancel: {
       en: 'Cancel',

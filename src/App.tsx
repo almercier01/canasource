@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BusinessSearch } from './components/BusinessSearch';
@@ -11,19 +11,18 @@ import { Contact } from './components/Contact';
 import { UserDashboard } from './components/user/UserDashboard';
 import { BusinessListing } from './components/BusinessListing';
 import { AuthModal } from './components/auth/AuthModal';
-
 import { supabase } from './lib/supabaseClient';
 import { translations } from './i18n/translations';
 import { Language, SiteConfig, AdminState } from './types';
 
 export default function App() {
+  const navigate = useNavigate();
   const [language, setLanguage] = useState<Language>('en');
   const [config, setConfig] = useState<SiteConfig | null>(null);
   const [adminState, setAdminState] = useState<AdminState>({ isAuthenticated: false });
   const [user, setUser] = useState<any>(null);
   const [searchTerm, setSearchTerm] = useState('');
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [showDashboard, setShowDashboard] = useState(false);
 
   useEffect(() => {
     const savedConfig = localStorage.getItem('siteConfig');
@@ -44,21 +43,13 @@ export default function App() {
 
     checkSession();
 
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       const currentUser = session?.user;
       setUser(currentUser);
-      if (currentUser?.email === 'admin@test.com') {
-        setAdminState({ isAuthenticated: true, user: currentUser });
-      } else {
-        setAdminState({ isAuthenticated: false });
-      }
+      setAdminState({ isAuthenticated: currentUser?.email === 'admin@test.com', user: currentUser });
     });
 
-    return () => {
-      subscription.unsubscribe();
-    };
+    return () => subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -68,15 +59,9 @@ export default function App() {
   const checkSession = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
-    if (user?.email === 'admin@test.com') {
-      setAdminState({
-        isAuthenticated: true,
-        user,
-      });
-    }
+    setAdminState({ isAuthenticated: user?.email === 'admin@test.com', user });
   };
 
-  // Called when the user completes the site setup
   const handleSetupComplete = (newConfig: SiteConfig) => {
     if (import.meta.env.VITE_GOOGLE_MAPS_API_KEY) {
       newConfig.googleMapsApiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
@@ -85,7 +70,6 @@ export default function App() {
     localStorage.setItem('siteConfig', JSON.stringify(newConfig));
   };
 
-  // Admin login
   const handleAdminLogin = async (email: string, password: string) => {
     if (email === 'admin@test.com' && password === 'admin123') {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
@@ -96,164 +80,75 @@ export default function App() {
     return false;
   };
 
-  // Admin logout
   const handleAdminLogout = async () => {
     await supabase.auth.signOut();
     setAdminState({ isAuthenticated: false });
     setUser(null);
   };
 
-  // If user is logged in, go straight to register. If not, show AuthModal.
   const handleRegisterClick = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) {
-      // Already logged in -> navigate to /register
-      window.location.href = '/register';
+      navigate('/register');
     } else {
-      // Show login form
       setShowAuthModal(true);
     }
   };
 
-  // Let the user explore with or without a search term
   const handleExploreClick = (initialSearchTerm?: string) => {
     if (initialSearchTerm) {
       setSearchTerm(initialSearchTerm);
+      navigate(`/search?term=${encodeURIComponent(initialSearchTerm)}`);
+    } else {
+      navigate('/search');
     }
-    // navigate to /search (we’ll pass the searchTerm as state or param)
-    window.location.href = '/search';
   };
 
-  // A helper for non-auth pages, e.g. nav to about, contact, etc.
   const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique') => {
-    switch (page) {
-      case 'home':
-        window.location.href = '/';
-        break;
-      case 'about':
-        window.location.href = '/about';
-        break;
-      case 'contact':
-        window.location.href = '/contact';
-        break;
-      case 'create-boutique':
-      default:
-        window.location.href = '/register';
-        break;
-    }
+    navigate(page === 'home' ? '/' : `/${page}`);
   };
 
-  // If the site is not set up, show the Setup component
   if (!config?.initialized) {
     return <Setup onComplete={handleSetupComplete} />;
   }
 
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-50">
-        <Header
-          language={language}
-          setLanguage={setLanguage}
-          config={config}
-          onUpdateConfig={handleSetupComplete}
-          adminState={adminState}
-          onAdminLogin={handleAdminLogin}
-          onAdminLogout={handleAdminLogout}
-          onRegisterClick={handleRegisterClick}
-          onAdminDashboardClick={() => (window.location.href = '/admin-dashboard')}
-          onSearch={handleExploreClick}
-          onNavigate={handleNavigate}
-        />
+    <div className="min-h-screen bg-gray-50">
+      <Header
+        language={language}
+        setLanguage={setLanguage}
+        config={config}
+        onUpdateConfig={handleSetupComplete}
+        adminState={adminState}
+        onAdminLogin={handleAdminLogin}
+        onAdminLogout={handleAdminLogout}
+        onRegisterClick={handleRegisterClick}
+        onAdminDashboardClick={() => navigate('/admin-dashboard')}
+        onSearch={handleExploreClick}
+        onNavigate={handleNavigate}
+      />
 
-        {/* Define all your routes */}
-        <Routes>
-          {/* Home / Hero */}
-          <Route
-            path="/"
-            element={
-              <Hero
-                language={language}
-                onExploreClick={handleExploreClick}
-                onRegisterClick={handleRegisterClick}
-              />
-            }
-          />
+      <Routes>
+        <Route path="/" element={<Hero language={language} onExploreClick={handleExploreClick} onRegisterClick={handleRegisterClick} />} />
+        <Route path="/register" element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />} />
+        <Route path="/search" element={<BusinessSearch language={language} initialSearchTerm={searchTerm} onClose={() => navigate('/')} />} />
+        <Route path="/about" element={<About language={language} onClose={() => navigate('/')} />} />
+        <Route path="/contact" element={<Contact language={language} onClose={() => navigate('/')} />} />
+        <Route path="/business/:id" element={<BusinessListing language={language} />} />
+        <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
+        <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
+        <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
+      </Routes>
 
-          {/* Register Form */}
-          <Route
-            path="/register"
-            element={
-              <RegisterForm
-                language={language}
-                onCancel={() => window.location.href = '/'}
-                handleNavigate={handleNavigate}
-              />
-            }
-          />
-
-          {/* Search */}
-          <Route
-            path="/search"
-            element={
-              <BusinessSearch
-                language={language}
-                initialSearchTerm={searchTerm}
-                onClose={() => handleNavigate('home')}
-              />
-            }
-          />
-
-          {/* About */}
-          <Route
-            path="/about"
-            element={<About language={language} onClose={() => handleNavigate('home')} />}
-          />
-
-          {/* Contact */}
-          <Route
-            path="/contact"
-            element={<Contact language={language} onClose={() => handleNavigate('home')} />}
-          />
-
-          {/* Business Listing */}
-          <Route path="/business/:id" element={<BusinessListing language={language} />} />
-
-          {/* User Dashboard */}
-          <Route
-            path="/user-dashboard"
-            element={
-              <UserDashboard
-                language={language}
-                onClose={() => window.location.href = '/'}
-              />
-            }
-          />
-
-          {/* Admin Dashboard */}
-          <Route
-            path="/admin-dashboard"
-            element={<Dashboard language={language} />}
-          />
-
-          {/* Admin Setup */}
-          <Route
-            path="/admin/setup"
-            element={<Setup onComplete={handleSetupComplete} />}
-          />
-        </Routes>
-
-        {/* Auth Modal for admin or user login */}
-        <AuthModal
-          isOpen={showAuthModal}
-          onClose={() => setShowAuthModal(false)}
-          onSuccess={() => {
-            setShowAuthModal(false);
-            // once the user logs in successfully, go to the register page
-            window.location.href = '/register';
-          }}
-          language={language}
-        />
-      </div>
-    </Router>
+      <AuthModal
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        onSuccess={() => {
+          setShowAuthModal(false);
+          navigate('/register');
+        }}
+        language={language}
+      />
+    </div>
   );
 }

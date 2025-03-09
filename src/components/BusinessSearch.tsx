@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Search as SearchIcon, ArrowLeft } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { PROVINCES, ProvinceCode, Category, Language, CATEGORIES } from '../types';
-
+import { useSearchParams } from 'react-router-dom';
 import { translations } from '../i18n/translations';
 import { BusinessListing } from './BusinessListing';
 
@@ -32,49 +32,41 @@ interface BusinessResult {
   lng: number;
 }
 
-export function BusinessSearch({ language, onClose, initialSearchTerm = '' }: BusinessSearchProps) {
-  const [searchTerm, setSearchTerm] = useState(initialSearchTerm);
-  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode | ''>('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('');
+export function BusinessSearch({ language, onClose }: BusinessSearchProps) {
+  const [searchParams] = useSearchParams();
+  const initialTermFromURL = searchParams.get('term') || '';
+
+  const [searchTerm, setSearchTerm] = useState<string>(typeof initialTermFromURL === 'string' ? initialTermFromURL : '');
+  const [selectedProvince, setSelectedProvince] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [businesses, setBusinesses] = useState<BusinessResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
-    if (initialSearchTerm) {
+    console.log("Initial search term from URL:", searchParams.get('term'));
+
+    if (initialTermFromURL) {
       handleSearch();
     }
-  }, []);
-
-  const isValidSearch = () => {
-    return (searchTerm.trim().length >= 2 || selectedProvince || selectedCategory);
-  };
+  }, [initialTermFromURL]);
 
   const handleSearch = async (e?: React.FormEvent) => {
-    if (e) {
-      e.preventDefault();
-    }
+    console.log("Search term from URL:", initialTermFromURL);
 
-    if (!isValidSearch()) {
-      setError(translations.search.criteriaRequired[language]);
-      return;
-    }
+    if (e) e.preventDefault();
 
     setLoading(true);
     setError(null);
     setHasSearched(true);
 
     try {
-      let query = supabase
-        .from('businesses')
-        .select('*');
+      let query = supabase.from('businesses').select('*');
 
-        if (selectedProvince) {
-          const provinceName = PROVINCES[selectedProvince].en;
-          query = query.eq('province', provinceName);
-        }
-        
+      if (selectedProvince) {
+        query = query.eq('province', selectedProvince);
+      }
 
       if (selectedCategory) {
         query = query.eq('category', selectedCategory);
@@ -91,14 +83,18 @@ export function BusinessSearch({ language, onClose, initialSearchTerm = '' }: Bu
       }
 
       const { data, error: queryError } = await query;
-
       if (queryError) throw queryError;
+
       setBusinesses(data || []);
     } catch (err) {
       setError(err instanceof Error ? err.message : translations.errors.generic[language]);
     } finally {
       setLoading(false);
     }
+  };
+
+  const isValidSearch = () => {
+    return (searchTerm.trim().length >= 2 || selectedProvince || selectedCategory);
   };
 
   return (
