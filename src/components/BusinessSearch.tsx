@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Search as SearchIcon, ArrowLeft } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { PROVINCES, ProvinceCode, Category, Language, CATEGORIES } from '../types';
-import { useSearchParams } from 'react-router-dom';
 import { translations } from '../i18n/translations';
 import { BusinessListing } from './BusinessListing';
 
 interface BusinessSearchProps {
   language: Language;
   onClose: () => void;
-  initialSearchTerm?: string;  // This will handle the initial value from the parent component.
+  initialSearchTerm?: string;
 }
-
 
 interface BusinessResult {
   id: string;
@@ -32,12 +30,9 @@ interface BusinessResult {
   lng: number;
 }
 
-export function BusinessSearch({ language, onClose }: BusinessSearchProps) {
-  const [searchParams] = useSearchParams();
-  const initialTermFromURL = searchParams.get('term') || '';
-
-  const [searchTerm, setSearchTerm] = useState<string>(typeof initialTermFromURL === 'string' ? initialTermFromURL : '');
-  const [selectedProvince, setSelectedProvince] = useState('');
+export function BusinessSearch({ language, onClose, initialSearchTerm = '' }: BusinessSearchProps) {
+  const [searchTerm, setSearchTerm] = useState<string>(String(initialSearchTerm) || '');
+  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode | string>(''); // Set to ProvinceCode or empty string
   const [selectedCategory, setSelectedCategory] = useState('');
   const [businesses, setBusinesses] = useState<BusinessResult[]>([]);
   const [loading, setLoading] = useState(false);
@@ -45,17 +40,16 @@ export function BusinessSearch({ language, onClose }: BusinessSearchProps) {
   const [hasSearched, setHasSearched] = useState(false);
 
   useEffect(() => {
-    console.log("Initial search term from URL:", searchParams.get('term'));
-
-    if (initialTermFromURL) {
+    if (typeof initialSearchTerm === 'string' && initialSearchTerm.trim()) {
+      setSearchTerm(initialSearchTerm.trim());
       handleSearch();
     }
-  }, [initialTermFromURL]);
+  }, [initialSearchTerm]);
 
   const handleSearch = async (e?: React.FormEvent) => {
-    console.log("Search term from URL:", initialTermFromURL);
-
     if (e) e.preventDefault();
+
+    if (!searchTerm.trim() && !selectedProvince && !selectedCategory) return;
 
     setLoading(true);
     setError(null);
@@ -74,15 +68,12 @@ export function BusinessSearch({ language, onClose }: BusinessSearchProps) {
 
       if (searchTerm.trim()) {
         query = query.or(
-          `name.ilike.%${searchTerm}%,` +
-          `description_en.ilike.%${searchTerm}%,` +
-          `description_fr.ilike.%${searchTerm}%,` +
-          `products.cs.{${searchTerm}},` +
-          `services.cs.{${searchTerm}}`
+          `name.ilike.%${searchTerm}%, description_en.ilike.%${searchTerm}%, description_fr.ilike.%${searchTerm}%`
         );
       }
 
       const { data, error: queryError } = await query;
+
       if (queryError) throw queryError;
 
       setBusinesses(data || []);
@@ -94,8 +85,17 @@ export function BusinessSearch({ language, onClose }: BusinessSearchProps) {
   };
 
   const isValidSearch = () => {
-    return (searchTerm.trim().length >= 2 || selectedProvince || selectedCategory);
+    return (
+      searchTerm.trim().length >= 2 || selectedProvince || selectedCategory
+    );
   };
+
+    // When province is selected, store the province name instead of the code
+    const handleProvinceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+      const selectedCode = e.target.value as ProvinceCode;
+      const provinceName = PROVINCES[selectedCode]?.[language] || ''; // Get province name based on selected code and language
+      setSelectedProvince(provinceName);
+    };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -136,25 +136,25 @@ export function BusinessSearch({ language, onClose }: BusinessSearchProps) {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
+            <div>
                 <label htmlFor="province" className="block text-sm font-medium text-gray-700 mb-1">
                   {translations.search.province[language]}
                 </label>
                 <select
                   id="province"
                   value={selectedProvince}
-                  onChange={(e) => setSelectedProvince(e.target.value as ProvinceCode | '')}
+                  onChange={handleProvinceChange}
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
                 >
                   <option value="">{translations.search.selectProvince[language]}</option>
                   {Object.entries(PROVINCES).map(([code, names]) => (
                     <option key={code} value={code}>
-                      {names[language]}
+                      {names[language]} {/* Show the province name based on the current language */}
                     </option>
                   ))}
                 </select>
-
               </div>
+
 
               <div>
                 <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
@@ -203,24 +203,23 @@ export function BusinessSearch({ language, onClose }: BusinessSearchProps) {
             ) : (
               businesses.map((business) => (
                 <BusinessListing
-                  key={business.id}
-                  business={{
-                    ...business,
+  key={business.id}
+  business={{
+    ...business,
+    description_en: business.description_en, // Keep as separate properties
+    description_fr: business.description_fr,
+    // coordinates: {
+    //   lat: business.lat,
+    //   lng: business.lng
+    // },
+    rating: business.rating || 0,
+    reviewCount: business.review_count || 0,
+    products: business.products || [],
+    services: business.services || []
+  }}
+  language={language}
+/>
 
-                    description_en: business.description_en,
-                    description_fr: business.description_fr,
-
-
-                    lat: business.lat,
-                    lng: business.lng,
-
-                    rating: business.rating || 0,
-                    reviewCount: business.review_count || 0,
-                    products: business.products || [],
-                    services: business.services || []
-                  }}
-                  language={language}
-                />
               ))
             )}
           </div>

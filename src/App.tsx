@@ -104,6 +104,10 @@ export default function App() {
     }
   };
 
+  const resetSearchTerm = () => {
+    setSearchTerm(''); // Reset search term after search is done
+  };
+
   const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique') => {
     navigate(page === 'home' ? '/' : `/${page}`);
   };

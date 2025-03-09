@@ -75,13 +75,22 @@ export function Header({
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    
+    if (typeof searchTerm !== 'string') {
+      console.error("🚨 Invalid searchTerm:", searchTerm);
+      return;
+    }
+  
     if (searchTerm.trim()) {
-      onSearch(searchTerm.trim());
+      onSearch(searchTerm.trim());  // ✅ Pass only a string
       setSearchTerm('');
-      setIsMobileMenuOpen(false);
     }
   };
-
+  
+  
+  
+  
   const handleMobileNavigation = (page: 'home' | 'about' | 'contact') => {
     onNavigate(page);
     setIsMobileMenuOpen(false);
@@ -124,7 +133,10 @@ export function Header({
                   <input
                     type="text"
                     value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                    onChange={(e) => {
+                      console.log("Search term input change:", e.target.value);
+                      setSearchTerm(e.target.value);
+                    }}
                     className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent"
                     placeholder={translations.nav.search[language]}
                   />

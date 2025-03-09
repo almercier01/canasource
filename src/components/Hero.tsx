@@ -1,6 +1,7 @@
 import React from 'react';
 import { Language } from '../types';
 import { translations } from '../i18n/translations';
+import { useNavigate } from 'react-router-dom';
 
 interface HeroProps {
   language: Language;
@@ -9,6 +10,8 @@ interface HeroProps {
 }
 
 export function Hero({ language, onExploreClick, onRegisterClick }: HeroProps) {
+
+    const navigate = useNavigate();
 
   return (
     <div className="relative bg-white overflow-hidden">
@@ -28,14 +31,17 @@ export function Hero({ language, onExploreClick, onRegisterClick }: HeroProps) {
                 {translations.mission[language]}
               </p>
               <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-                <div className="rounded-md shadow">
-                  <button
-                    onClick={onExploreClick}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
-                  >
-                    {translations.hero.exploreButton[language]}
-                  </button>
-                </div>
+              <div className="rounded-md shadow">
+  <button
+    onClick={() => {
+      // Just navigate to the /search route without any search term
+      navigate('/search');
+    }}
+    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
+  >
+    {translations.hero.exploreButton[language]}
+  </button>
+</div>
                 <div className="mt-3 sm:mt-0 sm:ml-3 md:hidden">
                   <button
                     onClick={onRegisterClick}
