@@ -4,11 +4,13 @@ import { supabase } from '../lib/supabaseClient';
 import { PROVINCES, ProvinceCode, Category, Language, CATEGORIES } from '../types';
 import { translations } from '../i18n/translations';
 import { BusinessListing } from './BusinessListing';
+import { useLocation } from 'react-router-dom';
 
 interface BusinessSearchProps {
   language: Language;
   onClose: () => void;
   initialSearchTerm?: string;
+  resetSearchTerm: () => void; // Add resetSearchTerm as a prop
 }
 
 interface BusinessResult {
@@ -30,21 +32,27 @@ interface BusinessResult {
   lng: number;
 }
 
-export function BusinessSearch({ language, onClose, initialSearchTerm = '' }: BusinessSearchProps) {
-  const [searchTerm, setSearchTerm] = useState<string>(String(initialSearchTerm) || '');
-  const [selectedProvince, setSelectedProvince] = useState<ProvinceCode | string>(''); // Set to ProvinceCode or empty string
+export function BusinessSearch({ language, initialSearchTerm, onClose, resetSearchTerm }: BusinessSearchProps) {
+  const [searchTerm, setSearchTerm] = useState<string>(initialSearchTerm || '');
+  const [selectedProvince, setSelectedProvince] = useState<string>('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [businesses, setBusinesses] = useState<BusinessResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
 
+  const location = useLocation(); // Get the current location (URL)
+  
   useEffect(() => {
-    if (typeof initialSearchTerm === 'string' && initialSearchTerm.trim()) {
-      setSearchTerm(initialSearchTerm.trim());
-      handleSearch();
+    // Get the search term from the URL query parameter
+    const params = new URLSearchParams(location.search);
+    const termFromUrl = params.get('term') || ''; // Default to empty string if no 'term' param
+
+    if (termFromUrl) {
+      setSearchTerm(termFromUrl); // Set the search term from the URL
+      handleSearch(); // Automatically trigger the search with the term from the URL
     }
-  }, [initialSearchTerm]);
+  }, [location.search]); 
 
   const handleSearch = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -81,6 +89,7 @@ export function BusinessSearch({ language, onClose, initialSearchTerm = '' }: Bu
       setError(err instanceof Error ? err.message : translations.errors.generic[language]);
     } finally {
       setLoading(false);
+      resetSearchTerm(); // Reset the search term after the search is complete
     }
   };
 

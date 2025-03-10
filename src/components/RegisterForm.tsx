@@ -226,7 +226,7 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
     setLoading(true);
 
     try {
-      const { error: boutiqueError } = await supabase.from('boutiques').insert([
+      const { error: boutiqueError } = await supabase.from('old_boutiques').insert([
         {
           owner_id: userId,
           name: formData.name || translations.boutique.defaultName[language],

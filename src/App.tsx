@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { BusinessSearch } from './components/BusinessSearch';
@@ -17,11 +17,12 @@ import { Language, SiteConfig, AdminState } from './types';
 
 export default function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [language, setLanguage] = useState<Language>('en');
   const [config, setConfig] = useState<SiteConfig | null>(null);
   const [adminState, setAdminState] = useState<AdminState>({ isAuthenticated: false });
   const [user, setUser] = useState<any>(null);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   useEffect(() => {
@@ -97,20 +98,24 @@ export default function App() {
 
   const handleExploreClick = (initialSearchTerm?: string) => {
     if (initialSearchTerm) {
-      setSearchTerm(initialSearchTerm);
-      navigate(`/search?term=${encodeURIComponent(initialSearchTerm)}`);
+      setSearchTerm(initialSearchTerm); // Set the search term
+      navigate(`/search?term=${encodeURIComponent(initialSearchTerm)}`); // Pass it to the search page
     } else {
-      navigate('/search');
+      navigate('/search'); // Navigate without a search term
     }
   };
 
   const resetSearchTerm = () => {
-    setSearchTerm(''); // Reset search term after search is done
+    setSearchTerm(''); // Reset the search term
   };
+
 
   const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique') => {
     navigate(page === 'home' ? '/' : `/${page}`);
   };
+  const searchParams = new URLSearchParams(location.search);
+  const initialSearchTerm = searchParams.get('term') || '';
+
 
   if (!config?.initialized) {
     return <Setup onComplete={handleSetupComplete} />;
@@ -135,7 +140,17 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Hero language={language} onExploreClick={handleExploreClick} onRegisterClick={handleRegisterClick} />} />
         <Route path="/register" element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />} />
-        <Route path="/search" element={<BusinessSearch language={language} initialSearchTerm={searchTerm} onClose={() => navigate('/')} />} />
+        <Route
+          path="/search"
+          element={
+            <BusinessSearch
+              language="en"
+              initialSearchTerm={initialSearchTerm}
+              onClose={() => navigate('/')}
+              resetSearchTerm={resetSearchTerm} // Pass the reset function to BusinessSearch
+            />
+          }
+        />
         <Route path="/about" element={<About language={language} onClose={() => navigate('/')} />} />
         <Route path="/contact" element={<Contact language={language} onClose={() => navigate('/')} />} />
         <Route path="/business/:id" element={<BusinessListing language={language} />} />

@@ -172,6 +172,7 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
   // Function to navigate to the business listing
   const viewBusinessListing = () => {
     if (businessId) {
+      onClose()
       navigate(`/business/${businessId}`); // Navigates to the business listing page
     }
   };
