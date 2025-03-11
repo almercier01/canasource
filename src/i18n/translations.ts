@@ -399,6 +399,10 @@ export const translations = {
     coordinatesNotFound: {
       en: 'Coordinates not found',
       fr: 'Les coordonnées n\'ont pas été trouvées'
+    },
+    businessNotFound: {
+      en: 'Business not found',
+      fr: 'L\'entreprise n\'a pas été trouvé'
     }
   },
 

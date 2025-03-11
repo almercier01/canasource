@@ -7,6 +7,8 @@ import { CityAutocomplete } from './CityAutocomplete';
 import { ImageUpload } from './ImageUpload';
 import { Boutique } from './boutique/Boutique';
 import { loadGoogleMapsLibrary } from '../lib/googleMapsLoader';
+import { useNavigate } from 'react-router-dom';
+
 
 interface RegisterFormProps {
   onCancel: () => void;
@@ -40,6 +42,8 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
   const [showBoutique, setShowBoutique] = useState(false);
   const [userId, setUserId] = useState<string | null>(null);
   const [businessId, setBusinessId] = useState<string | null>(null);
+
+    const navigate = useNavigate();
 
   useEffect(() => {
     checkAuth();
@@ -213,39 +217,25 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
     }
   };
 
-  const handleCreateBoutique = async () => {
-    if (!businessId || !userId) {
-      setError(
-        language === 'en'
-          ? 'Business information missing. Please refresh and try again.'
-          : "Informations sur l'entreprise manquantes. Veuillez rafraîchir et réessayer."
-      );
-      return;
-    }
-
-    setLoading(true);
-
-    try {
-      const { error: boutiqueError } = await supabase.from('old_boutiques').insert([
-        {
-          owner_id: userId,
-          name: formData.name || translations.boutique.defaultName[language],
-          description: translations.boutique.defaultDescription[language],
-          status: 'pending',
-          created_at: new Date().toISOString(),
-        },
-      ]);
-
-      if (boutiqueError) throw boutiqueError;
-
-      setShowBoutique(true);
-    } catch (err) {
-      console.error('Error creating boutique:', err);
-      setError(err instanceof Error ? err.message : translations.errors.generic[language]);
-    } finally {
-      setLoading(false);
+  const activateBoutique = async () => {
+    if (!businessId) return;
+  
+    const { error } = await supabase
+      .from('boutiques')
+      .update({ status: 'active' })
+      .eq('owner_id', businessId);
+  
+    if (error) {
+      console.error('Error activating boutique:', error);
+    } else {
+      alert(language === 'en' ? 'Boutique activated! Start adding products.' : 'Boutique activée! Commencez à ajouter des produits.');
+  
+      // Navigate to product creation page and pass businessId
+      navigate(`/add-products/${businessId}`);
     }
   };
+  
+  
 
   if (showBoutique) {
     return <Boutique language={language} onClose={() => setShowBoutique(false)} handleNavigate={handleNavigate} />;
@@ -257,12 +247,13 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
       <div className="bg-green-50 border border-green-200 rounded-md p-6 text-center">
         <p className="text-green-700 text-lg font-semibold">{translations.register.success[language]}</p>
         <div className="mt-6 flex flex-col sm:flex-row sm:space-x-4 justify-center">
-          <button
-            onClick={handleCreateBoutique}
-            className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition"
-          >
-            {language === 'en' ? 'Create Boutique Now' : 'Créer votre boutique maintenant'}
-          </button>
+<button
+  onClick={activateBoutique}
+  className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700"
+>
+  {language === 'en' ? 'Activate Boutique' : 'Activer la Boutique'}
+</button>
+
           <button
             onClick={onCancel}
             className="mt-4 sm:mt-0 px-6 py-3 bg-gray-200 text-gray-800 font-medium rounded-md hover:bg-gray-300 transition"

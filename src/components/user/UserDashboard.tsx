@@ -4,6 +4,8 @@ import { supabase } from '../../lib/supabaseClient';
 import { Language } from '../../types';
 import { ChatList } from '../chat/ChatList';
 import { useNavigate } from 'react-router-dom'; // Use useNavigate for navigation
+import { Listing } from './Listing';
+
 
 interface UserDashboardProps {
   language: Language;
@@ -192,6 +194,20 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
             {language === 'en' ? 'My Dashboard' : 'Mon tableau de bord'}
           </h1>
         </div>
+        {businessId && (
+  <Listing language={language} businessId={businessId} />
+)}
+
+        {hasListings && (
+              <div className="mb-4">
+                <button
+                  onClick={viewBusinessListing}
+                  className="text-blue-600 hover:text-blue-800"
+                >
+                  {language === 'en' ? 'View My Business Listing' : 'Voir mon annonce'}
+                </button>
+              </div>
+            )}
 
         <div className="bg-white rounded-lg shadow">
           <div className="border-b border-gray-200">
@@ -233,17 +249,6 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
           </div>
 
           <div className="p-6">
-            {hasListings && (
-              <div className="mb-4">
-                <button
-                  onClick={viewBusinessListing}
-                  className="text-blue-600 hover:text-blue-800"
-                >
-                  {language === 'en' ? 'View My Business Listing' : 'Voir mon annonce'}
-                </button>
-              </div>
-            )}
-
             {/* Existing content for requests */}
             {activeTab === 'messages' ? (
               <ChatList language={language} onClose={() => setActiveTab('received')} />

@@ -21,6 +21,9 @@ import { CommentSection } from './CommentSection';
 import { supabase } from '../lib/supabaseClient';
 import { AuthModal } from './auth/AuthModal';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { BoutiqueView } from '../components/boutique/BoutiqueView';
+
 
 interface BusinessListingProps {
   // If a parent has already fetched a business object, it can be passed in.
@@ -36,12 +39,14 @@ export function BusinessListing({
   onUpdate,
 }: BusinessListingProps) {
   const { id } = useParams(); // e.g. /business/:id
+  const navigate = useNavigate();
 
   // Local state for fetched business if none was passed in
   const [businessDetails, setBusinessDetails] = useState<Business | null>(null);
 
   // If we have a prop business, use that; otherwise use the fetched one
   const effectiveBusiness = business ?? businessDetails;
+  const [boutique, setBoutique] = useState<any>(null); // Store boutique details
 
   // UI states
   const [showReportModal, setShowReportModal] = useState(false);
@@ -55,17 +60,26 @@ export function BusinessListing({
   const [connectionSuccess, setConnectionSuccess] = useState(false);
   const [showConnectionSuccess, setShowConnectionSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showBoutique, setShowBoutique] = useState(false);
+  const [showBoutiqueModal, setShowBoutiqueModal] = useState(false);
+
 
 
   const defaultImage = 'https://images.unsplash.com/photo-1516216628859-9bccecab13ca?...';
 
-  
+
   // 1. If no `business` prop, fetch from Supabase using `id`
   useEffect(() => {
     if (!business && id) {
       fetchBusiness(id);
     }
   }, [id, business]);
+
+  useEffect(() => {
+    if (effectiveBusiness) {
+      fetchBoutique(effectiveBusiness.id);
+    }
+  }, [effectiveBusiness]);
 
   // 2. Once we have an effectiveBusiness, run checks (ownership, image, etc.)
   useEffect(() => {
@@ -114,6 +128,42 @@ export function BusinessListing({
     } = await supabase.auth.getUser();
     setUser(user);
   };
+  const fetchBoutique = async (businessId: string) => {
+    try {
+      // First, fetch the owner_id from the businesses table
+      const { data: businessData, error: businessError } = await supabase
+        .from('businesses')
+        .select('owner_id')
+        .eq('id', businessId)
+        .single();
+
+      if (businessError || !businessData) {
+        console.error('Error fetching business owner:', businessError);
+        return;
+      }
+
+      const ownerId = businessData.owner_id;
+      console.log("Owner ID:", ownerId); // Debugging output
+
+      // Now fetch the boutique that belongs to this owner
+      const { data: boutiqueData, error: boutiqueError } = await supabase
+        .from('boutiques')
+        .select('*')
+        .eq('owner_id', ownerId) // ✅ Using owner_id instead of business_id
+        .maybeSingle();
+
+      if (boutiqueError) {
+        console.error('Error fetching boutique:', boutiqueError);
+        return;
+      }
+
+      console.log("Fetched Boutique:", boutiqueData); // Debugging output
+      setBoutique(boutiqueData);
+    } catch (err) {
+      console.error('Error fetching boutique:', err);
+    }
+  };
+
 
   // Determine if the current user is the owner of the business
   const checkOwnership = async (businessId: string) => {
@@ -154,13 +204,13 @@ export function BusinessListing({
     return <div>Loading...</div>;
   }
   // If we have an approved image from business_images, use it.
-// If the business is marked as "pending", force the fallback.
-// Otherwise, show whatever is in business.image_url or fallback.
-const displayedImage = approvedImage
-? approvedImage
-: effectiveBusiness.image_status === 'pending'
-  ? defaultImage
-  : effectiveBusiness.image_url || defaultImage;
+  // If the business is marked as "pending", force the fallback.
+  // Otherwise, show whatever is in business.image_url or fallback.
+  const displayedImage = approvedImage
+    ? approvedImage
+    : effectiveBusiness.image_status === 'pending'
+      ? defaultImage
+      : effectiveBusiness.image_url || defaultImage;
 
   // Fetch the most recently approved image from business_images
   const fetchApprovedImage = async (businessId: string) => {
@@ -276,12 +326,13 @@ const displayedImage = approvedImage
   // Otherwise, show the normal listing display
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
+
       {/* Top image bar */}
       <div className="relative h-48">
-        <img       
-            src={displayedImage}
-            alt={effectiveBusiness.name}
-            className="w-full h-full object-cover"
+        <img
+          src={displayedImage}
+          alt={effectiveBusiness.name}
+          className="w-full h-full object-cover"
         />
         <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-sm">
           {effectiveBusiness.province}
@@ -319,7 +370,7 @@ const displayedImage = approvedImage
               <span className="ml-2 text-sm text-gray-600">
                 {
                   translations.categories[
-                    effectiveBusiness.category as keyof typeof translations.categories
+                  effectiveBusiness.category as keyof typeof translations.categories
                   ][language]
                 }
               </span>
@@ -343,11 +394,10 @@ const displayedImage = approvedImage
               <button
                 onClick={handleConnect}
                 disabled={connecting || connectionSuccess}
-                className={`flex items-center px-3 py-1 rounded-full text-sm font-medium shadow-sm transition-colors ${
-                  connectionSuccess
-                    ? 'bg-green-100 text-green-700'
-                    : 'bg-red-600 text-white hover:bg-red-700'
-                }`}
+                className={`flex items-center px-3 py-1 rounded-full text-sm font-medium shadow-sm transition-colors ${connectionSuccess
+                  ? 'bg-green-100 text-green-700'
+                  : 'bg-red-600 text-white hover:bg-red-700'
+                  }`}
               >
                 <Mail className="h-4 w-4 mr-1" />
                 {connectionSuccess
@@ -355,8 +405,8 @@ const displayedImage = approvedImage
                     ? 'Request Sent!'
                     : 'Demande envoyée !'
                   : language === 'en'
-                  ? 'Connect'
-                  : 'Connecter'}
+                    ? 'Connect'
+                    : 'Connecter'}
               </button>
             )}
           </div>
@@ -472,11 +522,43 @@ const displayedImage = approvedImage
             </div>
           )}
         </div>
+      {/* View Boutique Button */}
+<button
+  onClick={() => setShowBoutique(true)}  // ✅ Only one state variable
+  className="w-full bg-red-600 text-white py-3 text-lg font-semibold rounded-t-md shadow-md hover:bg-red-700 transition"
+>
+  {language === 'en' ? 'View Boutique' : 'Voir la Boutique'}
+</button>
+
+{/* Conditional Modal */}
+{showBoutique && (
+  <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
+    <div className="bg-white rounded-lg shadow-lg max-w-5xl w-full p-6 relative">
+      {/* Close Button */}
+      <button
+        onClick={() => setShowBoutique(false)}  // ✅ Closes modal
+        className="absolute top-4 right-4 text-gray-600 hover:text-red-600"
+      >
+        ✖
+      </button>
+
+      {/* BoutiqueView Component */}
+      <BoutiqueView
+        boutiqueId={boutique.id}
+        language={language}
+        onClose={() => setShowBoutique(false)}  // ✅ Close modal
+      />
+    </div>
+  </div>
+)}
+
 
         {/* Map */}
-        <div className="mt-6">
-          <Map business={effectiveBusiness} fullAddress={fullAddress} />
-        </div>
+        {!showBoutiqueModal && (
+          <div className="mt-6">
+            <Map business={effectiveBusiness} fullAddress={fullAddress} />
+          </div>
+        )}
 
         {/* Comments */}
         <div className="mt-6 border-t pt-6">

@@ -14,6 +14,10 @@ import { AuthModal } from './components/auth/AuthModal';
 import { supabase } from './lib/supabaseClient';
 import { translations } from './i18n/translations';
 import { Language, SiteConfig, AdminState } from './types';
+import { BoutiqueView } from './components/boutique/BoutiqueView';
+import { UserProducts } from './components/boutique/UserProducts';
+import { ProductForm } from './components/boutique/ProductForm';
+
 
 export default function App() {
   const navigate = useNavigate();
@@ -24,6 +28,7 @@ export default function App() {
   const [user, setUser] = useState<any>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [showBoutique, setShowBoutique] = useState(false);
 
   useEffect(() => {
     const savedConfig = localStorage.getItem('siteConfig');
@@ -110,9 +115,10 @@ export default function App() {
   };
 
 
-  const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique') => {
+  const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique' | 'boutique') => {
     navigate(page === 'home' ? '/' : `/${page}`);
   };
+  
   const searchParams = new URLSearchParams(location.search);
   const initialSearchTerm = searchParams.get('term') || '';
 
@@ -154,9 +160,21 @@ export default function App() {
         <Route path="/about" element={<About language={language} onClose={() => navigate('/')} />} />
         <Route path="/contact" element={<Contact language={language} onClose={() => navigate('/')} />} />
         <Route path="/business/:id" element={<BusinessListing language={language} />} />
+        <Route path="/boutique" element={<BoutiqueView boutiqueId="test-boutique" language={language} onClose={() => {
+            setShowBoutique(false);
+            handleNavigate('home');
+          }} />} />
+       
         <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
         <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
         <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
+        <Route 
+  path="/add-products/:businessId" 
+  element={<ProductForm language={language} onProductAdded={() => {}} />} 
+/>
+
+
+
       </Routes>
 
       <AuthModal

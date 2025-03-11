@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MapPin, Menu, Search, Globe2, Settings, LogIn, LogOut, LayoutDashboard, User, Bell, X } from 'lucide-react';
+import { MapPin, Menu, Search, Globe2, Settings, LogIn, LogOut, LayoutDashboard, User, Bell, X, Store } from 'lucide-react';
 import { Language, SiteConfig, AdminState } from '../types';
 import { translations } from '../i18n/translations';
 import { Setup } from './admin/Setup';
@@ -19,7 +19,7 @@ interface HeaderProps {
   onRegisterClick: () => void;
   onAdminDashboardClick: () => void;
   onSearch: (term?: string) => void;
-  onNavigate: (page: 'home' | 'about' | 'contact' | 'create-boutique') => void;
+  onNavigate: (page: 'home' | 'about' | 'contact' | 'create-boutique' | 'boutique') => void; 
 }
 
 export function Header({ 
@@ -96,6 +96,12 @@ export function Header({
     setIsMobileMenuOpen(false);
   };
 
+    // Temporary function to handle boutique navigation
+    const handleBoutiqueClick = () => {
+      onNavigate('boutique');
+    };
+    
+
   return (
     <>
       <header className="bg-white shadow-sm relative z-50">
@@ -122,6 +128,14 @@ export function Header({
                   className="text-gray-700 hover:text-red-600"
                 >
                   {translations.nav.contact[language]}
+                </button>
+                              {/* Temporary Boutique Link */}
+                              <button
+                  onClick={handleBoutiqueClick}
+                  className="flex items-center text-gray-700 hover:text-red-600"
+                >
+                  <Store className="h-5 w-5 mr-1" />
+                  <span>{language === 'en' ? 'Boutique' : 'Boutique'}</span>
                 </button>
               </nav>
             </div>
