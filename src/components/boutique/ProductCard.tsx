@@ -43,7 +43,7 @@ export function ProductCard({ product, language, onAddToCart }: ProductCardProps
                 <p className="mt-1 text-sm text-gray-500 line-clamp-2">{product.description}</p>
 
                 <div className="mt-4 flex items-center justify-between">
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className="text-lg font-bold text-gray-900 pr-2">
                         {formatPrice(product.price, product.currency)}
                     </span>
 

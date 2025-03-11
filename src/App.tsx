@@ -168,10 +168,10 @@ export default function App() {
         <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
         <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
         <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
-        <Route 
+        {/* <Route 
   path="/add-products/:businessId" 
   element={<ProductForm language={language} onProductAdded={() => {}} />} 
-/>
+/> */}
 
 
 

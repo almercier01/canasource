@@ -194,10 +194,7 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
             {language === 'en' ? 'My Dashboard' : 'Mon tableau de bord'}
           </h1>
         </div>
-        {businessId && (
-  <Listing language={language} businessId={businessId} />
-)}
-
+        {hasListings && businessId && <Listing language={language} businessId={businessId} />}
         {hasListings && (
               <div className="mb-4">
                 <button

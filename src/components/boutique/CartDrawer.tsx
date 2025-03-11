@@ -9,7 +9,9 @@ interface CartItem {
   currency: string;
   quantity: number;
   images: string[];
+  image_url: string;
 }
+
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -40,10 +42,13 @@ export function CartDrawer({
   const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
+    <div className="absolute top-0 right-0 h-full max-w-md w-full bg-white shadow-xl flex flex-col">
+
       <div className="absolute inset-0 bg-gray-500 bg-opacity-75 transition-opacity" onClick={onClose} />
-      
-      <div className="fixed inset-y-0 right-0 max-w-full flex">
+      <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
+
+      <div className="absolute top-0 right-0 w-full max-w-md h-full bg-white shadow-xl flex flex-col">
+
         <div className="w-screen max-w-md">
           <div className="h-full flex flex-col bg-white shadow-xl">
             <div className="flex-1 py-6 overflow-y-auto px-4 sm:px-6">
@@ -75,11 +80,12 @@ export function CartDrawer({
                       {cart.map((item) => (
                         <li key={item.id} className="py-6 flex">
                           <div className="flex-shrink-0 w-24 h-24 overflow-hidden rounded-md">
-                            <img
-                              src={item.images[0] || "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=400"}
-                              alt={item.name}
-                              className="w-full h-full object-cover"
-                            />
+                          <img
+  src={item.image_url || "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=400"}
+  alt={item.name}
+  className="w-full h-full object-cover"
+/>
+
                           </div>
 
                           <div className="ml-4 flex-1 flex flex-col">
@@ -149,6 +155,7 @@ export function CartDrawer({
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }
