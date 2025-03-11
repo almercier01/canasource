@@ -130,39 +130,43 @@ export function BusinessListing({
   };
   const fetchBoutique = async (businessId: string) => {
     try {
-      // First, fetch the owner_id from the businesses table
-      const { data: businessData, error: businessError } = await supabase
-        .from('businesses')
-        .select('owner_id')
-        .eq('id', businessId)
-        .single();
+        // First, fetch the owner_id from the businesses table
+        const { data: businessData, error: businessError } = await supabase
+            .from('businesses')
+            .select('owner_id')
+            .eq('id', businessId)
+            .single();
 
-      if (businessError || !businessData) {
-        console.error('Error fetching business owner:', businessError);
-        return;
-      }
+        if (businessError || !businessData) {
+            console.error('Error fetching business owner:', businessError);
+            setBoutique(null);  // ✅ Explicitly set to null
+            return;
+        }
 
-      const ownerId = businessData.owner_id;
-      console.log("Owner ID:", ownerId); // Debugging output
+        const ownerId = businessData.owner_id;
+        console.log("Owner ID:", ownerId); // Debugging output
 
-      // Now fetch the boutique that belongs to this owner
-      const { data: boutiqueData, error: boutiqueError } = await supabase
-        .from('boutiques')
-        .select('*')
-        .eq('owner_id', ownerId) // ✅ Using owner_id instead of business_id
-        .maybeSingle();
+        // Now fetch the boutique that belongs to this owner
+        const { data: boutiqueData, error: boutiqueError } = await supabase
+            .from('boutiques')
+            .select('*')
+            .eq('owner_id', ownerId) // ✅ Using owner_id instead of business_id
+            .maybeSingle();
 
-      if (boutiqueError) {
-        console.error('Error fetching boutique:', boutiqueError);
-        return;
-      }
+        if (boutiqueError) {
+            console.error('Error fetching boutique:', boutiqueError);
+            setBoutique(null);  // ✅ Explicitly set to null
+            return;
+        }
 
-      console.log("Fetched Boutique:", boutiqueData); // Debugging output
-      setBoutique(boutiqueData);
+        console.log("Fetched Boutique:", boutiqueData || "No boutique found"); // Debugging output
+        setBoutique(boutiqueData || null); // ✅ Ensure null is set when boutiqueData is not found
     } catch (err) {
-      console.error('Error fetching boutique:', err);
+        console.error('Error fetching boutique:', err);
+        setBoutique(null);  // ✅ Catch any errors and prevent stale data
     }
-  };
+};
+
 
 
   // Determine if the current user is the owner of the business
@@ -522,35 +526,27 @@ export function BusinessListing({
             </div>
           )}
         </div>
-      {/* View Boutique Button */}
-<button
-  onClick={() => setShowBoutique(true)}  // ✅ Only one state variable
-  className="w-full bg-red-600 text-white py-3 text-lg font-semibold rounded-t-md shadow-md hover:bg-red-700 transition"
->
-  {language === 'en' ? 'View Boutique' : 'Voir la Boutique'}
-</button>
+        {boutique && boutique.id && boutique.status === 'active' && (
+  <div className="mt-4">
+    <button
+      onClick={() => setShowBoutique(true)}
+      className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+    >
+      {language === 'en' ? 'View Boutique' : 'Voir la boutique'}
+    </button>
 
-{/* Conditional Modal */}
-{showBoutique && (
-  <div className="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center z-50">
-    <div className="bg-white rounded-lg shadow-lg max-w-5xl w-full p-6 relative">
-      {/* Close Button */}
-      <button
-        onClick={() => setShowBoutique(false)}  // ✅ Closes modal
-        className="absolute top-4 right-4 text-gray-600 hover:text-red-600"
-      >
-        ✖
-      </button>
-
-      {/* BoutiqueView Component */}
+    {/* BoutiqueView Component */}
+    {showBoutique && (
       <BoutiqueView
         boutiqueId={boutique.id}
         language={language}
         onClose={() => setShowBoutique(false)}  // ✅ Close modal
       />
-    </div>
+    )}
   </div>
 )}
+
+
 
 
         {/* Map */}
