@@ -18,8 +18,15 @@ interface BusinessResult {
   name: string;
   description_en: string;
   description_fr: string;
-  category: Category;
-  province: ProvinceCode;
+
+  // ✅ Store both English & French category names
+  category_en: string;
+  category_fr: string;
+
+  // ✅ Store both English & French province names
+  province_en: string;
+  province_fr: string;
+
   city: string;
   address: string;
   products: string[];
@@ -32,6 +39,7 @@ interface BusinessResult {
   lng: number;
 }
 
+
 export function BusinessSearch({ language, initialSearchTerm, onClose, resetSearchTerm }: BusinessSearchProps) {
   const [searchTerm, setSearchTerm] = useState<string>(initialSearchTerm || '');
   const [selectedProvince, setSelectedProvince] = useState<string>('');
@@ -42,7 +50,7 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
   const [hasSearched, setHasSearched] = useState(false);
 
   const location = useLocation(); // Get the current location (URL)
-  
+
   useEffect(() => {
     // Get the search term from the URL query parameter
     const params = new URLSearchParams(location.search);
@@ -52,7 +60,7 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
       setSearchTerm(termFromUrl); // Set the search term from the URL
       handleSearch(); // Automatically trigger the search with the term from the URL
     }
-  }, [location.search]); 
+  }, [location.search]);
 
   const handleSearch = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
@@ -67,12 +75,17 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
       let query = supabase.from('businesses').select('*');
 
       if (selectedProvince) {
-        query = query.eq('province', selectedProvince);
+        query = query.or(
+          `province_en.eq.${selectedProvince}, province_fr.eq.${selectedProvince}`
+        ); // ✅ Search both English & French province
       }
-
+      
       if (selectedCategory) {
-        query = query.eq('category', selectedCategory);
+        query = query.or(
+          `category_en.eq.${selectedCategory}, category_fr.eq.${selectedCategory}`
+        ); // ✅ Search both English & French category
       }
+  
 
       if (searchTerm.trim()) {
         query = query.or(
@@ -99,12 +112,12 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
     );
   };
 
-    // When province is selected, store the province name instead of the code
-    const handleProvinceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-      const selectedCode = e.target.value as ProvinceCode;
-      const provinceName = PROVINCES[selectedCode]?.[language] || ''; // Get province name based on selected code and language
-      setSelectedProvince(provinceName);
-    };
+  // When province is selected, store the province name instead of the code
+  const handleProvinceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedCode = e.target.value as ProvinceCode;
+    const provinceName = PROVINCES[selectedCode]?.[language] || ''; // Get province name based on selected code and language
+    setSelectedProvince(provinceName);
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -145,23 +158,25 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
+              <div>
                 <label htmlFor="province" className="block text-sm font-medium text-gray-700 mb-1">
                   {translations.search.province[language]}
                 </label>
                 <select
                   id="province"
                   value={selectedProvince}
-                  onChange={handleProvinceChange}
+                  onChange={(e) => setSelectedProvince(e.target.value)}
                   className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
                 >
                   <option value="">{translations.search.selectProvince[language]}</option>
                   {Object.entries(PROVINCES).map(([code, names]) => (
-                    <option key={code} value={code}>
-                      {names[language]} {/* Show the province name based on the current language */}
+                    <option key={code} value={names.en}> {/* ✅ Store the English name */}
+                      {names[language]} {/* ✅ Show translated name */}
                     </option>
                   ))}
                 </select>
+
+
               </div>
 
 
@@ -177,11 +192,13 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
                 >
                   <option value="">{translations.search.selectCategory[language]}</option>
                   {CATEGORIES.map((category) => (
-                    <option key={category} value={category}>
-                      {translations.categories[category][language]}
+                    <option key={category} value={category}> {/* ✅ Store category name */}
+                      {translations.categories[category][language]} {/* ✅ Show translated name */}
                     </option>
                   ))}
                 </select>
+
+
               </div>
             </div>
 
@@ -212,23 +229,27 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
             ) : (
               businesses.map((business) => (
                 <BusinessListing
-  key={business.id}
-  business={{
-    ...business,
-    description_en: business.description_en, // Keep as separate properties
-    description_fr: business.description_fr,
-    // coordinates: {
-    //   lat: business.lat,
-    //   lng: business.lng
-    // },
-    rating: business.rating || 0,
-    reviewCount: business.review_count || 0,
-    products: business.products || [],
-    services: business.services || []
-  }}
-  language={language}
-/>
-
+                  key={business.id}
+                  business={{
+                    ...business,
+                    description_en: business.description_en,
+                    description_fr: business.description_fr,
+              
+                    // ✅ Directly use category_en and category_fr
+                    category_en: business.category_en,
+                    category_fr: business.category_fr,
+              
+                    // ✅ Directly use province_en and province_fr
+                    province_en: business.province_en,
+                    province_fr: business.province_fr,
+              
+                    rating: business.rating || 0,
+                    reviewCount: business.review_count || 0,
+                    products: business.products || [],
+                    services: business.services || []
+                  }}
+                  language={language}
+                />
               ))
             )}
           </div>

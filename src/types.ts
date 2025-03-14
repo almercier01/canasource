@@ -7,8 +7,11 @@ export interface Business {
   description_en: string;
   description_fr: string;
 
-  category: string;
-  province: string;
+  category_en: string;
+  category_fr: string;
+  province_en: string;
+  province_fr: string;
+
   city: string;
   address?: string;
 

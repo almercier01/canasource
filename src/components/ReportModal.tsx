@@ -43,7 +43,7 @@ export function ReportModal({ isOpen, onClose, businessId, language }: ReportMod
     try {
       const { data: { user }, error: authError } = await supabase.auth.getUser();
       if (authError || !user) {
-        throw new Error(translations.auth.signInRequired[language]);
+        throw new Error(translations.report.signInRequired[language]);
       }
 
       const { error: submitError } = await supabase

@@ -1,3 +1,5 @@
+import { EditBusinessForm } from "../components/EditBusinessForm";
+
 export const translations = {
   siteTitle: {
     en: 'CanaSource - Discover Canadian Local Offers',
@@ -54,39 +56,15 @@ export const translations = {
     }
   },
   categories: {
-    'Artisans & Crafts': {
-      en: 'Artisans & Crafts',
-      fr: 'Artisans et Métiers d\'Art'
-    },
-    'Food & Beverage': {
-      en: 'Food & Beverage',
-      fr: 'Alimentation et Boissons'
-    },
-    'Health & Wellness': {
-      en: 'Health & Wellness',
-      fr: 'Santé et Bien-être'
-    },
-    'Home & Garden': {
-      en: 'Home & Garden',
-      fr: 'Maison et Jardin'
-    },
-    'Professional Services': {
-      en: 'Professional Services',
-      fr: 'Services Professionnels'
-    },
-    'Retail': {
-      en: 'Retail',
-      fr: 'Commerce de Détail'
-    },
-    'Technology': {
-      en: 'Technology',
-      fr: 'Technologie'
-    },
-    'Other': {
-      en: 'Other',
-      fr: 'Autre'
-    }
-  },
+    'Artisans & Crafts': { en: 'Artisans & Crafts', fr: 'Artisanat et Métiers' },
+    'Food & Beverage': { en: 'Food & Beverage', fr: 'Alimentation et Boissons' },
+    'Health & Wellness': { en: 'Health & Wellness', fr: 'Santé et Bien-être' },
+    'Home & Garden': { en: 'Home & Garden', fr: 'Maison et Jardin' },
+    'Professional Services': { en: 'Professional Services', fr: 'Services Professionnels' },
+    Retail: { en: 'Retail', fr: 'Commerce de Détail' },
+    Technology: { en: 'Technology', fr: 'Technologie' },
+    Other: { en: 'Other', fr: 'Autre' },
+  } as Record<string, { en: string; fr: string }>,  // ✅ Fix added here
   provinces: {
     'Alberta': {
       en: 'Alberta',
@@ -140,7 +118,7 @@ export const translations = {
       en: 'Yukon',
       fr: 'Yukon'
     }
-  },
+  }as Record<string, { en: string; fr: string }>,  // ✅ Fix added here
   about: {
     title: {
       en: 'About CanaSource',
@@ -291,6 +269,10 @@ export const translations = {
       en: 'Phone',
       fr: 'Téléphone'
     },
+    email: {
+      en: 'Email',
+      fr: 'Courriel'
+    },
     phonePlaceholder: {
       en: '(123) 456-7890',
       fr: '(123) 456-7890'
@@ -299,6 +281,12 @@ export const translations = {
       en: 'Register Offer',
       fr: 'Inscrire l\'offre'
     }
+  },
+  editBusiness: {
+    title: {
+      en: 'Update your listing',
+      fr: 'Mettre à jour votre offre'
+    },
   },
   fetching: {
     en: 'Fetching boutique details...',
@@ -325,27 +313,27 @@ export const translations = {
   dashboard: {
     overview: { en: 'Overview', fr: 'Aperçu' },
     reports: { en: 'Reports', fr: 'Rapports' },
-    images:  { en: 'Images',  fr: 'Images' },
-    settings:{ en: 'Settings',fr: 'Paramètres' },
+    images: { en: 'Images', fr: 'Images' },
+    settings: { en: 'Settings', fr: 'Paramètres' },
 
     totalBusinesses: { en: 'Total Businesses', fr: 'Entreprises totales' },
-    totalReports:    { en: 'Total Reports',    fr: 'Rapports totaux' },
-    pendingReports:  { en: 'Pending Reports',  fr: 'Rapports en attente' },
+    totalReports: { en: 'Total Reports', fr: 'Rapports totaux' },
+    pendingReports: { en: 'Pending Reports', fr: 'Rapports en attente' },
     resolvedReports: { en: 'Resolved Reports', fr: 'Rapports résolus' },
-    pendingImages:   { en: 'Pending Images',   fr: 'Images en attente' },
-    noReports:       { en: 'No reports found', fr: 'Aucun rapport trouvé' },
-    noPendingItems:  { en: 'No pending items', fr: 'Aucun élément en attente' },
-    
+    pendingImages: { en: 'Pending Images', fr: 'Images en attente' },
+    noReports: { en: 'No reports found', fr: 'Aucun rapport trouvé' },
+    noPendingItems: { en: 'No pending items', fr: 'Aucun élément en attente' },
+
     // MISSING KEYS:
     tabs: {  // "tabs" object for each route name
       overview: { en: 'Overview', fr: 'Aperçu' },
-      reports:  { en: 'Reports',  fr: 'Rapports' },
-      images:   { en: 'Images',   fr: 'Images' },
+      reports: { en: 'Reports', fr: 'Rapports' },
+      images: { en: 'Images', fr: 'Images' },
       settings: { en: 'Settings', fr: 'Paramètres' }
     },
     unknownBusiness: { en: 'Unknown Business', fr: 'Entreprise inconnue' },
-    approve:         { en: 'Approve',          fr: 'Approuver' },
-    reject:          { en: 'Reject',           fr: 'Rejeter' },
+    approve: { en: 'Approve', fr: 'Approuver' },
+    reject: { en: 'Reject', fr: 'Rejeter' },
     settingsDescription: {
       en: 'Configure your site settings here',
       fr: 'Configurez les paramètres du site ici'
@@ -403,6 +391,10 @@ export const translations = {
     businessNotFound: {
       en: 'Business not found',
       fr: 'L\'entreprise n\'a pas été trouvé'
+    },
+    userNotFound: {
+      en: 'User not found',
+      fr: 'L\'utilisateur n\'a pas été trouvé'
     }
   },
 
@@ -454,12 +446,16 @@ export const translations = {
       }
     }
   },
-  
-  
+
+
   common: {
     cancel: {
       en: 'Cancel',
       fr: 'Annuler'
+    },
+    back: {
+      en: 'Back',
+      fr: 'Reculer'
     },
     processing: {
       en: 'Processing...',
@@ -525,8 +521,12 @@ export const translations = {
       fr: 'Envoyer un autre message'
     }
   },
-    
+
   report: {
+    signInRequired: {
+      en: 'Please sign in to report a listing',
+      fr: 'Veuillez vous connecter pour signaler une offre'
+    },
     button: {
       en: 'Report Listing',
       fr: 'Signaler l\'annonce'
@@ -535,9 +535,25 @@ export const translations = {
       en: 'Report Listing',
       fr: 'Signaler l\'annonce'
     },
+    success: {
+      en: 'Report sent',
+      fr: 'Signalement envoyé'
+    },
     reason: {
       en: 'Reason for Report',
       fr: 'Raison du signalement'
+    },
+    details: {
+      en: 'Report details',
+      fr: 'Détails du signalement'
+    },
+    detailsPlaceholder: {
+      en: 'Report details',
+      fr: 'Détails du signalement'
+    },
+    submit: {
+      en: 'Submit Report',
+      fr: 'Envoyé le Signalement'
     },
     reasons: {
       misleading_information: {

@@ -110,14 +110,22 @@ export function BusinessListing({
         .select('*')
         .eq('id', businessId)
         .single();
-
+  
       if (error || !data) {
         console.error('Error fetching business:', error);
         return;
       }
-      setBusinessDetails(data as Business);
+  
+      setBusinessDetails(data as Business); // ✅ Update state with new business data
     } catch (err) {
       console.error('Error fetching business:', err);
+    }
+  };
+  
+
+  const handleUpdate = () => {
+    if (business) {
+      fetchBusiness(business.id); // ✅ Fetch latest business details
     }
   };
 
@@ -130,43 +138,43 @@ export function BusinessListing({
   };
   const fetchBoutique = async (businessId: string) => {
     try {
-        // First, fetch the owner_id from the businesses table
-        const { data: businessData, error: businessError } = await supabase
-            .from('businesses')
-            .select('owner_id')
-            .eq('id', businessId)
-            .single();
-
-        if (businessError || !businessData) {
-            console.error('Error fetching business owner:', businessError);
-            setBoutique(null);  // ✅ Explicitly set to null
-            return;
-        }
-
-        const ownerId = businessData.owner_id;
-        console.log("Owner ID:", ownerId); // Debugging output
-
-        // Now fetch the boutique that belongs to this owner
-        const { data: boutiqueData, error: boutiqueError } = await supabase
-            .from('boutiques')
-            .select('*')
-            .eq('owner_id', ownerId) // ✅ Using owner_id instead of business_id
-            .maybeSingle();
-
-        if (boutiqueError) {
-            console.error('Error fetching boutique:', boutiqueError);
-            setBoutique(null);  // ✅ Explicitly set to null
-            return;
-        }
-
-        console.log("Fetched Boutique:", boutiqueData || "No boutique found"); // Debugging output
-        setBoutique(boutiqueData || null); // ✅ Ensure null is set when boutiqueData is not found
+      // First, fetch the owner_id from the businesses table
+      const { data: businessData, error: businessError } = await supabase
+        .from('businesses')
+        .select('owner_id')
+        .eq('id', businessId)
+        .single();
+  
+      if (businessError || !businessData) {
+        console.error('Error fetching business owner:', businessError);
+        setBoutique(null);
+        return;
+      }
+  
+      const ownerId = businessData.owner_id;
+      // console.log("Owner ID:", ownerId); // Debugging output
+  
+      // Now fetch the boutique that belongs to this owner
+      const { data: boutiqueData, error: boutiqueError } = await supabase
+        .from('boutiques')
+        .select('*')
+        .eq('owner_id', ownerId)
+        .single();
+  
+      if (boutiqueError) {
+        console.error('Error fetching boutique:', boutiqueError);
+        setBoutique(null);
+        return;
+      }
+  
+      // console.log("Fetched Boutique:", boutiqueData); // Debugging output
+      setBoutique(boutiqueData);
     } catch (err) {
-        console.error('Error fetching boutique:', err);
-        setBoutique(null);  // ✅ Catch any errors and prevent stale data
+      console.error('Error fetching boutique:', err);
+      setBoutique(null);
     }
-};
-
+  };
+  
 
 
   // Determine if the current user is the owner of the business
@@ -308,9 +316,12 @@ export function BusinessListing({
       : effectiveBusiness.description_fr;
 
   // Build a display-friendly address
+  const displayedProvince = language === 'en' ? effectiveBusiness.province_en : effectiveBusiness.province_fr;
+
   const fullAddress = effectiveBusiness.address
-    ? `${effectiveBusiness.address}, ${effectiveBusiness.city}, ${effectiveBusiness.province}, Canada`
-    : `${effectiveBusiness.city}, ${effectiveBusiness.province}, Canada`;
+    ? `${effectiveBusiness.address}, ${effectiveBusiness.city}, ${displayedProvince}, Canada`
+    : `${effectiveBusiness.city}, ${displayedProvince}, Canada`;
+  
 
   // If user clicked “Edit,” show the EditBusinessForm
   if (showEditForm) {
@@ -320,6 +331,7 @@ export function BusinessListing({
         onCancel={() => setShowEditForm(false)}
         onSave={() => {
           setShowEditForm(false);
+          handleUpdate(); // ✅ Ensure latest data is fetched
           if (onUpdate) onUpdate();
         }}
         language={language}
@@ -339,7 +351,7 @@ export function BusinessListing({
           className="w-full h-full object-cover"
         />
         <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-sm">
-          {effectiveBusiness.province}
+          {language === 'en' ? effectiveBusiness.province_en : effectiveBusiness.province_fr}
         </div>
         <div className="absolute bottom-4 right-4 flex space-x-2">
           {isOwner && (
@@ -372,12 +384,9 @@ export function BusinessListing({
             <div className="mt-1 flex items-center">
               <Tag className="h-4 w-4 text-red-600" />
               <span className="ml-2 text-sm text-gray-600">
-                {
-                  translations.categories[
-                  effectiveBusiness.category as keyof typeof translations.categories
-                  ][language]
-                }
-              </span>
+  {language === 'en' ? effectiveBusiness.category_en : effectiveBusiness.category_fr}
+</span>
+
             </div>
           </div>
 

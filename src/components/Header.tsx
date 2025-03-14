@@ -7,6 +7,7 @@ import { AuthModal } from './auth/AuthModal';
 import { supabase } from '../lib/supabaseClient';
 import { NotificationCenter } from './notifications/NotificationCenter';
 import { UserDashboard } from './user/UserDashboard';
+import { useNavigate } from 'react-router-dom';
 
 interface HeaderProps {
   language: Language;
@@ -42,7 +43,8 @@ export function Header({
   const [searchTerm, setSearchTerm] = useState('');
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     checkUser();
 
@@ -71,6 +73,7 @@ export function Header({
     onAdminLogout();
     setUserMenuOpen(false);
     setShowUserDashboard(false);
+    navigate('/');
   };
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -130,13 +133,13 @@ export function Header({
                   {translations.nav.contact[language]}
                 </button>
                               {/* Temporary Boutique Link */}
-                              <button
+                              {/* <button
                   onClick={handleBoutiqueClick}
                   className="flex items-center text-gray-700 hover:text-red-600"
                 >
                   <Store className="h-5 w-5 mr-1" />
                   <span>{language === 'en' ? 'Boutique' : 'Boutique'}</span>
-                </button>
+                </button> */}
               </nav>
             </div>
             

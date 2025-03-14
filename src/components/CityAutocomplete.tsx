@@ -22,6 +22,7 @@ export function CityAutocomplete({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isValid, setIsValid] = useState(true);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -113,3 +114,10 @@ export function CityAutocomplete({
     </div>
   );
 }
+
+export const isValidCity = (province: ProvinceCode, city: string) => {
+  if (!province || !city) return false;
+
+  const normalizedCity = city.trim().toLowerCase();
+  return CANADIAN_CITIES[province]?.some(c => c.toLowerCase() === normalizedCity) || false;
+};

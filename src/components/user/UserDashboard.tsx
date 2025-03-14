@@ -65,28 +65,39 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
-  
+
       // Fetch businesses owned by the user
       const { data, error } = await supabase
         .from('businesses')
-        .select('id')
-        .eq('owner_id', user.id)  // Only fetch businesses for the logged-in user
-        .single();  // Expecting only one business per user
-  
-      if (error || !data) {
+        .select('id, name, city, province_en, province_fr') // ✅ Use updated columns
+        .eq('owner_id', user.id)
+        .maybeSingle(); // ✅ Allows returning null instead of error
+
+      if (error) {
+        console.error('Error checking listings:', error);
         setHasListings(false);
         return;
       }
-  
+
+      if (!data) {
+        // ✅ No businesses found for the user
+        setHasListings(false);
+        setBusinessId(null);
+        return;
+      }
+
       setHasListings(true);
       setBusinessId(data.id);
     } catch (err) {
       console.error('Error checking listings:', err);
       setHasListings(false);
+      setBusinessId(null);
     }
   };
-  
-  
+
+
+
+
   const fetchReceivedRequests = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
@@ -94,13 +105,14 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
         throw new Error(language === 'en' ? 'Please sign in' : 'Veuillez vous connecter');
       }
 
-      // First get all businesses owned by the user
+      // Get all businesses owned by the user
       const { data: businesses, error: businessError } = await supabase
         .from('businesses')
-        .select('id, name, city, province')
+        .select('id, name, city, province_en, province_fr') // ✅ Updated columns
         .eq('owner_id', user.id);
 
       if (businessError) throw businessError;
+
       if (!businesses || businesses.length === 0) {
         setReceivedRequests([]);
         return;
@@ -116,23 +128,14 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
 
       if (requestError) throw requestError;
 
-      // Transform the data to match the ConnectionRequest interface
-      const transformedRequests = requests.map(request => ({
-        id: request.id,
-        status: request.status,
-        message: request.message,
-        created_at: request.created_at,
-        business: businesses.find(b => b.id === request.business_id)!,
-        requester_email: request.requester_email
-      }));
-
-      setReceivedRequests(transformedRequests);
+      setReceivedRequests(requests || []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error fetching requests');
-    } finally {
-      setLoading(false);
+      console.error('Error fetching received requests:', err);
+      setReceivedRequests([]); // ✅ Prevent errors if no data
     }
   };
+
+
 
   const fetchSentRequests = async () => {
     try {
@@ -151,11 +154,12 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
 
       setSentRequests(requests || []);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Error fetching sent requests');
-    } finally {
-      setLoading(false);
+      console.error('Error fetching sent requests:', err);
+      setSentRequests([]); // ✅ Ensure empty state instead of error
     }
   };
+
+
 
   const handleRequestAction = async (requestId: string, status: 'accepted' | 'rejected') => {
     try {
@@ -194,50 +198,55 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
             {language === 'en' ? 'My Dashboard' : 'Mon tableau de bord'}
           </h1>
         </div>
+        {/* Display if user has no listings */}
+        {!hasListings && (
+          <div className="text-center text-gray-500 mt-4">
+            {language === 'en'
+              ? "You don't have any business listings yet."
+              : "Vous n'avez pas encore d'annonce d'entreprise."}
+          </div>
+        )}
         {hasListings && businessId && <Listing language={language} businessId={businessId} />}
         {hasListings && (
-              <div className="mb-4">
-                <button
-                  onClick={viewBusinessListing}
-                  className="text-blue-600 hover:text-blue-800"
-                >
-                  {language === 'en' ? 'View My Business Listing' : 'Voir mon annonce'}
-                </button>
-              </div>
-            )}
+          <div className="mb-4">
+            <button
+              onClick={viewBusinessListing}
+              className="text-blue-600 hover:text-blue-800"
+            >
+              {language === 'en' ? 'View My Business Listing' : 'Voir mon annonce'}
+            </button>
+          </div>
+        )}
 
         <div className="bg-white rounded-lg shadow">
           <div className="border-b border-gray-200">
             <nav className="-mb-px flex">
               <button
                 onClick={() => setActiveTab('received')}
-                className={`${
-                  activeTab === 'received'
-                    ? 'border-red-500 text-red-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                className={`${activeTab === 'received'
+                  ? 'border-red-500 text-red-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
               >
                 <Inbox className="h-5 w-5 mr-2" />
                 {language === 'en' ? 'Received Requests' : 'Demandes reçues'}
               </button>
               <button
                 onClick={() => setActiveTab('sent')}
-                className={`${
-                  activeTab === 'sent'
-                    ? 'border-red-500 text-red-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                className={`${activeTab === 'sent'
+                  ? 'border-red-500 text-red-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
               >
                 <Send className="h-5 w-5 mr-2" />
                 {language === 'en' ? 'Sent Requests' : 'Demandes envoyées'}
               </button>
               <button
                 onClick={() => setActiveTab('messages')}
-                className={`${
-                  activeTab === 'messages'
-                    ? 'border-red-500 text-red-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                className={`${activeTab === 'messages'
+                  ? 'border-red-500 text-red-600'
+                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                  } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
               >
                 <MessageSquare className="h-5 w-5 mr-2" />
                 {language === 'en' ? 'Messages' : 'Messages'}
@@ -257,20 +266,20 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
 
                 {loading ? (
                   <p className="text-gray-500">
-                    {language === 'en' ? 'Loading...' : 'Chargement...'}
+                    {/* {language === 'en' ? 'Loading...' : 'Chargement...'} */}
                   </p>
                 ) : error ? (
                   <p className="text-red-600">{error}</p>
                 ) : !hasListings ? (
                   <p className="text-gray-500">
-                    {language === 'en' 
-                      ? 'You need to have a business listing to receive connection requests.' 
+                    {language === 'en'
+                      ? 'You need to have a business listing to receive connection requests.'
                       : 'Vous devez avoir une annonce pour recevoir des demandes de connexion.'}
                   </p>
                 ) : receivedRequests.length === 0 ? (
                   <p className="text-gray-500">
-                    {language === 'en' 
-                      ? 'No connection requests yet.' 
+                    {language === 'en'
+                      ? 'No connection requests yet.'
                       : 'Aucune demande de connexion pour le moment.'}
                   </p>
                 ) : (
@@ -315,11 +324,10 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
                                 </button>
                               </>
                             ) : (
-                              <span className={`px-2 py-1 text-sm rounded-full ${
-                                request.status === 'accepted'
-                                  ? 'bg-green-100 text-green-700'
-                                  : 'bg-gray-100 text-gray-700'
-                              }`}>
+                              <span className={`px-2 py-1 text-sm rounded-full ${request.status === 'accepted'
+                                ? 'bg-green-100 text-green-700'
+                                : 'bg-gray-100 text-gray-700'
+                                }`}>
                                 {request.status === 'accepted'
                                   ? (language === 'en' ? 'Accepted' : 'Acceptée')
                                   : (language === 'en' ? 'Declined' : 'Refusée')}
@@ -331,6 +339,16 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
                     ))}
                   </div>
                 )}
+                {/* Display if no received requests */}
+                {receivedRequests.length === 0 && (
+                  <div className="text-center text-gray-500 mt-4">
+                    <p>
+                      {language === 'en'
+                        ? "You haven't received any connection requests yet."
+                        : "Vous n'avez pas encore reçu de demandes de connexion."}
+                    </p>
+                  </div>
+                )}
               </div>
             ) : (
               <div className="space-y-6">
@@ -340,14 +358,14 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
 
                 {loading ? (
                   <p className="text-gray-500">
-                    {language === 'en' ? 'Loading...' : 'Chargement...'}
+                    {/* {language === 'en' ? 'Loading...' : 'Chargement...'} */}
                   </p>
                 ) : error ? (
                   <p className="text-red-600">{error}</p>
                 ) : sentRequests.length === 0 ? (
                   <p className="text-gray-500">
-                    {language === 'en' 
-                      ? 'You haven\'t sent any connection requests yet.' 
+                    {language === 'en'
+                      ? 'You haven\'t sent any connection requests yet.'
                       : 'Vous n\'avez pas encore envoyé de demandes de connexion.'}
                   </p>
                 ) : (
@@ -370,22 +388,30 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
                               <p className="mt-2 text-gray-700">{request.message}</p>
                             )}
                           </div>
-                          <span className={`px-2 py-1 text-sm rounded-full ${
-                            request.status === 'accepted'
-                              ? 'bg-green-100 text-green-700'
-                              : request.status === 'rejected'
+                          <span className={`px-2 py-1 text-sm rounded-full ${request.status === 'accepted'
+                            ? 'bg-green-100 text-green-700'
+                            : request.status === 'rejected'
                               ? 'bg-gray-100 text-gray-700'
                               : 'bg-yellow-100 text-yellow-700'
-                          }`}>
+                            }`}>
                             {request.status === 'accepted'
                               ? (language === 'en' ? 'Accepted' : 'Acceptée')
                               : request.status === 'rejected'
-                              ? (language === 'en' ? 'Declined' : 'Refusée')
-                              : (language === 'en' ? 'Pending' : 'En attente')}
+                                ? (language === 'en' ? 'Declined' : 'Refusée')
+                                : (language === 'en' ? 'Pending' : 'En attente')}
                           </span>
                         </div>
                       </div>
                     ))}
+                  </div>
+                )}
+                {sentRequests.length === 0 && (
+                  <div className="text-center text-gray-500 mt-4">
+                    <p>
+                      {language === 'en'
+                        ? "You haven't sent any connection requests yet."
+                        : "Vous n'avez pas encore envoyé de demandes de connexion."}
+                    </p>
                   </div>
                 )}
               </div>

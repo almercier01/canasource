@@ -17,6 +17,7 @@ interface Report {
   status: string;
   created_at: string;
   business_name: string;
+  business_id: string;
   reporter_email: string;
 }
 
@@ -85,12 +86,38 @@ export function Dashboard({ language }: DashboardProps) {
   }, [activeTab]);
 
   const checkIfAdmin = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    // If no user or not admin, navigate away
-    if (!user || user.email !== 'admin@test.com') {
+    try {
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError || !user) {
+        console.error('Error fetching user:', authError);
+        navigate('/');
+        return;
+      }
+  
+      // Fetch the admin ID dynamically
+      const { data: admin, error: adminError } = await supabase
+        .from('users') // Ensure this matches your table where admin users are stored
+        .select('id')
+        .eq('email', 'admin@test.com') // ✅ Fetch dynamically instead of hardcoding
+        .single();
+  
+      if (adminError || !admin) {
+        console.error('Error fetching admin ID:', adminError);
+        navigate('/');
+        return;
+      }
+  
+      // Check if current user is the admin
+      if (user.id !== admin.id) {
+        console.warn('User is not an admin');
+        navigate('/');
+      }
+    } catch (err) {
+      console.error('Error checking admin:', err);
       navigate('/');
     }
   };
+  
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
@@ -104,58 +131,71 @@ export function Dashboard({ language }: DashboardProps) {
   const fetchOverviewDetails = async () => {
     setLoading(true);
     try {
-      // We'll do multiple queries in parallel:
+      // Fetch multiple queries in parallel
       const [
         bizCountRes,
         userCountRes,
-        provinceStats,
-        categoryStats
+        provinceStatsRes,
+        categoryStatsRes
       ] = await Promise.all([
         // 1) total businesses
         supabase
           .from('businesses')
           .select('*', { count: 'exact', head: true }),
-
+  
         // 2) total users
         supabase
           .from('users')
           .select('*', { count: 'exact', head: true }),
-
-        // 3) read from the business_stats_by_province view
+  
+        // 3) business stats by province
         supabase
           .from('business_stats_by_province')
           .select('*'),
-
-        // 4) read from the business_stats_by_category view
+  
+        // 4) business stats by category
         supabase
           .from('business_stats_by_category')
           .select('*'),
       ]);
-
-      // 1) parse total businesses
+  
+      console.log("Province Stats Raw Data:", provinceStatsRes.data);
+      console.log("Category Stats Raw Data:", categoryStatsRes.data);
+  
+      // 1) Parse total businesses
       const totalBusinesses = bizCountRes.count ?? 0;
-
-      // 2) parse total users
+  
+      // 2) Parse total users
       const totalUsers = userCountRes.count ?? 0;
-
-      // 3) byProvince => returns e.g. [ { province: 'ON', cnt: 10 }, ... ]
-      const byProvince = (provinceStats.data ?? []) as ProvinceCount[];
-
-      // 4) byCategory => returns e.g. [ { category: 'Retail', cnt: 5 }, ... ]
-      const byCategory = (categoryStats.data ?? []) as CategoryCount[];
-
+  
+      // 3) Format provinces correctly (use `province` instead of `province_en`)
+      const byProvince: ProvinceCount[] = (provinceStatsRes.data ?? []).map((p) => ({
+        province: p.province?.trim() !== "" ? p.province : "Unknown Province", 
+        cnt: p.cnt ?? 0,
+      }));
+  
+      // 4) Format categories correctly (use `category_en`)
+      const byCategory: CategoryCount[] = (categoryStatsRes.data ?? []).map((c) => ({
+        category: c.category_en?.trim() !== "" ? c.category_en : "Unknown Category", 
+        cnt: c.cnt ?? 0,
+      }));
+  
+      // Set overview state
       setOverview({
         totalBusinesses,
         totalUsers,
         byProvince,
         byCategory,
       });
+  
     } catch (err) {
       console.error('Error fetching overview details:', err);
     } finally {
       setLoading(false);
     }
   };
+  
+  
 
   // --------------------------------------------------------------------------------
   // 2) REPORTS TAB
@@ -210,31 +250,42 @@ export function Dashboard({ language }: DashboardProps) {
   // Updating status on the “images” tab
   const handleImageAction = async (businessId: string, status: 'approved' | 'rejected') => {
     setLoading(true);
+
     try {
-      const { data, error } = await supabase
-        .from('businesses')
-        .update({
-          image_status: status,
-          image_approved_at: status === 'approved' ? new Date().toISOString() : null,
-        })
-        .eq('id', businessId)
-        .select();
+        // ✅ First, check if the user is authenticated
+        const { data: { user }, error: authError } = await supabase.auth.getUser();
 
-      if (error) {
-        console.error('Error updating business image status:', error);
-      } else {
-        console.log('Update succeeded. Returned data:', data);
-      }
+        if (authError || !user) {
+            console.error("User is not authenticated:", authError);
+            alert("You must be logged in to perform this action.");
+            return;
+        }
 
-      // Refresh the list
-      await fetchPendingBusinesses();
+        console.log("Attempting to approve/reject image as user:", user.id);
+
+        // ✅ Now call the function
+        console.log("Calling Supabase RPC with:", { business_id: businessId, new_status: status });
+        const { data, error } = await supabase.rpc('admin_update_business_image', {
+            business_id: businessId,
+            new_status: status
+        });
+
+        if (error) {
+            console.error(`Error updating business image to '${status}':`, error);
+            return;
+        }
+
+        console.log(`Image ${status} successfully for business:`, businessId);
+        await fetchPendingBusinesses(); // Refresh the list
     } catch (err) {
-      console.error('Error in handleImageAction:', err);
+        console.error('Error in handleImageAction:', err);
     } finally {
-      setLoading(false);
+        setLoading(false);
     }
-  };
+};
 
+
+  
   // --------------------------------------------------------------------------------
   // RENDER FUNCTIONS
   // --------------------------------------------------------------------------------
@@ -267,7 +318,7 @@ export function Dashboard({ language }: DashboardProps) {
             <ul>
               {overview.byProvince.map((p) => (
                 <li key={p.province ?? 'none'}>
-                  Province: {p.province ?? 'N/A'} – Count: {p.cnt}
+                  Province: {p.province ? translations.provinces[p.province][language] : 'N/A'} – Count: {p.cnt}
                 </li>
               ))}
             </ul>
@@ -283,7 +334,7 @@ export function Dashboard({ language }: DashboardProps) {
             <ul>
               {overview.byCategory.map((c) => (
                 <li key={c.category ?? 'none'}>
-                  Category: {c.category ?? 'N/A'} – Count: {c.cnt}
+                  Category: {c.category ? translations.categories[c.category][language] : 'N/A'} – Count: {c.cnt}
                 </li>
               ))}
             </ul>
@@ -305,7 +356,7 @@ export function Dashboard({ language }: DashboardProps) {
       <ul className="mt-4 space-y-2">
         {reports.map((report) => (
           <li key={report.id} className="border p-2 rounded">
-            <strong>{report.business_name}</strong> - {report.type} ({report.status})
+            <strong>{report.business_id}</strong> - {report.type} ({report.status})
           </li>
         ))}
       </ul>
@@ -374,11 +425,10 @@ export function Dashboard({ language }: DashboardProps) {
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`${
-                    activeTab === tab
-                      ? 'border-red-500 text-red-600'
-                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                  } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
+                  className={`${activeTab === tab
+                    ? 'border-red-500 text-red-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                    } flex items-center whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm`}
                 >
                   {tab === 'overview' && <BarChart3 className="h-5 w-5 mr-2" />}
                   {tab === 'reports' && <Flag className="h-5 w-5 mr-2" />}

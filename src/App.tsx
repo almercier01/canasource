@@ -17,6 +17,7 @@ import { Language, SiteConfig, AdminState } from './types';
 import { BoutiqueView } from './components/boutique/BoutiqueView';
 import { UserProducts } from './components/boutique/UserProducts';
 import { ProductForm } from './components/boutique/ProductForm';
+import { useParams } from 'react-router-dom';
 
 
 export default function App() {
@@ -118,7 +119,7 @@ export default function App() {
   const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique' | 'boutique') => {
     navigate(page === 'home' ? '/' : `/${page}`);
   };
-  
+
   const searchParams = new URLSearchParams(location.search);
   const initialSearchTerm = searchParams.get('term') || '';
 
@@ -150,28 +151,28 @@ export default function App() {
           path="/search"
           element={
             <BusinessSearch
-              language="en"
+              language={language} // ✅ Dynamically pass the current language
               initialSearchTerm={initialSearchTerm}
               onClose={() => navigate('/')}
-              resetSearchTerm={resetSearchTerm} // Pass the reset function to BusinessSearch
+              resetSearchTerm={resetSearchTerm}
             />
+
           }
         />
         <Route path="/about" element={<About language={language} onClose={() => navigate('/')} />} />
         <Route path="/contact" element={<Contact language={language} onClose={() => navigate('/')} />} />
         <Route path="/business/:id" element={<BusinessListing language={language} />} />
         <Route path="/boutique" element={<BoutiqueView boutiqueId="test-boutique" language={language} onClose={() => {
-            setShowBoutique(false);
-            handleNavigate('home');
-          }} />} />
-       
+          setShowBoutique(false);
+          handleNavigate('home');
+        }} />} />
+        <Route path="/add-products/:businessId" element={<AddProducts language={language} />} />
+
+
         <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
         <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
         <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
-        {/* <Route 
-  path="/add-products/:businessId" 
-  element={<ProductForm language={language} onProductAdded={() => {}} />} 
-/> */}
+
 
 
 
@@ -189,3 +190,20 @@ export default function App() {
     </div>
   );
 }
+
+export const AddProducts = ({ language }: { language: Language }) => {
+  const { businessId } = useParams<{ businessId: string }>(); // ✅ Get businessId from URL
+
+  if (!businessId) {
+    return <p>Error: Business ID is missing.</p>; // ✅ Handle invalid URL
+  }
+
+  return (
+    <ProductForm
+      language={language}
+      businessId={businessId}  // ✅ Pass the businessId
+      onProductAdded={() => { console.log("Product added!"); }}
+    />
+  );
+};
+

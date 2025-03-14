@@ -26,63 +26,83 @@ export function CreateBoutiqueForm({ language, onClose }: CreateBoutiqueFormProp
 
   const fetchUserBusiness = async () => {
     try {
-      const { data, error } = await supabase.auth.getUser();
-      if (error || !data?.user) {
-        throw new Error(translations.auth.signInRequired[language]);
+      const { data: { user }, error: authError } = await supabase.auth.getUser();
+      if (authError || !user) {
+        console.error('Error fetching user:', authError);
+        return;
       }
-      setUserId(data.user.id);
-
-      const { data: businessData, error: businessError } = await supabase
+      setUserId(user.id); // ✅ Store userId in state
+  
+      // Fetch business owned by the user
+      const { data, error } = await supabase
         .from('businesses')
         .select('id')
-        .eq('owner_id', data.user.id)
-        .single();
-
-      if (businessError) throw businessError;
-      setBusinessId(businessData.id);
+        .eq('owner_id', user.id)
+        .maybeSingle(); // Prevents errors if no business is found
+  
+      if (error) {
+        console.error('Error fetching business:', error);
+        return;
+      }
+  
+      if (!data) {
+        console.log('No business found for this user.');
+        return;
+      }
+  
+      console.log('User Business Data:', data);
+      setBusinessId(data.id); // ✅ Store businessId in state
     } catch (err) {
-      setError(translations.errors.generic[language]);
+      console.error('Unexpected error:', err);
     }
   };
+  
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setError(null);
+  setLoading(true);
 
-    if (!businessId) {
-      setError(translations.errors.businessNotFound[language]);
-      setLoading(false);
-      return;
-    }
+  if (!businessId) {
+    setError(translations.errors.businessNotFound[language]);
+    setLoading(false);
+    return;
+  }
 
-    try {
-      const { data, error } = await supabase
-        .from('boutiques')
-        .insert([
-          {
-            name: formData.name,
-            description: formData.description,
-            image_url: formData.image_url,
-            business_id: businessId,
-            owner_id: userId,
-            status: 'pending',
-            created_at: new Date().toISOString(),
-          },
-        ])
-        .select('id')
-        .single();
+  if (!userId) {
+    setError(translations.errors.userNotFound[language]);
+    setLoading(false);
+    return;
+  }
 
-      if (error) throw error;
+  try {
+    const { data, error } = await supabase
+      .from('boutiques')
+      .insert([
+        {
+          name: formData.name,
+          description: formData.description,
+          image_url: formData.image_url,
+          business_id: businessId, // ✅ Now correctly set
+          owner_id: userId, // ✅ Now correctly set
+          status: 'pending',
+          created_at: new Date().toISOString(),
+        },
+      ])
+      .select('id')
+      .single();
 
-      alert(language === 'en' ? 'Boutique created successfully!' : 'Boutique créée avec succès!');
-      onClose();
-    } catch (err) {
-      setError(translations.errors.generic[language]);
-    } finally {
-      setLoading(false);
-    }
-  };
+    if (error) throw error;
+
+    alert(language === 'en' ? 'Boutique created successfully!' : 'Boutique créée avec succès!');
+    onClose();
+  } catch (err) {
+    setError(translations.errors.generic[language]);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   return (
     <div className="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
