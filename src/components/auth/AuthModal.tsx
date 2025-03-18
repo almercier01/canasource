@@ -66,19 +66,18 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
       if (error) throw error;
   
       if (data?.user) {
-        const { error: insertError } = await supabase.from('users').insert([{
-          id: data.user.id,
-          email,
-          first_name: firstName,
-          last_name: lastName,
-          business_name, // include business_name here
-          province: province ? PROVINCES[province as ProvinceCode][language] : '',
-          city,
-          language: languagePref,
-          created_at: new Date().toISOString(),
-        }]);
+        const { error: updateError } = await supabase.from('users')
+          .update({
+            first_name: firstName,
+            last_name: lastName,
+            business_name,
+            province: province ? PROVINCES[province as ProvinceCode][language] : '',
+            city,
+            language: languagePref,
+          })
+          .eq('id', data.user.id);
   
-        if (insertError) throw insertError;
+        if (updateError) throw updateError;
       }
   
       resetForm();
@@ -90,6 +89,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
       setLoading(false);
     }
   };
+  
   
 
   const resetForm = () => {

@@ -138,12 +138,12 @@ export function BusinessListing({
   };
   const fetchBoutique = async (businessId: string) => {
     try {
-      // First, fetch the owner_id from the businesses table
+      // Fetch owner_id from businesses table
       const { data: businessData, error: businessError } = await supabase
         .from('businesses')
         .select('owner_id')
         .eq('id', businessId)
-        .single();
+        .maybeSingle();
   
       if (businessError || !businessData) {
         console.error('Error fetching business owner:', businessError);
@@ -152,14 +152,13 @@ export function BusinessListing({
       }
   
       const ownerId = businessData.owner_id;
-      // console.log("Owner ID:", ownerId); // Debugging output
   
-      // Now fetch the boutique that belongs to this owner
+      // Fetch boutique for the owner (use maybeSingle instead of single)
       const { data: boutiqueData, error: boutiqueError } = await supabase
         .from('boutiques')
         .select('*')
         .eq('owner_id', ownerId)
-        .single();
+        .maybeSingle();
   
       if (boutiqueError) {
         console.error('Error fetching boutique:', boutiqueError);
@@ -167,13 +166,14 @@ export function BusinessListing({
         return;
       }
   
-      // console.log("Fetched Boutique:", boutiqueData); // Debugging output
-      setBoutique(boutiqueData);
+      // Set boutique state (will be null if no boutique found)
+      setBoutique(boutiqueData || null);
     } catch (err) {
       console.error('Error fetching boutique:', err);
       setBoutique(null);
     }
   };
+  
   
 
 

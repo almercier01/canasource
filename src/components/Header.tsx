@@ -20,13 +20,13 @@ interface HeaderProps {
   onRegisterClick: () => void;
   onAdminDashboardClick: () => void;
   onSearch: (term?: string) => void;
-  onNavigate: (page: 'home' | 'about' | 'contact' | 'create-boutique' | 'boutique') => void; 
+  onNavigate: (page: 'home' | 'about' | 'contact' | 'create-boutique' | 'boutique') => void;
 }
 
-export function Header({ 
-  language, 
-  setLanguage, 
-  config, 
+export function Header({
+  language,
+  setLanguage,
+  config,
   onUpdateConfig,
   adminState,
   onAdminLogin,
@@ -44,7 +44,7 @@ export function Header({
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     checkUser();
 
@@ -79,31 +79,31 @@ export function Header({
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    
+
     if (typeof searchTerm !== 'string') {
       console.error("🚨 Invalid searchTerm:", searchTerm);
       return;
     }
-  
+
     if (searchTerm.trim()) {
       onSearch(searchTerm.trim());  // ✅ Pass only a string
       setSearchTerm('');
     }
   };
-  
-  
-  
-  
+
+
+
+
   const handleMobileNavigation = (page: 'home' | 'about' | 'contact') => {
     onNavigate(page);
     setIsMobileMenuOpen(false);
   };
 
-    // Temporary function to handle boutique navigation
-    const handleBoutiqueClick = () => {
-      onNavigate('boutique');
-    };
-    
+  // Temporary function to handle boutique navigation
+  const handleBoutiqueClick = () => {
+    onNavigate('boutique');
+  };
+
 
   return (
     <>
@@ -111,14 +111,14 @@ export function Header({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-8">
-              <button 
+              <button
                 onClick={() => handleMobileNavigation('home')}
                 className="flex items-center"
               >
                 <MapPin className="h-8 w-8 text-red-600" />
                 <span className="ml-2 text-xl font-bold text-gray-900">CanaSource</span>
               </button>
-              
+
               <nav className="hidden md:flex space-x-6">
                 <button
                   onClick={() => onNavigate('about')}
@@ -132,8 +132,8 @@ export function Header({
                 >
                   {translations.nav.contact[language]}
                 </button>
-                              {/* Temporary Boutique Link */}
-                              {/* <button
+                {/* Temporary Boutique Link */}
+                {/* <button
                   onClick={handleBoutiqueClick}
                   className="flex items-center text-gray-700 hover:text-red-600"
                 >
@@ -142,7 +142,7 @@ export function Header({
                 </button> */}
               </nav>
             </div>
-            
+
             <div className="flex-1 max-w-2xl mx-8 hidden md:block">
               <form onSubmit={handleSearchSubmit}>
                 <div className="relative">
@@ -163,17 +163,21 @@ export function Header({
 
             <div className="flex items-center space-x-4">
               <button
-                onClick={() => setLanguage(language === 'en' ? 'fr' : 'en')}
+                onClick={() => {
+                  const newLang = language === 'en' ? 'fr' : 'en';
+                  setLanguage(newLang);
+                  localStorage.setItem('preferredLanguage', newLang);
+                }}
                 className="flex items-center text-gray-700 hover:text-red-600"
               >
                 <Globe2 className="h-5 w-5 mr-1" />
                 <span className="uppercase">{language === 'en' ? 'FR' : 'EN'}</span>
               </button>
-              
+
               {user ? (
                 <div className="relative flex items-center space-x-4">
                   <NotificationCenter language={language} />
-                  
+
                   <div className="relative">
                     <button
                       onClick={() => setUserMenuOpen(!userMenuOpen)}
@@ -249,15 +253,15 @@ export function Header({
                   </span>
                 </button>
               )}
-              
-              <button 
+
+              <button
                 onClick={onRegisterClick}
                 className="hidden md:block bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition"
               >
                 {translations.register[language]}
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => setIsMobileMenuOpen(true)}
                 className="md:hidden text-gray-700 hover:text-red-600"
               >

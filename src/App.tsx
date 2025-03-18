@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
+import { RequestedOffersSection } from './components/RequestedOffersSection';
+import { RequestsPage } from './components/RequestsPage';
+import { RequestOfferForm } from './components/RequestOfferForm';
 import { BusinessSearch } from './components/BusinessSearch';
 import { Setup } from './components/admin/Setup';
 import { Dashboard } from './components/admin/Dashboard';
@@ -15,10 +18,8 @@ import { supabase } from './lib/supabaseClient';
 import { translations } from './i18n/translations';
 import { Language, SiteConfig, AdminState } from './types';
 import { BoutiqueView } from './components/boutique/BoutiqueView';
-import { UserProducts } from './components/boutique/UserProducts';
 import { ProductForm } from './components/boutique/ProductForm';
 import { useParams } from 'react-router-dom';
-
 
 export default function App() {
   const navigate = useNavigate();
@@ -58,6 +59,14 @@ export default function App() {
 
     return () => subscription.unsubscribe();
   }, []);
+
+  useEffect(() => {
+    const storedLang = localStorage.getItem('preferredLanguage') as Language;
+    if (storedLang) {
+      setLanguage(storedLang);
+    }
+  }, []);
+  
 
   useEffect(() => {
     document.title = translations.siteTitle[language];
@@ -104,17 +113,16 @@ export default function App() {
 
   const handleExploreClick = (initialSearchTerm?: string) => {
     if (initialSearchTerm) {
-      setSearchTerm(initialSearchTerm); // Set the search term
-      navigate(`/search?term=${encodeURIComponent(initialSearchTerm)}`); // Pass it to the search page
+      setSearchTerm(initialSearchTerm);
+      navigate(`/search?term=${encodeURIComponent(initialSearchTerm)}`);
     } else {
-      navigate('/search'); // Navigate without a search term
+      navigate('/search');
     }
   };
 
   const resetSearchTerm = () => {
-    setSearchTerm(''); // Reset the search term
+    setSearchTerm('');
   };
-
 
   const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique' | 'boutique') => {
     navigate(page === 'home' ? '/' : `/${page}`);
@@ -122,7 +130,6 @@ export default function App() {
 
   const searchParams = new URLSearchParams(location.search);
   const initialSearchTerm = searchParams.get('term') || '';
-
 
   if (!config?.initialized) {
     return <Setup onComplete={handleSetupComplete} />;
@@ -144,40 +151,83 @@ export default function App() {
         onNavigate={handleNavigate}
       />
 
+      {/* Define all routes here */}
       <Routes>
-        <Route path="/" element={<Hero language={language} onExploreClick={handleExploreClick} onRegisterClick={handleRegisterClick} />} />
-        <Route path="/register" element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero
+                language={language}
+                onExploreClick={handleExploreClick}
+                onRegisterClick={handleRegisterClick}
+              />
+              {/* Show RequestedOffersSection ONLY on / */}
+              <RequestedOffersSection
+                language={language}
+                user={user}
+              />
+            </>
+          }
+        />
+
+        <Route
+          path="/register"
+          element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />}
+        />
+
         <Route
           path="/search"
           element={
             <BusinessSearch
-              language={language} // ✅ Dynamically pass the current language
+              language={language}
               initialSearchTerm={initialSearchTerm}
               onClose={() => navigate('/')}
               resetSearchTerm={resetSearchTerm}
             />
-
           }
         />
+
         <Route path="/about" element={<About language={language} onClose={() => navigate('/')} />} />
         <Route path="/contact" element={<Contact language={language} onClose={() => navigate('/')} />} />
         <Route path="/business/:id" element={<BusinessListing language={language} />} />
-        <Route path="/boutique" element={<BoutiqueView boutiqueId="test-boutique" language={language} onClose={() => {
-          setShowBoutique(false);
-          handleNavigate('home');
-        }} />} />
+        <Route
+          path="/boutique"
+          element={
+            <BoutiqueView
+              boutiqueId="test-boutique"
+              language={language}
+              onClose={() => {
+                setShowBoutique(false);
+                handleNavigate('home');
+              }}
+            />
+          }
+        />
         <Route path="/add-products/:businessId" element={<AddProducts language={language} />} />
 
+        <Route
+          path="/requests/new"
+          element={
+            <RequestOfferForm
+              language={language}
+              onCancel={() => navigate('/')}
+              onSuccess={() => navigate('/requests')}
+            />
+          }
+        />
+
+        <Route
+          path="/requests"
+          element={<RequestsPage language={language} />}
+        />
 
         <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
         <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
         <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
-
-
-
-
       </Routes>
 
+      {/* Auth Modal (available globally) */}
       <AuthModal
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
@@ -191,19 +241,17 @@ export default function App() {
   );
 }
 
+// Example for AddProducts (unchanged)
 export const AddProducts = ({ language }: { language: Language }) => {
-  const { businessId } = useParams<{ businessId: string }>(); // ✅ Get businessId from URL
-
+  const { businessId } = useParams<{ businessId: string }>();
   if (!businessId) {
-    return <p>Error: Business ID is missing.</p>; // ✅ Handle invalid URL
+    return <p>Error: Business ID is missing.</p>;
   }
-
   return (
     <ProductForm
       language={language}
-      businessId={businessId}  // ✅ Pass the businessId
+      businessId={businessId}
       onProductAdded={() => { console.log("Product added!"); }}
     />
   );
 };
-

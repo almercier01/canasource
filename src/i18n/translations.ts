@@ -5,6 +5,28 @@ export const translations = {
     en: 'CanaSource - Discover Canadian Local Offers',
     fr: 'CanaSource - Découvrez les Offres Locales Canadiennes'
   },
+  requestedOffersSection: {
+    heading: {
+      en: 'Requested Offers',
+      fr: 'Offres Recherchées',
+    },
+    description: {
+      en: 'Products or services that our community wants sourced in Canada.',
+      fr: 'Produits ou services que notre communauté souhaite trouver au Canada.',
+    },
+    noOffers: {
+      en: 'No offers have been requested yet.',
+      fr: 'Aucune offre n’a encore été demandée.',
+    },
+    viewAll: {
+      en: 'View All Requests',
+      fr: 'Voir toutes les demandes',
+    },
+    requestButton: {
+      en: 'Request an Offer',
+      fr: 'Demander une Offre',
+    },
+  },
   search: {
     title: {
       en: 'Search Offers',
@@ -314,6 +336,7 @@ export const translations = {
     overview: { en: 'Overview', fr: 'Aperçu' },
     reports: { en: 'Reports', fr: 'Rapports' },
     images: { en: 'Images', fr: 'Images' },
+    requests: { en: 'Requests', fr: 'Demandes' }, 
     settings: { en: 'Settings', fr: 'Paramètres' },
 
     totalBusinesses: { en: 'Total Businesses', fr: 'Entreprises totales' },
@@ -329,8 +352,19 @@ export const translations = {
       overview: { en: 'Overview', fr: 'Aperçu' },
       reports: { en: 'Reports', fr: 'Rapports' },
       images: { en: 'Images', fr: 'Images' },
+      requests: { en: 'Requests', fr: 'Demandes' }, 
       settings: { en: 'Settings', fr: 'Paramètres' }
     },
+
+    foundRequests: {
+      en: 'Requested Offers',
+      fr: 'Offres Recherchées',
+    },
+    noRequests: {
+      en: 'No requests found.',
+      fr: 'Aucune demande trouvée.',
+    },
+
     unknownBusiness: { en: 'Unknown Business', fr: 'Entreprise inconnue' },
     approve: { en: 'Approve', fr: 'Approuver' },
     reject: { en: 'Reject', fr: 'Rejeter' },

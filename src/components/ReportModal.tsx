@@ -39,26 +39,38 @@ export function ReportModal({ isOpen, onClose, businessId, language }: ReportMod
     e.preventDefault();
     setLoading(true);
     setError(null);
-
+  
     try {
       const { data: { user }, error: authError } = await supabase.auth.getUser();
       if (authError || !user) {
         throw new Error(translations.report.signInRequired[language]);
       }
-
+  
+      // Fetch the business name based on businessId
+      const { data: businessData, error: businessError } = await supabase
+        .from('businesses')
+        .select('name')
+        .eq('id', businessId)
+        .single();
+  
+      if (businessError || !businessData) {
+        throw new Error('Unable to fetch business name.');
+      }
+  
       const { error: submitError } = await supabase
         .from('business_reports')
         .insert([
           {
             business_id: businessId,
+            business_name: businessData.name,  // Include name here
             reporter_id: user.id,
             type,
             details: details.trim()
           }
         ]);
-
+  
       if (submitError) throw submitError;
-
+  
       setSuccess(true);
       setType('misleading_info');
       setDetails('');
@@ -68,6 +80,7 @@ export function ReportModal({ isOpen, onClose, businessId, language }: ReportMod
       setLoading(false);
     }
   };
+  
 
   const getReportTypeLabel = (type: ReportType): string => {
     const labels: Record<ReportType, { en: string; fr: string }> = {

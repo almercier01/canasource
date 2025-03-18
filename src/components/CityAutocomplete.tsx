@@ -41,24 +41,24 @@ export function CityAutocomplete({
       if (onValidityChange) onValidityChange(false);
       return;
     }
-
+  
     const provinceCities = CANADIAN_CITIES[province] || [];
-
+  
     const filteredCities = provinceCities.filter(city =>
       city.toLowerCase().includes(value.toLowerCase().trim())
     );
-
+  
     setSuggestions(filteredCities);
-
-    const cityValid = provinceCities.some(city =>
-      city.toLowerCase() === value.toLowerCase().trim()
-    );
-
+  
+    // Allow any city to be valid if it has at least one character
+    const cityValid = value.trim().length > 0;
+  
     setIsValid(cityValid);
     if (onValidityChange) {
       onValidityChange(cityValid);
     }
   }, [province, value, onValidityChange]);
+  
 
   const handleSelect = (city: string) => {
     onChange(city);
