@@ -1,0 +1,902 @@
+[
+    {
+      "Position": "1",
+      "productNumber": "3406.00.90",
+      "productType": "Bougies, cierges et similaires.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "2",
+      "productNumber": "3506.10.00",
+      "productType": "Colles préparées et autres adhésifs préparés, non spécifiés ou inclus ailleurs ; produits aptes à être utilisés comme colles ou adhésifs, destinés à la vente au détail en tant que tels, ne dépassant pas un poids net de 1 kg.",
+      "productDescription": "Produits aptes à être utilisés comme colles ou adhésifs, destinés à la vente au détail en tant que tels, ne dépassant pas un poids net de 1 kg"
+    },
+    {
+      "Position": "3",
+      "productNumber": "6601.10.00",
+      "productType": "Parapluies et parasols (y compris parapluies cannes, parapluies de jardin et parapluies similaires).",
+      "productDescription": "Parapluies de jardin ou similaires"
+    },
+    {
+      "Position": "4",
+      "productNumber": "6601.91.00",
+      "productType": "Parapluies et parasols (y compris parapluies cannes, parapluies de jardin et parapluies similaires).",
+      "productDescription": "Autre : Avec une manche télescopique"
+    },
+    {
+      "Position": "5",
+      "productNumber": "6601.99.00",
+      "productType": "Parapluies et parasols (y compris parapluies cannes, parapluies de jardin et parapluies similaires).",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "6",
+      "productNumber": "6602.00.10",
+      "productType": "Bâtons de marche, cannes d'assise, fouets, cravaches et similaires.",
+      "productDescription": "Cannes destinées à un hôpital public"
+    },
+    {
+      "Position": "7",
+      "productNumber": "6602.00.90",
+      "productType": "Bâtons de marche, cannes d'assise, fouets, cravaches et similaires.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "8",
+      "productNumber": "6911.10.90",
+      "productType": "Articles de table, de cuisine, autres articles ménagers et articles de toilette, en porcelaine ou faïence.",
+      "productDescription": "Articles de table et de cuisine : Autre"
+    },
+    {
+      "Position": "9",
+      "productNumber": "6911.90.00",
+      "productType": "Articles de table, de cuisine, autres articles ménagers et articles de toilette, en porcelaine ou faïence.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "10",
+      "productNumber": "6912.00.10",
+      "productType": "Articles en céramique pour la table, la cuisine, autres articles ménagers et de toilette, autres que ceux en porcelaine ou faïence.",
+      "productDescription": "Tasses à café non décorées en terre cuite ou grès, destinées à la fabrication de tasses décorées par décoration cuite au four ; articles de table non décorés en semi-porcelaine ou granit blanc, d'une épaisseur de 3 mm ou plus, destinés à la fabrication d'articles de table robustes décorés pour une utilisation en hôtel, restaurant ou institution"
+    },
+    {
+      "Position": "11",
+      "productNumber": "6912.00.90",
+      "productType": "Articles en céramique pour la table, la cuisine, autres articles ménagers et de toilette, autres que ceux en porcelaine ou faïence.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "12",
+      "productNumber": "6913.10.00",
+      "productType": "Statuettes et autres articles ornementaux en céramique.",
+      "productDescription": "En porcelaine ou faïence"
+    },
+    {
+      "Position": "13",
+      "productNumber": "6913.90.90",
+      "productType": "Statuettes et autres articles ornementaux en céramique.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "14",
+      "productNumber": "6914.10.90",
+      "productType": "Autres articles en céramique.",
+      "productDescription": "En porcelaine ou faïence : Autre"
+    },
+    {
+      "Position": "15",
+      "productNumber": "6914.90.00",
+      "productType": "Autres articles en céramique.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "16",
+      "productNumber": "7108.12.00",
+      "productType": "Or (y compris or plaqué platine) brut ou sous forme semi-ouvrée, ou sous forme de poudre.",
+      "productDescription": "Non monétaire : Autres formes brutes"
+    },
+    {
+      "Position": "17",
+      "productNumber": "7108.13.00",
+      "productType": "Or (y compris or plaqué platine) brut ou sous forme semi-ouvrée, ou sous forme de poudre.",
+      "productDescription": "Non monétaire : Autres formes semi-ouvrées"
+    },
+    {
+      "Position": "18",
+      "productNumber": "7110.11.00",
+      "productType": "Platine, brut ou sous forme semi-ouvrée, ou sous forme de poudre.",
+      "productDescription": "Platine : Brut ou sous forme de poudre"
+    },
+    {
+      "Position": "19",
+      "productNumber": "7110.19.00",
+      "productType": "Platine, brut ou sous forme semi-ouvrée, ou sous forme de poudre.",
+      "productDescription": "Platine : Autre"
+    },
+    {
+      "Position": "20",
+      "productNumber": "7112.91.00",
+      "productType": "Déchets et ferraille de métaux précieux ou de métaux plaqués de métaux précieux ; autres déchets et ferrailles contenant des métaux précieux ou des composés de métaux précieux, de type utilisés principalement pour la récupération de métaux précieux autres que les marchandises de la rubrique 85.49.",
+      "productDescription": "Autre : En or, y compris métal plaqué or mais excluant les balayures contenant d'autres métaux précieux"
+    },
+    {
+      "Position": "21",
+      "productNumber": "7112.99.00",
+      "productType": "Déchets et ferraille de métaux précieux ou de métaux plaqués de métaux précieux ; autres déchets et ferrailles contenant des métaux précieux ou des composés de métaux précieux, de type utilisés principalement pour la récupération de métaux précieux autres que les marchandises de la rubrique 85.49.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "22",
+      "productNumber": "7116.10.00",
+      "productType": "Articles en perles naturelles ou de culture, pierres précieuses ou semi-précieuses (naturelles, synthétiques ou reconstruites).",
+      "productDescription": "En perles naturelles ou de culture"
+    },
+    {
+      "Position": "23",
+      "productNumber": "7116.20.10",
+      "productType": "Articles en perles naturelles ou de culture, pierres précieuses ou semi-précieuses (naturelles, synthétiques ou reconstruites).",
+      "productDescription": "En pierres précieuses ou semi-précieuses (naturelles, synthétiques ou reconstruites) : Produites au Canada il y a plus de 25 ans avant la date de comptabilisation"
+    },
+    {
+      "Position": "24",
+      "productNumber": "7116.20.90",
+      "productType": "Articles en perles naturelles ou de culture, pierres précieuses ou semi-précieuses (naturelles, synthétiques ou reconstruites).",
+      "productDescription": "En pierres précieuses ou semi-précieuses (naturelles, synthétiques ou reconstruites) : Autre"
+    },
+    {
+      "Position": "25",
+      "productNumber": "7117.11.00",
+      "productType": "Bijoux fantaisie.",
+      "productDescription": "En métal de base, qu'il soit ou non plaqué de métal précieux : Boutons de manchette et clous"
+    },
+    {
+      "Position": "26",
+      "productNumber": "7117.19.10",
+      "productType": "Bijoux fantaisie.",
+      "productDescription": "En métal de base, qu'il soit ou non plaqué de métal précieux : Autre : Chaîne en laiton, sertie de strass, pour la fabrication de bijoux ; nacre paua dans des montures métalliques ; ornements destinés à la fabrication de chaussures ou d'accessoires de chaussure"
+    },
+    {
+      "Position": "27",
+      "productNumber": "7117.90.00",
+      "productType": "Bijoux fantaisie.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "28",
+      "productNumber": "7206.10.00",
+      "productType": "Fer et acier non allié sous forme d'ingots ou d'autres formes primaires (à l'exception du fer de la rubrique 72.03).",
+      "productDescription": "Ingots"
+    },
+    {
+      "Position": "29",
+      "productNumber": "7206.90.00",
+      "productType": "Fer et acier non allié sous forme d'ingots ou d'autres formes primaires (à l'exception du fer de la rubrique 72.03).",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "30",
+      "productNumber": "7207.11.00",
+      "productType": "Produits semi-ouvrés de fer ou d'acier non allié.",
+      "productDescription": "Contenant par poids moins de 0,25 % de carbone : De section rectangulaire (y compris carrée), dont la largeur est inférieure à deux fois l'épaisseur"
+    },
+    {
+      "Position": "31",
+      "productNumber": "7207.12.00",
+      "productType": "Produits semi-ouvrés de fer ou d'acier non allié.",
+      "productDescription": "Contenant par poids moins de 0,25 % de carbone : Autre, de section rectangulaire (autre que carrée)"
+    },
+    {
+      "Position": "32",
+      "productNumber": "7207.19.00",
+      "productType": "Produits semi-ouvrés de fer ou d'acier non allié.",
+      "productDescription": "Contenant par poids moins de 0,25 % de carbone : Autre"
+    },
+    {
+      "Position": "33",
+      "productNumber": "7207.20.00",
+      "productType": "Produits semi-ouvrés de fer ou d'acier non allié.",
+      "productDescription": "Contenant par poids 0,25 % ou plus de carbone"
+    },
+    {
+      "Position": "34",
+      "productNumber": "7208.10.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "En bobines, non travaillé davantage que le laminé à chaud, avec des motifs en relief"
+    },
+    {
+      "Position": "35",
+      "productNumber": "7208.25.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, en bobines, non travaillé davantage que le laminé à chaud, décapé : D'une épaisseur de 4,75 mm ou plus"
+    },
+    {
+      "Position": "36",
+      "productNumber": "7208.26.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, en bobines, non travaillé davantage que le laminé à chaud, décapé : D'une épaisseur de 3 mm ou plus mais inférieure à 4,75 mm"
+    },
+    {
+      "Position": "37",
+      "productNumber": "7208.27.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, en bobines, non travaillé davantage que le laminé à chaud, décapé : D'une épaisseur inférieure à 3 mm"
+    },
+    {
+      "Position": "38",
+      "productNumber": "7208.36.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, en bobines, non travaillé davantage que le laminé à chaud : D'une épaisseur supérieure à 10 mm"
+    },
+    {
+      "Position": "39",
+      "productNumber": "7208.37.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, en bobines, non travaillé davantage que le laminé à chaud : D'une épaisseur de 4,75 mm ou plus mais ne dépassant pas 10 mm"
+    },
+    {
+      "Position": "40",
+      "productNumber": "7208.38.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, en bobines, non travaillé davantage que le laminé à chaud : D'une épaisseur de 3 mm ou plus mais inférieure à 4,75 mm"
+    },
+    {
+      "Position": "41",
+      "productNumber": "7208.39.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, en bobines, non travaillé davantage que le laminé à chaud : D'une épaisseur inférieure à 3 mm"
+    },
+    {
+      "Position": "42",
+      "productNumber": "7208.40.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non en bobines, non travaillé davantage que le laminé à chaud, avec des motifs en relief"
+    },
+    {
+      "Position": "43",
+      "productNumber": "7208.51.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, non en bobines, non travaillé davantage que le laminé à chaud : D'une épaisseur supérieure à 10 mm"
+    },
+    {
+      "Position": "44",
+      "productNumber": "7208.52.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, non en bobines, non travaillé davantage que le laminé à chaud : D'une épaisseur de 4,75 mm ou plus mais ne dépassant pas 10 mm"
+    },
+    {
+      "Position": "45",
+      "productNumber": "7208.53.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, non en bobines, non travaillé davantage que le laminé à chaud : Autre, d'une épaisseur de 3 mm ou plus mais inférieure à 4,75 mm"
+    },
+    {
+      "Position": "46",
+      "productNumber": "7208.54.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre, non en bobines, non travaillé davantage que le laminé à chaud : Autre, d'une épaisseur inférieure à 3 mm"
+    },
+    {
+      "Position": "47",
+      "productNumber": "7208.90.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à chaud, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "48",
+      "productNumber": "7209.15.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "En bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur de 3 mm ou plus"
+    },
+    {
+      "Position": "49",
+      "productNumber": "7209.16.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "En bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur supérieure à 1 mm mais inférieure à 3 mm"
+    },
+    {
+      "Position": "50",
+      "productNumber": "7209.17.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "En bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur de 0,5 mm ou plus mais ne dépassant pas 1 mm"
+    },
+    {
+      "Position": "51",
+      "productNumber": "7209.18.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "En bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur inférieure à 0,5 mm"
+    },
+    {
+      "Position": "52",
+      "productNumber": "7209.25.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non en bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur de 3 mm ou plus"
+    },
+    {
+      "Position": "53",
+      "productNumber": "7209.26.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non en bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur supérieure à 1 mm mais inférieure à 3 mm"
+    },
+    {
+      "Position": "54",
+      "productNumber": "7209.27.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non en bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur de 0,5 mm ou plus mais ne dépassant pas 1 mm"
+    },
+    {
+      "Position": "55",
+      "productNumber": "7209.28.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non en bobines, non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur inférieure à 0,5 mm"
+    },
+    {
+      "Position": "56",
+      "productNumber": "7209.90.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, laminés à froid (réduits à froid), non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "57",
+      "productNumber": "7210.11.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit d'étain : D'une épaisseur de 0,5 mm ou plus"
+    },
+    {
+      "Position": "58",
+      "productNumber": "7210.12.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit d'étain : D'une épaisseur inférieure à 0,5 mm"
+    },
+    {
+      "Position": "59",
+      "productNumber": "7210.20.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit de plomb, y compris terne-plaqué"
+    },
+    {
+      "Position": "60",
+      "productNumber": "7210.30.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit électrolytique de zinc"
+    },
+    {
+      "Position": "61",
+      "productNumber": "7210.41.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Autrement plaqué ou enduit de zinc : Ondulé"
+    },
+    {
+      "Position": "62",
+      "productNumber": "7210.49.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Autrement plaqué ou enduit de zinc : Autre"
+    },
+    {
+      "Position": "63",
+      "productNumber": "7210.50.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit avec des oxydes de chrome ou avec du chrome et des oxydes de chrome"
+    },
+    {
+      "Position": "64",
+      "productNumber": "7210.61.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit d'aluminium : Plaqué ou enduit avec des alliages aluminium-zinc"
+    },
+    {
+      "Position": "65",
+      "productNumber": "7210.69.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit d'aluminium : Autre"
+    },
+    {
+      "Position": "66",
+      "productNumber": "7210.70.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Peint, verni ou enduit de plastiques"
+    },
+    {
+      "Position": "67",
+      "productNumber": "7210.90.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur de 600 mm ou plus, revêtus, plaqués ou enduits.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "68",
+      "productNumber": "7211.13.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud : Laminé sur quatre faces ou en passage en boîte fermé, d'une largeur supérieure à 150 mm et d'une épaisseur d'au moins 4 mm, non en bobines et sans motifs en relief"
+    },
+    {
+      "Position": "69",
+      "productNumber": "7211.14.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud : Autre, d'une épaisseur de 4,75 mm ou plus"
+    },
+    {
+      "Position": "70",
+      "productNumber": "7211.19.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud : Autre"
+    },
+    {
+      "Position": "71",
+      "productNumber": "7211.23.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid) : Contenant par poids moins de 0,25 % de carbone"
+    },
+    {
+      "Position": "72",
+      "productNumber": "7211.29.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid) : Autre"
+    },
+    {
+      "Position": "73",
+      "productNumber": "7211.90.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, non revêtus, non plaqués ou non enduits.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "74",
+      "productNumber": "7212.10.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit d'étain"
+    },
+    {
+      "Position": "75",
+      "productNumber": "7212.20.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, revêtus, plaqués ou enduits.",
+      "productDescription": "Plaqué ou enduit électrolytique de zinc"
+    },
+    {
+      "Position": "76",
+      "productNumber": "7212.30.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, revêtus, plaqués ou enduits.",
+      "productDescription": "Autrement plaqué ou enduit de zinc"
+    },
+    {
+      "Position": "77",
+      "productNumber": "7212.40.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, revêtus, plaqués ou enduits.",
+      "productDescription": "Peint, verni ou enduit de plastiques"
+    },
+    {
+      "Position": "78",
+      "productNumber": "7212.50.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, revêtus, plaqués ou enduits.",
+      "productDescription": "Autrement plaqué ou enduit"
+    },
+    {
+      "Position": "79",
+      "productNumber": "7212.60.00",
+      "productType": "Produits laminés plats de fer ou d'acier non allié, d'une largeur inférieure à 600 mm, revêtus, plaqués ou enduits.",
+      "productDescription": "Revêtu"
+    },
+    {
+      "Position": "80",
+      "productNumber": "7213.10.00",
+      "productType": "Barres et tiges, laminées à chaud, en bobines irrégulièrement enroulées, de fer ou d'acier non allié.",
+      "productDescription": "Présentant des indentations, nervures, rainures ou autres déformations produites lors du processus de laminage"
+    },
+    {
+      "Position": "81",
+      "productNumber": "7213.20.00",
+      "productType": "Barres et tiges, laminées à chaud, en bobines irrégulièrement enroulées, de fer ou d'acier non allié.",
+      "productDescription": "Autre, en acier à coupe facile"
+    },
+    {
+      "Position": "82",
+      "productNumber": "7213.91.00",
+      "productType": "Barres et tiges, laminées à chaud, en bobines irrégulièrement enroulées, de fer ou d'acier non allié.",
+      "productDescription": "Autre : De section circulaire mesurant moins de 14 mm de diamètre"
+    },
+    {
+      "Position": "83",
+      "productNumber": "7213.99.00",
+      "productType": "Barres et tiges, laminées à chaud, en bobines irrégulièrement enroulées, de fer ou d'acier non allié.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "84",
+      "productNumber": "7214.10.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié, non travaillées au-delà du forgeage, laminage à chaud, tréfilage à chaud ou extrusion à chaud, mais incluant celles torsadées après laminage.",
+      "productDescription": "Forgées"
+    },
+    {
+      "Position": "85",
+      "productNumber": "7214.20.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié, non travaillées au-delà du forgeage, laminage à chaud, tréfilage à chaud ou extrusion à chaud, mais incluant celles torsadées après laminage.",
+      "productDescription": "Présentant des indentations, nervures, rainures ou autres déformations produites lors du processus de laminage ou torsadées après laminage"
+    },
+    {
+      "Position": "86",
+      "productNumber": "7214.30.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié, non travaillées au-delà du forgeage, laminage à chaud, tréfilage à chaud ou extrusion à chaud, mais incluant celles torsadées après laminage.",
+      "productDescription": "Autre, en acier à coupe facile"
+    },
+    {
+      "Position": "87",
+      "productNumber": "7214.91.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié, non travaillées au-delà du forgeage, laminage à chaud, tréfilage à chaud ou extrusion à chaud, mais incluant celles torsadées après laminage.",
+      "productDescription": "Autre : De section rectangulaire (autre que carrée)"
+    },
+    {
+      "Position": "88",
+      "productNumber": "7214.99.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié, non travaillées au-delà du forgeage, laminage à chaud, tréfilage à chaud ou extrusion à chaud, mais incluant celles torsadées après laminage.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "89",
+      "productNumber": "7215.10.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié.",
+      "productDescription": "En acier à coupe facile, non travaillé au-delà du formage à froid ou de la finition à froid"
+    },
+    {
+      "Position": "90",
+      "productNumber": "7215.50.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié.",
+      "productDescription": "Autre, non travaillé au-delà du formage à froid ou de la finition à froid"
+    },
+    {
+      "Position": "91",
+      "productNumber": "7215.90.00",
+      "productType": "Autres barres et tiges de fer ou d'acier non allié.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "92",
+      "productNumber": "7216.10.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Sections en U, I ou H, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion, d'une hauteur inférieure à 80 mm"
+    },
+    {
+      "Position": "93",
+      "productNumber": "7216.21.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Sections en L ou T, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion, d'une hauteur inférieure à 80 mm : sections en L"
+    },
+    {
+      "Position": "94",
+      "productNumber": "7216.22.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Sections en L ou T, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion, d'une hauteur inférieure à 80 mm : sections en T"
+    },
+    {
+      "Position": "95",
+      "productNumber": "7216.31.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Sections en U, I ou H, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion, d'une hauteur de 80 mm ou plus : sections en U"
+    },
+    {
+      "Position": "96",
+      "productNumber": "7216.32.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Sections en U, I ou H, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion, d'une hauteur de 80 mm ou plus : sections en I"
+    },
+    {
+      "Position": "97",
+      "productNumber": "7216.33.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Sections en U, I ou H, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion, d'une hauteur de 80 mm ou plus : sections en H"
+    },
+    {
+      "Position": "98",
+      "productNumber": "7216.40.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Sections en L ou T, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion, d'une hauteur de 80 mm ou plus"
+    },
+    {
+      "Position": "99",
+      "productNumber": "7216.50.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Autres angles, formes et sections, non travaillés au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion"
+    },
+    {
+      "Position": "100",
+      "productNumber": "7216.99.00",
+      "productType": "Angles, formes et sections de fer ou d'acier non allié.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "101",
+      "productNumber": "7217.10.00",
+      "productType": "Fils de fer ou d'acier non allié.",
+      "productDescription": "Non plaqué ou enduit, qu'il soit ou non poli"
+    },
+    {
+      "Position": "102",
+      "productNumber": "7217.20.00",
+      "productType": "Fils de fer ou d'acier non allié.",
+      "productDescription": "Plaqué ou enduit de zinc"
+    },
+    {
+      "Position": "103",
+      "productNumber": "7217.30.00",
+      "productType": "Fils de fer ou d'acier non allié.",
+      "productDescription": "Plaqué ou enduit d'autres métaux de base"
+    },
+    {
+      "Position": "104",
+      "productNumber": "7217.90.00",
+      "productType": "Fils de fer ou d'acier non allié.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "105",
+      "productNumber": "7218.10.00",
+      "productType": "Acier inoxydable sous forme d'ingots ou d'autres formes primaires ; produits semi-ouvrés en acier inoxydable.",
+      "productDescription": "Ingots et autres formes primaires"
+    },
+    {
+      "Position": "106",
+      "productNumber": "7218.91.00",
+      "productType": "Acier inoxydable sous forme d'ingots ou d'autres formes primaires ; produits semi-ouvrés en acier inoxydable.",
+      "productDescription": "Autre : De section rectangulaire (autre que carrée)"
+    },
+    {
+      "Position": "107",
+      "productNumber": "7218.99.00",
+      "productType": "Acier inoxydable sous forme d'ingots ou d'autres formes primaires ; produits semi-ouvrés en acier inoxydable.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "108",
+      "productNumber": "7219.11.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, en bobines : D'une épaisseur supérieure à 10 mm"
+    },
+    {
+      "Position": "109",
+      "productNumber": "7219.12.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, en bobines : D'une épaisseur de 4,75 mm ou plus mais ne dépassant pas 10 mm"
+    },
+    {
+      "Position": "110",
+      "productNumber": "7219.13.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, en bobines : D'une épaisseur de 3 mm ou plus mais inférieure à 4,75 mm"
+    },
+    {
+      "Position": "111",
+      "productNumber": "7219.14.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, en bobines : D'une épaisseur inférieure à 3 mm"
+    },
+    {
+      "Position": "112",
+      "productNumber": "7219.21.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, non en bobines : D'une épaisseur supérieure à 10 mm"
+    },
+    {
+      "Position": "113",
+      "productNumber": "7219.22.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, non en bobines : D'une épaisseur de 4,75 mm ou plus mais ne dépassant pas 10 mm"
+    },
+    {
+      "Position": "114",
+      "productNumber": "7219.23.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, non en bobines : D'une épaisseur de 3 mm ou plus mais inférieure à 4,75 mm"
+    },
+    {
+      "Position": "115",
+      "productNumber": "7219.24.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud, non en bobines : D'une épaisseur inférieure à 3 mm"
+    },
+    {
+      "Position": "116",
+      "productNumber": "7219.31.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur de 4,75 mm ou plus"
+    },
+    {
+      "Position": "117",
+      "productNumber": "7219.32.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur de 3 mm ou plus mais inférieure à 4,75 mm"
+    },
+    {
+      "Position": "118",
+      "productNumber": "7219.33.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur supérieure à 1 mm mais inférieure à 3 mm"
+    },
+    {
+      "Position": "119",
+      "productNumber": "7219.34.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur de 0,5 mm ou plus mais ne dépassant pas 1 mm"
+    },
+    {
+      "Position": "120",
+      "productNumber": "7219.35.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid) : D'une épaisseur inférieure à 0,5 mm"
+    },
+    {
+      "Position": "121",
+      "productNumber": "7219.90.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "122",
+      "productNumber": "7220.11.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur inférieure à 600 mm.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud : D'une épaisseur de 4,75 mm ou plus"
+    },
+    {
+      "Position": "123",
+      "productNumber": "7220.12.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur inférieure à 600 mm.",
+      "productDescription": "Non travaillé davantage que le laminé à chaud : D'une épaisseur inférieure à 4,75 mm"
+    },
+    {
+      "Position": "124",
+      "productNumber": "7220.20.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur inférieure à 600 mm.",
+      "productDescription": "Non travaillé davantage que le laminé à froid (réduit à froid)"
+    },
+    {
+      "Position": "125",
+      "productNumber": "7220.90.00",
+      "productType": "Produits laminés plats en acier inoxydable, d'une largeur inférieure à 600 mm.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "126",
+      "productNumber": "7221.00.00",
+      "productType": "Barres et tiges, laminées à chaud, en bobines irrégulièrement enroulées, en acier inoxydable.",
+      "productDescription": ""
+    },
+    {
+      "Position": "127",
+      "productNumber": "7222.11.00",
+      "productType": "Autres barres et tiges en acier inoxydable ; angles, formes et sections en acier inoxydable.",
+      "productDescription": "Barres et tiges, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion : De section circulaire"
+    },
+    {
+      "Position": "128",
+      "productNumber": "7222.19.00",
+      "productType": "Autres barres et tiges en acier inoxydable ; angles, formes et sections en acier inoxydable.",
+      "productDescription": "Barres et tiges, non travaillées au-delà du laminé à chaud, du tréfilage à chaud ou de l'extrusion : Autre"
+    },
+    {
+      "Position": "129",
+      "productNumber": "7222.20.00",
+      "productType": "Autres barres et tiges en acier inoxydable ; angles, formes et sections en acier inoxydable.",
+      "productDescription": "Barres et tiges, non travaillées au-delà du formage à froid ou de la finition à froid"
+    },
+    {
+      "Position": "130",
+      "productNumber": "7222.30.00",
+      "productType": "Autres barres et tiges en acier inoxydable ; angles, formes et sections en acier inoxydable.",
+      "productDescription": "Autres barres et tiges"
+    },
+    {
+      "Position": "131",
+      "productNumber": "7222.40.00",
+      "productType": "Autres barres et tiges en acier inoxydable ; angles, formes et sections en acier inoxydable.",
+      "productDescription": "Angles, formes et sections"
+    },
+    {
+      "Position": "132",
+      "productNumber": "7223.00.00",
+      "productType": "Fil d'acier inoxydable.",
+      "productDescription": ""
+    },
+    {
+      "Position": "133",
+      "productNumber": "7224.10.00",
+      "productType": "Autre acier allié sous forme d'ingots ou d'autres formes primaires ; produits semi-ouvrés d'autres aciers alliés.",
+      "productDescription": "Ingots et autres formes primaires"
+    },
+    {
+      "Position": "134",
+      "productNumber": "7224.90.00",
+      "productType": "Autre acier allié sous forme d'ingots ou d'autres formes primaires ; produits semi-ouvrés d'autres aciers alliés.",
+      "productDescription": "Autre"
+    },
+    {
+      "Position": "135",
+      "productNumber": "7225.11.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "En acier électrique au silicium : Orientation au grain"
+    },
+    {
+      "Position": "136",
+      "productNumber": "7225.19.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "En acier électrique au silicium : Autre"
+    },
+    {
+      "Position": "137",
+      "productNumber": "7225.30.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Autre, non travaillé davantage que le laminé à chaud, en bobines"
+    },
+    {
+      "Position": "138",
+      "productNumber": "7225.40.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Autre, non travaillé davantage que le laminé à chaud, non en bobines"
+    },
+    {
+      "Position": "139",
+      "productNumber": "7225.50.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Autre, non travaillé davantage que le laminé à froid (réduit à froid)"
+    },
+    {
+      "Position": "140",
+      "productNumber": "7225.91.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Autre : Plaqué ou enduit électrolytique de zinc"
+    },
+    {
+      "Position": "141",
+      "productNumber": "7225.92.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Autre : Autrement plaqué ou enduit de zinc"
+    },
+    {
+      "Position": "142",
+      "productNumber": "7225.99.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur de 600 mm ou plus.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "143",
+      "productNumber": "7226.11.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur inférieure à 600 mm.",
+      "productDescription": "En acier électrique au silicium : Orientation au grain"
+    },
+    {
+      "Position": "144",
+      "productNumber": "7226.19.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur inférieure à 600 mm.",
+      "productDescription": "En acier électrique au silicium : Autre"
+    },
+    {
+      "Position": "145",
+      "productNumber": "7226.20.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur inférieure à 600 mm.",
+      "productDescription": "En acier à grande vitesse"
+    },
+    {
+      "Position": "146",
+      "productNumber": "7226.91.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur inférieure à 600 mm.",
+      "productDescription": "Autre : Non travaillé davantage que le laminé à chaud"
+    },
+    {
+      "Position": "147",
+      "productNumber": "7226.92.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur inférieure à 600 mm.",
+      "productDescription": "Autre : Non travaillé davantage que le laminé à froid (réduit à froid)"
+    },
+    {
+      "Position": "148",
+      "productNumber": "7226.99.00",
+      "productType": "Produits laminés plats d'autres aciers alliés, d'une largeur inférieure à 600 mm.",
+      "productDescription": "Autre : Autre"
+    },
+    {
+      "Position": "149",
+      "productNumber": "7227.10.00",
+      "productType": "Barres et tiges, laminées à chaud, en bobines irrégulièrement enroulées, d'autres aciers alliés.",
+      "productDescription": "En acier à grande vitesse"
+    },
+    {
+      "Position": "150",
+      "productNumber": "7227.20.00",
+      "productType": "Barres et tiges, laminées à chaud, en bobines irrégulièrement enroulées, d'autres aciers alliés.",
+      "productDescription": "En acier silico-manganèse"
+    }
+  ]

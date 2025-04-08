@@ -1,0 +1,902 @@
+[
+  {
+    "Position": "1",
+    "productNumber": "3406.00.90",
+    "productType": "Candles, tapers and the like.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "2",
+    "productNumber": "3506.10.00",
+    "productType": "Prepared glues and other prepared adhesives, not elsewhere specified or included; products suitable for use as glues or adhesives, put up for retail sale as glues or adhesives, not exceeding a net weight of 1 kg.",
+    "productDescription": "Products suitable for use as glues or adhesives, put up for retail sale as glues or adhesives, not exceeding a net weight of 1 kg"
+  },
+  {
+    "Position": "3",
+    "productNumber": "6601.10.00",
+    "productType": "Umbrellas and sun umbrellas (including walking-stick umbrellas, garden umbrellas and similar umbrellas).",
+    "productDescription": "Garden or similar umbrellas"
+  },
+  {
+    "Position": "4",
+    "productNumber": "6601.91.00",
+    "productType": "Umbrellas and sun umbrellas (including walking-stick umbrellas, garden umbrellas and similar umbrellas).",
+    "productDescription": "Other: Having a telescopic shaft"
+  },
+  {
+    "Position": "5",
+    "productNumber": "6601.99.00",
+    "productType": "Umbrellas and sun umbrellas (including walking-stick umbrellas, garden umbrellas and similar umbrellas).",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "6",
+    "productNumber": "6602.00.10",
+    "productType": "Walking-sticks, seat-sticks, whips, riding-crops and the like.",
+    "productDescription": "Canes for use of a public hospital"
+  },
+  {
+    "Position": "7",
+    "productNumber": "6602.00.90",
+    "productType": "Walking-sticks, seat-sticks, whips, riding-crops and the like.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "8",
+    "productNumber": "6911.10.90",
+    "productType": "Tableware, kitchenware, other household articles and toilet articles, of porcelain or china.",
+    "productDescription": "Tableware and kitchenware: Other"
+  },
+  {
+    "Position": "9",
+    "productNumber": "6911.90.00",
+    "productType": "Tableware, kitchenware, other household articles and toilet articles, of porcelain or china.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "10",
+    "productNumber": "6912.00.10",
+    "productType": "Ceramic tableware, kitchenware, other household articles and toilet articles, other than of porcelain or china.",
+    "productDescription": "Undecorated coffee mugs of earthenware or stoneware, for use in the manufacture of decorated coffee mugs by kiln-fired decoration; Undecorated tableware of semi-porcelain or white granite, of a thickness of 3 mm or more, for use in the manufacture of decorated heavy duty tableware for hotel, restaurant or institutional use"
+  },
+  {
+    "Position": "11",
+    "productNumber": "6912.00.90",
+    "productType": "Ceramic tableware, kitchenware, other household articles and toilet articles, other than of porcelain or china.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "12",
+    "productNumber": "6913.10.00",
+    "productType": "Statuettes and other ornamental ceramic articles.",
+    "productDescription": "Of porcelain or china"
+  },
+  {
+    "Position": "13",
+    "productNumber": "6913.90.90",
+    "productType": "Statuettes and other ornamental ceramic articles.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "14",
+    "productNumber": "6914.10.90",
+    "productType": "Other ceramic articles.",
+    "productDescription": "Of porcelain or china: Other"
+  },
+  {
+    "Position": "15",
+    "productNumber": "6914.90.00",
+    "productType": "Other ceramic articles.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "16",
+    "productNumber": "7108.12.00",
+    "productType": "Gold (including gold plated with platinum) unwrought or in semi-manufactured forms, or in powder form.",
+    "productDescription": "Non-monetary: Other unwrought forms"
+  },
+  {
+    "Position": "17",
+    "productNumber": "7108.13.00",
+    "productType": "Gold (including gold plated with platinum) unwrought or in semi-manufactured forms, or in powder form.",
+    "productDescription": "Non-monetary: Other semi-manufactured forms"
+  },
+  {
+    "Position": "18",
+    "productNumber": "7110.11.00",
+    "productType": "Platinum, unwrought or in semi-manufactured forms, or in powder form.",
+    "productDescription": "Platinum: Unwrought or in powder form"
+  },
+  {
+    "Position": "19",
+    "productNumber": "7110.19.00",
+    "productType": "Platinum, unwrought or in semi-manufactured forms, or in powder form.",
+    "productDescription": "Platinum: Other"
+  },
+  {
+    "Position": "20",
+    "productNumber": "7112.91.00",
+    "productType": "Waste and scrap of precious metal or of metal clad with precious metal; other waste and scrap containing precious metal or precious metal compounds, of a kind used principally for the recovery of precious metal other than goods of heading 85.49.",
+    "productDescription": "Other: Of gold, including metal clad with gold but excluding sweepings containing other precious metals"
+  },
+  {
+    "Position": "21",
+    "productNumber": "7112.99.00",
+    "productType": "Waste and scrap of precious metal or of metal clad with precious metal; other waste and scrap containing precious metal or precious metal compounds, of a kind used principally for the recovery of precious metal other than goods of heading 85.49.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "22",
+    "productNumber": "7116.10.00",
+    "productType": "Articles of natural or cultured pearls, precious or semi-precious stones (natural, synthetic or reconstructed).",
+    "productDescription": "Of natural or cultured pearls"
+  },
+  {
+    "Position": "23",
+    "productNumber": "7116.20.10",
+    "productType": "Articles of natural or cultured pearls, precious or semi-precious stones (natural, synthetic or reconstructed).",
+    "productDescription": "Of precious or semi-precious stones (natural, synthetic or reconstructed): Produced in Canada more than 25 years prior to the date of accounting"
+  },
+  {
+    "Position": "24",
+    "productNumber": "7116.20.90",
+    "productType": "Articles of natural or cultured pearls, precious or semi-precious stones (natural, synthetic or reconstructed).",
+    "productDescription": "Of precious or semi-precious stones (natural, synthetic or reconstructed): Other"
+  },
+  {
+    "Position": "25",
+    "productNumber": "7117.11.00",
+    "productType": "Imitation jewellery.",
+    "productDescription": "Of base metal, whether or not plated with precious metal: Cuff-links and studs"
+  },
+  {
+    "Position": "26",
+    "productNumber": "7117.19.10",
+    "productType": "Imitation jewellery.",
+    "productDescription": "Of base metal, whether or not plated with precious metal: Other: Brass chain, set with rhinestones, for use in the manufacture of jewellery; Paua shells in metal settings; Ornaments for use in the manufacture of footwear or footwear fittings"
+  },
+  {
+    "Position": "27",
+    "productNumber": "7117.90.00",
+    "productType": "Imitation jewellery.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "28",
+    "productNumber": "7206.10.00",
+    "productType": "Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading 72.03).",
+    "productDescription": "Ingots"
+  },
+  {
+    "Position": "29",
+    "productNumber": "7206.90.00",
+    "productType": "Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading 72.03).",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "30",
+    "productNumber": "7207.11.00",
+    "productType": "Semi-finished products of iron or non-alloy steel.",
+    "productDescription": "Containing by weight less than 0.25% of carbon: Of rectangular (including square) cross-section, the width measuring less than twice the thickness"
+  },
+  {
+    "Position": "31",
+    "productNumber": "7207.12.00",
+    "productType": "Semi-finished products of iron or non-alloy steel.",
+    "productDescription": "Containing by weight less than 0.25% of carbon: Other, of rectangular (other than square) cross-section"
+  },
+  {
+    "Position": "32",
+    "productNumber": "7207.19.00",
+    "productType": "Semi-finished products of iron or non-alloy steel.",
+    "productDescription": "Containing by weight less than 0.25% of carbon: Other"
+  },
+  {
+    "Position": "33",
+    "productNumber": "7207.20.00",
+    "productType": "Semi-finished products of iron or non-alloy steel.",
+    "productDescription": "Containing by weight 0.25% or more of carbon"
+  },
+  {
+    "Position": "34",
+    "productNumber": "7208.10.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "In coils, not further worked than hot-rolled, with patterns in relief"
+  },
+  {
+    "Position": "35",
+    "productNumber": "7208.25.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, in coils, not further worked than hot-rolled, pickled: Of a thickness of 4.75 mm or more"
+  },
+  {
+    "Position": "36",
+    "productNumber": "7208.26.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, in coils, not further worked than hot-rolled, pickled: Of a thickness of 3 mm or more but less than 4.75 mm"
+  },
+  {
+    "Position": "37",
+    "productNumber": "7208.27.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, in coils, not further worked than hot-rolled, pickled: Of a thickness of less than 3 mm"
+  },
+  {
+    "Position": "38",
+    "productNumber": "7208.36.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness exceeding 10 mm"
+  },
+  {
+    "Position": "39",
+    "productNumber": "7208.37.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
+  },
+  {
+    "Position": "40",
+    "productNumber": "7208.38.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness of 3 mm or more but less than 4.75 mm"
+  },
+  {
+    "Position": "41",
+    "productNumber": "7208.39.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness of less than 3 mm"
+  },
+  {
+    "Position": "42",
+    "productNumber": "7208.40.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Not in coils, not further worked than hot-rolled, with patterns in relief"
+  },
+  {
+    "Position": "43",
+    "productNumber": "7208.51.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, not in coils, not further worked than hot-rolled: Of a thickness exceeding 10 mm"
+  },
+  {
+    "Position": "44",
+    "productNumber": "7208.52.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, not in coils, not further worked than hot-rolled: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
+  },
+  {
+    "Position": "45",
+    "productNumber": "7208.53.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, not in coils, not further worked than hot-rolled: Other, of a thickness of 3 mm or more but less than 4.75 mm"
+  },
+  {
+    "Position": "46",
+    "productNumber": "7208.54.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other, not in coils, not further worked than hot-rolled: Other, of a thickness of less than 3 mm"
+  },
+  {
+    "Position": "47",
+    "productNumber": "7208.90.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "48",
+    "productNumber": "7209.15.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 3 mm or more"
+  },
+  {
+    "Position": "49",
+    "productNumber": "7209.16.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness exceeding 1 mm but less than 3 mm"
+  },
+  {
+    "Position": "50",
+    "productNumber": "7209.17.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 0.5 mm or more but not exceeding 1 mm"
+  },
+  {
+    "Position": "51",
+    "productNumber": "7209.18.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness of less than 0.5 mm"
+  },
+  {
+    "Position": "52",
+    "productNumber": "7209.25.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 3 mm or more"
+  },
+  {
+    "Position": "53",
+    "productNumber": "7209.26.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness exceeding 1 mm but less than 3 mm"
+  },
+  {
+    "Position": "54",
+    "productNumber": "7209.27.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 0.5 mm or more but not exceeding 1 mm"
+  },
+  {
+    "Position": "55",
+    "productNumber": "7209.28.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness of less than 0.5 mm"
+  },
+  {
+    "Position": "56",
+    "productNumber": "7209.90.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "57",
+    "productNumber": "7210.11.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Plated or coated with tin: Of a thickness of 0.5 mm or more"
+  },
+  {
+    "Position": "58",
+    "productNumber": "7210.12.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Plated or coated with tin: Of a thickness of less than 0.5 mm"
+  },
+  {
+    "Position": "59",
+    "productNumber": "7210.20.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Plated or coated with lead, including terne-plate"
+  },
+  {
+    "Position": "60",
+    "productNumber": "7210.30.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Electrolytically plated or coated with zinc"
+  },
+  {
+    "Position": "61",
+    "productNumber": "7210.41.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Otherwise plated or coated with zinc: Corrugated"
+  },
+  {
+    "Position": "62",
+    "productNumber": "7210.49.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Otherwise plated or coated with zinc: Other"
+  },
+  {
+    "Position": "63",
+    "productNumber": "7210.50.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Plated or coated with chromium oxides or with chromium and chromium oxides"
+  },
+  {
+    "Position": "64",
+    "productNumber": "7210.61.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Plated or coated with aluminum: Plated or coated with aluminum-zinc alloys"
+  },
+  {
+    "Position": "65",
+    "productNumber": "7210.69.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Plated or coated with aluminum: Other"
+  },
+  {
+    "Position": "66",
+    "productNumber": "7210.70.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Painted, varnished or coated with plastics"
+  },
+  {
+    "Position": "67",
+    "productNumber": "7210.90.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "68",
+    "productNumber": "7211.13.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
+    "productDescription": "Not further worked than hot-rolled: Rolled on four faces or in a closed box pass, of a width exceeding 150 mm and a thickness of not less than 4 mm, not in coils and without patterns in relief"
+  },
+  {
+    "Position": "69",
+    "productNumber": "7211.14.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
+    "productDescription": "Not further worked than hot-rolled: Other, of a thickness of 4.75 mm or more"
+  },
+  {
+    "Position": "70",
+    "productNumber": "7211.19.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
+    "productDescription": "Not further worked than hot-rolled: Other"
+  },
+  {
+    "Position": "71",
+    "productNumber": "7211.23.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced): Containing by weight less than 0.25% of carbon"
+  },
+  {
+    "Position": "72",
+    "productNumber": "7211.29.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced): Other"
+  },
+  {
+    "Position": "73",
+    "productNumber": "7211.90.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "74",
+    "productNumber": "7212.10.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
+    "productDescription": "Plated or coated with tin"
+  },
+  {
+    "Position": "75",
+    "productNumber": "7212.20.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
+    "productDescription": "Electrolytically plated or coated with zinc"
+  },
+  {
+    "Position": "76",
+    "productNumber": "7212.30.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
+    "productDescription": "Otherwise plated or coated with zinc"
+  },
+  {
+    "Position": "77",
+    "productNumber": "7212.40.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
+    "productDescription": "Painted, varnished or coated with plastics"
+  },
+  {
+    "Position": "78",
+    "productNumber": "7212.50.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
+    "productDescription": "Otherwise plated or coated"
+  },
+  {
+    "Position": "79",
+    "productNumber": "7212.60.00",
+    "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
+    "productDescription": "Clad"
+  },
+  {
+    "Position": "80",
+    "productNumber": "7213.10.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
+    "productDescription": "Containing indentations, ribs, grooves or other deformations produced during the rolling process"
+  },
+  {
+    "Position": "81",
+    "productNumber": "7213.20.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
+    "productDescription": "Other, of free-cutting steel"
+  },
+  {
+    "Position": "82",
+    "productNumber": "7213.91.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
+    "productDescription": "Other: Of circular cross-section measuring less than 14 mm in diameter"
+  },
+  {
+    "Position": "83",
+    "productNumber": "7213.99.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "84",
+    "productNumber": "7214.10.00",
+    "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
+    "productDescription": "Forged"
+  },
+  {
+    "Position": "85",
+    "productNumber": "7214.20.00",
+    "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
+    "productDescription": "Containing indentations, ribs, grooves or other deformations produced during the rolling process or twisted after rolling"
+  },
+  {
+    "Position": "86",
+    "productNumber": "7214.30.00",
+    "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
+    "productDescription": "Other, of free-cutting steel"
+  },
+  {
+    "Position": "87",
+    "productNumber": "7214.91.00",
+    "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
+    "productDescription": "Other: Of rectangular (other than square) cross-section"
+  },
+  {
+    "Position": "88",
+    "productNumber": "7214.99.00",
+    "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "89",
+    "productNumber": "7215.10.00",
+    "productType": "Other bars and rods of iron or non-alloy steel.",
+    "productDescription": "Of free-cutting steel, not further worked than cold-formed or cold-finished"
+  },
+  {
+    "Position": "90",
+    "productNumber": "7215.50.00",
+    "productType": "Other bars and rods of iron or non-alloy steel.",
+    "productDescription": "Other, not further worked than cold-formed or cold-finished"
+  },
+  {
+    "Position": "91",
+    "productNumber": "7215.90.00",
+    "productType": "Other bars and rods of iron or non-alloy steel.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "92",
+    "productNumber": "7216.10.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of less than 80 mm"
+  },
+  {
+    "Position": "93",
+    "productNumber": "7216.21.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "L or T sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of less than 80 mm: L sections"
+  },
+  {
+    "Position": "94",
+    "productNumber": "7216.22.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "L or T sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of less than 80 mm: T sections"
+  },
+  {
+    "Position": "95",
+    "productNumber": "7216.31.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more: U sections"
+  },
+  {
+    "Position": "96",
+    "productNumber": "7216.32.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more: I sections"
+  },
+  {
+    "Position": "97",
+    "productNumber": "7216.33.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more: H sections"
+  },
+  {
+    "Position": "98",
+    "productNumber": "7216.40.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "L or T sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more"
+  },
+  {
+    "Position": "99",
+    "productNumber": "7216.50.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "Other angles, shapes and sections, not further worked than hot-rolled, hot-drawn or extruded"
+  },
+  {
+    "Position": "100",
+    "productNumber": "7216.99.00",
+    "productType": "Angles, shapes and sections of iron or non-alloy steel.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "101",
+    "productNumber": "7217.10.00",
+    "productType": "Wire of iron or non-alloy steel.",
+    "productDescription": "Not plated or coated, whether or not polished"
+  },
+  {
+    "Position": "102",
+    "productNumber": "7217.20.00",
+    "productType": "Wire of iron or non-alloy steel.",
+    "productDescription": "Plated or coated with zinc"
+  },
+  {
+    "Position": "103",
+    "productNumber": "7217.30.00",
+    "productType": "Wire of iron or non-alloy steel.",
+    "productDescription": "Plated or coated with other base metals"
+  },
+  {
+    "Position": "104",
+    "productNumber": "7217.90.00",
+    "productType": "Wire of iron or non-alloy steel.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "105",
+    "productNumber": "7218.10.00",
+    "productType": "Stainless steel in ingots or other primary forms; semi-finished products of stainless steel.",
+    "productDescription": "Ingots and other primary forms"
+  },
+  {
+    "Position": "106",
+    "productNumber": "7218.91.00",
+    "productType": "Stainless steel in ingots or other primary forms; semi-finished products of stainless steel.",
+    "productDescription": "Other: Of rectangular (other than square) cross-section"
+  },
+  {
+    "Position": "107",
+    "productNumber": "7218.99.00",
+    "productType": "Stainless steel in ingots or other primary forms; semi-finished products of stainless steel.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "108",
+    "productNumber": "7219.11.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness exceeding 10 mm"
+  },
+  {
+    "Position": "109",
+    "productNumber": "7219.12.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
+  },
+  {
+    "Position": "110",
+    "productNumber": "7219.13.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness of 3 mm or more but less than 4.75 mm"
+  },
+  {
+    "Position": "111",
+    "productNumber": "7219.14.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness of less than 3 mm"
+  },
+  {
+    "Position": "112",
+    "productNumber": "7219.21.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness exceeding 10 mm"
+  },
+  {
+    "Position": "113",
+    "productNumber": "7219.22.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
+  },
+  {
+    "Position": "114",
+    "productNumber": "7219.23.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness of 3 mm or more but less than 4.75 mm"
+  },
+  {
+    "Position": "115",
+    "productNumber": "7219.24.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness of less than 3 mm"
+  },
+  {
+    "Position": "116",
+    "productNumber": "7219.31.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of 4.75 mm or more"
+  },
+  {
+    "Position": "117",
+    "productNumber": "7219.32.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of 3 mm or more but less than 4.75 mm"
+  },
+  {
+    "Position": "118",
+    "productNumber": "7219.33.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness exceeding 1 mm but less than 3 mm"
+  },
+  {
+    "Position": "119",
+    "productNumber": "7219.34.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of 0.5 mm or more but not exceeding 1 mm"
+  },
+  {
+    "Position": "120",
+    "productNumber": "7219.35.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of less than 0.5 mm"
+  },
+  {
+    "Position": "121",
+    "productNumber": "7219.90.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "122",
+    "productNumber": "7220.11.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
+    "productDescription": "Not further worked than hot-rolled: Of a thickness of 4.75 mm or more"
+  },
+  {
+    "Position": "123",
+    "productNumber": "7220.12.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
+    "productDescription": "Not further worked than hot-rolled: Of a thickness of less than 4.75 mm"
+  },
+  {
+    "Position": "124",
+    "productNumber": "7220.20.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
+    "productDescription": "Not further worked than cold-rolled (cold-reduced)"
+  },
+  {
+    "Position": "125",
+    "productNumber": "7220.90.00",
+    "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "126",
+    "productNumber": "7221.00.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of stainless steel.",
+    "productDescription": ""
+  },
+  {
+    "Position": "127",
+    "productNumber": "7222.11.00",
+    "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
+    "productDescription": "Bars and rods, not further worked than hot-rolled, hot-drawn or extruded: Of circular cross-section"
+  },
+  {
+    "Position": "128",
+    "productNumber": "7222.19.00",
+    "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
+    "productDescription": "Bars and rods, not further worked than hot-rolled, hot-drawn or extruded: Other"
+  },
+  {
+    "Position": "129",
+    "productNumber": "7222.20.00",
+    "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
+    "productDescription": "Bars and rods, not further worked than cold-formed or cold-finished"
+  },
+  {
+    "Position": "130",
+    "productNumber": "7222.30.00",
+    "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
+    "productDescription": "Other bars and rods"
+  },
+  {
+    "Position": "131",
+    "productNumber": "7222.40.00",
+    "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
+    "productDescription": "Angles, shapes and sections"
+  },
+  {
+    "Position": "132",
+    "productNumber": "7223.00.00",
+    "productType": "Wire of stainless steel.",
+    "productDescription": ""
+  },
+  {
+    "Position": "133",
+    "productNumber": "7224.10.00",
+    "productType": "Other alloy steel in ingots or other primary forms; semi-finished products of other alloy steel.",
+    "productDescription": "Ingots and other primary forms"
+  },
+  {
+    "Position": "134",
+    "productNumber": "7224.90.00",
+    "productType": "Other alloy steel in ingots or other primary forms; semi-finished products of other alloy steel.",
+    "productDescription": "Other"
+  },
+  {
+    "Position": "135",
+    "productNumber": "7225.11.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Of silicon-electrical steel: Grain-oriented"
+  },
+  {
+    "Position": "136",
+    "productNumber": "7225.19.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Of silicon-electrical steel: Other"
+  },
+  {
+    "Position": "137",
+    "productNumber": "7225.30.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Other, not further worked than hot-rolled, in coils"
+  },
+  {
+    "Position": "138",
+    "productNumber": "7225.40.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Other, not further worked than hot-rolled, not in coils"
+  },
+  {
+    "Position": "139",
+    "productNumber": "7225.50.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Other, not further worked than cold-rolled (cold-reduced)"
+  },
+  {
+    "Position": "140",
+    "productNumber": "7225.91.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Other: Electrolytically plated or coated with zinc"
+  },
+  {
+    "Position": "141",
+    "productNumber": "7225.92.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Other: Otherwise plated or coated with zinc"
+  },
+  {
+    "Position": "142",
+    "productNumber": "7225.99.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "143",
+    "productNumber": "7226.11.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
+    "productDescription": "Of silicon-electrical steel: Grain-oriented"
+  },
+  {
+    "Position": "144",
+    "productNumber": "7226.19.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
+    "productDescription": "Of silicon-electrical steel: Other"
+  },
+  {
+    "Position": "145",
+    "productNumber": "7226.20.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
+    "productDescription": "Of high speed steel"
+  },
+  {
+    "Position": "146",
+    "productNumber": "7226.91.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
+    "productDescription": "Other: Not further worked than hot-rolled"
+  },
+  {
+    "Position": "147",
+    "productNumber": "7226.92.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
+    "productDescription": "Other: Not further worked than cold-rolled (cold-reduced)"
+  },
+  {
+    "Position": "148",
+    "productNumber": "7226.99.00",
+    "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "Position": "149",
+    "productNumber": "7227.10.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of other alloy steel.",
+    "productDescription": "Of high speed steel"
+  },
+  {
+    "Position": "150",
+    "productNumber": "7227.20.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of other alloy steel.",
+    "productDescription": "Of silico-manganese steel"
+  }
+]

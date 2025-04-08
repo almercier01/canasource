@@ -20,6 +20,7 @@ import { Language, SiteConfig, AdminState } from './types';
 import { BoutiqueView } from './components/boutique/BoutiqueView';
 import { ProductForm } from './components/boutique/ProductForm';
 import { useParams } from 'react-router-dom';
+import { FindSourcing } from './components/FindSourcing';
 
 export default function App() {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ export default function App() {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showBoutique, setShowBoutique] = useState(false);
+  const [findSourcingResetKey, setFindSourcingResetKey] = useState(0);
 
   useEffect(() => {
     const savedConfig = localStorage.getItem('siteConfig');
@@ -71,6 +73,7 @@ export default function App() {
   useEffect(() => {
     document.title = translations.siteTitle[language];
   }, [language]);
+
 
   const checkSession = async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -126,6 +129,9 @@ export default function App() {
 
   const handleNavigate = (page: 'home' | 'about' | 'contact' | 'create-boutique' | 'boutique') => {
     navigate(page === 'home' ? '/' : `/${page}`);
+    if (page === 'home') {
+      setFindSourcingResetKey(prev => prev + 1); // trigger reset
+    }
   };
 
   const searchParams = new URLSearchParams(location.search);
@@ -163,6 +169,7 @@ export default function App() {
                 onRegisterClick={handleRegisterClick}
               />
               {/* Show RequestedOffersSection ONLY on / */}
+              <FindSourcing language={language} resetKey={findSourcingResetKey} /> {/* New section on homepage */}
               <RequestedOffersSection
                 language={language}
                 user={user}
@@ -175,6 +182,11 @@ export default function App() {
           path="/register"
           element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />}
         />
+
+<Route
+  path="/find-sourcing"
+  element={<FindSourcing language={language} resetKey={findSourcingResetKey} />}
+/>
 
         <Route
           path="/search"
