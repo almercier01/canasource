@@ -54,29 +54,58 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
   return (
     <div className="max-w-4xl mx-auto p-4">
       <h2 className="text-2xl font-bold mb-2">
-        {language === 'fr' ? 'Produits Soumis à des Tarifs' : 'Tariffed Products In Demand'}
-      </h2>
-      <p className="text-gray-600 mb-4">
         {language === 'fr'
-          ? 'Voici une liste de produits qui subissent des tarifs à l\'importation. Les fabricants ou fournisseurs canadiens sont invités à les offrir localement.'
-          : 'These products face import tariffs. Canadian suppliers are encouraged to provide them locally.'}
+          ? 'Produits Soumis à des Tarifs depuis le 13 mars 2025'
+          : 'Tariffed Products In Demand since March 13 2025'}
+      </h2>
+  
+      <p className="text-gray-600 mb-4">
+        {language === 'fr' ? (
+          <>
+            Voici une liste de produits qui subissent des tarifs à l'importation selon la{' '}
+            <a
+              href="https://www.canada.ca/fr/ministere-finances/nouvelles/2025/03/liste-des-produits-en-provenance-des-etats-unis-assujettis-a-des-droits-de-douane-de-25--a-compter-du-13-mars-2025.html"
+              className="text-blue-600 underline hover:text-blue-800"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              liste officielle du gouvernement
+            </a>. Les fabricants ou fournisseurs canadiens sont invités à les offrir localement.
+          </>
+        ) : (
+          <>
+            These products face import tariffs as outlined in the{' '}
+            <a
+              href="https://www.canada.ca/en/department-finance/news/2025/03/list-of-products-from-the-united-states-subject-to-25-per-cent-tariffs-effective-march-13-2025.html"
+              className="text-blue-600 underline hover:text-blue-800"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              official government announcement
+            </a>. Canadian suppliers are encouraged to provide them locally.
+          </>
+        )}
       </p>
-
+  
       <div className="mb-4">
         <input
           type="text"
           className="border rounded w-full p-2"
           placeholder={language === 'fr' ? 'Rechercher un produit...' : 'Search for a product...'}
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            const term = e.target.value;
+            setSearchTerm(term);
+            if (!showAll) setShowAll(true); // 👈 Force “Show All” mode on user search
+          }}
         />
       </div>
-
+  
       <ul className="space-y-4">
         {displayedItems.map((item) => {
           const imageUrl = `/images/tariffed/${item.productNumber}.jpg`;
           const fallbackImage = language === 'fr' ? '/images/default-productFr.jpg' : '/images/default-productEn.jpg';
-
+  
           return (
             <li key={item.productNumber} className="border p-4 rounded bg-white shadow-sm">
               <img
@@ -101,7 +130,7 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
           );
         })}
       </ul>
-
+  
       <div className="mt-4 text-center">
         <button
           onClick={() => setShowAll((prev) => !prev)}
@@ -114,4 +143,5 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
       </div>
     </div>
   );
+  
 }
