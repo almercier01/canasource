@@ -1,902 +1,2697 @@
 [
   {
-    "Position": "1",
     "productNumber": "3406.00.90",
     "productType": "Candles, tapers and the like.",
     "productDescription": "Other"
   },
   {
-    "Position": "2",
     "productNumber": "3506.10.00",
     "productType": "Prepared glues and other prepared adhesives, not elsewhere specified or included; products suitable for use as glues or adhesives, put up for retail sale as glues or adhesives, not exceeding a net weight of 1 kg.",
     "productDescription": "Products suitable for use as glues or adhesives, put up for retail sale as glues or adhesives, not exceeding a net weight of 1 kg"
   },
   {
-    "Position": "3",
     "productNumber": "6601.10.00",
     "productType": "Umbrellas and sun umbrellas (including walking-stick umbrellas, garden umbrellas and similar umbrellas).",
     "productDescription": "Garden or similar umbrellas"
   },
   {
-    "Position": "4",
     "productNumber": "6601.91.00",
     "productType": "Umbrellas and sun umbrellas (including walking-stick umbrellas, garden umbrellas and similar umbrellas).",
     "productDescription": "Other: Having a telescopic shaft"
   },
   {
-    "Position": "5",
     "productNumber": "6601.99.00",
     "productType": "Umbrellas and sun umbrellas (including walking-stick umbrellas, garden umbrellas and similar umbrellas).",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "6",
     "productNumber": "6602.00.10",
     "productType": "Walking-sticks, seat-sticks, whips, riding-crops and the like.",
     "productDescription": "Canes for use of a public hospital"
   },
   {
-    "Position": "7",
     "productNumber": "6602.00.90",
     "productType": "Walking-sticks, seat-sticks, whips, riding-crops and the like.",
     "productDescription": "Other"
   },
   {
-    "Position": "8",
     "productNumber": "6911.10.90",
     "productType": "Tableware, kitchenware, other household articles and toilet articles, of porcelain or china.",
     "productDescription": "Tableware and kitchenware: Other"
   },
   {
-    "Position": "9",
     "productNumber": "6911.90.00",
     "productType": "Tableware, kitchenware, other household articles and toilet articles, of porcelain or china.",
     "productDescription": "Other"
   },
   {
-    "Position": "10",
     "productNumber": "6912.00.10",
     "productType": "Ceramic tableware, kitchenware, other household articles and toilet articles, other than of porcelain or china.",
     "productDescription": "Undecorated coffee mugs of earthenware or stoneware, for use in the manufacture of decorated coffee mugs by kiln-fired decoration; Undecorated tableware of semi-porcelain or white granite, of a thickness of 3 mm or more, for use in the manufacture of decorated heavy duty tableware for hotel, restaurant or institutional use"
   },
   {
-    "Position": "11",
     "productNumber": "6912.00.90",
     "productType": "Ceramic tableware, kitchenware, other household articles and toilet articles, other than of porcelain or china.",
     "productDescription": "Other"
   },
   {
-    "Position": "12",
     "productNumber": "6913.10.00",
     "productType": "Statuettes and other ornamental ceramic articles.",
     "productDescription": "Of porcelain or china"
   },
   {
-    "Position": "13",
     "productNumber": "6913.90.90",
     "productType": "Statuettes and other ornamental ceramic articles.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "14",
     "productNumber": "6914.10.90",
     "productType": "Other ceramic articles.",
     "productDescription": "Of porcelain or china: Other"
   },
   {
-    "Position": "15",
     "productNumber": "6914.90.00",
     "productType": "Other ceramic articles.",
     "productDescription": "Other"
   },
   {
-    "Position": "16",
     "productNumber": "7108.12.00",
     "productType": "Gold (including gold plated with platinum) unwrought or in semi-manufactured forms, or in powder form.",
     "productDescription": "Non-monetary: Other unwrought forms"
   },
   {
-    "Position": "17",
     "productNumber": "7108.13.00",
     "productType": "Gold (including gold plated with platinum) unwrought or in semi-manufactured forms, or in powder form.",
     "productDescription": "Non-monetary: Other semi-manufactured forms"
   },
   {
-    "Position": "18",
     "productNumber": "7110.11.00",
     "productType": "Platinum, unwrought or in semi-manufactured forms, or in powder form.",
     "productDescription": "Platinum: Unwrought or in powder form"
   },
   {
-    "Position": "19",
     "productNumber": "7110.19.00",
     "productType": "Platinum, unwrought or in semi-manufactured forms, or in powder form.",
     "productDescription": "Platinum: Other"
   },
   {
-    "Position": "20",
     "productNumber": "7112.91.00",
     "productType": "Waste and scrap of precious metal or of metal clad with precious metal; other waste and scrap containing precious metal or precious metal compounds, of a kind used principally for the recovery of precious metal other than goods of heading 85.49.",
     "productDescription": "Other: Of gold, including metal clad with gold but excluding sweepings containing other precious metals"
   },
   {
-    "Position": "21",
     "productNumber": "7112.99.00",
     "productType": "Waste and scrap of precious metal or of metal clad with precious metal; other waste and scrap containing precious metal or precious metal compounds, of a kind used principally for the recovery of precious metal other than goods of heading 85.49.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "22",
     "productNumber": "7116.10.00",
     "productType": "Articles of natural or cultured pearls, precious or semi-precious stones (natural, synthetic or reconstructed).",
     "productDescription": "Of natural or cultured pearls"
   },
   {
-    "Position": "23",
     "productNumber": "7116.20.10",
     "productType": "Articles of natural or cultured pearls, precious or semi-precious stones (natural, synthetic or reconstructed).",
     "productDescription": "Of precious or semi-precious stones (natural, synthetic or reconstructed): Produced in Canada more than 25 years prior to the date of accounting"
   },
   {
-    "Position": "24",
     "productNumber": "7116.20.90",
     "productType": "Articles of natural or cultured pearls, precious or semi-precious stones (natural, synthetic or reconstructed).",
     "productDescription": "Of precious or semi-precious stones (natural, synthetic or reconstructed): Other"
   },
   {
-    "Position": "25",
     "productNumber": "7117.11.00",
     "productType": "Imitation jewellery.",
     "productDescription": "Of base metal, whether or not plated with precious metal: Cuff-links and studs"
   },
   {
-    "Position": "26",
     "productNumber": "7117.19.10",
     "productType": "Imitation jewellery.",
     "productDescription": "Of base metal, whether or not plated with precious metal: Other: Brass chain, set with rhinestones, for use in the manufacture of jewellery; Paua shells in metal settings; Ornaments for use in the manufacture of footwear or footwear fittings"
   },
   {
-    "Position": "27",
     "productNumber": "7117.90.00",
     "productType": "Imitation jewellery.",
     "productDescription": "Other"
   },
   {
-    "Position": "28",
     "productNumber": "7206.10.00",
     "productType": "Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading 72.03).",
     "productDescription": "Ingots"
   },
   {
-    "Position": "29",
     "productNumber": "7206.90.00",
     "productType": "Iron and non-alloy steel in ingots or other primary forms (excluding iron of heading 72.03).",
     "productDescription": "Other"
   },
   {
-    "Position": "30",
     "productNumber": "7207.11.00",
     "productType": "Semi-finished products of iron or non-alloy steel.",
     "productDescription": "Containing by weight less than 0.25% of carbon: Of rectangular (including square) cross-section, the width measuring less than twice the thickness"
   },
   {
-    "Position": "31",
     "productNumber": "7207.12.00",
     "productType": "Semi-finished products of iron or non-alloy steel.",
     "productDescription": "Containing by weight less than 0.25% of carbon: Other, of rectangular (other than square) cross-section"
   },
   {
-    "Position": "32",
     "productNumber": "7207.19.00",
     "productType": "Semi-finished products of iron or non-alloy steel.",
     "productDescription": "Containing by weight less than 0.25% of carbon: Other"
   },
   {
-    "Position": "33",
     "productNumber": "7207.20.00",
     "productType": "Semi-finished products of iron or non-alloy steel.",
     "productDescription": "Containing by weight 0.25% or more of carbon"
   },
   {
-    "Position": "34",
     "productNumber": "7208.10.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "In coils, not further worked than hot-rolled, with patterns in relief"
   },
   {
-    "Position": "35",
     "productNumber": "7208.25.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, in coils, not further worked than hot-rolled, pickled: Of a thickness of 4.75 mm or more"
   },
   {
-    "Position": "36",
     "productNumber": "7208.26.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, in coils, not further worked than hot-rolled, pickled: Of a thickness of 3 mm or more but less than 4.75 mm"
   },
   {
-    "Position": "37",
     "productNumber": "7208.27.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, in coils, not further worked than hot-rolled, pickled: Of a thickness of less than 3 mm"
   },
   {
-    "Position": "38",
     "productNumber": "7208.36.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness exceeding 10 mm"
   },
   {
-    "Position": "39",
     "productNumber": "7208.37.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
   },
   {
-    "Position": "40",
     "productNumber": "7208.38.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness of 3 mm or more but less than 4.75 mm"
   },
   {
-    "Position": "41",
     "productNumber": "7208.39.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, in coils, not further worked than hot-rolled: Of a thickness of less than 3 mm"
   },
   {
-    "Position": "42",
     "productNumber": "7208.40.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Not in coils, not further worked than hot-rolled, with patterns in relief"
   },
   {
-    "Position": "43",
     "productNumber": "7208.51.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, not in coils, not further worked than hot-rolled: Of a thickness exceeding 10 mm"
   },
   {
-    "Position": "44",
     "productNumber": "7208.52.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, not in coils, not further worked than hot-rolled: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
   },
   {
-    "Position": "45",
     "productNumber": "7208.53.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, not in coils, not further worked than hot-rolled: Other, of a thickness of 3 mm or more but less than 4.75 mm"
   },
   {
-    "Position": "46",
     "productNumber": "7208.54.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other, not in coils, not further worked than hot-rolled: Other, of a thickness of less than 3 mm"
   },
   {
-    "Position": "47",
     "productNumber": "7208.90.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, hot-rolled, not clad, plated or coated.",
     "productDescription": "Other"
   },
   {
-    "Position": "48",
     "productNumber": "7209.15.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 3 mm or more"
   },
   {
-    "Position": "49",
     "productNumber": "7209.16.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness exceeding 1 mm but less than 3 mm"
   },
   {
-    "Position": "50",
     "productNumber": "7209.17.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 0.5 mm or more but not exceeding 1 mm"
   },
   {
-    "Position": "51",
     "productNumber": "7209.18.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "In coils, not further worked than cold-rolled (cold-reduced): Of a thickness of less than 0.5 mm"
   },
   {
-    "Position": "52",
     "productNumber": "7209.25.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 3 mm or more"
   },
   {
-    "Position": "53",
     "productNumber": "7209.26.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness exceeding 1 mm but less than 3 mm"
   },
   {
-    "Position": "54",
     "productNumber": "7209.27.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness of 0.5 mm or more but not exceeding 1 mm"
   },
   {
-    "Position": "55",
     "productNumber": "7209.28.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "Not in coils, not further worked than cold-rolled (cold-reduced): Of a thickness of less than 0.5 mm"
   },
   {
-    "Position": "56",
     "productNumber": "7209.90.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, cold-rolled (cold-reduced), not clad, plated or coated.",
     "productDescription": "Other"
   },
   {
-    "Position": "57",
     "productNumber": "7210.11.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Plated or coated with tin: Of a thickness of 0.5 mm or more"
   },
   {
-    "Position": "58",
     "productNumber": "7210.12.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Plated or coated with tin: Of a thickness of less than 0.5 mm"
   },
   {
-    "Position": "59",
     "productNumber": "7210.20.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Plated or coated with lead, including terne-plate"
   },
   {
-    "Position": "60",
     "productNumber": "7210.30.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Electrolytically plated or coated with zinc"
   },
   {
-    "Position": "61",
     "productNumber": "7210.41.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Otherwise plated or coated with zinc: Corrugated"
   },
   {
-    "Position": "62",
     "productNumber": "7210.49.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Otherwise plated or coated with zinc: Other"
   },
   {
-    "Position": "63",
     "productNumber": "7210.50.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Plated or coated with chromium oxides or with chromium and chromium oxides"
   },
   {
-    "Position": "64",
     "productNumber": "7210.61.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Plated or coated with aluminum: Plated or coated with aluminum-zinc alloys"
   },
   {
-    "Position": "65",
     "productNumber": "7210.69.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Plated or coated with aluminum: Other"
   },
   {
-    "Position": "66",
     "productNumber": "7210.70.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Painted, varnished or coated with plastics"
   },
   {
-    "Position": "67",
     "productNumber": "7210.90.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of 600 mm or more, clad, plated or coated.",
     "productDescription": "Other"
   },
   {
-    "Position": "68",
     "productNumber": "7211.13.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
     "productDescription": "Not further worked than hot-rolled: Rolled on four faces or in a closed box pass, of a width exceeding 150 mm and a thickness of not less than 4 mm, not in coils and without patterns in relief"
   },
   {
-    "Position": "69",
     "productNumber": "7211.14.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
     "productDescription": "Not further worked than hot-rolled: Other, of a thickness of 4.75 mm or more"
   },
   {
-    "Position": "70",
     "productNumber": "7211.19.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
     "productDescription": "Not further worked than hot-rolled: Other"
   },
   {
-    "Position": "71",
     "productNumber": "7211.23.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced): Containing by weight less than 0.25% of carbon"
   },
   {
-    "Position": "72",
     "productNumber": "7211.29.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced): Other"
   },
   {
-    "Position": "73",
     "productNumber": "7211.90.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, not clad, plated or coated.",
     "productDescription": "Other"
   },
   {
-    "Position": "74",
     "productNumber": "7212.10.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
     "productDescription": "Plated or coated with tin"
   },
   {
-    "Position": "75",
     "productNumber": "7212.20.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
     "productDescription": "Electrolytically plated or coated with zinc"
   },
   {
-    "Position": "76",
     "productNumber": "7212.30.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
     "productDescription": "Otherwise plated or coated with zinc"
   },
   {
-    "Position": "77",
     "productNumber": "7212.40.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
     "productDescription": "Painted, varnished or coated with plastics"
   },
   {
-    "Position": "78",
     "productNumber": "7212.50.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
     "productDescription": "Otherwise plated or coated"
   },
   {
-    "Position": "79",
     "productNumber": "7212.60.00",
     "productType": "Flat-rolled products of iron or non-alloy steel, of a width of less than 600 mm, clad, plated or coated.",
     "productDescription": "Clad"
   },
   {
-    "Position": "80",
     "productNumber": "7213.10.00",
     "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
     "productDescription": "Containing indentations, ribs, grooves or other deformations produced during the rolling process"
   },
   {
-    "Position": "81",
     "productNumber": "7213.20.00",
     "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
     "productDescription": "Other, of free-cutting steel"
   },
   {
-    "Position": "82",
     "productNumber": "7213.91.00",
     "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
     "productDescription": "Other: Of circular cross-section measuring less than 14 mm in diameter"
   },
   {
-    "Position": "83",
     "productNumber": "7213.99.00",
     "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of iron or non-alloy steel.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "84",
     "productNumber": "7214.10.00",
     "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
     "productDescription": "Forged"
   },
   {
-    "Position": "85",
     "productNumber": "7214.20.00",
     "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
     "productDescription": "Containing indentations, ribs, grooves or other deformations produced during the rolling process or twisted after rolling"
   },
   {
-    "Position": "86",
     "productNumber": "7214.30.00",
     "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
     "productDescription": "Other, of free-cutting steel"
   },
   {
-    "Position": "87",
     "productNumber": "7214.91.00",
     "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
     "productDescription": "Other: Of rectangular (other than square) cross-section"
   },
   {
-    "Position": "88",
     "productNumber": "7214.99.00",
     "productType": "Other bars and rods of iron or non-alloy steel, not further worked than forged, hot-rolled, hot-drawn or hot-extruded, but including those twisted after rolling.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "89",
     "productNumber": "7215.10.00",
     "productType": "Other bars and rods of iron or non-alloy steel.",
     "productDescription": "Of free-cutting steel, not further worked than cold-formed or cold-finished"
   },
   {
-    "Position": "90",
     "productNumber": "7215.50.00",
     "productType": "Other bars and rods of iron or non-alloy steel.",
     "productDescription": "Other, not further worked than cold-formed or cold-finished"
   },
   {
-    "Position": "91",
     "productNumber": "7215.90.00",
     "productType": "Other bars and rods of iron or non-alloy steel.",
     "productDescription": "Other"
   },
   {
-    "Position": "92",
     "productNumber": "7216.10.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of less than 80 mm"
   },
   {
-    "Position": "93",
     "productNumber": "7216.21.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "L or T sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of less than 80 mm: L sections"
   },
   {
-    "Position": "94",
     "productNumber": "7216.22.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "L or T sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of less than 80 mm: T sections"
   },
   {
-    "Position": "95",
     "productNumber": "7216.31.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more: U sections"
   },
   {
-    "Position": "96",
     "productNumber": "7216.32.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more: I sections"
   },
   {
-    "Position": "97",
     "productNumber": "7216.33.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "U, I or H sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more: H sections"
   },
   {
-    "Position": "98",
     "productNumber": "7216.40.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "L or T sections, not further worked than hot-rolled, hot-drawn or extruded, of a height of 80 mm or more"
   },
   {
-    "Position": "99",
     "productNumber": "7216.50.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "Other angles, shapes and sections, not further worked than hot-rolled, hot-drawn or extruded"
   },
   {
-    "Position": "100",
     "productNumber": "7216.99.00",
     "productType": "Angles, shapes and sections of iron or non-alloy steel.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "101",
     "productNumber": "7217.10.00",
     "productType": "Wire of iron or non-alloy steel.",
     "productDescription": "Not plated or coated, whether or not polished"
   },
   {
-    "Position": "102",
     "productNumber": "7217.20.00",
     "productType": "Wire of iron or non-alloy steel.",
     "productDescription": "Plated or coated with zinc"
   },
   {
-    "Position": "103",
     "productNumber": "7217.30.00",
     "productType": "Wire of iron or non-alloy steel.",
     "productDescription": "Plated or coated with other base metals"
   },
   {
-    "Position": "104",
     "productNumber": "7217.90.00",
     "productType": "Wire of iron or non-alloy steel.",
     "productDescription": "Other"
   },
   {
-    "Position": "105",
     "productNumber": "7218.10.00",
     "productType": "Stainless steel in ingots or other primary forms; semi-finished products of stainless steel.",
     "productDescription": "Ingots and other primary forms"
   },
   {
-    "Position": "106",
     "productNumber": "7218.91.00",
     "productType": "Stainless steel in ingots or other primary forms; semi-finished products of stainless steel.",
     "productDescription": "Other: Of rectangular (other than square) cross-section"
   },
   {
-    "Position": "107",
     "productNumber": "7218.99.00",
     "productType": "Stainless steel in ingots or other primary forms; semi-finished products of stainless steel.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "108",
     "productNumber": "7219.11.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness exceeding 10 mm"
   },
   {
-    "Position": "109",
     "productNumber": "7219.12.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
   },
   {
-    "Position": "110",
     "productNumber": "7219.13.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness of 3 mm or more but less than 4.75 mm"
   },
   {
-    "Position": "111",
     "productNumber": "7219.14.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, in coils: Of a thickness of less than 3 mm"
   },
   {
-    "Position": "112",
     "productNumber": "7219.21.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness exceeding 10 mm"
   },
   {
-    "Position": "113",
     "productNumber": "7219.22.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness of 4.75 mm or more but not exceeding 10 mm"
   },
   {
-    "Position": "114",
     "productNumber": "7219.23.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness of 3 mm or more but less than 4.75 mm"
   },
   {
-    "Position": "115",
     "productNumber": "7219.24.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than hot-rolled, not in coils: Of a thickness of less than 3 mm"
   },
   {
-    "Position": "116",
     "productNumber": "7219.31.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of 4.75 mm or more"
   },
   {
-    "Position": "117",
     "productNumber": "7219.32.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of 3 mm or more but less than 4.75 mm"
   },
   {
-    "Position": "118",
     "productNumber": "7219.33.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness exceeding 1 mm but less than 3 mm"
   },
   {
-    "Position": "119",
     "productNumber": "7219.34.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of 0.5 mm or more but not exceeding 1 mm"
   },
   {
-    "Position": "120",
     "productNumber": "7219.35.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced): Of a thickness of less than 0.5 mm"
   },
   {
-    "Position": "121",
     "productNumber": "7219.90.00",
     "productType": "Flat-rolled products of stainless steel, of a width of 600 mm or more.",
     "productDescription": "Other"
   },
   {
-    "Position": "122",
     "productNumber": "7220.11.00",
     "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
     "productDescription": "Not further worked than hot-rolled: Of a thickness of 4.75 mm or more"
   },
   {
-    "Position": "123",
     "productNumber": "7220.12.00",
     "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
     "productDescription": "Not further worked than hot-rolled: Of a thickness of less than 4.75 mm"
   },
   {
-    "Position": "124",
     "productNumber": "7220.20.00",
     "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
     "productDescription": "Not further worked than cold-rolled (cold-reduced)"
   },
   {
-    "Position": "125",
     "productNumber": "7220.90.00",
     "productType": "Flat-rolled products of stainless steel, of a width of less than 600 mm.",
     "productDescription": "Other"
   },
   {
-    "Position": "126",
     "productNumber": "7221.00.00",
     "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of stainless steel.",
     "productDescription": ""
   },
   {
-    "Position": "127",
     "productNumber": "7222.11.00",
     "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
     "productDescription": "Bars and rods, not further worked than hot-rolled, hot-drawn or extruded: Of circular cross-section"
   },
   {
-    "Position": "128",
     "productNumber": "7222.19.00",
     "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
     "productDescription": "Bars and rods, not further worked than hot-rolled, hot-drawn or extruded: Other"
   },
   {
-    "Position": "129",
     "productNumber": "7222.20.00",
     "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
     "productDescription": "Bars and rods, not further worked than cold-formed or cold-finished"
   },
   {
-    "Position": "130",
     "productNumber": "7222.30.00",
     "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
     "productDescription": "Other bars and rods"
   },
   {
-    "Position": "131",
     "productNumber": "7222.40.00",
     "productType": "Other bars and rods of stainless steel; angles, shapes and sections of stainless steel.",
     "productDescription": "Angles, shapes and sections"
   },
   {
-    "Position": "132",
     "productNumber": "7223.00.00",
     "productType": "Wire of stainless steel.",
     "productDescription": ""
   },
   {
-    "Position": "133",
     "productNumber": "7224.10.00",
     "productType": "Other alloy steel in ingots or other primary forms; semi-finished products of other alloy steel.",
     "productDescription": "Ingots and other primary forms"
   },
   {
-    "Position": "134",
     "productNumber": "7224.90.00",
     "productType": "Other alloy steel in ingots or other primary forms; semi-finished products of other alloy steel.",
     "productDescription": "Other"
   },
   {
-    "Position": "135",
     "productNumber": "7225.11.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Of silicon-electrical steel: Grain-oriented"
   },
   {
-    "Position": "136",
     "productNumber": "7225.19.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Of silicon-electrical steel: Other"
   },
   {
-    "Position": "137",
     "productNumber": "7225.30.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Other, not further worked than hot-rolled, in coils"
   },
   {
-    "Position": "138",
     "productNumber": "7225.40.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Other, not further worked than hot-rolled, not in coils"
   },
   {
-    "Position": "139",
     "productNumber": "7225.50.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Other, not further worked than cold-rolled (cold-reduced)"
   },
   {
-    "Position": "140",
     "productNumber": "7225.91.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Other: Electrolytically plated or coated with zinc"
   },
   {
-    "Position": "141",
     "productNumber": "7225.92.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Other: Otherwise plated or coated with zinc"
   },
   {
-    "Position": "142",
     "productNumber": "7225.99.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of 600 mm or more.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "143",
     "productNumber": "7226.11.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
     "productDescription": "Of silicon-electrical steel: Grain-oriented"
   },
   {
-    "Position": "144",
     "productNumber": "7226.19.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
     "productDescription": "Of silicon-electrical steel: Other"
   },
   {
-    "Position": "145",
     "productNumber": "7226.20.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
     "productDescription": "Of high speed steel"
   },
   {
-    "Position": "146",
     "productNumber": "7226.91.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
     "productDescription": "Other: Not further worked than hot-rolled"
   },
   {
-    "Position": "147",
     "productNumber": "7226.92.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
     "productDescription": "Other: Not further worked than cold-rolled (cold-reduced)"
   },
   {
-    "Position": "148",
     "productNumber": "7226.99.00",
     "productType": "Flat-rolled products of other alloy steel, of a width of less than 600 mm.",
     "productDescription": "Other: Other"
   },
   {
-    "Position": "149",
     "productNumber": "7227.10.00",
     "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of other alloy steel.",
     "productDescription": "Of high speed steel"
   },
   {
-    "Position": "150",
     "productNumber": "7227.20.00",
     "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of other alloy steel.",
     "productDescription": "Of silico-manganese steel"
+  },
+  {
+    "productNumber": "7227.90.00",
+    "productType": "Bars and rods, hot-rolled, in irregularly wound coils, of other alloy steel.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7228.10.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Bars and rods, of high speed steel"
+  },
+  {
+    "productNumber": "7228.20.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Bars and rods, of silico-manganese steel"
+  },
+  {
+    "productNumber": "7228.30.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Other bars and rods, not further worked than hot-rolled, hot-drawn or extruded"
+  },
+  {
+    "productNumber": "7228.40.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Other bars and rods, not further worked than forged"
+  },
+  {
+    "productNumber": "7228.50.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Other bars and rods, not further worked than cold-formed or cold-finished"
+  },
+  {
+    "productNumber": "7228.60.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Other bars and rods"
+  },
+  {
+    "productNumber": "7228.70.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Angles, shapes and sections"
+  },
+  {
+    "productNumber": "7228.80.00",
+    "productType": "Other bars and rods of other alloy steel; angles, shapes and sections, of other alloy steel; hollow drill bars and rods, of alloy or non-alloy steel.",
+    "productDescription": "Hollow drill bars and rods"
+  },
+  {
+    "productNumber": "7229.20.00",
+    "productType": "Wire of other alloy steel.",
+    "productDescription": "Of silico-manganese steel"
+  },
+  {
+    "productNumber": "7229.90.00",
+    "productType": "Wire of other alloy steel.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7301.10.00",
+    "productType": "Sheet piling of iron or steel, whether or not drilled, punched or made from assembled elements; welded angles, shapes and sections, of iron or steel.",
+    "productDescription": "Sheet piling"
+  },
+  {
+    "productNumber": "7301.20.00",
+    "productType": "Sheet piling of iron or steel, whether or not drilled, punched or made from assembled elements; welded angles, shapes and sections, of iron or steel.",
+    "productDescription": "Angles, shapes and sections"
+  },
+  {
+    "productNumber": "7302.10.00",
+    "productType": "Railway or tramway track construction material of iron or steel, the following : rails, check-rails and rack rails, switch blades, crossing frogs, point rods and other crossing pieces, sleepers (cross-ties), fish-plates, chairs, chair wedges, sole plates (base plates), rail clips, bedplates, ties and other material specialized for jointing or fixing rails.",
+    "productDescription": "Rails"
+  },
+  {
+    "productNumber": "7302.30.10",
+    "productType": "Railway or tramway track construction material of iron or steel, the following : rails, check-rails and rack rails, switch blades, crossing frogs, point rods and other crossing pieces, sleepers (cross-ties), fish-plates, chairs, chair wedges, sole plates (base plates), rail clips, bedplates, ties and other material specialized for jointing or fixing rails.",
+    "productDescription": "Switch blades, crossing frogs, point rods and other crossing pieces: For use with grooved or girder guard rail"
+  },
+  {
+    "productNumber": "7302.30.90",
+    "productType": "Railway or tramway track construction material of iron or steel, the following : rails, check-rails and rack rails, switch blades, crossing frogs, point rods and other crossing pieces, sleepers (cross-ties), fish-plates, chairs, chair wedges, sole plates (base plates), rail clips, bedplates, ties and other material specialized for jointing or fixing rails.",
+    "productDescription": "Switch blades, crossing frogs, point rods and other crossing pieces: Other"
+  },
+  {
+    "productNumber": "7302.40.00",
+    "productType": "Railway or tramway track construction material of iron or steel, the following : rails, check-rails and rack rails, switch blades, crossing frogs, point rods and other crossing pieces, sleepers (cross-ties), fish-plates, chairs, chair wedges, sole plates (base plates), rail clips, bedplates, ties and other material specialized for jointing or fixing rails.",
+    "productDescription": "Fish-plates and sole plates"
+  },
+  {
+    "productNumber": "7302.90.00",
+    "productType": "Railway or tramway track construction material of iron or steel, the following : rails, check-rails and rack rails, switch blades, crossing frogs, point rods and other crossing pieces, sleepers (cross-ties), fish-plates, chairs, chair wedges, sole plates (base plates), rail clips, bedplates, ties and other material specialized for jointing or fixing rails.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7304.11.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Line pipe of a kind used for oil or gas pipelines: Of stainless steel"
+  },
+  {
+    "productNumber": "7304.19.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Line pipe of a kind used for oil or gas pipelines: Other"
+  },
+  {
+    "productNumber": "7304.22.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Casing, tubing and drill pipe, of a kind used in drilling for oil or gas: Drill pipe of stainless steel"
+  },
+  {
+    "productNumber": "7304.23.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Casing, tubing and drill pipe, of a kind used in drilling for oil or gas: Other drill pipe"
+  },
+  {
+    "productNumber": "7304.24.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Casing, tubing and drill pipe, of a kind used in drilling for oil or gas: Other, of stainless steel"
+  },
+  {
+    "productNumber": "7304.29.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Casing, tubing and drill pipe, of a kind used in drilling for oil or gas: Other"
+  },
+  {
+    "productNumber": "7304.31.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Other, of circular cross-section, of iron or non-alloy steel: Cold-drawn or cold-rolled (cold-reduced)"
+  },
+  {
+    "productNumber": "7304.39.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Other, of circular cross-section, of iron or non-alloy steel: Other"
+  },
+  {
+    "productNumber": "7304.41.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Other, of circular cross-section, of stainless steel: Cold-drawn or cold-rolled (cold-reduced)"
+  },
+  {
+    "productNumber": "7304.49.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Other, of circular cross-section, of stainless steel: Other"
+  },
+  {
+    "productNumber": "7304.51.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Other, of circular cross-section, of other alloy steel: Cold-drawn or cold-rolled (cold-reduced)"
+  },
+  {
+    "productNumber": "7304.59.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Other, of circular cross-section, of other alloy steel: Other"
+  },
+  {
+    "productNumber": "7304.90.00",
+    "productType": "Tubes, pipes and hollow profiles, seamless, of iron (other than cast iron) or steel.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7305.11.00",
+    "productType": "Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406.4 mm, of iron or steel.",
+    "productDescription": "Line pipe of a kind used for oil or gas pipelines: Longitudinally submerged arc welded"
+  },
+  {
+    "productNumber": "7305.12.00",
+    "productType": "Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406.4 mm, of iron or steel.",
+    "productDescription": "Line pipe of a kind used for oil or gas pipelines: Other, longitudinally welded"
+  },
+  {
+    "productNumber": "7305.19.00",
+    "productType": "Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406.4 mm, of iron or steel.",
+    "productDescription": "Line pipe of a kind used for oil or gas pipelines: Other"
+  },
+  {
+    "productNumber": "7305.20.00",
+    "productType": "Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406.4 mm, of iron or steel.",
+    "productDescription": "Casing of a kind used in drilling for oil or gas"
+  },
+  {
+    "productNumber": "7305.31.00",
+    "productType": "Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406.4 mm, of iron or steel.",
+    "productDescription": "Other, welded: Longitudinally welded"
+  },
+  {
+    "productNumber": "7305.39.00",
+    "productType": "Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406.4 mm, of iron or steel.",
+    "productDescription": "Other, welded: Other"
+  },
+  {
+    "productNumber": "7305.90.00",
+    "productType": "Other tubes and pipes (for example, welded, riveted or similarly closed), having circular cross-sections, the external diameter of which exceeds 406.4 mm, of iron or steel.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7306.11.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Line pipe of a kind used for oil or gas pipelines: Welded, of stainless steel"
+  },
+  {
+    "productNumber": "7306.19.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Line pipe of a kind used for oil or gas pipelines: Other"
+  },
+  {
+    "productNumber": "7306.21.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Casing and tubing of a kind used in drilling for oil or gas: Welded, of stainless steel"
+  },
+  {
+    "productNumber": "7306.29.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Casing and tubing of a kind used in drilling for oil or gas: Other"
+  },
+  {
+    "productNumber": "7306.30.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Other, welded, of circular cross-section, of iron or non-alloy steel"
+  },
+  {
+    "productNumber": "7306.40.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Other, welded, of circular cross-section, of stainless steel"
+  },
+  {
+    "productNumber": "7306.50.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Other, welded, of circular cross-section, of other alloy steel"
+  },
+  {
+    "productNumber": "7306.61.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Other, welded, of non-circular cross-section: Of square or rectangular cross-section"
+  },
+  {
+    "productNumber": "7306.69.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Other, welded, of non-circular cross-section: Of other non-circular cross-section"
+  },
+  {
+    "productNumber": "7306.90.00",
+    "productType": "Other tubes, pipes and hollow profiles (for example, open seam or welded, riveted or similarly closed), of iron or steel.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7307.21.00",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other, of stainless steel: Flanges"
+  },
+  {
+    "productNumber": "7307.22.00",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other, of stainless steel: Threaded elbows, bends and sleeves"
+  },
+  {
+    "productNumber": "7307.23.00",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other, of stainless steel: Butt welding fittings"
+  },
+  {
+    "productNumber": "7307.29.10",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other, of stainless steel: Other: To be employed in pneumatically breaking down the working face of a mine in mining, quarrying or developing mineral deposits"
+  },
+  {
+    "productNumber": "7307.29.20",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other, of stainless steel: Other: For installation between the wellhead assembly or surface oil pumping unit and the field marketing valve at oil or natural gas wells"
+  },
+  {
+    "productNumber": "7307.29.91",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other, of stainless steel: Other: Other: Not further worked than forged or bent to shape"
+  },
+  {
+    "productNumber": "7307.29.99",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other, of stainless steel: Other: Other: Other"
+  },
+  {
+    "productNumber": "7307.91.00",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other: Flanges"
+  },
+  {
+    "productNumber": "7307.92.00",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other: Threaded elbows, bends and sleeves"
+  },
+  {
+    "productNumber": "7307.93.00",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other: Butt welding fittings"
+  },
+  {
+    "productNumber": "7307.99.00",
+    "productType": "Tube or pipe fittings (for example, couplings, elbows, sleeves), of iron or steel.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "7308.10.00",
+    "productType": "Structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, lock-gates, towers, lattice masts, roofs, roofing frame-works, doors and windows and their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel.",
+    "productDescription": "Bridges and bridge-sections"
+  },
+  {
+    "productNumber": "7308.20.00",
+    "productType": "Structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, lock-gates, towers, lattice masts, roofs, roofing frame-works, doors and windows and their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel.",
+    "productDescription": "Towers and lattice masts"
+  },
+  {
+    "productNumber": "7308.30.00",
+    "productType": "Structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, lock-gates, towers, lattice masts, roofs, roofing frame-works, doors and windows and their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel.",
+    "productDescription": "Doors, windows and their frames and thresholds for doors"
+  },
+  {
+    "productNumber": "7308.40.00",
+    "productType": "Structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, lock-gates, towers, lattice masts, roofs, roofing frame-works, doors and windows and their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel.",
+    "productDescription": "Equipment for scaffolding, shuttering, propping or pit-propping"
+  },
+  {
+    "productNumber": "7308.90.00",
+    "productType": "Structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, lock-gates, towers, lattice masts, roofs, roofing frame-works, doors and windows and their frames and thresholds for doors, shutters, balustrades, pillars and columns), of iron or steel; plates, rods, angles, shapes, sections, tubes and the like, prepared for use in structures, of iron or steel.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7309.00.00",
+    "productType": "Reservoirs, tanks, vats and similar containers for any material (other than compressed or liquefied gas), of iron or steel, of a capacity exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "7310.10.00",
+    "productType": "Tanks, casks, drums, cans, boxes and similar containers, for any material (other than compressed or liquefied gas), of iron or steel, of a capacity not exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment.",
+    "productDescription": "Of a capacity of 50 litres or more"
+  },
+  {
+    "productNumber": "7310.21.00",
+    "productType": "Tanks, casks, drums, cans, boxes and similar containers, for any material (other than compressed or liquefied gas), of iron or steel, of a capacity not exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment.",
+    "productDescription": "Of a capacity of less than 50 litres: Cans which are to be closed by soldering or crimping"
+  },
+  {
+    "productNumber": "7310.29.00",
+    "productType": "Tanks, casks, drums, cans, boxes and similar containers, for any material (other than compressed or liquefied gas), of iron or steel, of a capacity not exceeding 300 litres, whether or not lined or heat-insulated, but not fitted with mechanical or thermal equipment.",
+    "productDescription": "Of a capacity of less than 50 litres: Other"
+  },
+  {
+    "productNumber": "7311.00.00",
+    "productType": "Containers for compressed or liquefied gas, of iron or steel.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "7312.10.00",
+    "productType": "Stranded wire, ropes, cables, plaited bands, slings and the like, of iron or steel, not electrically insulated.",
+    "productDescription": "Stranded wire, ropes and cables"
+  },
+  {
+    "productNumber": "7312.90.00",
+    "productType": "Stranded wire, ropes, cables, plaited bands, slings and the like, of iron or steel, not electrically insulated.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7313.00.00",
+    "productType": "Barbed wire of iron or steel; twisted hoop or single flat wire, barbed or not, and loosely twisted double wire, of a kind used for fencing, of iron or steel.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "7314.12.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Woven cloth: Endless bands for machinery, of stainless steel"
+  },
+  {
+    "productNumber": "7314.14.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Woven cloth: Other woven cloth, of stainless steel"
+  },
+  {
+    "productNumber": "7314.19.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Woven cloth: Other"
+  },
+  {
+    "productNumber": "7314.20.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Grill, netting and fencing, welded at the intersection, of wire with a maximum cross-sectional dimension of 3 mm or more and having a mesh size of 100 cm2 or more"
+  },
+  {
+    "productNumber": "7314.31.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Other grill, netting and fencing, welded at the intersection: Plated or coated with zinc"
+  },
+  {
+    "productNumber": "7314.39.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Other grill, netting and fencing, welded at the intersection: Other"
+  },
+  {
+    "productNumber": "7314.41.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Other cloth, grill, netting and fencing: Plated or coated with zinc"
+  },
+  {
+    "productNumber": "7314.42.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Other cloth, grill, netting and fencing: Coated with plastics"
+  },
+  {
+    "productNumber": "7314.49.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Other cloth, grill, netting and fencing: Other"
+  },
+  {
+    "productNumber": "7314.50.00",
+    "productType": "Cloth (including endless bands), grill, netting and fencing, of iron or steel wire; expanded metal of iron or steel.",
+    "productDescription": "Expanded metal"
+  },
+  {
+    "productNumber": "7315.11.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Articulated link chain and parts thereof: Roller chain"
+  },
+  {
+    "productNumber": "7315.12.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Articulated link chain and parts thereof: Other chain"
+  },
+  {
+    "productNumber": "7315.19.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Articulated link chain and parts thereof: Parts"
+  },
+  {
+    "productNumber": "7315.20.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Skid chain"
+  },
+  {
+    "productNumber": "7315.81.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Other chain: Stud-link"
+  },
+  {
+    "productNumber": "7315.82.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Other chain: Other, welded link"
+  },
+  {
+    "productNumber": "7315.89.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Other chain: Other"
+  },
+  {
+    "productNumber": "7315.90.00",
+    "productType": "Chain and parts thereof, of iron or steel.",
+    "productDescription": "Other parts"
+  },
+  {
+    "productNumber": "7316.00.10",
+    "productType": "Anchors, grapnels and parts thereof, of iron or steel.",
+    "productDescription": "Of a weight of 18 kg or more"
+  },
+  {
+    "productNumber": "7316.00.20",
+    "productType": "Anchors, grapnels and parts thereof, of iron or steel.",
+    "productDescription": "Of a weight of less than 18 kg"
+  },
+  {
+    "productNumber": "7317.00.00",
+    "productType": "Nails, tacks, drawing pins, corrugated nails, staples (other than those of heading 83.05) and similar articles, of iron or steel, whether or not with heads of other material, but excluding such articles with heads of copper.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "7318.11.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Threaded articles: Coach screws"
+  },
+  {
+    "productNumber": "7318.12.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Threaded articles: Other wood screws"
+  },
+  {
+    "productNumber": "7318.13.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Threaded articles: Screw hooks and screw rings"
+  },
+  {
+    "productNumber": "7318.14.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Threaded articles: Self-tapping screws"
+  },
+  {
+    "productNumber": "7318.15.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Threaded articles: Other screws and bolts, whether or not with their nuts or washers"
+  },
+  {
+    "productNumber": "7318.16.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Threaded articles: Nuts"
+  },
+  {
+    "productNumber": "7318.19.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Threaded articles: Other"
+  },
+  {
+    "productNumber": "7318.21.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Non-threaded articles: Spring washers and other lock washers"
+  },
+  {
+    "productNumber": "7318.22.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Non-threaded articles: Other washers"
+  },
+  {
+    "productNumber": "7318.23.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Non-threaded articles: Rivets"
+  },
+  {
+    "productNumber": "7318.24.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Non-threaded articles: Cotters and cotter-pins"
+  },
+  {
+    "productNumber": "7318.29.00",
+    "productType": "Screws, bolts, nuts, coach screws, screw hooks, rivets, cotters, cotter-pins, washers (including spring washers) and similar articles, of iron or steel.",
+    "productDescription": "Non-threaded articles: Other"
+  },
+  {
+    "productNumber": "7319.40.10",
+    "productType": "Sewing needles, knitting needles, bodkins, crochet hooks, embroidery stilettos and similar articles, for use in the hand, of iron or steel; safety pins and other pins of iron or steel, not elsewhere specified or included.",
+    "productDescription": "Safety pins and other pins: Specially designed for marking systems"
+  },
+  {
+    "productNumber": "7319.40.90",
+    "productType": "Sewing needles, knitting needles, bodkins, crochet hooks, embroidery stilettos and similar articles, for use in the hand, of iron or steel; safety pins and other pins of iron or steel, not elsewhere specified or included.",
+    "productDescription": "Safety pins and other pins: Other"
+  },
+  {
+    "productNumber": "7319.90.10",
+    "productType": "Sewing needles, knitting needles, bodkins, crochet hooks, embroidery stilettos and similar articles, for use in the hand, of iron or steel; safety pins and other pins of iron or steel, not elsewhere specified or included.",
+    "productDescription": "Other: Sewing, darning or embroidery needles"
+  },
+  {
+    "productNumber": "7319.90.90",
+    "productType": "Sewing needles, knitting needles, bodkins, crochet hooks, embroidery stilettos and similar articles, for use in the hand, of iron or steel; safety pins and other pins of iron or steel, not elsewhere specified or included.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "7320.10.00",
+    "productType": "Springs and leaves for springs, of iron or steel.",
+    "productDescription": "Leaf-springs and leaves therefor"
+  },
+  {
+    "productNumber": "7320.20.00",
+    "productType": "Springs and leaves for springs, of iron or steel.",
+    "productDescription": "Helical springs"
+  },
+  {
+    "productNumber": "7320.90.00",
+    "productType": "Springs and leaves for springs, of iron or steel.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7321.90.10",
+    "productType": "Stoves, ranges, grates, cookers (including those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances, and parts thereof, of iron or steel.",
+    "productDescription": "Parts: Cast iron grilles, of a weight not exceeding 3 kg, not further worked than as cast, cut and ground, for use in the manufacture of finished grilles for non-industrial non-portable stoves or ranges, for gas fuel or for both gas or other fuels; For appliances, excluding cooking appliances and plate warmers; For cooking appliances and plate warmers for gas fuel or for both gas and other fuels, excluding non-portable stoves or ranges (including those specially designed for use on boats)"
+  },
+  {
+    "productNumber": "7321.90.21",
+    "productType": "Stoves, ranges, grates, cookers (including those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances, and parts thereof, of iron or steel.",
+    "productDescription": "Parts: For non-portable stoves or ranges (including those specially designed for use on boats), for gas fuel or for both gas or other fuels: Cooking chambers"
+  },
+  {
+    "productNumber": "7321.90.22",
+    "productType": "Stoves, ranges, grates, cookers (including those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances, and parts thereof, of iron or steel.",
+    "productDescription": "Parts: For non-portable stoves or ranges (including those specially designed for use on boats), for gas fuel or for both gas or other fuels: Top surface panels"
+  },
+  {
+    "productNumber": "7321.90.23",
+    "productType": "Stoves, ranges, grates, cookers (including those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances, and parts thereof, of iron or steel.",
+    "productDescription": "Parts: For non-portable stoves or ranges (including those specially designed for use on boats), for gas fuel or for both gas or other fuels: Door assemblies, incorporating at least two of the following: inner panel, outer panel, window, insulation"
+  },
+  {
+    "productNumber": "7321.90.24",
+    "productType": "Stoves, ranges, grates, cookers (including those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances, and parts thereof, of iron or steel.",
+    "productDescription": "Parts: For non-portable stoves or ranges (including those specially designed for use on boats), for gas fuel or for both gas or other fuels: Oven pilot burners, top burners of other than cast iron, oven burners and lighter cones, for use in the manufacture of ranges"
+  },
+  {
+    "productNumber": "7321.90.29",
+    "productType": "Stoves, ranges, grates, cookers (including those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances, and parts thereof, of iron or steel.",
+    "productDescription": "Parts: For non-portable stoves or ranges (including those specially designed for use on boats), for gas fuel or for both gas or other fuels: Other"
+  },
+  {
+    "productNumber": "7321.90.90",
+    "productType": "Stoves, ranges, grates, cookers (including those with subsidiary boilers for central heating), barbecues, braziers, gas-rings, plate warmers and similar non-electric domestic appliances, and parts thereof, of iron or steel.",
+    "productDescription": "Parts: Other"
+  },
+  {
+    "productNumber": "7322.11.00",
+    "productType": "Radiators for central heating, not electrically heated, and parts thereof, of iron or steel; air heaters and hot air distributors (including distributors which can also distribute fresh or conditioned air), not electrically heated, incorporating a motor-driven fan or blower, and parts thereof, of iron or steel.",
+    "productDescription": "Radiators and parts thereof: Of cast iron"
+  },
+  {
+    "productNumber": "7322.19.00",
+    "productType": "Radiators for central heating, not electrically heated, and parts thereof, of iron or steel; air heaters and hot air distributors (including distributors which can also distribute fresh or conditioned air), not electrically heated, incorporating a motor-driven fan or blower, and parts thereof, of iron or steel.",
+    "productDescription": "Radiators and parts thereof: Other"
+  },
+  {
+    "productNumber": "7322.90.10",
+    "productType": "Radiators for central heating, not electrically heated, and parts thereof, of iron or steel; air heaters and hot air distributors (including distributors which can also distribute fresh or conditioned air), not electrically heated, incorporating a motor-driven fan or blower, and parts thereof, of iron or steel.",
+    "productDescription": "Other: For heating buildings"
+  },
+  {
+    "productNumber": "7322.90.20",
+    "productType": "Radiators for central heating, not electrically heated, and parts thereof, of iron or steel; air heaters and hot air distributors (including distributors which can also distribute fresh or conditioned air), not electrically heated, incorporating a motor-driven fan or blower, and parts thereof, of iron or steel.",
+    "productDescription": "Other: Process air heaters; Switch heaters and sensing heads (hot air and oil fired), horizontal air curtains, for railway tracks"
+  },
+  {
+    "productNumber": "7322.90.90",
+    "productType": "Radiators for central heating, not electrically heated, and parts thereof, of iron or steel; air heaters and hot air distributors (including distributors which can also distribute fresh or conditioned air), not electrically heated, incorporating a motor-driven fan or blower, and parts thereof, of iron or steel.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "7323.10.00",
+    "productType": "Table, kitchen or other household articles and parts thereof, of iron or steel; iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like, of iron or steel.",
+    "productDescription": "Iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like"
+  },
+  {
+    "productNumber": "7323.91.00",
+    "productType": "Table, kitchen or other household articles and parts thereof, of iron or steel; iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like, of iron or steel.",
+    "productDescription": "Other: Of cast iron, not enamelled"
+  },
+  {
+    "productNumber": "7323.92.00",
+    "productType": "Table, kitchen or other household articles and parts thereof, of iron or steel; iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like, of iron or steel.",
+    "productDescription": "Other: Of cast iron, enamelled"
+  },
+  {
+    "productNumber": "7323.93.10",
+    "productType": "Table, kitchen or other household articles and parts thereof, of iron or steel; iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like, of iron or steel.",
+    "productDescription": "Other: Of stainless steel: Parts for use in the manufacture of cookware"
+  },
+  {
+    "productNumber": "7323.93.90",
+    "productType": "Table, kitchen or other household articles and parts thereof, of iron or steel; iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like, of iron or steel.",
+    "productDescription": "Other: Of stainless steel: Other"
+  },
+  {
+    "productNumber": "7323.94.00",
+    "productType": "Table, kitchen or other household articles and parts thereof, of iron or steel; iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like, of iron or steel.",
+    "productDescription": "Other: Of iron (other than cast iron) or steel, enamelled"
+  },
+  {
+    "productNumber": "7323.99.00",
+    "productType": "Table, kitchen or other household articles and parts thereof, of iron or steel; iron or steel wool; pot scourers and scouring or polishing pads, gloves and the like, of iron or steel.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "7324.10.00",
+    "productType": "Sanitary ware and parts thereof, of iron or steel.",
+    "productDescription": "Sinks and wash basins, of stainless steel"
+  },
+  {
+    "productNumber": "7324.21.00",
+    "productType": "Sanitary ware and parts thereof, of iron or steel.",
+    "productDescription": "Baths: Of cast iron, whether or not enamelled"
+  },
+  {
+    "productNumber": "7324.29.10",
+    "productType": "Sanitary ware and parts thereof, of iron or steel.",
+    "productDescription": "Baths: Other: Stampings and assemblies thereof, for use in the manufacture of bath tubs"
+  },
+  {
+    "productNumber": "7324.29.90",
+    "productType": "Sanitary ware and parts thereof, of iron or steel.",
+    "productDescription": "Baths: Other: Other"
+  },
+  {
+    "productNumber": "7324.90.00",
+    "productType": "Sanitary ware and parts thereof, of iron or steel.",
+    "productDescription": "Other, including parts"
+  },
+  {
+    "productNumber": "7325.10.00",
+    "productType": "Other cast articles of iron or steel.",
+    "productDescription": "Of non-malleable cast iron"
+  },
+  {
+    "productNumber": "7325.91.00",
+    "productType": "Other cast articles of iron or steel.",
+    "productDescription": "Other: Grinding balls and similar articles for mills"
+  },
+  {
+    "productNumber": "7325.99.10",
+    "productType": "Other cast articles of iron or steel.",
+    "productDescription": "Other: Other: The following, to be employed in the exploration, discovery, development, maintenance, testing, depletion or production of oil or natural gas wells or potash or rock salt deposits: Flanged casing heads;  Screwed casing heads for surface casings of an external diameter exceeding 273 mm, or rated for service in working pressures exceeding 14 MPa W.O.G. (water, oil, gas)"
+  },
+  {
+    "productNumber": "7325.99.91",
+    "productType": "Other cast articles of iron or steel.",
+    "productDescription": "Other: Other: Other: In the rough"
+  },
+  {
+    "productNumber": "7325.99.99",
+    "productType": "Other cast articles of iron or steel.",
+    "productDescription": "Other: Other: Other: Other"
+  },
+  {
+    "productNumber": "7326.11.00",
+    "productType": "Other articles of iron or steel.",
+    "productDescription": "Forged or stamped, but not further worked: Grinding balls and similar articles for mills"
+  },
+  {
+    "productNumber": "7326.19.10",
+    "productType": "Other articles of iron or steel.",
+    "productDescription": "Forged or stamped, but not further worked: Other: Flanged wellhead tubing heads and flanged casing head spools, in the rough, for use in the manufacture of wellhead tubing heads or casing head spools, rated for service in working pressures exceeding 14 MPa W.O.G. (water, oil, gas), to be employed in the exploration, discovery, development, maintenance, testing, depletion or production of oil or natural gas wells; Wick sustainers for use in the manufacture of candles"
+  },
+  {
+    "productNumber": "7326.19.90",
+    "productType": "Other articles of iron or steel.",
+    "productDescription": "Forged or stamped, but not further worked: Other: Other"
+  },
+  {
+    "productNumber": "7326.20.00",
+    "productType": "Other articles of iron or steel.",
+    "productDescription": "Articles of iron or steel wire"
+  },
+  {
+    "productNumber": "7326.90.10",
+    "productType": "Other articles of iron or steel.",
+    "productDescription": "Other: Couplings for sucker rods, pony rods or polished rods for oilfield related pumps; Fishing tools and parts thereof to be employed in the exploration, discovery, development, maintenance, testing, depletion or production of oil or natural gas wells or for drilling machinery employed in the exploration, discovery, development or operation of potash or rock salt deposits; For climbing or mountaineering; For keeping nets open and swivels, to be employed in commercial fishing or in the commercial harvesting of marine plants; For use in the manufacture of detectors for propane or other toxic fumes; For use in the manufacture of fire fighting vehicles; For use in the manufacture of goods of Section XVI or of Chapter 73, such goods being used in the recovery or production of crude oil from shales, oil-sands or tar-sands; For use in the manufacture or repair of engines or parts thereof for commercial fishing vessels; Forged steel clevis hooks and eye hooks for use in the manufacture of debris chutes; Identification bands for migratory birds; Pitless well heads and parts thereof; Reusable containers, specially designed to be employed in the transportation of motor vehicle components which are free of customs duties, presented with the goods therein; Seat post clamps and cable hangers for use in the manufacture of unicycles, bicycles or tricycles; Semi-elliptical heads, of an external diameter of either 609.6 mm or 762 mm, to specification ASTM A455, for use in air compressor tanks; Snap hooks of forged steel, zinc plated, 12.5 cm to 23 cm in length, for use in the manufacture of debris chutes and chute hoists; Steel stanchions for confining livestock either in pens or individually; The following to be employed in the exploration, discovery, development, maintenance, testing, depletion or production of oil or natural gas wells or potash or rock salt deposits: Flanged casing heads; Screwed casing heads for surface casings of an external diameter exceeding 273 mm, or rated for service in working pressures exceeding 14 MPa W.O.G. (water, oil, gas); Well packers and parts thereof; To be employed in the processing, storing or insemination of animal semen; Tracks for use in the manufacture of skid steer loaders; Vacuum evaporator masks, of stainless steel, having a 90% front etch and 10% back etch, for the production of photo cells; Wick sustainers for use in the manufacture of candles"
+  },
+  {
+    "productNumber": "7326.90.90",
+    "productType": "Other articles of iron or steel.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "7601.10.00",
+    "productType": "Unwrought aluminum.",
+    "productDescription": "Aluminum, not alloyed"
+  },
+  {
+    "productNumber": "7601.20.00",
+    "productType": "Unwrought aluminum.",
+    "productDescription": "Aluminum alloys"
+  },
+  {
+    "productNumber": "7604.10.00",
+    "productType": "Aluminum bars, rods and profiles.",
+    "productDescription": "Of aluminum, not alloyed"
+  },
+  {
+    "productNumber": "7604.21.00",
+    "productType": "Aluminum bars, rods and profiles.",
+    "productDescription": "Of aluminum alloys: Hollow profiles"
+  },
+  {
+    "productNumber": "7604.29.00",
+    "productType": "Aluminum bars, rods and profiles.",
+    "productDescription": "Of aluminum alloys: Other"
+  },
+  {
+    "productNumber": "7605.11.00",
+    "productType": "Aluminum wire.",
+    "productDescription": "Of aluminum, not alloyed: Of which the maximum cross-sectional dimension exceeds 7 mm"
+  },
+  {
+    "productNumber": "7605.19.00",
+    "productType": "Aluminum wire.",
+    "productDescription": "Of aluminum, not alloyed: Other"
+  },
+  {
+    "productNumber": "7605.21.00",
+    "productType": "Aluminum wire.",
+    "productDescription": "Of aluminum alloys: Of which the maximum cross-sectional dimension exceeds 7 mm"
+  },
+  {
+    "productNumber": "7605.29.00",
+    "productType": "Aluminum wire.",
+    "productDescription": "Of aluminum alloys: Other"
+  },
+  {
+    "productNumber": "7606.11.00",
+    "productType": "Aluminum plates, sheets and strip, of a thickness exceeding 0.2 mm.",
+    "productDescription": "Rectangular (including square): Of aluminum, not alloyed"
+  },
+  {
+    "productNumber": "7606.12.00",
+    "productType": "Aluminum plates, sheets and strip, of a thickness exceeding 0.2 mm.",
+    "productDescription": "Rectangular (including square): Of aluminum alloys"
+  },
+  {
+    "productNumber": "7606.91.00",
+    "productType": "Aluminum plates, sheets and strip, of a thickness exceeding 0.2 mm.",
+    "productDescription": "Other: Of aluminum, not alloyed"
+  },
+  {
+    "productNumber": "7606.92.00",
+    "productType": "Aluminum plates, sheets and strip, of a thickness exceeding 0.2 mm.",
+    "productDescription": "Other: Of aluminum alloys"
+  },
+  {
+    "productNumber": "7607.11.00",
+    "productType": "Aluminum foil (whether or not printed or backed with paper, paperboard, plastics or similar backing materials) of a thickness (excluding any backing) not exceeding 0.2 mm.",
+    "productDescription": "Not backed: Rolled but not further worked"
+  },
+  {
+    "productNumber": "7607.19.00",
+    "productType": "Aluminum foil (whether or not printed or backed with paper, paperboard, plastics or similar backing materials) of a thickness (excluding any backing) not exceeding 0.2 mm.",
+    "productDescription": "Not backed: Other"
+  },
+  {
+    "productNumber": "7607.20.00",
+    "productType": "Aluminum foil (whether or not printed or backed with paper, paperboard, plastics or similar backing materials) of a thickness (excluding any backing) not exceeding 0.2 mm.",
+    "productDescription": "Backed"
+  },
+  {
+    "productNumber": "7608.10.00",
+    "productType": "Aluminum tubes and pipes.",
+    "productDescription": "Of aluminum, not alloyed"
+  },
+  {
+    "productNumber": "7608.20.00",
+    "productType": "Aluminum tubes and pipes.",
+    "productDescription": "Of aluminum alloys"
+  },
+  {
+    "productNumber": "7609.00.00",
+    "productType": "Aluminum tube or pipe fittings (for example, couplings, elbows, sleeves).",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "7610.10.00",
+    "productType": "Aluminum structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, balustrades, pillars and columns); aluminum plates, rods, profiles, tubes and the like, prepared for use in structures.",
+    "productDescription": "Doors, windows and their frames and thresholds for doors"
+  },
+  {
+    "productNumber": "7610.90.10",
+    "productType": "Aluminum structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, balustrades, pillars and columns); aluminum plates, rods, profiles, tubes and the like, prepared for use in structures.",
+    "productDescription": "Other: For use in Canadian manufactures"
+  },
+  {
+    "productNumber": "7610.90.90",
+    "productType": "Aluminum structures (excluding prefabricated buildings of heading 94.06) and parts of structures (for example, bridges and bridge-sections, towers, lattice masts, roofs, roofing frameworks, doors and windows and their frames and thresholds for doors, balustrades, pillars and columns); aluminum plates, rods, profiles, tubes and the like, prepared for use in structures.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "7614.10.00",
+    "productType": "Stranded wire, cables, plaited bands and the like, of aluminum, not electrically insulated.",
+    "productDescription": "With steel core"
+  },
+  {
+    "productNumber": "7614.90.00",
+    "productType": "Stranded wire, cables, plaited bands and the like, of aluminum, not electrically insulated.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "7615.10.00",
+    "productType": "Table, kitchen or other household articles and parts thereof, of aluminum; pot scourers and scouring or polishing pads, gloves and the like, of aluminum; sanitary ware and parts thereof, of aluminum.",
+    "productDescription": "Table, kitchen or other household articles and parts thereof; pot scourers and scouring or polishing pads, gloves and the like"
+  },
+  {
+    "productNumber": "7615.20.00",
+    "productType": "Table, kitchen or other household articles and parts thereof, of aluminum; pot scourers and scouring or polishing pads, gloves and the like, of aluminum; sanitary ware and parts thereof, of aluminum.",
+    "productDescription": "Sanitary ware and parts thereof"
+  },
+  {
+    "productNumber": "7616.10.00",
+    "productType": "Other articles of aluminum.",
+    "productDescription": "Nails, tacks, staples (other than those of heading 83.05), screws, bolts, nuts, screw hooks, rivets, cotters, cotter-pins, washers and similar articles"
+  },
+  {
+    "productNumber": "7616.99.10",
+    "productType": "Other articles of aluminum.",
+    "productDescription": "Other: Other: Cups for use in the manufacture of candles; Ferrules for use in the manufacture of pencils; Fish egg incubators and parts thereof; For climbing or mountaineering; Identification bands for migratory birds;  Pigeon countermark leg bands; To be employed in the manufacture of sera, antisera, toxoids, viruses, toxins or antitoxins, virus or bacterial vaccines, bacteriophage or bacterial lysates, allergenics, liver extracts, pituitary extracts, epinephrine or its solutions, insulin (with or without zinc, globin or protamine), and blood plasma or serum of human origin, or fractions thereof, or extenders or substitutes therefor"
+  },
+  {
+    "productNumber": "7616.99.90",
+    "productType": "Other articles of aluminum.",
+    "productDescription": "Other: Other: Other"
+  },
+  {
+    "productNumber": "8201.10.10",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Spades and shovels: Heads for use in the manufacture or production of spades and shovels"
+  },
+  {
+    "productNumber": "8201.10.90",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Spades and shovels: Other"
+  },
+  {
+    "productNumber": "8201.30.10",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Mattocks, picks, hoes and rakes: Heads for use in the manufacture or production of mattocks, picks, hoes or rakes; Mattocks and picks for climbing or mountaineering"
+  },
+  {
+    "productNumber": "8201.30.90",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Mattocks, picks, hoes and rakes: Other"
+  },
+  {
+    "productNumber": "8201.40.10",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Axes, bill hooks and similar hewing tools: For climbing or mountaineering; Heads for use in the manufacture or production of axes, bill hooks and similar hewing tools"
+  },
+  {
+    "productNumber": "8201.40.90",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Axes, bill hooks and similar hewing tools: Other"
+  },
+  {
+    "productNumber": "8201.50.00",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Secateurs and similar one-handed pruners and shears (including poultry shears)"
+  },
+  {
+    "productNumber": "8201.60.10",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Hedge shears, two-handed pruning shears and similar two-handed shears: Pruning shears"
+  },
+  {
+    "productNumber": "8201.60.90",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Hedge shears, two-handed pruning shears and similar two-handed shears: Other"
+  },
+  {
+    "productNumber": "8201.90.10",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Other hand tools of a kind used in agriculture, horticulture or forestry: Post-hole diggers; Pruning hooks"
+  },
+  {
+    "productNumber": "8201.90.21",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Other hand tools of a kind used in agriculture, horticulture or forestry: Forks: Forged, for use in the manufacture of pronged forks"
+  },
+  {
+    "productNumber": "8201.90.29",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Other hand tools of a kind used in agriculture, horticulture or forestry: Forks: Other"
+  },
+  {
+    "productNumber": "8201.90.91",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Other hand tools of a kind used in agriculture, horticulture or forestry: Other: Heads for use in the manufacture or production of other hand tools of a kind used in agriculture, horticulture or forestry"
+  },
+  {
+    "productNumber": "8201.90.99",
+    "productType": "Hand tools, the following : spades, shovels, mattocks, picks, hoes, forks and rakes; axes, bill hooks and similar hewing tools; secateurs and pruners of any kind; scythes, sickles, hay knives, hedge shears, timber wedges and other tools of a kind used in agriculture, horticulture or forestry.",
+    "productDescription": "Other hand tools of a kind used in agriculture, horticulture or forestry: Other: Other"
+  },
+  {
+    "productNumber": "8202.20.00",
+    "productType": "Hand saws; blades for saws of all kinds (including slitting, slotting or toothless saw blades).",
+    "productDescription": "Band saw blades"
+  },
+  {
+    "productNumber": "8202.31.00",
+    "productType": "Hand saws; blades for saws of all kinds (including slitting, slotting or toothless saw blades).",
+    "productDescription": "Circular saw blades (including slitting or slotting saw blades): With working part of steel"
+  },
+  {
+    "productNumber": "8202.39.00",
+    "productType": "Hand saws; blades for saws of all kinds (including slitting, slotting or toothless saw blades).",
+    "productDescription": "Circular saw blades (including slitting or slotting saw blades): Other, including parts"
+  },
+  {
+    "productNumber": "8202.40.00",
+    "productType": "Hand saws; blades for saws of all kinds (including slitting, slotting or toothless saw blades).",
+    "productDescription": "Chain saw blades"
+  },
+  {
+    "productNumber": "8202.91.00",
+    "productType": "Hand saws; blades for saws of all kinds (including slitting, slotting or toothless saw blades).",
+    "productDescription": "Other saw blades: Straight saw blades, for working metal"
+  },
+  {
+    "productNumber": "8202.99.00",
+    "productType": "Hand saws; blades for saws of all kinds (including slitting, slotting or toothless saw blades).",
+    "productDescription": "Other saw blades: Other"
+  },
+  {
+    "productNumber": "8203.10.00",
+    "productType": "Files, rasps, pliers (including cutting pliers), pincers, tweezers, metal cutting shears, pipe-cutters, bolt croppers, perforating punches and similar hand tools.",
+    "productDescription": "Files, rasps and similar tools"
+  },
+  {
+    "productNumber": "8203.30.10",
+    "productType": "Files, rasps, pliers (including cutting pliers), pincers, tweezers, metal cutting shears, pipe-cutters, bolt croppers, perforating punches and similar hand tools.",
+    "productDescription": "Metal cutting shears and similar tools: Shears"
+  },
+  {
+    "productNumber": "8203.30.90",
+    "productType": "Files, rasps, pliers (including cutting pliers), pincers, tweezers, metal cutting shears, pipe-cutters, bolt croppers, perforating punches and similar hand tools.",
+    "productDescription": "Metal cutting shears and similar tools: Other"
+  },
+  {
+    "productNumber": "8203.40.00",
+    "productType": "Files, rasps, pliers (including cutting pliers), pincers, tweezers, metal cutting shears, pipe-cutters, bolt croppers, perforating punches and similar hand tools.",
+    "productDescription": "Pipe-cutters, bolt croppers, perforating punches and similar tools"
+  },
+  {
+    "productNumber": "8205.20.10",
+    "productType": "Hand tools (including glaziers' diamonds), not elsewhere specified or included; blow lamps; vices, clamps and the like, other than accessories for and parts of, machine-tools or water-jet cutting machines; anvils; portable forges; hand or pedal-operated grinding wheels with frameworks.",
+    "productDescription": "Hammers and sledge hammers: For climbing or mountaineering; Heads for use in the manufacture or production of hammers and sledge hammers"
+  },
+  {
+    "productNumber": "8205.59.10",
+    "productType": "Hand tools (including glaziers' diamonds), not elsewhere specified or included; blow lamps; vices, clamps and the like, other than accessories for and parts of, machine-tools or water-jet cutting machines; anvils; portable forges; hand or pedal-operated grinding wheels with frameworks.",
+    "productDescription": "Other hand tools (including glaziers' diamonds): Other: For climbing or mountaineering; Heads for use in the manufacture or production of other hand tools; Livestock branding irons"
+  },
+  {
+    "productNumber": "8205.70.10",
+    "productType": "Hand tools (including glaziers' diamonds), not elsewhere specified or included; blow lamps; vices, clamps and the like, other than accessories for and parts of, machine-tools or water-jet cutting machines; anvils; portable forges; hand or pedal-operated grinding wheels with frameworks.",
+    "productDescription": "Vices, clamps and the like: Clamps for use with the following surgical, dental, veterinary or diagnostic articles: Instruments; Sterilizers; Cobalt therapy units; Anaesthesia, surgical suction or oxygen administering apparatus"
+  },
+  {
+    "productNumber": "8205.70.20",
+    "productType": "Hand tools (including glaziers' diamonds), not elsewhere specified or included; blow lamps; vices, clamps and the like, other than accessories for and parts of, machine-tools or water-jet cutting machines; anvils; portable forges; hand or pedal-operated grinding wheels with frameworks.",
+    "productDescription": "Vices, clamps and the like: Precision clamps and vices, for toolmakers, machinists or metal workers"
+  },
+  {
+    "productNumber": "8205.90.10",
+    "productType": "Hand tools (including glaziers' diamonds), not elsewhere specified or included; blow lamps; vices, clamps and the like, other than accessories for and parts of, machine-tools or water-jet cutting machines; anvils; portable forges; hand or pedal-operated grinding wheels with frameworks.",
+    "productDescription": "Other, including sets of articles of two or more subheadings of this heading: Anvils; portable forges; hand or pedal-operated grinding wheels with frameworks"
+  },
+  {
+    "productNumber": "8205.90.90",
+    "productType": "Hand tools (including glaziers' diamonds), not elsewhere specified or included; blow lamps; vices, clamps and the like, other than accessories for and parts of, machine-tools or water-jet cutting machines; anvils; portable forges; hand or pedal-operated grinding wheels with frameworks.",
+    "productDescription": "Other, including sets of articles of two or more subheadings of this heading: Other"
+  },
+  {
+    "productNumber": "8207.13.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Rock drilling or earth boring tools: With working part of cermets"
+  },
+  {
+    "productNumber": "8207.19.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Rock drilling or earth boring tools: Other, including parts"
+  },
+  {
+    "productNumber": "8207.20.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Dies for drawing or extruding metal"
+  },
+  {
+    "productNumber": "8207.30.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Tools for pressing, stamping or punching"
+  },
+  {
+    "productNumber": "8207.40.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Tools for tapping or threading"
+  },
+  {
+    "productNumber": "8207.50.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Tools for drilling, other than for rock drilling"
+  },
+  {
+    "productNumber": "8207.60.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Tools for boring or broaching"
+  },
+  {
+    "productNumber": "8207.70.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Tools for milling"
+  },
+  {
+    "productNumber": "8207.80.00",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Tools for turning"
+  },
+  {
+    "productNumber": "8207.90.10",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Other interchangeable tools: Ball points, bushing bits, chisels, clay spades, front spades, drivers (for pipes, pins and spikes) and star drills, for portable power tools; Cutting tools, carbide tipped, for wood working; Nozzles for vacuum cleaners"
+  },
+  {
+    "productNumber": "8207.90.90",
+    "productType": "Interchangeable tools for hand tools, whether or not power-operated, or for machine-tools (for example, for pressing, stamping, punching, tapping, threading, drilling, boring, broaching, milling, turning or screw driving), including dies for drawing or extruding metal, and rock drilling or earth boring tools.",
+    "productDescription": "Other interchangeable tools: Other"
+  },
+  {
+    "productNumber": "8208.10.00",
+    "productType": "Knives and cutting blades, for machines or for mechanical appliances.",
+    "productDescription": "For metal working"
+  },
+  {
+    "productNumber": "8208.20.00",
+    "productType": "Knives and cutting blades, for machines or for mechanical appliances.",
+    "productDescription": "For wood working"
+  },
+  {
+    "productNumber": "8208.30.00",
+    "productType": "Knives and cutting blades, for machines or for mechanical appliances.",
+    "productDescription": "For kitchen appliances or for machines used by the food industry"
+  },
+  {
+    "productNumber": "8208.40.00",
+    "productType": "Knives and cutting blades, for machines or for mechanical appliances.",
+    "productDescription": "For agricultural, horticultural or forestry machines"
+  },
+  {
+    "productNumber": "8208.90.00",
+    "productType": "Knives and cutting blades, for machines or for mechanical appliances.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "8209.00.00",
+    "productType": "Plates, sticks, tips and the like for tools, unmounted, of cermets.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "8210.00.90",
+    "productType": "Hand-operated mechanical appliances, weighing 10 kg or less, used in the preparation, conditioning or serving of food or drink.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "8301.30.00",
+    "productType": "Padlocks and locks (key, combination or electrically operated), of base metal; clasps and frames with clasps, incorporating locks, of base metal; keys for any of the foregoing articles, of base metal.",
+    "productDescription": "Locks of a kind used for furniture"
+  },
+  {
+    "productNumber": "8301.40.10",
+    "productType": "Padlocks and locks (key, combination or electrically operated), of base metal; clasps and frames with clasps, incorporating locks, of base metal; keys for any of the foregoing articles, of base metal.",
+    "productDescription": "Other locks: For use in the manufacture of portfolios, luggage or tackle boxes"
+  },
+  {
+    "productNumber": "8301.40.20",
+    "productType": "Padlocks and locks (key, combination or electrically operated), of base metal; clasps and frames with clasps, incorporating locks, of base metal; keys for any of the foregoing articles, of base metal.",
+    "productDescription": "Other locks: Key-operated security locks for use in the manufacture of casement or awning windows"
+  },
+  {
+    "productNumber": "8301.60.00",
+    "productType": "Padlocks and locks (key, combination or electrically operated), of base metal; clasps and frames with clasps, incorporating locks, of base metal; keys for any of the foregoing articles, of base metal.",
+    "productDescription": "Parts"
+  },
+  {
+    "productNumber": "8301.70.90",
+    "productType": "Padlocks and locks (key, combination or electrically operated), of base metal; clasps and frames with clasps, incorporating locks, of base metal; keys for any of the foregoing articles, of base metal.",
+    "productDescription": "Keys presented separately: Other"
+  },
+  {
+    "productNumber": "8302.10.00",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Hinges"
+  },
+  {
+    "productNumber": "8302.20.00",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Castors"
+  },
+  {
+    "productNumber": "8302.41.10",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Other mountings, fittings and similar articles: Suitable for buildings: Bar or rod type door exit devices, for commercial, institutional or industrial applications; For use in the manufacture or repair of rotary gear window operators; Rotary gear window operators; Snub-guides, lever-lock operators, torsion bars and centre hooks for lever-lock or rotary gear window operators, sash locks (excluding peg locks) and keepers for key-operated security locks or sash locks (excluding peg-locks), for use in the manufacture of casement or awning windows"
+  },
+  {
+    "productNumber": "8302.41.90",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Other mountings, fittings and similar articles: Suitable for buildings: Other"
+  },
+  {
+    "productNumber": "8302.42.00",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Other mountings, fittings and similar articles: Other, suitable for furniture"
+  },
+  {
+    "productNumber": "8302.49.00",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Other mountings, fittings and similar articles: Other"
+  },
+  {
+    "productNumber": "8302.60.10",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Automatic door closers: Hydraulic; Other, for use in the manufacture of railway or tramway passenger coaches"
+  },
+  {
+    "productNumber": "8302.60.90",
+    "productType": "Base metal mountings, fittings and similar articles suitable for furniture, doors, staircases, windows, blinds, coachwork, saddlery, trunks, chests, caskets or the like; base metal hat-racks, hat-pegs, brackets and similar fixtures; castors with mountings of base metal; automatic door closers of base metal.",
+    "productDescription": "Automatic door closers: Other"
+  },
+  {
+    "productNumber": "8303.00.00",
+    "productType": "Armoured or reinforced safes, strong-boxes and doors and safe deposit lockers for strong-rooms, cash or deed boxes and the like, of base metal.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "8304.00.00",
+    "productType": "Filing cabinets, card-index cabinets, paper trays, paper rests, pen trays, office-stamp stands and similar office or desk equipment, of base metal, other than office furniture of heading 94.03.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "8305.10.10",
+    "productType": "Fittings for loose-leaf binders or files, letter clips, letter corners, paper clips, indexing tags and similar office articles, of base metal; staples in strips (for example, for offices, upholstery, packaging), of base metal.",
+    "productDescription": "Fittings for loose-leaf binders or files: For use in the manufacture of multiple ring binders"
+  },
+  {
+    "productNumber": "8305.10.90",
+    "productType": "Fittings for loose-leaf binders or files, letter clips, letter corners, paper clips, indexing tags and similar office articles, of base metal; staples in strips (for example, for offices, upholstery, packaging), of base metal.",
+    "productDescription": "Fittings for loose-leaf binders or files: Other"
+  },
+  {
+    "productNumber": "8305.20.00",
+    "productType": "Fittings for loose-leaf binders or files, letter clips, letter corners, paper clips, indexing tags and similar office articles, of base metal; staples in strips (for example, for offices, upholstery, packaging), of base metal.",
+    "productDescription": "Staples in strips"
+  },
+  {
+    "productNumber": "8305.90.00",
+    "productType": "Fittings for loose-leaf binders or files, letter clips, letter corners, paper clips, indexing tags and similar office articles, of base metal; staples in strips (for example, for offices, upholstery, packaging), of base metal.",
+    "productDescription": "Other, including parts"
+  },
+  {
+    "productNumber": "8306.10.10",
+    "productType": "Bells, gongs and the like, non-electric, of base metal; statuettes and other ornaments, of base metal; photograph, picture or similar frames, of base metal; mirrors of base metal.",
+    "productDescription": "Bells, gongs and the like: Church bells"
+  },
+  {
+    "productNumber": "8306.10.90",
+    "productType": "Bells, gongs and the like, non-electric, of base metal; statuettes and other ornaments, of base metal; photograph, picture or similar frames, of base metal; mirrors of base metal.",
+    "productDescription": "Bells, gongs and the like: Other"
+  },
+  {
+    "productNumber": "8306.21.00",
+    "productType": "Bells, gongs and the like, non-electric, of base metal; statuettes and other ornaments, of base metal; photograph, picture or similar frames, of base metal; mirrors of base metal.",
+    "productDescription": "Statuettes and other ornaments: Plated with precious metal"
+  },
+  {
+    "productNumber": "8306.29.00",
+    "productType": "Bells, gongs and the like, non-electric, of base metal; statuettes and other ornaments, of base metal; photograph, picture or similar frames, of base metal; mirrors of base metal.",
+    "productDescription": "Statuettes and other ornaments: Other"
+  },
+  {
+    "productNumber": "8306.30.00",
+    "productType": "Bells, gongs and the like, non-electric, of base metal; statuettes and other ornaments, of base metal; photograph, picture or similar frames, of base metal; mirrors of base metal.",
+    "productDescription": "Photograph, picture or similar frames; mirrors"
+  },
+  {
+    "productNumber": "8307.10.00",
+    "productType": "Flexible tubing of base metal, with or without fittings.",
+    "productDescription": "Of iron or steel"
+  },
+  {
+    "productNumber": "8307.90.00",
+    "productType": "Flexible tubing of base metal, with or without fittings.",
+    "productDescription": "Of other base metal"
+  },
+  {
+    "productNumber": "8308.10.00",
+    "productType": "Clasps, frames with clasps, buckles, buckle-clasps, hooks, eyes, eyelets and the like, of base metal, of a kind used for clothing or clothing accessories, footwear, jewellery, wrist-watches, books, awnings, leather goods, travel goods or saddlery or for other made up articles; tubular or bifurcated rivets, of base metal; beads and spangles, of base metal.",
+    "productDescription": "Hooks, eyes and eyelets"
+  },
+  {
+    "productNumber": "8308.20.00",
+    "productType": "Clasps, frames with clasps, buckles, buckle-clasps, hooks, eyes, eyelets and the like, of base metal, of a kind used for clothing or clothing accessories, footwear, jewellery, wrist-watches, books, awnings, leather goods, travel goods or saddlery or for other made up articles; tubular or bifurcated rivets, of base metal; beads and spangles, of base metal.",
+    "productDescription": "Tubular or bifurcated rivets"
+  },
+  {
+    "productNumber": "8308.90.00",
+    "productType": "Clasps, frames with clasps, buckles, buckle-clasps, hooks, eyes, eyelets and the like, of base metal, of a kind used for clothing or clothing accessories, footwear, jewellery, wrist-watches, books, awnings, leather goods, travel goods or saddlery or for other made up articles; tubular or bifurcated rivets, of base metal; beads and spangles, of base metal.",
+    "productDescription": "Other, including parts"
+  },
+  {
+    "productNumber": "8309.90.00",
+    "productType": "Stoppers, caps and lids (including crown corks, screw caps and pouring stoppers), capsules for bottles, threaded bungs, bung covers, seals and other packing accessories, of base metal.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "8310.00.00",
+    "productType": "Sign-plates, name-plates, address-plates and similar plates, numbers, letters and other symbols, of base metal, excluding those of heading 94.05.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "8311.10.00",
+    "productType": "Wire, rods, tubes, plates, electrodes and similar products, of base metal or of metal carbides, coated or cored with flux material, of a kind used for soldering, brazing, welding or deposition of metal or of metal carbides; wire and rods, of agglomerated base metal powder, used for metal spraying.",
+    "productDescription": "Coated electrodes of base metal, for electric arc-welding"
+  },
+  {
+    "productNumber": "8311.20.00",
+    "productType": "Wire, rods, tubes, plates, electrodes and similar products, of base metal or of metal carbides, coated or cored with flux material, of a kind used for soldering, brazing, welding or deposition of metal or of metal carbides; wire and rods, of agglomerated base metal powder, used for metal spraying.",
+    "productDescription": "Cored wire of base metal, for electric arc-welding"
+  },
+  {
+    "productNumber": "8311.30.00",
+    "productType": "Wire, rods, tubes, plates, electrodes and similar products, of base metal or of metal carbides, coated or cored with flux material, of a kind used for soldering, brazing, welding or deposition of metal or of metal carbides; wire and rods, of agglomerated base metal powder, used for metal spraying.",
+    "productDescription": "Coated rods and cored wire, of base metal, for soldering, brazing or welding by flame"
+  },
+  {
+    "productNumber": "8311.90.00",
+    "productType": "Wire, rods, tubes, plates, electrodes and similar products, of base metal or of metal carbides, coated or cored with flux material, of a kind used for soldering, brazing, welding or deposition of metal or of metal carbides; wire and rods, of agglomerated base metal powder, used for metal spraying.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "8419.11.00",
+    "productType": "Machinery, plant or laboratory equipment, whether or not electrically heated (excluding furnaces, ovens and other equipment of heading 85.14), for the treatment of materials by a process involving a change of temperature such as heating, cooking, roasting, distilling, rectifying, sterilizing, pasteurizing, steaming, drying, evaporating, vaporizing, condensing or cooling, other than machinery or plant of a kind used for domestic purposes; instantaneous or storage water heaters, non-electric.",
+    "productDescription": "Instantaneous or storage water heaters, non-electric: Instantaneous gas water heaters"
+  },
+  {
+    "productNumber": "8419.12.00",
+    "productType": "Machinery, plant or laboratory equipment, whether or not electrically heated (excluding furnaces, ovens and other equipment of heading 85.14), for the treatment of materials by a process involving a change of temperature such as heating, cooking, roasting, distilling, rectifying, sterilizing, pasteurizing, steaming, drying, evaporating, vaporizing, condensing or cooling, other than machinery or plant of a kind used for domestic purposes; instantaneous or storage water heaters, non-electric.",
+    "productDescription": "Instantaneous or storage water heaters, non-electric: Solar water heaters"
+  },
+  {
+    "productNumber": "8419.19.00",
+    "productType": "Machinery, plant or laboratory equipment, whether or not electrically heated (excluding furnaces, ovens and other equipment of heading 85.14), for the treatment of materials by a process involving a change of temperature such as heating, cooking, roasting, distilling, rectifying, sterilizing, pasteurizing, steaming, drying, evaporating, vaporizing, condensing or cooling, other than machinery or plant of a kind used for domestic purposes; instantaneous or storage water heaters, non-electric.",
+    "productDescription": "Instantaneous or storage water heaters, non-electric: Other"
+  },
+  {
+    "productNumber": "8425.42.00",
+    "productType": "Pulley tackle and hoists other than skip hoists; winches and capstans; jacks.",
+    "productDescription": "Jacks; hoists of a kind used for raising vehicles: Other jacks and hoists, hydraulic"
+  },
+  {
+    "productNumber": "8425.49.00",
+    "productType": "Pulley tackle and hoists other than skip hoists; winches and capstans; jacks.",
+    "productDescription": "Jacks; hoists of a kind used for raising vehicles: Other"
+  },
+  {
+    "productNumber": "8443.32.00",
+    "productType": "Printing machinery used for printing by means of plates, cylinders and other printing components of heading 84.42; other printers, copying machines and facsimile machines, whether or not combined; parts and accessories thereof.",
+    "productDescription": "Other printers, copying machines and facsimile machines, whether or not combined: Other, capable of connecting to an automatic data processing machine or to a network"
+  },
+  {
+    "productNumber": "8471.30.00",
+    "productType": "Automatic data processing machines and units thereof; magnetic or optical readers, machines for transcribing data onto data media in coded form and machines for processing such data, not elsewhere specified or included.",
+    "productDescription": "Portable automatic data processing machines, weighing not more than 10 kg, consisting of at least a central processing unit, a keyboard and a display"
+  },
+  {
+    "productNumber": "8471.41.00",
+    "productType": "Automatic data processing machines and units thereof; magnetic or optical readers, machines for transcribing data onto data media in coded form and machines for processing such data, not elsewhere specified or included.",
+    "productDescription": "Other automatic data processing machines: Comprising in the same housing at least a central processing unit and an input and output unit, whether or not combined"
+  },
+  {
+    "productNumber": "8471.60.00",
+    "productType": "Automatic data processing machines and units thereof; magnetic or optical readers, machines for transcribing data onto data media in coded form and machines for processing such data, not elsewhere specified or included.",
+    "productDescription": "Input or output units, whether or not containing storage units in the same housing"
+  },
+  {
+    "productNumber": "8471.70.00",
+    "productType": "Automatic data processing machines and units thereof; magnetic or optical readers, machines for transcribing data onto data media in coded form and machines for processing such data, not elsewhere specified or included.",
+    "productDescription": "Storage units"
+  },
+  {
+    "productNumber": "8471.80.10",
+    "productType": "Automatic data processing machines and units thereof; magnetic or optical readers, machines for transcribing data onto data media in coded form and machines for processing such data, not elsewhere specified or included.",
+    "productDescription": "Other units of automatic data processing machines: Control or adapter units"
+  },
+  {
+    "productNumber": "8471.80.91",
+    "productType": "Automatic data processing machines and units thereof; magnetic or optical readers, machines for transcribing data onto data media in coded form and machines for processing such data, not elsewhere specified or included.",
+    "productDescription": "Other units of automatic data processing machines: Other: Units suitable for physical incorporation into automatic data processing machines or units thereof"
+  },
+  {
+    "productNumber": "8471.80.99",
+    "productType": "Automatic data processing machines and units thereof; magnetic or optical readers, machines for transcribing data onto data media in coded form and machines for processing such data, not elsewhere specified or included.",
+    "productDescription": "Other units of automatic data processing machines: Other: Other"
+  },
+  {
+    "productNumber": "8513.10.10",
+    "productType": "Portable electric lamps designed to function by their own source of energy (for example, dry batteries, accumulators, magnetos), other than lighting equipment of heading 85.12.",
+    "productDescription": "Lamps: Flashlights; Miners' safety lamps"
+  },
+  {
+    "productNumber": "8513.10.90",
+    "productType": "Portable electric lamps designed to function by their own source of energy (for example, dry batteries, accumulators, magnetos), other than lighting equipment of heading 85.12.",
+    "productDescription": "Lamps: Other"
+  },
+  {
+    "productNumber": "8516.10.90",
+    "productType": "Electric instantaneous or storage water heaters and immersion heaters; electric space heating apparatus and soil heating apparatus; electro-thermic hair-dressing apparatus (for example, hair dryers, hair curlers, curling tong heaters) and hand dryers; electric smoothing irons; other electro-thermic appliances of a kind used for domestic purposes; electric heating resistors, other than those of heading 85.45.",
+    "productDescription": "Electric instantaneous or storage water heaters and immersion heaters: Other"
+  },
+  {
+    "productNumber": "8516.29.00",
+    "productType": "Electric instantaneous or storage water heaters and immersion heaters; electric space heating apparatus and soil heating apparatus; electro-thermic hair-dressing apparatus (for example, hair dryers, hair curlers, curling tong heaters) and hand dryers; electric smoothing irons; other electro-thermic appliances of a kind used for domestic purposes; electric heating resistors, other than those of heading 85.45.",
+    "productDescription": "Electric space heating apparatus and electric soil heating apparatus: Other"
+  },
+  {
+    "productNumber": "8517.11.00",
+    "productType": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks; other apparatus for the transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network), other than transmission or reception apparatus of heading 84.43, 85.25, 85.27 or 85.28.",
+    "productDescription": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks: Line telephone sets with cordless handsets"
+  },
+  {
+    "productNumber": "8517.13.00",
+    "productType": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks; other apparatus for the transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network), other than transmission or reception apparatus of heading 84.43, 85.25, 85.27 or 85.28.",
+    "productDescription": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks: Smartphones"
+  },
+  {
+    "productNumber": "8517.14.00",
+    "productType": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks; other apparatus for the transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network), other than transmission or reception apparatus of heading 84.43, 85.25, 85.27 or 85.28.",
+    "productDescription": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks: Other telephones for cellular networks or for other wireless networks"
+  },
+  {
+    "productNumber": "8517.18.00",
+    "productType": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks; other apparatus for the transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network), other than transmission or reception apparatus of heading 84.43, 85.25, 85.27 or 85.28.",
+    "productDescription": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks: Other"
+  },
+  {
+    "productNumber": "8517.62.00",
+    "productType": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks; other apparatus for the transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network), other than transmission or reception apparatus of heading 84.43, 85.25, 85.27 or 85.28.",
+    "productDescription": "Other apparatus for transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network): Machines for the reception, conversion and transmission or regeneration of voice, images or other data, including switching and routing apparatus"
+  },
+  {
+    "productNumber": "8517.69.00",
+    "productType": "Telephone sets, including smartphones and other telephones for cellular networks or for other wireless networks; other apparatus for the transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network), other than transmission or reception apparatus of heading 84.43, 85.25, 85.27 or 85.28.",
+    "productDescription": "Other apparatus for transmission or reception of voice, images or other data, including apparatus for communication in a wired or wireless network (such as a local or wide area network): Other"
+  },
+  {
+    "productNumber": "8518.10.00",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Microphones and stands therefor"
+  },
+  {
+    "productNumber": "8518.21.00",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Loudspeakers, whether or not mounted in their enclosures: Single loudspeakers, mounted in their enclosures"
+  },
+  {
+    "productNumber": "8518.22.00",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Loudspeakers, whether or not mounted in their enclosures: Multiple loudspeakers, mounted in the same enclosure"
+  },
+  {
+    "productNumber": "8518.29.00",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Loudspeakers, whether or not mounted in their enclosures: Other"
+  },
+  {
+    "productNumber": "8518.30.10",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers: Telephone handsets"
+  },
+  {
+    "productNumber": "8518.30.90",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers: Other"
+  },
+  {
+    "productNumber": "8518.40.00",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Audio-frequency electric amplifiers"
+  },
+  {
+    "productNumber": "8518.50.00",
+    "productType": "Microphones and stands therefor; loudspeakers, whether or not mounted in their enclosures; headphones and earphones, whether or not combined with a microphone, and sets consisting of a microphone and one or more loudspeakers; audio-frequency electric amplifiers; electric sound amplifier sets.",
+    "productDescription": "Electric sound amplifier sets"
+  },
+  {
+    "productNumber": "8528.59.90",
+    "productType": "Monitors and projectors, not incorporating television reception apparatus; reception apparatus for television, whether or not incorporating radio-broadcast receivers or sound or video recording or reproducing apparatus.",
+    "productDescription": "Other monitors: Other: Other"
+  },
+  {
+    "productNumber": "8528.72.33",
+    "productType": "Monitors and projectors, not incorporating television reception apparatus; reception apparatus for television, whether or not incorporating radio-broadcast receivers or sound or video recording or reproducing apparatus.",
+    "productDescription": "Reception apparatus for television, whether or not incorporating radio-broadcast receivers or sound or video recording or reproducing apparatus: Other, colour: High definition: Other, with flat panel screen"
+  },
+  {
+    "productNumber": "8708.22.00",
+    "productType": "Parts and accessories of the motor vehicles of headings 87.01 to 87.05.",
+    "productDescription": "Other parts and accessories of bodies (including cabs): Front windscreens (windshields), rear windows and other windows specified in Subheading Note 1 to this Chapter"
+  },
+  {
+    "productNumber": "9101.11.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, with case of precious metal or of metal clad with precious metal.",
+    "productDescription": "Wrist-watches, electrically operated, whether or not incorporating a stop-watch facility: With mechanical display only"
+  },
+  {
+    "productNumber": "9101.19.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, with case of precious metal or of metal clad with precious metal.",
+    "productDescription": "Wrist-watches, electrically operated, whether or not incorporating a stop-watch facility: Other"
+  },
+  {
+    "productNumber": "9102.11.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Wrist-watches, electrically operated, whether or not incorporating a stop-watch facility: With mechanical display only"
+  },
+  {
+    "productNumber": "9102.12.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Wrist-watches, electrically operated, whether or not incorporating a stop-watch facility: With opto-electronic display only"
+  },
+  {
+    "productNumber": "9102.19.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Wrist-watches, electrically operated, whether or not incorporating a stop-watch facility: Other"
+  },
+  {
+    "productNumber": "9102.21.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Other wrist-watches, whether or not incorporating a stop-watch facility: With automatic winding"
+  },
+  {
+    "productNumber": "9102.29.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Other wrist-watches, whether or not incorporating a stop-watch facility: Other"
+  },
+  {
+    "productNumber": "9102.91.10",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Other: Electrically operated: Stop-watches"
+  },
+  {
+    "productNumber": "9102.91.90",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Other: Electrically operated: Other"
+  },
+  {
+    "productNumber": "9102.99.00",
+    "productType": "Wrist-watches, pocket-watches and other watches, including stop-watches, other than those of heading 91.01.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "9401.91.00",
+    "productType": "Seats (other than those of heading 94.02), whether or not convertible into beds, and parts thereof.",
+    "productDescription": "Parts: Of wood"
+  },
+  {
+    "productNumber": "9401.99.00",
+    "productType": "Seats (other than those of heading 94.02), whether or not convertible into beds, and parts thereof.",
+    "productDescription": "Parts: Other"
+  },
+  {
+    "productNumber": "9403.91.00",
+    "productType": "Other furniture and parts thereof.",
+    "productDescription": "Parts: Of wood"
+  },
+  {
+    "productNumber": "9403.99.00",
+    "productType": "Other furniture and parts thereof.",
+    "productDescription": "Parts: Other"
+  },
+  {
+    "productNumber": "9404.30.00",
+    "productType": "Mattress supports; articles of bedding and similar furnishing (for example, mattresses, quilts, eiderdowns, cushions, pouffes and pillows) fitted with springs or stuffed or internally fitted with any material or of cellular rubber or plastics, whether or not covered.",
+    "productDescription": "Sleeping bags"
+  },
+  {
+    "productNumber": "9405.61.00",
+    "productType": "Luminaires and lighting fittings including searchlights and spotlights and parts thereof, not elsewhere specified or included; illuminated signs, illuminated name-plates and the like, having a permanently fixed light source, and parts thereof not elsewhere specified or included.",
+    "productDescription": "Illuminated signs, illuminated name-plates and the like: Designed for use solely with light-emitting diode (LED) light sources"
+  },
+  {
+    "productNumber": "9405.69.00",
+    "productType": "Luminaires and lighting fittings including searchlights and spotlights and parts thereof, not elsewhere specified or included; illuminated signs, illuminated name-plates and the like, having a permanently fixed light source, and parts thereof not elsewhere specified or included.",
+    "productDescription": "Illuminated signs, illuminated name-plates and the like: Other"
+  },
+  {
+    "productNumber": "9405.91.00",
+    "productType": "Luminaires and lighting fittings including searchlights and spotlights and parts thereof, not elsewhere specified or included; illuminated signs, illuminated name-plates and the like, having a permanently fixed light source, and parts thereof not elsewhere specified or included.",
+    "productDescription": "Parts: Of glass"
+  },
+  {
+    "productNumber": "9405.92.00",
+    "productType": "Luminaires and lighting fittings including searchlights and spotlights and parts thereof, not elsewhere specified or included; illuminated signs, illuminated name-plates and the like, having a permanently fixed light source, and parts thereof not elsewhere specified or included.",
+    "productDescription": "Parts: Of plastics"
+  },
+  {
+    "productNumber": "9405.99.00",
+    "productType": "Luminaires and lighting fittings including searchlights and spotlights and parts thereof, not elsewhere specified or included; illuminated signs, illuminated name-plates and the like, having a permanently fixed light source, and parts thereof not elsewhere specified or included.",
+    "productDescription": "Parts: Other"
+  },
+  {
+    "productNumber": "9406.10.90",
+    "productType": "Prefabricated buildings.",
+    "productDescription": "Of wood: Other"
+  },
+  {
+    "productNumber": "9406.20.00",
+    "productType": "Prefabricated buildings.",
+    "productDescription": "Modular building units, of steel"
+  },
+  {
+    "productNumber": "9406.90.11",
+    "productType": "Prefabricated buildings.",
+    "productDescription": "Other: Silos for storing ensilage: Unassembled or incomplete, of glass fibre reinforced plastics, for use in the manufacture of silos"
+  },
+  {
+    "productNumber": "9406.90.19",
+    "productType": "Prefabricated buildings.",
+    "productDescription": "Other: Silos for storing ensilage: Other"
+  },
+  {
+    "productNumber": "9406.90.20",
+    "productType": "Prefabricated buildings.",
+    "productDescription": "Other: Air-supported buildings"
+  },
+  {
+    "productNumber": "9406.90.90",
+    "productType": "Prefabricated buildings.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "9503.00.10",
+    "productType": "Tricycles, scooters, pedal cars and similar wheeled toys; dolls' carriages; dolls; other toys; reduced-size (\"scale\") models and similar recreational models, working or not; puzzles of all kinds.",
+    "productDescription": "Wheeled toys designed to be ridden by children (for example, tricycles, scooters, pedal cars); dolls' carriages"
+  },
+  {
+    "productNumber": "9503.00.90",
+    "productType": "Tricycles, scooters, pedal cars and similar wheeled toys; dolls' carriages; dolls; other toys; reduced-size (\"scale\") models and similar recreational models, working or not; puzzles of all kinds.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "9504.50.00",
+    "productType": "Video game consoles and machines, table or parlour games, including pintables, billiards, special tables for casino games and automatic bowling equipment, amusement machines operated by coins, bank notes, bank cards, tokens or by any other means of payment.",
+    "productDescription": "Video game consoles and machines, other than those of subheading 9504.30"
+  },
+  {
+    "productNumber": "9504.90.00",
+    "productType": "Video game consoles and machines, table or parlour games, including pintables, billiards, special tables for casino games and automatic bowling equipment, amusement machines operated by coins, bank notes, bank cards, tokens or by any other means of payment.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "9505.10.00",
+    "productType": "Festive, carnival or other entertainment articles, including conjuring tricks and novelty jokes.",
+    "productDescription": "Articles for Christmas festivities"
+  },
+  {
+    "productNumber": "9505.90.00",
+    "productType": "Festive, carnival or other entertainment articles, including conjuring tricks and novelty jokes.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "9506.11.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Snow-skis and other snow-ski equipment: Skis"
+  },
+  {
+    "productNumber": "9506.12.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Snow-skis and other snow-ski equipment: Ski-fastenings (ski-bindings)"
+  },
+  {
+    "productNumber": "9506.19.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Snow-skis and other snow-ski equipment: Other"
+  },
+  {
+    "productNumber": "9506.21.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Water-skis, surf-boards, sailboards and other water-sport equipment: Sailboards"
+  },
+  {
+    "productNumber": "9506.29.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Water-skis, surf-boards, sailboards and other water-sport equipment: Other"
+  },
+  {
+    "productNumber": "9506.32.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Golf clubs and other golf equipment: Balls"
+  },
+  {
+    "productNumber": "9506.39.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Golf clubs and other golf equipment: Other"
+  },
+  {
+    "productNumber": "9506.40.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Articles and equipment for table-tennis"
+  },
+  {
+    "productNumber": "9506.51.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Tennis, badminton or similar rackets, whether or not strung: Lawn-tennis rackets, whether or not strung"
+  },
+  {
+    "productNumber": "9506.59.10",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Tennis, badminton or similar rackets, whether or not strung: Other: Squash, badminton or racketball rackets"
+  },
+  {
+    "productNumber": "9506.59.90",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Tennis, badminton or similar rackets, whether or not strung: Other: Other"
+  },
+  {
+    "productNumber": "9506.61.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Balls, other than golf balls and table-tennis balls: Lawn-tennis balls"
+  },
+  {
+    "productNumber": "9506.62.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Balls, other than golf balls and table-tennis balls: Inflatable"
+  },
+  {
+    "productNumber": "9506.69.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Balls, other than golf balls and table-tennis balls: Other"
+  },
+  {
+    "productNumber": "9506.91.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Other: Articles and equipment for general physical exercise, gymnastics or athletics"
+  },
+  {
+    "productNumber": "9506.99.00",
+    "productType": "Articles and equipment for general physical exercise, gymnastics, athletics, other sports (including table-tennis) or outdoor games, not specified or included elsewhere in this Chapter; swimming pools and paddling pools.",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "9507.10.90",
+    "productType": "Fishing rods, fish-hooks and other line fishing tackle; fish landing nets, butterfly nets and similar nets; decoy \"birds\" (other than those of heading 92.08 or 97.05) and similar hunting or shooting requisites.",
+    "productDescription": "Fishing rods: Other"
+  },
+  {
+    "productNumber": "9507.30.00",
+    "productType": "Fishing rods, fish-hooks and other line fishing tackle; fish landing nets, butterfly nets and similar nets; decoy \"birds\" (other than those of heading 92.08 or 97.05) and similar hunting or shooting requisites.",
+    "productDescription": "Fishing reels"
+  },
+  {
+    "productNumber": "9507.90.10",
+    "productType": "Fishing rods, fish-hooks and other line fishing tackle; fish landing nets, butterfly nets and similar nets; decoy \"birds\" (other than those of heading 92.08 or 97.05) and similar hunting or shooting requisites.",
+    "productDescription": "Other: Sportsperson's fishing line, in retail packages"
+  },
+  {
+    "productNumber": "9507.90.91",
+    "productType": "Fishing rods, fish-hooks and other line fishing tackle; fish landing nets, butterfly nets and similar nets; decoy \"birds\" (other than those of heading 92.08 or 97.05) and similar hunting or shooting requisites.",
+    "productDescription": "Other: Other: Fish landing net bags for use in the manufacture of fish landing nets; Lures, jiggers, artificial bait, line floats and fishing lines (including marlines) of a circumference not exceeding 38 mm, to be employed in commercial fishing; Split rings and swivels for use in the manufacture of fishing lures"
+  },
+  {
+    "productNumber": "9507.90.99",
+    "productType": "Fishing rods, fish-hooks and other line fishing tackle; fish landing nets, butterfly nets and similar nets; decoy \"birds\" (other than those of heading 92.08 or 97.05) and similar hunting or shooting requisites.",
+    "productDescription": "Other: Other: Other"
+  },
+  {
+    "productNumber": "9508.21.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Amusement park rides and water park amusements: Roller coasters"
+  },
+  {
+    "productNumber": "9508.22.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Amusement park rides and water park amusements: Carousels, swings and roundabouts"
+  },
+  {
+    "productNumber": "9508.23.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Amusement park rides and water park amusements: Dodge'em cars"
+  },
+  {
+    "productNumber": "9508.24.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Amusement park rides and water park amusements: Motion simulators and moving theatres"
+  },
+  {
+    "productNumber": "9508.25.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Amusement park rides and water park amusements: Water rides"
+  },
+  {
+    "productNumber": "9508.26.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Amusement park rides and water park amusements: Water park amusements"
+  },
+  {
+    "productNumber": "9508.29.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Amusement park rides and water park amusements: Other"
+  },
+  {
+    "productNumber": "9508.30.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Fairground amusements"
+  },
+  {
+    "productNumber": "9508.40.00",
+    "productType": "Travelling circuses and travelling menageries; amusement park rides and water park amusements; fairground amusements, including shooting galleries; travelling theatres.",
+    "productDescription": "Travelling theatres"
+  },
+  {
+    "productNumber": "9603.10.10",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Brooms and brushes, consisting of twigs or other vegetable materials bound together, with or without handles: Brooms"
+  },
+  {
+    "productNumber": "9603.10.20",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Brooms and brushes, consisting of twigs or other vegetable materials bound together, with or without handles: Brushes"
+  },
+  {
+    "productNumber": "9603.29.00",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Tooth brushes, shaving brushes, hair brushes, nail brushes, eyelash brushes and other toilet brushes for use on the person, including such brushes constituting parts of appliances: Other"
+  },
+  {
+    "productNumber": "9603.30.10",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Artists' brushes, writing brushes and similar brushes for the application of cosmetics: Artists' brushes"
+  },
+  {
+    "productNumber": "9603.30.90",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Artists' brushes, writing brushes and similar brushes for the application of cosmetics: Other"
+  },
+  {
+    "productNumber": "9603.40.10",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Paint, distemper, varnish or similar brushes (other than brushes of subheading 9603.30); paint pads and rollers: Rollers of textile materials"
+  },
+  {
+    "productNumber": "9603.40.90",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Paint, distemper, varnish or similar brushes (other than brushes of subheading 9603.30); paint pads and rollers: Other"
+  },
+  {
+    "productNumber": "9603.50.00",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Other brushes constituting parts of machines, appliances or vehicles"
+  },
+  {
+    "productNumber": "9603.90.10",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Other: Brooms"
+  },
+  {
+    "productNumber": "9603.90.20",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Other: Hand-operated mechanical floor sweepers, not motorized"
+  },
+  {
+    "productNumber": "9603.90.30",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Other: Mops of textile materials"
+  },
+  {
+    "productNumber": "9603.90.90",
+    "productType": "Brooms, brushes (including brushes constituting parts of machines, appliances or vehicles), hand-operated mechanical floor sweepers, not motorized, mops and feather dusters; prepared knots and tufts for broom or brush making; paint pads and rollers; squeegees (other than roller squeegees).",
+    "productDescription": "Other: Other"
+  },
+  {
+    "productNumber": "9604.00.00",
+    "productType": "Hand sieves and hand riddles.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "9605.00.00",
+    "productType": "Travel sets for personal toilet, sewing or shoe or clothes cleaning.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "9610.00.00",
+    "productType": "Slates and boards, with writing or drawing surfaces, whether or not framed.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "9611.00.00",
+    "productType": "Date, sealing or numbering stamps, and the like (including devices for printing or embossing labels), designed for operating in the hand; hand-operated composing sticks, and hand printing sets incorporating such composing sticks.",
+    "productDescription": ""
+  },
+  {
+    "productNumber": "9613.80.10",
+    "productType": "Cigarette lighters and other lighters, whether or not mechanical or electrical, and parts thereof other than flints and wicks.",
+    "productDescription": "Other lighters: Table lighters"
+  },
+  {
+    "productNumber": "9613.80.90",
+    "productType": "Cigarette lighters and other lighters, whether or not mechanical or electrical, and parts thereof other than flints and wicks.",
+    "productDescription": "Other lighters: Other"
+  },
+  {
+    "productNumber": "9614.00.11",
+    "productType": "Smoking pipes (including pipe bowls) and cigar or cigarette holders, and parts thereof.",
+    "productDescription": "Pipes and pipe bowls: Meerschaum pipes, excluding those composed in part of briar wood; Roughly shaped blocks of wood or root, for pipes"
+  },
+  {
+    "productNumber": "9614.00.19",
+    "productType": "Smoking pipes (including pipe bowls) and cigar or cigarette holders, and parts thereof.",
+    "productDescription": "Pipes and pipe bowls: Other"
+  },
+  {
+    "productNumber": "9614.00.90",
+    "productType": "Smoking pipes (including pipe bowls) and cigar or cigarette holders, and parts thereof.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "9615.11.00",
+    "productType": "Combs, hair-slides and the like; hairpins, curling pins, curling grips, hair-curlers and the like, other than those of heading 85.16, and parts thereof.",
+    "productDescription": "Combs, hair-slides and the like: Of hard rubber or plastics"
+  },
+  {
+    "productNumber": "9615.19.00",
+    "productType": "Combs, hair-slides and the like; hairpins, curling pins, curling grips, hair-curlers and the like, other than those of heading 85.16, and parts thereof.",
+    "productDescription": "Combs, hair-slides and the like: Other"
+  },
+  {
+    "productNumber": "9615.90.00",
+    "productType": "Combs, hair-slides and the like; hairpins, curling pins, curling grips, hair-curlers and the like, other than those of heading 85.16, and parts thereof.",
+    "productDescription": "Other"
+  },
+  {
+    "productNumber": "9616.10.00",
+    "productType": "Scent sprays and similar toilet sprays, and mounts and heads therefor; powder-puffs and pads for the application of cosmetics or toilet preparations.",
+    "productDescription": "Scent sprays and similar toilet sprays, and mounts and heads therefor"
+  },
+  {
+    "productNumber": "9616.20.00",
+    "productType": "Scent sprays and similar toilet sprays, and mounts and heads therefor; powder-puffs and pads for the application of cosmetics or toilet preparations.",
+    "productDescription": "Powder-puffs and pads for the application of cosmetics or toilet preparations"
+  },
+  {
+    "productNumber": "9620.00.21",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "For photographic cameras: Tripods"
+  },
+  {
+    "productNumber": "9620.00.29",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "For photographic cameras: Other"
+  },
+  {
+    "productNumber": "9620.00.30",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "For monoculars; For other astronomical instruments"
+  },
+  {
+    "productNumber": "9620.00.40",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "For other machines, appliances, instruments or apparatus of Chapter 90"
+  },
+  {
+    "productNumber": "9620.00.91",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "Other: Of graphite or other carbon"
+  },
+  {
+    "productNumber": "9620.00.92",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "Other: Of wood"
+  },
+  {
+    "productNumber": "9620.00.93",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "Other: Of aluminum"
+  },
+  {
+    "productNumber": "9620.00.99",
+    "productType": "Monopods, bipods, tripods and similar articles.",
+    "productDescription": "Other: Other"
   }
 ]

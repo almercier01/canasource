@@ -92,7 +92,7 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
               </h3>
               <p className="mt-1 text-sm text-gray-700">{item.productDescription}</p>
               <a
-                href={`/register-offer?code=${item.productNumber}`}
+                href={`/register?code=${encodeURIComponent(item.productType)}`}
                 className="mt-3 inline-block text-blue-600 hover:underline"
               >
                 {language === 'fr' ? 'Proposer ce produit' : 'Provide This Product'}

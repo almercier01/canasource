@@ -8,7 +8,7 @@ import { ImageUpload } from './ImageUpload';
 import { Boutique } from './boutique/Boutique';
 import { loadGoogleMapsLibrary } from '../lib/googleMapsLoader';
 import { useNavigate } from 'react-router-dom';
-
+import { useSearchParams } from 'react-router-dom';
 
 interface RegisterFormProps {
   onCancel: () => void;
@@ -17,6 +17,10 @@ interface RegisterFormProps {
 }
 
 export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFormProps) {
+
+  const [searchParams] = useSearchParams();
+  const initialProduct = searchParams.get('code') || '';
+
   const [formData, setFormData] = useState({
     name: '',
     description_en: '',
@@ -69,11 +73,36 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
 
       // Pre-fill form email with the user’s email
       setFormData((prev) => ({ ...prev, email: userEmail }));
+
+      // ✅ Check for existing business
+    const { data: existingBusiness, error: checkError } = await supabase
+    .from('businesses')
+    .select('*')
+    .eq('owner_id', data.user.id)
+    .maybeSingle();
+
+  if (checkError) {
+    throw checkError;
+  }
+
+  if (existingBusiness) {
+    // ✅ Redirect to edit page with product code
+    navigate(`/edit-business?id=${existingBusiness.id}&code=${encodeURIComponent(initialProduct)}`);
+    return;
+  }
+
+  // ✅ No business: pre-fill product field
+  if (initialProduct) {
+    setFormData((prev) => ({ ...prev, products: initialProduct }));
+  }
+      
     } catch (err) {
       console.error('Error checking authentication:', err);
       setError(translations.auth.signInRequired[language]);
     }
   };
+
+  
 
   const validateWebsite = (url: string): string => {
     if (!url) return url;

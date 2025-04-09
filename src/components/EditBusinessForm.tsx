@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { PROVINCES, ProvinceCode, Language, Business } from '../types';
 import { translations } from '../i18n/translations';
 import { supabase } from '../lib/supabaseClient';
+import { useSearchParams } from 'react-router-dom';
 
 interface EditBusinessFormProps {
   business: Business;
@@ -12,6 +13,10 @@ interface EditBusinessFormProps {
 }
 
 export function EditBusinessForm({ business, onCancel, onSave, language }: EditBusinessFormProps) {
+
+  const [searchParams] = useSearchParams();
+const newProduct = searchParams.get('code') || '';
+
   const [formData, setFormData] = useState({
     name: business.name || '',
     description_en: business.description_en || '',
@@ -37,6 +42,16 @@ export function EditBusinessForm({ business, onCancel, onSave, language }: EditB
   useEffect(() => {
     checkOwnership();
   }, []);
+
+  useEffect(() => {
+    if (newProduct && !formData.products.includes(newProduct)) {
+      setFormData((prev) => ({
+        ...prev,
+        products: prev.products ? `${prev.products}, ${newProduct}` : newProduct,
+      }));
+    }
+  }, [newProduct]);
+  
 
   const checkOwnership = async () => {
 

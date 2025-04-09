@@ -20,7 +20,7 @@ import { EditBusinessForm } from './EditBusinessForm';
 import { CommentSection } from './CommentSection';
 import { supabase } from '../lib/supabaseClient';
 import { AuthModal } from './auth/AuthModal';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { BoutiqueView } from '../components/boutique/BoutiqueView';
 
@@ -40,6 +40,9 @@ export function BusinessListing({
 }: BusinessListingProps) {
   const { id } = useParams(); // e.g. /business/:id
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
+const shouldRefetch = searchParams.get('refetched') === 'true';
 
   // Local state for fetched business if none was passed in
   const [businessDetails, setBusinessDetails] = useState<Business | null>(null);
@@ -73,7 +76,7 @@ export function BusinessListing({
     if (!business && id) {
       fetchBusiness(id);
     }
-  }, [id, business]);
+  }, [id, business, shouldRefetch]);
 
   useEffect(() => {
     if (effectiveBusiness) {
@@ -331,6 +334,7 @@ export function BusinessListing({
         onCancel={() => setShowEditForm(false)}
         onSave={() => {
           setShowEditForm(false);
+          navigate(`/business/${effectiveBusiness.id}?refetched=true`);
           handleUpdate(); // ✅ Ensure latest data is fetched
           if (onUpdate) onUpdate();
         }}

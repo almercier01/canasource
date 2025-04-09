@@ -21,6 +21,7 @@ import { BoutiqueView } from './components/boutique/BoutiqueView';
 import { ProductForm } from './components/boutique/ProductForm';
 import { useParams } from 'react-router-dom';
 import { FindSourcing } from './components/FindSourcing';
+import { EditBusinessRouteWrapper } from './components/routes/EditBusinessRouteWrapper';
 
 export default function App() {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ export default function App() {
       setLanguage(storedLang);
     }
   }, []);
-  
+
 
   useEffect(() => {
     document.title = translations.siteTitle[language];
@@ -183,10 +184,10 @@ export default function App() {
           element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />}
         />
 
-<Route
-  path="/find-sourcing"
-  element={<FindSourcing language={language} resetKey={findSourcingResetKey} />}
-/>
+        <Route
+          path="/find-sourcing"
+          element={<FindSourcing language={language} resetKey={findSourcingResetKey} />}
+        />
 
         <Route
           path="/search"
@@ -232,6 +233,17 @@ export default function App() {
         <Route
           path="/requests"
           element={<RequestsPage language={language} />}
+        />
+
+        <Route
+          path="/edit-business"
+          element={
+            <EditBusinessRouteWrapper
+              language={language}
+              onCancel={() => navigate('/')}
+              onSave={() => navigate('/user-dashboard')}
+            />
+          }
         />
 
         <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
