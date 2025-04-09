@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { translations } from '../i18n/translations';
 import { Language } from '../types';
+import { useLocation } from 'react-router-dom';
+import { RequestOfferForm } from './RequestOfferForm';
 
 interface RequestOffer {
   id: string;
@@ -26,6 +28,10 @@ export function RequestsPage({ language }: RequestsPageProps) {
   const [offers, setOffers] = useState<RequestOffer[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [loading, setLoading] = useState(false);
+
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const showForm = searchParams.get('showForm') === 'true';
 
   useEffect(() => {
     fetchOffers();
@@ -106,6 +112,23 @@ export function RequestsPage({ language }: RequestsPageProps) {
 
   return (
     <div className="max-w-3xl mx-auto p-4">
+       <h1 className="text-2xl font-bold mb-2">
+        {language === 'fr' ? 'Offres Recherchées' : 'Requested Offers'}
+      </h1>
+
+      {showForm && (
+        <div className="mb-6">
+          <RequestOfferForm
+            language={language}
+            onCancel={() => window.history.pushState({}, '', '/requests')}
+            onSuccess={() => {
+              setSearchTerm('');
+              setPage(1);
+              fetchOffers(); // refresh list
+            }}
+          />
+        </div>
+      )}
       <h1 className="text-2xl font-bold mb-2">
         {language === 'fr' ? 'Offres Recherchées' : 'Requested Offers'}
       </h1>

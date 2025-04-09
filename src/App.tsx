@@ -22,6 +22,8 @@ import { ProductForm } from './components/boutique/ProductForm';
 import { useParams } from 'react-router-dom';
 import { FindSourcing } from './components/FindSourcing';
 import { EditBusinessRouteWrapper } from './components/routes/EditBusinessRouteWrapper';
+import { Carousel } from './components/LandingCarousel';
+
 
 export default function App() {
   const navigate = useNavigate();
@@ -169,12 +171,31 @@ export default function App() {
                 onExploreClick={handleExploreClick}
                 onRegisterClick={handleRegisterClick}
               />
+              <div className="max-w-5xl mx-auto px-4 py-6">
+                <Carousel language={language} />
+              </div>
+
+
               {/* Show RequestedOffersSection ONLY on / */}
               <FindSourcing language={language} resetKey={findSourcingResetKey} /> {/* New section on homepage */}
-              <RequestedOffersSection
-                language={language}
-                user={user}
-              />
+              {/* CTA instead of RequestedOffersSection */}
+              <div className="text-center mt-8 px-4">
+                <button
+                  onClick={() => navigate('/requests?showForm=true')}
+                  className="bg-red-600 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow hover:bg-red-700"
+                >
+                  {language === 'fr'
+                    ? 'Découvrez ce que le Canada peut produire !'
+                    : 'Discover What Canada Can Make!'}
+                </button>
+                <p className="text-gray-600 mt-2 max-w-xl mx-auto">
+                  {language === 'fr'
+                    ? "Vous ne trouvez pas de fournisseur ? Soumettez une demande ou voyez ce que recherchent les autres."
+                    : "Can’t find a supplier? Put a request out or see what other people are looking for."}
+                </p>
+              </div>
+
+
             </>
           }
         />
