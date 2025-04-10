@@ -39,6 +39,8 @@ export interface Business {
 
   // If you need to track the owner user:
   owner_id?: string;
+
+  issample?: boolean;
 }
 
 export type Language = 'en' | 'fr';

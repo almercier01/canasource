@@ -348,13 +348,22 @@ const shouldRefetch = searchParams.get('refetched') === 'true';
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
 
       {/* Top image bar */}
-      <div className="relative h-48">
-        <img
-          src={displayedImage}
-          alt={effectiveBusiness.name}
-          className="w-full h-full object-cover"
-        />
+      
+      <div className="relative bg-white flex items-center justify-center h-48 p-4">
+      {effectiveBusiness.issample && (
+    <div className="absolute top-2 left-2 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md z-10">
+      {language === 'en' ? 'Sample Listing' : 'Annonce Démo'}
+    </div>
+  )}
+        
+  <img
+    src={displayedImage}
+    alt={effectiveBusiness.name}
+    className="max-h-full max-w-full object-contain"
+  />
+
         <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-medium text-gray-700 shadow-sm">
+          
           {language === 'en' ? effectiveBusiness.province_en : effectiveBusiness.province_fr}
         </div>
         <div className="absolute bottom-4 right-4 flex space-x-2">
@@ -439,22 +448,27 @@ const shouldRefetch = searchParams.get('refetched') === 'true';
         </div>
 
         {effectiveBusiness.website && (
-          <div className="mt-2 flex items-center text-gray-500">
-            <Globe className="h-4 w-4 flex-shrink-0" />
-            <a
-              href={
-                effectiveBusiness.website.startsWith('http')
-                  ? effectiveBusiness.website
-                  : `https://${effectiveBusiness.website}`
-              }
-              className="ml-2 text-red-600 hover:text-red-700"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {effectiveBusiness.website}
-            </a>
-          </div>
-        )}
+  <div className="mt-2 flex items-center text-gray-500">
+    <Globe className="h-4 w-4 flex-shrink-0" />
+    {effectiveBusiness.issample ? (
+      <span className="ml-2 text-gray-700">{effectiveBusiness.website}</span>
+    ) : (
+      <a
+        href={
+          effectiveBusiness.website.startsWith('http')
+            ? effectiveBusiness.website
+            : `https://${effectiveBusiness.website}`
+        }
+        className="ml-2 text-red-600 hover:text-red-700"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {effectiveBusiness.website}
+      </a>
+    )}
+  </div>
+)}
+
 
         {effectiveBusiness.phone && (
           <div className="mt-2 flex items-center text-gray-500">
