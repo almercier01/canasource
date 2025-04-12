@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Send, X } from 'lucide-react';
 import { supabase } from '../../lib/supabaseClient';
 import { Language } from '../../types';
+import { useNavigate } from 'react-router-dom'; // add this at the top
+import { FileLinkModal } from './FileLinkModal';
+
 
 interface ChatWindowProps {
   roomId: string;
@@ -15,9 +18,13 @@ interface Message {
   content: string;
   sender_id: string;
   created_at: string;
+  type?: string; // 👈 Add this (optional, since existing messages may not have it)
 }
 
 export function ChatWindow({ roomId, businessName, language, onClose }: ChatWindowProps) {
+
+  const navigate = useNavigate(); // 👈 hook for routing
+
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState('');
   const [loading, setLoading] = useState(true);
@@ -28,6 +35,7 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
   const channelRef = useRef<any>(null);
   const [isAtBottom, setIsAtBottom] = useState(true);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     checkUser();
@@ -61,12 +69,44 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
       const { scrollTop, scrollHeight, clientHeight } = messageContainerRef.current;
       const isBottom = Math.abs(scrollHeight - clientHeight - scrollTop) < 10;
       setIsAtBottom(isBottom);
-      
+
       if (isBottom) {
         setUnreadCount(0);
       }
     }
   };
+  const handleFileLinkSubmit = async (link: string) => {
+    console.log('[Modal] Submitted link:', link); // ✅ Step 1
+  
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
+        console.warn('[Modal] No authenticated user found');
+        return;
+      }
+  
+      const { error, data } = await supabase.from('chat_messages').insert([
+        {
+          room_id: roomId,
+          sender_id: user.id,
+          content: link,
+          type: 'file_link',
+        },
+      ]);
+  
+      if (error) {
+        console.error('[Supabase] Error inserting file link message:', error);
+        return;
+      }
+  
+      console.log('[Supabase] File link inserted successfully:', data);
+  
+    } catch (err) {
+      console.error('[handleFileLinkSubmit] Unexpected error:', err);
+      setError(language === 'en' ? 'Error sending file link' : 'Erreur lors de l\'envoi du lien du fichier');
+    }
+  };
+  
 
   const scrollToBottom = () => {
     if (messagesEndRef.current) {
@@ -125,10 +165,10 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
-  
+
     const messageContent = newMessage.trim();
     setNewMessage('');
-  
+
     try {
       const { error } = await supabase
         .from('chat_messages')
@@ -139,9 +179,9 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
             content: messageContent,
           },
         ]);
-  
+
       if (error) throw error;
-  
+
       // ✅ No need to setMessages here — realtime listener will handle it
       setIsAtBottom(true);
       scrollToBottom();
@@ -151,14 +191,17 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
       setNewMessage(messageContent); // Optional: re-fill input if failed
     }
   };
-  
+
 
   return (
     <div className="fixed bottom-4 right-4 w-96 bg-white rounded-lg shadow-xl flex flex-col z-50 max-h-[80vh]">
       <div className="flex items-center justify-between p-4 border-b bg-white rounded-t-lg">
         <h3 className="font-medium text-gray-900 truncate">{businessName}</h3>
         <button
-          onClick={onClose}
+          onClick={() => {
+            onClose();           // 👈 if needed for visibility state
+            navigate('/user-dashboard'); // 👈 resets route
+          }}
           className="p-1 hover:bg-gray-100 rounded-full transition-colors"
           aria-label={language === 'en' ? 'Close chat' : 'Fermer le chat'}
         >
@@ -166,7 +209,7 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
         </button>
       </div>
 
-      <div 
+      <div
         ref={messageContainerRef}
         onScroll={handleScroll}
         className="flex-1 p-4 overflow-y-auto min-h-[300px] max-h-[500px] scroll-smooth"
@@ -189,13 +232,25 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
                 className={`flex ${message.sender_id === user?.id ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-[75%] rounded-lg px-4 py-2 ${
-                    message.sender_id === user?.id
+                  className={`max-w-[75%] rounded-lg px-4 py-2 ${message.sender_id === user?.id
                       ? 'bg-red-600 text-white'
                       : 'bg-gray-100 text-gray-900'
-                  }`}
+                    }`}
                 >
-                  <p className="text-sm break-words">{message.content}</p>
+                  {message.type === 'file_link' || message.content.startsWith('http') ? (
+                    <a
+                      href={message.content}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      download
+                      className="text-sm break-words text-blue-600 underline hover:text-blue-800"
+                    >
+                      {language === 'en' ? 'Download file' : 'Télécharger le fichier'}
+                    </a>
+                  ) : (
+                    <p className="text-sm break-words">{message.content}</p>
+                  )}
+
                   <p className="text-xs mt-1 opacity-75">
                     {new Date(message.created_at).toLocaleTimeString()}
                   </p>
@@ -229,6 +284,27 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
             placeholder={language === 'en' ? 'Type a message...' : 'Tapez un message...'}
             className="flex-1 border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-red-500 focus:border-transparent"
           />
+          <div>
+            {/* Existing chat UI */}
+            {showModal && (
+              <FileLinkModal
+                language={language}
+                onClose={() => setShowModal(false)}
+                onSubmit={handleFileLinkSubmit}
+              />
+            )}
+
+            {/* Your existing message list and input fields */}
+            <button
+              type="button"
+              onClick={() => setShowModal(true)}
+              className="px-2 py-2 bg-gray-100 rounded-lg hover:bg-gray-200"
+              aria-label={language === 'en' ? 'Send file link' : 'Envoyer le lien du fichier'}
+            >
+              📎
+            </button>
+          </div>
+
           <button
             type="submit"
             disabled={!newMessage.trim()}
