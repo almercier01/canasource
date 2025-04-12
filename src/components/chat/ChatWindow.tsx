@@ -125,37 +125,33 @@ export function ChatWindow({ roomId, businessName, language, onClose }: ChatWind
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newMessage.trim()) return;
-
+  
     const messageContent = newMessage.trim();
     setNewMessage('');
-
+  
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('chat_messages')
         .insert([
           {
             room_id: roomId,
             sender_id: user.id,
-            content: messageContent
-          }
-        ])
-        .select()
-        .single();
-
+            content: messageContent,
+          },
+        ]);
+  
       if (error) throw error;
-
-      // Optimistically add the message to the UI
-      if (data) {
-        setMessages(prev => [...prev, data]);
-        setIsAtBottom(true);
-        scrollToBottom();
-      }
+  
+      // ✅ No need to setMessages here — realtime listener will handle it
+      setIsAtBottom(true);
+      scrollToBottom();
     } catch (err) {
       console.error('Error sending message:', err);
       setError(language === 'en' ? 'Error sending message' : 'Erreur lors de l\'envoi du message');
-      setNewMessage(messageContent);
+      setNewMessage(messageContent); // Optional: re-fill input if failed
     }
   };
+  
 
   return (
     <div className="fixed bottom-4 right-4 w-96 bg-white rounded-lg shadow-xl flex flex-col z-50 max-h-[80vh]">
