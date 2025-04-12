@@ -5,6 +5,7 @@ import { Language } from '../../types';
 import { ChatList } from '../chat/ChatList';
 import { useNavigate } from 'react-router-dom'; // Use useNavigate for navigation
 import { Listing } from './Listing';
+import { ConnectionFeed } from './ConnectionFeed'; // 👈 Add this at the top
 
 
 interface UserDashboardProps {
@@ -17,14 +18,17 @@ interface ConnectionRequest {
   status: string;
   message: string;
   created_at: string;
-  business: {
-    id: string;
-    name: string;
-    city: string;
-    province: string;
-  };
+  business_id: string;
+  business_name: string;
+  business_city: string;
+  province_en: string;
+  province_fr: string;
   requester_email: string;
+  requester_id: string;
 }
+
+
+
 
 export function UserDashboard({ language, onClose }: UserDashboardProps) {
   const [activeTab, setActiveTab] = useState<'received' | 'sent' | 'messages'>('received');
@@ -35,6 +39,7 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
   const [sentRequests, setSentRequests] = useState<ConnectionRequest[]>([]);
   const [businessId, setBusinessId] = useState<string | null>(null); // State to store the business ID
   const navigate = useNavigate(); // Hook to navigate in React Router
+  const [notifications, setNotifications] = useState<any[]>([]);
 
   useEffect(() => {
     checkListings();
@@ -58,20 +63,41 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
       fetchReceivedRequests();
     } else if (activeTab === 'sent') {
       fetchSentRequests();
+    } else if (activeTab === 'messages') {
+      fetchNotifications(); // New tab or additional display
     }
   }, [activeTab]);
+
+
+  const fetchNotifications = async () => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+
+      const { data, error } = await supabase
+        .from('notifications')
+        .select('*')
+        .eq('user_id', user.id)
+        .order('created_at', { ascending: false });
+
+      if (error) throw error;
+
+      setNotifications(data || []);
+    } catch (err) {
+      console.error('Error fetching notifications:', err);
+      setNotifications([]);
+    }
+  };
 
   const checkListings = async () => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
 
-      // Fetch businesses owned by the user
       const { data, error } = await supabase
         .from('businesses')
-        .select('id, name, city, province_en, province_fr') // ✅ Use updated columns
-        .eq('owner_id', user.id)
-        .maybeSingle(); // ✅ Allows returning null instead of error
+        .select('id, name, city, province_en, province_fr')
+        .eq('owner_id', user.id);
 
       if (error) {
         console.error('Error checking listings:', error);
@@ -79,15 +105,15 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
         return;
       }
 
-      if (!data) {
-        // ✅ No businesses found for the user
+      if (!data || data.length === 0) {
         setHasListings(false);
         setBusinessId(null);
         return;
       }
 
+      // ✅ Safe access now
       setHasListings(true);
-      setBusinessId(data.id);
+      setBusinessId(data[0].id);
     } catch (err) {
       console.error('Error checking listings:', err);
       setHasListings(false);
@@ -98,32 +124,17 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
 
 
 
+
   const fetchReceivedRequests = async () => {
+    setLoading(true);
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        throw new Error(language === 'en' ? 'Please sign in' : 'Veuillez vous connecter');
-      }
+      if (!user) throw new Error(language === 'en' ? 'Please sign in' : 'Veuillez vous connecter');
 
-      // Get all businesses owned by the user
-      const { data: businesses, error: businessError } = await supabase
-        .from('businesses')
-        .select('id, name, city, province_en, province_fr') // ✅ Updated columns
-        .eq('owner_id', user.id);
-
-      if (businessError) throw businessError;
-
-      if (!businesses || businesses.length === 0) {
-        setReceivedRequests([]);
-        return;
-      }
-
-      // Then get all connection requests for these businesses
-      const businessIds = businesses.map(b => b.id);
       const { data: requests, error: requestError } = await supabase
         .from('connection_requests_with_details')
         .select('*')
-        .in('business_id', businessIds)
+        .eq('business_owner_id', user.id)
         .order('created_at', { ascending: false });
 
       if (requestError) throw requestError;
@@ -131,49 +142,130 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
       setReceivedRequests(requests || []);
     } catch (err) {
       console.error('Error fetching received requests:', err);
-      setReceivedRequests([]); // ✅ Prevent errors if no data
+      setReceivedRequests([]);
+    } finally {
+      setLoading(false); // ✅ This is what was missing
     }
   };
 
 
 
+
+
   const fetchSentRequests = async () => {
+    setLoading(true);
     try {
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        throw new Error(language === 'en' ? 'Please sign in' : 'Veuillez vous connecter');
-      }
+      if (!user) throw new Error(language === 'en' ? 'Please sign in' : 'Veuillez vous connecter');
 
-      const { data: requests, error: requestError } = await supabase
+      const { data: requests, error } = await supabase
         .from('connection_requests_with_details')
         .select('*')
         .eq('requester_id', user.id)
         .order('created_at', { ascending: false });
 
-      if (requestError) throw requestError;
+      if (error) throw error;
 
       setSentRequests(requests || []);
     } catch (err) {
       console.error('Error fetching sent requests:', err);
-      setSentRequests([]); // ✅ Ensure empty state instead of error
+      setSentRequests([]);
+    } finally {
+      setLoading(false); // ✅ Here too
     }
   };
 
 
 
-  const handleRequestAction = async (requestId: string, status: 'accepted' | 'rejected') => {
-    try {
-      const { error } = await supabase
-        .from('connection_requests')
-        .update({ status })
-        .eq('id', requestId);
 
-      if (error) throw error;
-      fetchReceivedRequests();
-    } catch (err) {
-      console.error('Error updating request:', err);
+
+
+// ✅ Updated handleRequestAction with chat room creation and optional deletion
+const handleRequestAction = async (requestId: string, status: 'accepted' | 'rejected') => {
+  try {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('User not authenticated');
+
+    // Fetch the request details
+    const { data: request, error: fetchError } = await supabase
+      .from('connection_requests_with_details')
+      .select('*')
+      .eq('id', requestId)
+      .maybeSingle();
+
+    if (fetchError || !request) throw fetchError || new Error('Request not found');
+
+    // Update the request status
+    const { error: updateError } = await supabase
+      .from('connection_requests')
+      .update({ status })
+      .eq('id', requestId);
+
+    if (updateError) throw updateError;
+
+    if (status === 'accepted') {
+      // Create a chat room if not already created
+      const { data: existingRoom } = await supabase
+        .from('chat_rooms')
+        .select('id')
+        .eq('business_id', request.business_id)
+        .eq('member_id', request.requester_id)
+        .maybeSingle();
+
+      if (!existingRoom) {
+        await supabase.from('chat_rooms').insert({
+          business_id: request.business_id,
+          owner_id: request.business_owner_id,
+          member_id: request.requester_id,
+          connection_request_id: requestId
+        });
+      }
+
+      // Create notification for requester
+      await supabase.from('notifications').insert({
+        user_id: request.requester_id,
+        type: 'connection_request_accepted',
+        title: 'Request Accepted',
+        message: 'Your request was accepted!',
+        data: {
+          business_id: request.business_id,
+          business_name: request.business_name,
+          request_id: requestId
+        },
+        read: false,
+        emailed: true,
+        created_at: new Date().toISOString()
+      });
     }
-  };
+
+    if (status === 'rejected') {
+      // Send declined notification first
+      await supabase.from('notifications').insert({
+        user_id: request.requester_id,
+        type: 'connection_request_declined',
+        title: 'Request Declined',
+        message: 'Your request was declined.',
+        data: {
+          business_id: request.business_id,
+          business_name: request.business_name,
+          request_id: requestId
+        },
+        read: false,
+        emailed: true,
+        created_at: new Date().toISOString()
+      });
+
+      // Optional: Delete the rejected request
+      await supabase.from('connection_requests').delete().eq('id', requestId);
+    }
+
+    // Refresh requests
+    fetchReceivedRequests();
+  } catch (err) {
+    console.error('Error updating request:', err);
+  }
+};
+
 
   // Function to navigate to the business listing
   const viewBusinessListing = () => {
@@ -185,38 +277,29 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
 
   return (
     <div className="fixed inset-0 bg-gray-100 z-50 overflow-y-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <button
-            onClick={onClose}
-            className="flex items-center text-gray-600 hover:text-red-600"
-          >
-            <ArrowLeft className="h-5 w-5 mr-2" />
-            {language === 'en' ? 'Back' : 'Retour'}
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="flex items-center justify-between mb-6">
+        <button onClick={onClose} className="flex items-center text-gray-600 hover:text-red-600">
+          <ArrowLeft className="h-5 w-5 mr-2" />
+          {language === 'en' ? 'Back' : 'Retour'}
+        </button>
+        <h1 className="text-2xl font-bold text-gray-900">
+          {language === 'en' ? 'My Dashboard' : 'Mon tableau de bord'}
+        </h1>
+      </div>
+
+      {/* Always Show Feed */}
+      <ConnectionFeed language={language} />
+
+      {hasListings && businessId && <Listing language={language} businessId={businessId} />}
+
+      {hasListings && (
+        <div className="mb-4">
+          <button onClick={viewBusinessListing} className="text-blue-600 hover:text-blue-800">
+            {language === 'en' ? 'View My Business Listing' : 'Voir mon annonce'}
           </button>
-          <h1 className="text-2xl font-bold text-gray-900">
-            {language === 'en' ? 'My Dashboard' : 'Mon tableau de bord'}
-          </h1>
         </div>
-        {/* Display if user has no listings */}
-        {!hasListings && (
-          <div className="text-center text-gray-500 mt-4">
-            {language === 'en'
-              ? "You don't have any business listings yet."
-              : "Vous n'avez pas encore d'annonce d'entreprise."}
-          </div>
-        )}
-        {hasListings && businessId && <Listing language={language} businessId={businessId} />}
-        {hasListings && (
-          <div className="mb-4">
-            <button
-              onClick={viewBusinessListing}
-              className="text-blue-600 hover:text-blue-800"
-            >
-              {language === 'en' ? 'View My Business Listing' : 'Voir mon annonce'}
-            </button>
-          </div>
-        )}
+      )}
 
         <div className="bg-white rounded-lg shadow">
           <div className="border-b border-gray-200">
@@ -292,10 +375,13 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
                         <div className="flex justify-between items-start">
                           <div>
                             <h3 className="font-medium text-gray-900">
-                              {request.business.name}
+                              {request.business_name}
                             </h3>
                             <p className="text-sm text-gray-500">
                               {language === 'en' ? 'From:' : 'De:'} {request.requester_email}
+                            </p>
+                            <p className="text-sm text-gray-500 flex items-center mt-1">
+                              📍 {request.business_city}, {language === 'en' ? request.province_en : request.province_fr}
                             </p>
                             <p className="text-sm text-gray-500 flex items-center mt-1">
                               <Clock className="h-4 w-4 mr-1" />
@@ -378,7 +464,7 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
                         <div className="flex justify-between items-start">
                           <div>
                             <h3 className="font-medium text-gray-900">
-                              {request.business.name}
+                              {request.business_name}
                             </h3>
                             <p className="text-sm text-gray-500 flex items-center mt-1">
                               <Clock className="h-4 w-4 mr-1" />

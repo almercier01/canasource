@@ -65,6 +65,7 @@ export function Header({
   const handleAuthSuccess = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
+    setShowAuthModal(false); // ✅ Ensures modal closes here too
   };
 
   const handleLogout = async () => {

@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { MessageSquare, X } from 'lucide-react';
 import { supabase } from '../../lib/supabaseClient';
 import { Language } from '../../types';
-import { ChatWindow } from './ChatWindow';
+import { Chat } from './Chat';
 
 interface ChatListProps {
   language: Language;
   onClose: () => void;
 }
 
-interface ChatRoom {
+interface Chat {
   id: string;
   business_name: string;
   owner_email: string;
@@ -18,7 +18,7 @@ interface ChatRoom {
 }
 
 export function ChatList({ language, onClose }: ChatListProps) {
-  const [rooms, setRooms] = useState<ChatRoom[]>([]);
+  const [rooms, setRooms] = useState<Chat[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [activeRoom, setActiveRoom] = useState<string | null>(null);
@@ -130,11 +130,11 @@ export function ChatList({ language, onClose }: ChatListProps) {
       </div>
 
       {activeRoom && (
-        <ChatWindow
+        <Chat
           roomId={activeRoom}
           businessName={activeBusiness}
           language={language}
-          onClose={() => setActiveRoom(null)}
+          // onClose={() => setActiveRoom(null)}
         />
       )}
     </div>

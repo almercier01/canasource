@@ -473,11 +473,22 @@ case 'clear':
             <p>No businesses found</p>
           ) : (
             <ul>
-              {overview.byProvince.map((p) => (
-                <li key={p.province ?? 'none'}>
-                  Province: {p.province ? translations.provinces[p.province][language] : 'N/A'} – Count: {p.cnt}
-                </li>
-              ))}
+{overview.byProvince.map((p) => {
+  const rawKey = p.province ?? '';
+  const provinceKey = rawKey.trim() as keyof typeof translations.provinces;
+
+  const label = provinceKey in translations.provinces
+  ? translations.provinces[provinceKey as keyof typeof translations.provinces][language]
+  : rawKey || 'N/A';
+
+  return (
+    <li key={provinceKey}>
+      Province: {label} – Count: {p.cnt}
+    </li>
+  );
+})}
+
+
             </ul>
           )}
         </div>
@@ -489,11 +500,21 @@ case 'clear':
             <p>No businesses found</p>
           ) : (
             <ul>
-              {overview.byCategory.map((c) => (
-                <li key={c.category ?? 'none'}>
-                  Category: {c.category ? translations.categories[c.category][language] : 'N/A'} – Count: {c.cnt}
-                </li>
-              ))}
+             {overview.byCategory.map((c) => {
+  const rawKey = c.category ?? '';
+  const categoryKey = rawKey.trim();
+
+  const label = categoryKey in translations.categories
+    ? translations.categories[categoryKey as keyof typeof translations.categories][language]
+    : rawKey || 'N/A';
+
+  return (
+    <li key={categoryKey}>
+      Category: {label} – Count: {c.cnt}
+    </li>
+  );
+})}
+
             </ul>
           )}
         </div>

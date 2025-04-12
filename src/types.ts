@@ -41,6 +41,9 @@ export interface Business {
   owner_id?: string;
 
   issample?: boolean;
+  about_en?: string;
+  about_fr?: string;
+  languages: string[];
 }
 
 export type Language = 'en' | 'fr';

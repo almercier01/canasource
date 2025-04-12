@@ -166,7 +166,27 @@ export function NotificationCenter({ language }: NotificationCenterProps) {
                   <div
                     key={notification.id}
                     className={`p-4 cursor-pointer ${notification.read ? 'bg-white' : 'bg-blue-50'}`}
-                    onClick={() => navigate('/user-dashboard')} // Adjust to your actual user dashboard route
+                    onClick={() => {
+                      switch (notification.type) {
+                        case 'connection_request':
+                        case 'connection_request_accepted':
+                        case 'connection_request_declined':
+                          if (notification.data?.business_id) {
+                            navigate(`/business/${notification.data.business_id}`);
+                          }
+                          break;
+                        case 'chat_message':
+                          if (notification.data?.room_id) {
+                            navigate(`/chat/${notification.data.room_id}`);
+                          }
+                          break;
+                        case 'report_cleared':
+                        default:
+                          navigate('/user-dashboard');
+                          break;
+                      }
+                    }}
+                    
                   >
                     <div className="flex justify-between items-start">
                       <div className="flex items-start">
@@ -178,8 +198,11 @@ export function NotificationCenter({ language }: NotificationCenterProps) {
                             {notification.title}
                           </p>
                           <p className="text-sm text-gray-500">
-                            {notification.message}
-                          </p>
+  {notification.message}
+  {notification.data?.business_name && (
+    <span className="ml-1 italic text-gray-600">({notification.data.business_name})</span>
+  )}
+</p>
                           <p className="text-xs text-gray-400">
                             {new Date(notification.created_at).toLocaleString()}
                           </p>

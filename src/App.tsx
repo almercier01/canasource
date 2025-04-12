@@ -23,6 +23,7 @@ import { useParams } from 'react-router-dom';
 import { FindSourcing } from './components/FindSourcing';
 import { EditBusinessRouteWrapper } from './components/routes/EditBusinessRouteWrapper';
 import { Carousel } from './components/LandingCarousel';
+import { ChatRoute } from './components/chat/ChatRoute';
 
 
 export default function App() {
@@ -270,6 +271,7 @@ export default function App() {
         <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
         <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
         <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
+        <Route path="/chat/:roomId" element={<ChatRoute language={language} />} />
       </Routes>
 
       {/* Auth Modal (available globally) */}

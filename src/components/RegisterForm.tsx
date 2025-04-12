@@ -39,6 +39,9 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
     phone: '',
     email: '',
     image_url: '',
+    about_en: '',
+    about_fr: '',
+    languages: [] as string[],
   });
 
 
@@ -75,34 +78,43 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
       setFormData((prev) => ({ ...prev, email: userEmail }));
 
       // ✅ Check for existing business
-    const { data: existingBusiness, error: checkError } = await supabase
-    .from('businesses')
-    .select('*')
-    .eq('owner_id', data.user.id)
-    .maybeSingle();
+      const { data: existingBusiness, error: checkError } = await supabase
+        .from('businesses')
+        .select('*')
+        .eq('owner_id', data.user.id)
+        .maybeSingle();
 
-  if (checkError) {
-    throw checkError;
-  }
+      if (checkError) {
+        throw checkError;
+      }
 
-  if (existingBusiness) {
-    // ✅ Redirect to edit page with product code
-    navigate(`/edit-business?id=${existingBusiness.id}&code=${encodeURIComponent(initialProduct)}`);
-    return;
-  }
+      if (existingBusiness) {
+        // ✅ Redirect to edit page with product code
+        navigate(`/edit-business?id=${existingBusiness.id}&code=${encodeURIComponent(initialProduct)}`);
+        return;
+      }
 
-  // ✅ No business: pre-fill product field
-  if (initialProduct) {
-    setFormData((prev) => ({ ...prev, products: initialProduct }));
-  }
-      
+      // ✅ No business: pre-fill product field
+      if (initialProduct) {
+        setFormData((prev) => ({ ...prev, products: initialProduct }));
+      }
+
     } catch (err) {
       console.error('Error checking authentication:', err);
       setError(translations.auth.signInRequired[language]);
     }
   };
 
-  
+  const toggleLanguage = (lang: string) => {
+    setFormData((prev) => {
+      const updated = prev.languages.includes(lang)
+        ? prev.languages.filter(l => l !== lang)
+        : [...prev.languages, lang];
+      return { ...prev, languages: updated };
+    });
+  };
+
+
 
   const validateWebsite = (url: string): string => {
     if (!url) return url;
@@ -150,42 +162,42 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
     e.preventDefault();
     setError('');
     setLoading(true);
-  
+
     try {
       const { data: { user }, error: authError } = await supabase.auth.getUser();
       if (authError || !user) {
         throw new Error(translations.auth.signInRequired[language]);
       }
-  
+
       // Check if user already has a business
       const { data: existingBusiness, error: checkError } = await supabase
         .from('businesses')
         .select('id')
         .eq('owner_id', user.id)
         .maybeSingle();
-  
+
       if (checkError) {
         throw checkError;
       }
-  
+
       if (existingBusiness) {
-        throw new Error(language === 'en' 
-          ? "You already have a business listing." 
+        throw new Error(language === 'en'
+          ? "You already have a business listing."
           : "Vous avez déjà une annonce d'entreprise."
         );
       }
-  
+
       // Transform products and services from comma-separated strings to arrays
       const products = formData.products
         .split(',')
         .map(p => p.trim())
         .filter(p => p.length > 0);
-  
+
       const services = formData.services
         .split(',')
         .map(s => s.trim())
         .filter(s => s.length > 0);
-  
+
       // Prepare the business data
       const businessData = {
         name: formData.name,
@@ -204,45 +216,48 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
         products,
         services,
         image_url: formData.image_url || null,
-        image_status: formData.image_url ? 'pending' : null
+        image_status: formData.image_url ? 'pending' : null,
+        about_en: formData.about_en,
+        about_fr: formData.about_fr,
+        languages: formData.languages
       };
-  
+
       // Insert the business
       const { data: newBusiness, error: insertError } = await supabase
         .from('businesses')
         .insert([businessData])
         .select('id')
         .single();
-  
+
       if (insertError) {
         console.error('Error creating business:', insertError);
         throw insertError;
       }
-  
+
       if (!newBusiness?.id) {
         throw new Error('Failed to create business');
       }
-  
+
       console.log("New business created with ID:", newBusiness.id);
       console.log("Checking businesses for owner:", user.id);
-  
+
       // Verify the business was created
       const { data: verifyBusiness, error: verifyError } = await supabase
         .from('businesses')
         .select('id')
         .eq('owner_id', user.id)
         .single();
-  
+
       console.log("Business Query Response:", verifyBusiness);
       console.log("Business Query Error:", verifyError);
-  
+
       if (verifyError) {
         console.error('Error verifying business creation:', verifyError);
       }
-  
+
       setBusinessId(newBusiness.id);
       setSuccess(true);
-  
+
     } catch (err) {
       console.error('Error in handleSubmit:', err);
       setError(err instanceof Error ? err.message : translations.errors.generic[language]);
@@ -250,67 +265,67 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
       setLoading(false);
     }
   };
-  
+
 
 
 
   const activateBoutique = async () => {
     if (!businessId || !userId) return;
-  
+
     try {
-        // Step 1: Check if a boutique already exists for this owner
-        const { data: existingBoutique, error: checkError } = await supabase
-            .from('boutiques')
-            .select('id')
-            .eq('owner_id', userId) // ✅ Fix: Querying with owner_id
-            .maybeSingle(); 
+      // Step 1: Check if a boutique already exists for this owner
+      const { data: existingBoutique, error: checkError } = await supabase
+        .from('boutiques')
+        .select('id')
+        .eq('owner_id', userId) // ✅ Fix: Querying with owner_id
+        .maybeSingle();
 
-        if (checkError) throw checkError;
+      if (checkError) throw checkError;
 
-        if (!existingBoutique) {
-            console.log('No existing boutique found, creating one...');
+      if (!existingBoutique) {
+        console.log('No existing boutique found, creating one...');
 
-            // Step 2: Fetch the business name to use for the boutique
-            const { data: businessData, error: businessError } = await supabase
-                .from('businesses')
-                .select('name')
-                .eq('id', businessId)
-                .single();
+        // Step 2: Fetch the business name to use for the boutique
+        const { data: businessData, error: businessError } = await supabase
+          .from('businesses')
+          .select('name')
+          .eq('id', businessId)
+          .single();
 
-            if (businessError || !businessData?.name) {
-                throw new Error('Failed to retrieve business name.');
-            }
-
-            // Step 3: Create a new boutique with a valid name
-            const { error: insertError } = await supabase
-                .from('boutiques')
-                .insert([
-                    { 
-                        owner_id: userId, 
-                        name: businessData.name, // ✅ Provide a valid name
-                        status: 'active' 
-                    }
-                ]);
-
-            if (insertError) throw insertError;
-
-            console.log('New boutique created successfully.');
+        if (businessError || !businessData?.name) {
+          throw new Error('Failed to retrieve business name.');
         }
 
-        // Step 4: Update the boutique status (if needed)
-        const { error: updateError } = await supabase
-            .from('boutiques')
-            .update({ status: 'active' })
-            .eq('owner_id', userId);
+        // Step 3: Create a new boutique with a valid name
+        const { error: insertError } = await supabase
+          .from('boutiques')
+          .insert([
+            {
+              owner_id: userId,
+              name: businessData.name, // ✅ Provide a valid name
+              status: 'active'
+            }
+          ]);
 
-        if (updateError) throw updateError;
+        if (insertError) throw insertError;
 
-        alert(language === 'en' ? 'Boutique activated! Start adding products.' : 'Boutique activée! Commencez à ajouter des produits.');
-        navigate(`/add-products/${businessId}`);
+        console.log('New boutique created successfully.');
+      }
+
+      // Step 4: Update the boutique status (if needed)
+      const { error: updateError } = await supabase
+        .from('boutiques')
+        .update({ status: 'active' })
+        .eq('owner_id', userId);
+
+      if (updateError) throw updateError;
+
+      alert(language === 'en' ? 'Boutique activated! Start adding products.' : 'Boutique activée! Commencez à ajouter des produits.');
+      navigate(`/add-products/${businessId}`);
     } catch (error) {
-        console.error('Error activating boutique:', error);
+      console.error('Error activating boutique:', error);
     }
-};
+  };
 
 
 
@@ -400,19 +415,26 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
             </div>
           </div>
 
-          {/* Description */}
-          <div>
-            <label htmlFor="description_en" className="block text-sm font-medium text-gray-700">
-              {translations.register.descriptionEn[language]} *
+         {/* About Us (Language aware label) */}
+         <div>
+            <label htmlFor="about" className="block text-sm font-medium text-gray-700">
+              {language === 'en' ? 'About Us (English)' : 'À propos (Français)'} *
             </label>
             <textarea
-              id="description_en"
+              id="about"
               required
-              value={formData.description_en}
-              onChange={(e) => setFormData((prev) => ({ ...prev, description_en: e.target.value }))}
+              value={language === 'en' ? formData.about_en : formData.about_fr}
+              onChange={(e) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  ...(language === 'en'
+                    ? { about_en: e.target.value }
+                    : { about_fr: e.target.value }),
+                }))
+              }
               rows={3}
               className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
-              placeholder={translations.register.descriptionPlaceholder[language]}
+              placeholder={language === 'en' ? 'Tell us about your company' : 'Parlez-nous de votre entreprise'}
             />
           </div>
 
@@ -552,10 +574,29 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
             />
           </div>
 
-          {/* Image Upload */}
+          {/* Languages of Service */}
+          <label className="block text-sm font-medium text-gray-700">
+            {language === 'en' ? 'Languages of Service' : 'Langues de service'} *
+          </label>
+          <div className="flex flex-wrap gap-2 mt-1">
+            {['English', 'French', 'Bilingual', 'Other'].map((langOption) => (
+              <label key={langOption} className="inline-flex items-center space-x-2">
+                <input
+                  type="checkbox"
+                  checked={formData.languages.includes(langOption)}
+                  onChange={() => toggleLanguage(langOption)}
+                  className="text-red-600 border-gray-300 focus:ring-red-500"
+                />
+                <span>{langOption}</span>
+              </label>
+            ))}
+          </div>
+
+
+          {/* Logo Upload */}
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              {language === 'en' ? 'Business Image' : "Image de l'entreprise"}
+              {language === 'en' ? 'Company Logo' : 'Logo de l\'entreprise'}
             </label>
             <ImageUpload
               language={language}
@@ -570,10 +611,16 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
                     .upload(filePath, file);
                   if (uploadError) throw uploadError;
 
-                  const { data: { publicUrl } } = supabase.storage.from('business-images').getPublicUrl(filePath);
+                  const {
+                    data: { publicUrl },
+                  } = supabase.storage.from('business-images').getPublicUrl(filePath);
                   setFormData((prev) => ({ ...prev, image_url: publicUrl }));
                 } catch (err) {
-                  setError(language === 'en' ? 'Error uploading image. Please try again.' : "Erreur lors du téléchargement de l'image.");
+                  setError(
+                    language === 'en'
+                      ? 'Error uploading image. Please try again.'
+                      : "Erreur lors du téléchargement du logo."
+                  );
                 }
               }}
             />

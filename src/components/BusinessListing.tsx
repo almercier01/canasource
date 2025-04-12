@@ -438,8 +438,18 @@ const shouldRefetch = searchParams.get('refetched') === 'true';
           </div>
         </div>
 
-        {/* Description */}
-        <p className="mt-4 text-gray-600">{displayedDescription}</p>
+               {/* New About Section */}
+               <p className="mt-4 text-gray-600">
+          {language === 'en' ? effectiveBusiness.about_en : effectiveBusiness.about_fr}
+        </p>
+
+        {/* Languages of Service */}
+        {effectiveBusiness.languages?.length > 0 && (
+          <div className="mt-2 text-sm text-gray-500">
+            <strong>{language === 'en' ? 'Languages of Service:' : 'Langues de service :'}</strong>{' '}
+            {effectiveBusiness.languages.join(', ')}
+          </div>
+        )}
 
         {/* Address & website & phone */}
         <div className="mt-4 flex items-center text-gray-500">

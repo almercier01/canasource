@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
 import { LogIn, Mail, Lock, UserPlus, X, User, Globe, MapPin } from 'lucide-react';
 import { TermsAndPrivacy } from '../legal/TermsAndPrivacy';
@@ -30,8 +30,17 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
     city: '',
     languagePref: language,
   });
+  
+  useEffect(() => {
+    if (!isOpen) {
+      setLoading(false); // ✅ Reset loading when modal closes
+      setError(null);
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
+
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
