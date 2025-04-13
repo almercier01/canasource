@@ -37,13 +37,12 @@ interface BusinessResult {
   review_count: number;
   lat: number;
   lng: number;
+  languages: string[]; // ✅ Fix TypeScript error
 }
 
 
 export function BusinessSearch({ language, initialSearchTerm, onClose, resetSearchTerm }: BusinessSearchProps) {
   const [searchTerm, setSearchTerm] = useState<string>(initialSearchTerm || '');
-  const [selectedProvince, setSelectedProvince] = useState<string>('');
-  const [selectedCategory, setSelectedCategory] = useState('');
   const [businesses, setBusinesses] = useState<BusinessResult[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -64,59 +63,36 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
 
   const handleSearch = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-
-    if (!searchTerm.trim() && !selectedProvince && !selectedCategory) return;
-
+  
+    if (!searchTerm.trim()) return;
+  
     setLoading(true);
     setError(null);
     setHasSearched(true);
-
-    try {
-      let query = supabase.from('businesses').select('*');
-
-      if (selectedProvince) {
-        query = query.or(
-          `province_en.eq.${selectedProvince}, province_fr.eq.${selectedProvince}`
-        ); // ✅ Search both English & French province
-      }
-      
-      if (selectedCategory) {
-        query = query.or(
-          `category_en.eq.${selectedCategory}, category_fr.eq.${selectedCategory}`
-        ); // ✅ Search both English & French category
-      }
   
-
-      if (searchTerm.trim()) {
-        query = query.or(
-          `name.ilike.%${searchTerm}%, description_en.ilike.%${searchTerm}%, description_fr.ilike.%${searchTerm}%`
-        );
-      }
-
-      const { data, error: queryError } = await query;
-
-      if (queryError) throw queryError;
-
-      setBusinesses(data || []);
+    try {
+      const { data, error: rpcError } = await supabase.rpc('search_businesses', {
+        term: searchTerm.trim()
+      });
+  
+      if (rpcError) throw rpcError;
+  
+      setBusinesses((data || []) as BusinessResult[]);
     } catch (err) {
       setError(err instanceof Error ? err.message : translations.errors.generic[language]);
     } finally {
       setLoading(false);
-      resetSearchTerm(); // Reset the search term after the search is complete
+      resetSearchTerm();
     }
   };
+  
+
+
 
   const isValidSearch = () => {
     return (
-      searchTerm.trim().length >= 2 || selectedProvince || selectedCategory
+      searchTerm.trim().length >= 2
     );
-  };
-
-  // When province is selected, store the province name instead of the code
-  const handleProvinceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCode = e.target.value as ProvinceCode;
-    const provinceName = PROVINCES[selectedCode]?.[language] || ''; // Get province name based on selected code and language
-    setSelectedProvince(provinceName);
   };
 
   return (
@@ -156,51 +132,11 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
                 />
               </div>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <label htmlFor="province" className="block text-sm font-medium text-gray-700 mb-1">
-                  {translations.search.province[language]}
-                </label>
-                <select
-                  id="province"
-                  value={selectedProvince}
-                  onChange={(e) => setSelectedProvince(e.target.value)}
-                  className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
-                >
-                  <option value="">{translations.search.selectProvince[language]}</option>
-                  {Object.entries(PROVINCES).map(([code, names]) => (
-                    <option key={code} value={names.en}> {/* ✅ Store the English name */}
-                      {names[language]} {/* ✅ Show translated name */}
-                    </option>
-                  ))}
-                </select>
-
-
-              </div>
-
-
-              <div>
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">
-                  {translations.search.category[language]}
-                </label>
-                <select
-                  id="category"
-                  value={selectedCategory}
-                  onChange={(e) => setSelectedCategory(e.target.value)}
-                  className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
-                >
-                  <option value="">{translations.search.selectCategory[language]}</option>
-                  {CATEGORIES.map((category) => (
-                    <option key={category} value={category}> {/* ✅ Store category name */}
-                      {translations.categories[category][language]} {/* ✅ Show translated name */}
-                    </option>
-                  ))}
-                </select>
-
-
-              </div>
-            </div>
+            <p className="text-sm text-gray-500 mt-2">
+              {language === 'fr'
+                ? 'Vous pouvez chercher par nom d’entreprise, région, catégorie, produits ou services. Exemples : "bois Québec", "textile Montréal", "fournitures médicales Ontario".'
+                : 'You can search by business name, region, category, products or services. Examples: "wood Québec", "textile Montréal", "medical supplies Ontario".'}
+            </p>
 
             <div className="flex justify-end">
               <button
@@ -234,15 +170,15 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
                     ...business,
                     description_en: business.description_en,
                     description_fr: business.description_fr,
-              
+
                     // ✅ Directly use category_en and category_fr
                     category_en: business.category_en,
                     category_fr: business.category_fr,
-              
+
                     // ✅ Directly use province_en and province_fr
                     province_en: business.province_en,
                     province_fr: business.province_fr,
-              
+
                     rating: business.rating || 0,
                     reviewCount: business.review_count || 0,
                     products: business.products || [],

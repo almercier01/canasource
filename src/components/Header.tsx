@@ -116,8 +116,13 @@ export function Header({
                 onClick={() => handleMobileNavigation('home')}
                 className="flex items-center"
               >
-                <MapPin className="h-8 w-8 text-red-600" />
-                <span className="ml-2 text-xl font-bold text-gray-900">CanaSource</span>
+               <img
+  src="/favicon/android-chrome-192x192.png"
+  alt="CanaSource Icon"
+  className="h-8 w-8"
+/>
+<span className="ml-2 text-xl font-bold text-gray-900">CanaSource</span>
+
               </button>
 
               <nav className="hidden md:flex space-x-6">

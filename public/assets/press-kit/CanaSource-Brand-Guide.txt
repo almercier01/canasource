@@ -1,0 +1,21 @@
+CanaSource Brand Guidelines
+
+Logo Colors:
+- Red: #d62828
+- Black: #111827
+- Gray: #6b7280
+- Accent: #4caf50 (green)
+
+Typography:
+- Headings: Inter Bold
+- Body: Inter Regular
+
+Logo Usage:
+- Do not stretch or modify the logo colors.
+- Maintain padding of 16px around the logo.
+- When on dark backgrounds, use white or the inverted logo.
+
+Favicon:
+Included in /favicon folder for browser and app use.
+
+If you need scalable vector formats or monochrome variations, contact press@canasource.ca

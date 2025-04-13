@@ -23,8 +23,6 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
 
   const [formData, setFormData] = useState({
     name: '',
-    description_en: '',
-    description_fr: '',
     category: '' as Category,  // Store the main category value
     category_en: '',           // Add category_en
     category_fr: '',           // Add category_fr
@@ -201,8 +199,6 @@ export function RegisterForm({ onCancel, language, handleNavigate }: RegisterFor
       // Prepare the business data
       const businessData = {
         name: formData.name,
-        description_en: formData.description_en,
-        description_fr: formData.description_fr,
         category_en: translations.categories[formData.category].en,
         category_fr: translations.categories[formData.category].fr,
         province_en: PROVINCES[formData.province].en,

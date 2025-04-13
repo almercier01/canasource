@@ -52,24 +52,33 @@ export const Carousel: React.FC<CarouselProps> = ({ language }) => {
             ? 'Du besoin à la solution locale — Découvrez le parcours CanaSource'
             : 'From Need to Local Solution — Discover the CanaSource Journey'}
         </p>
-        <div className="flex overflow-x-auto snap-x gap-4">
-          {slides.map((slide, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 w-full sm:w-[300px] md:w-[360px] snap-center rounded shadow-md bg-gray-50"
-            >
-              <div className="flex flex-col items-center justify-between h-[340px] bg-white rounded-lg shadow p-4">
-                <img
-                  src={slide.img}
-                  alt={slide.text}
-                  className="max-h-[220px] object-contain"
-                />
-                <p className="text-sm text-center text-gray-700 mt-2">{slide.text}</p>
+  
+        {/* Gradient edge hints */}
+        <div className="relative">
+          <div className="absolute left-0 top-0 h-full w-8 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 h-full w-8 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+  
+          {/* Scrollable carousel */}
+          <div className="flex overflow-x-auto snap-x gap-4 scrollable-carousel pb-2 px-1">
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className="flex-shrink-0 w-full sm:w-[300px] md:w-[360px] snap-center rounded shadow-md bg-gray-50"
+              >
+                <div className="flex flex-col items-center justify-between h-[340px] bg-white rounded-lg shadow p-4">
+                  <img
+                    src={slide.img}
+                    alt={slide.text}
+                    className="max-h-[220px] object-contain"
+                  />
+                  <p className="text-sm text-center text-gray-700 mt-2">{slide.text}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
+  
 };

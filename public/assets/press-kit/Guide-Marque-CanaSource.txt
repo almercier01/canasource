@@ -1,0 +1,21 @@
+Guide de Marque – CanaSource
+
+Couleurs du Logo :
+- Rouge : #d62828
+- Noir : #111827
+- Gris : #6b7280
+- Accent : #4caf50 (vert)
+
+Typographie :
+- Titres : Inter Gras
+- Texte : Inter Régulier
+
+Utilisation du Logo :
+- Ne pas déformer ou modifier les couleurs du logo.
+- Garder un espacement de 16px autour du logo.
+- Sur fond foncé, utiliser le logo blanc ou inversé.
+
+Favicon :
+Inclus dans le dossier /favicon pour les navigateurs et applications.
+
+Pour des versions vectorielles ou monochromes, contactez-nous à press@canasource.ca
