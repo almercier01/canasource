@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import tariffedProductsEn from '../data/tarriffedProductsEn.json';
 import tariffedProductsFr from '../data/tarriffedProductsFr.json';
+import { Package } from 'lucide-react';
 
 interface TariffedProduct {
   productNumber: string;
@@ -52,96 +53,107 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
   const displayedItems = showAll ? filtered : items.length > 0 ? [items[currentIndex]] : [];
 
   return (
-    <div className="max-w-4xl mx-auto p-4">
-      <h2 className="text-2xl font-bold mb-2">
-        {language === 'fr'
-          ? 'Produits Soumis à des Tarifs depuis le 13 mars 2025'
-          : 'Tariffed Products In Demand since March 13 2025'}
-      </h2>
-  
-      <p className="text-gray-600 mb-4">
-        {language === 'fr' ? (
-          <>
-            Voici une liste de produits qui subissent des tarifs à l'importation selon la{' '}
-            <a
-              href="https://www.canada.ca/fr/ministere-finances/nouvelles/2025/03/liste-des-produits-en-provenance-des-etats-unis-assujettis-a-des-droits-de-douane-de-25--a-compter-du-13-mars-2025.html"
-              className="text-blue-600 underline hover:text-blue-800"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              liste officielle du gouvernement
-            </a>. Les fabricants ou fournisseurs canadiens sont invités à les offrir localement.
-          </>
-        ) : (
-          <>
-            These products face import tariffs as outlined in the{' '}
-            <a
-              href="https://www.canada.ca/en/department-finance/news/2025/03/list-of-products-from-the-united-states-subject-to-25-per-cent-tariffs-effective-march-13-2025.html"
-              className="text-blue-600 underline hover:text-blue-800"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              official government announcement
-            </a>. Canadian suppliers are encouraged to provide them locally.
-          </>
-        )}
-      </p>
-  
-      <div className="mb-4">
+    <div className="bg-white py-12 px-4">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <h2 className="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2">
+          <Package className="w-6 h-6 text-red-500" />
+          {language === 'fr'
+            ? 'Produits visés par des Tarifs — Et si vous pouviez les offrir ?'
+            : 'Tariffed Products — Could You Supply These Locally?'}
+        </h2>
+        <p className="text-gray-600 mb-6 text-sm">
+          {language === 'fr' ? (
+            <>
+              Voici une liste de produits qui subissent des tarifs à l'importation selon la{' '}
+              <a
+                href="https://www.canada.ca/fr/ministere-finances/nouvelles/2025/03/liste-des-produits-en-provenance-des-etats-unis-assujettis-a-des-droits-de-douane-de-25--a-compter-du-13-mars-2025.html"
+                className="underline text-blue-600"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                liste officielle du gouvernement
+              </a>
+              . Les fabricants ou fournisseurs canadiens sont invités à les offrir localement.
+            </>
+          ) : (
+            <>
+              These products face import tariffs as outlined in the{' '}
+              <a
+                href="https://www.canada.ca/en/department-finance/news/2025/03/list-of-products-from-the-united-states-subject-to-25-per-cent-tariffs-effective-march-13-2025.html"
+                className="underline text-blue-600"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                official government announcement
+              </a>
+              . Canadian suppliers are encouraged to provide them locally.
+            </>
+          )}
+        </p>
+
+        {/* Search bar */}
         <input
           type="text"
-          className="border rounded w-full p-2"
+          className="w-full border border-gray-300 rounded px-4 py-2 mb-6 shadow-sm"
           placeholder={language === 'fr' ? 'Rechercher un produit...' : 'Search for a product...'}
           value={searchTerm}
           onChange={(e) => {
             const term = e.target.value;
             setSearchTerm(term);
-            if (!showAll) setShowAll(true); // 👈 Force “Show All” mode on user search
+            if (!showAll) setShowAll(true);
           }}
         />
-      </div>
-  
-      <ul className="space-y-4">
-        {displayedItems.map((item) => {
-          const imageUrl = `/images/tariffed/${item.productNumber}.jpg`;
-          const fallbackImage = language === 'fr' ? '/images/default-productFr.jpg' : '/images/default-productEn.jpg';
-  
-          return (
-            <li key={item.productNumber} className="border p-4 rounded bg-white shadow-sm">
-              <img
-                src={imageUrl}
-                onError={(e) => {
-                  e.currentTarget.src = fallbackImage;
-                }}
-                alt={item.productType}
-                className="w-full h-48 object-contain rounded bg-gray-100 mb-3"
-              />
-              <h3 className="text-lg font-semibold">
-                {item.productType} ({item.productNumber})
-              </h3>
-              <p className="mt-1 text-sm text-gray-700">{item.productDescription}</p>
-              <a
-                href={`/register?code=${encodeURIComponent(item.productType)}`}
-                className="mt-3 inline-block text-blue-600 hover:underline"
-              >
-                {language === 'fr' ? 'Proposer ce produit' : 'Provide This Product'}
-              </a>
-            </li>
-          );
-        })}
-      </ul>
-  
-      <div className="mt-4 text-center">
-        <button
-          onClick={() => setShowAll((prev) => !prev)}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-        >
-          {showAll
-            ? language === 'fr' ? 'Afficher moins' : 'Show Less'
-            : language === 'fr' ? 'Voir tous les produits' : 'View All Products'}
-        </button>
+
+        {/* Product list */}
+        <ul className="grid gap-4">
+          {displayedItems.map((item) => {
+            const imageUrl = `/images/tariffed/${item.productNumber}.jpg`;
+            const fallbackImage =
+              language === 'fr' ? '/images/default-productFr.jpg' : '/images/default-productEn.jpg';
+
+            return (
+              <li key={item.productNumber} className="bg-gray-50 border rounded p-4 shadow-sm hover:shadow transition">
+                {/* Enable image support if needed */}
+                {/* <img
+                  src={imageUrl}
+                  onError={(e) => {
+                    e.currentTarget.src = fallbackImage;
+                  }}
+                  alt={item.productType}
+                  className="w-full h-48 object-contain rounded bg-white mb-3"
+                /> */}
+                <h3 className="text-lg font-semibold text-gray-800">
+                  {item.productType} ({item.productNumber})
+                </h3>
+                <p className="text-sm text-gray-700 mt-1">{item.productDescription}</p>
+                <a
+                  href={`/register?code=${encodeURIComponent(item.productType)}`}
+                  className="inline-block text-blue-600 hover:underline mt-2 text-sm"
+                >
+                  {language === 'fr' ? 'Proposer ce produit' : 'Provide This Product'}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+
+        {/* Toggle Button */}
+        <div className="mt-6 text-center">
+          <button
+            onClick={() => setShowAll((prev) => !prev)}
+            className="bg-blue-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-blue-700"
+          >
+            {showAll
+              ? language === 'fr'
+                ? 'Afficher moins'
+                : 'Show Less'
+              : language === 'fr'
+                ? 'Voir tous les produits'
+                : 'View All Products'}
+          </button>
+        </div>
       </div>
     </div>
   );
-  
 }

@@ -13,6 +13,7 @@
     "@googlemaps/js-api-loader": "^1.16.6",
     "@stripe/stripe-js": "^5.10.0",
     "@supabase/supabase-js": "^2.39.7",
+    "framer-motion": "^12.7.3",
     "lodash": "^4.17.21",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",

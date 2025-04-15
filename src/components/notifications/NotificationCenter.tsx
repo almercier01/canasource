@@ -283,9 +283,15 @@ export function NotificationCenter({ language }: NotificationCenterProps) {
                           case 'offer_response':
                             navigate('/user-dashboard');
                             break;
+                            case 'comment_received':
+                              if (n.data?.business_id && n.data?.comment_id) {
+                                navigate(`/business/${n.data.business_id}?highlight=${n.data.comment_id}`);
+                              }
+                              break;
                           default:
                             break;
                         }
+
                       }}
                     >
                       <div className="flex justify-between items-start">

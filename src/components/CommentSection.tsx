@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Send } from 'lucide-react';
 import { supabase } from '../lib/supabaseClient';
 import { Language } from '../types';
@@ -7,6 +7,7 @@ interface CommentSectionProps {
   businessId: string;
   language: Language;
   onCommentAdded: () => void;
+  highlightedCommentId?: string; // 👈 optional
 }
 
 interface Comment {
@@ -16,17 +17,30 @@ interface Comment {
   user_email: string;
 }
 
-export function CommentSection({ businessId, language, onCommentAdded }: CommentSectionProps) {
+export function CommentSection({ businessId, language, onCommentAdded, highlightedCommentId }: CommentSectionProps) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [newComment, setNewComment] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<any>(null);
 
+  const commentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+
   useEffect(() => {
     checkUser();
     fetchComments();
   }, [businessId]);
+
+  useEffect(() => {
+    if (highlightedCommentId && commentRefs.current[highlightedCommentId]) {
+      commentRefs.current[highlightedCommentId]?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+      });
+    }
+  }, [highlightedCommentId, comments]);
+  
 
   const checkUser = async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -118,19 +132,28 @@ export function CommentSection({ businessId, language, onCommentAdded }: Comment
       </form>
 
       <div className="space-y-4">
-        {comments.map((comment) => (
-          <div key={comment.id} className="bg-gray-50 rounded-lg p-4">
-            <div className="flex justify-between items-start">
-              <p className="text-sm text-gray-600">
-                {comment.user_email || 'Anonymous'}
-              </p>
-              <p className="text-xs text-gray-500">
-                {new Date(comment.created_at).toLocaleDateString()}
-              </p>
-            </div>
-            <p className="mt-2 text-gray-700">{comment.content}</p>
-          </div>
-        ))}
+      {comments.map((comment) => (
+  <div
+    key={comment.id}
+    ref={(el) => (commentRefs.current[comment.id] = el)}
+    className={`rounded-lg p-4 transition-all duration-500 ${
+      comment.id === highlightedCommentId
+        ? 'bg-yellow-100 border border-yellow-400'
+        : 'bg-gray-50'
+    }`}
+  >
+    <div className="flex justify-between items-start">
+      <p className="text-sm text-gray-600">
+        {comment.user_email || 'Anonymous'}
+      </p>
+      <p className="text-xs text-gray-500">
+        {new Date(comment.created_at).toLocaleDateString()}
+      </p>
+    </div>
+    <p className="mt-2 text-gray-700">{comment.content}</p>
+  </div>
+))}
+
       </div>
     </div>
   );

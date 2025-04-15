@@ -7,11 +7,12 @@ interface HeroProps {
   language: Language;
   onExploreClick: () => void;
   onRegisterClick: () => void;
+  onRequestOffersClick: () => void; // ✅ Add this new prop
 }
 
-export function Hero({ language, onExploreClick, onRegisterClick }: HeroProps) {
+export function Hero({ language, onExploreClick, onRegisterClick, onRequestOffersClick }: HeroProps) {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   return (
     <div className="relative bg-white overflow-hidden">
@@ -31,24 +32,28 @@ export function Hero({ language, onExploreClick, onRegisterClick }: HeroProps) {
                 {translations.mission[language]}
               </p>
               <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
-              <div className="rounded-md shadow">
-  <button
-    onClick={() => {
-      // Just navigate to the /search route without any search term
-      navigate('/search');
-    }}
-    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
-  >
-    {translations.hero.exploreButton[language]}
-  </button>
-</div>
-                <div className="mt-3 sm:mt-0 sm:ml-3 md:hidden">
-                  <button
-                    onClick={onRegisterClick}
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-red-600 bg-red-100 hover:bg-red-200 md:py-4 md:text-lg md:px-10"
-                  >
-                    {translations.register[language]}
-                  </button>
+                <div className="rounded-md shadow">
+                  <div className="mt-5 max-w-xl mx-auto sm:flex sm:justify-center md:mt-8 gap-3 flex-col sm:flex-row">
+                    <div className="rounded-md shadow">
+                      <button
+                        onClick={onExploreClick}
+                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
+                      >
+                        {translations.hero.exploreButton[language]}
+                      </button>
+                    </div>
+                    <div className="rounded-md shadow">
+                      <button
+                        onClick={onRequestOffersClick}
+                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10"
+                      >
+                        {language === 'fr'
+                          ? 'Découvrez les Offres en demande !'
+                          : 'Discover in-demand Offers'}
+                      </button>
+                    </div>
+                  </div>
+
                 </div>
               </div>
             </div>

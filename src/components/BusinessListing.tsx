@@ -66,9 +66,9 @@ const shouldRefetch = searchParams.get('refetched') === 'true';
   const [showBoutique, setShowBoutique] = useState(false);
   const [showBoutiqueModal, setShowBoutiqueModal] = useState(false);
 
+  const highlightedCommentId = searchParams.get('highlight');
 
-
-  const defaultImage = 'public/images/default_listing_Temp_image2.png';
+  const defaultImage = 'https://images.unsplash.com/photo-1516216628859-9bccecab13ca?...';
 
 
   // 1. If no `business` prop, fetch from Supabase using `id`
@@ -439,7 +439,7 @@ const shouldRefetch = searchParams.get('refetched') === 'true';
         </div>
 
                {/* New About Section */}
-               <p className="mt-4 text-gray-600">
+        <p className="mt-4 text-gray-600">
           {language === 'en' ? effectiveBusiness.about_en : effectiveBusiness.about_fr}
         </p>
 
@@ -606,6 +606,7 @@ const shouldRefetch = searchParams.get('refetched') === 'true';
                 fetchCommentCount(effectiveBusiness.id);
               }
             }}
+            highlightedCommentId={highlightedCommentId || undefined}
           />
         </div>
       </div>

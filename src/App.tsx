@@ -24,6 +24,12 @@ import { FindSourcing } from './components/FindSourcing';
 import { EditBusinessRouteWrapper } from './components/routes/EditBusinessRouteWrapper';
 import { Carousel } from './components/LandingCarousel';
 import { ChatRoute } from './components/chat/ChatRoute';
+import { SourcingJourney } from './components/SourcingJourney';
+import { LiveDemandFeed } from './components/LiveDemandFeed';
+import { GuidedStepsCarousel } from './components/GuidedStepsCarousel';
+import { CTABanner } from './components/CTABanner';
+import { Footer } from './components/Footer';
+import { TermsAndPrivacy } from './components/legal/TermsAndPrivacy';
 
 
 export default function App() {
@@ -37,6 +43,7 @@ export default function App() {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showBoutique, setShowBoutique] = useState(false);
   const [findSourcingResetKey, setFindSourcingResetKey] = useState(0);
+  const [showTermsModal, setShowTermsModal] = useState(false);
 
   useEffect(() => {
     const savedConfig = localStorage.getItem('siteConfig');
@@ -171,30 +178,41 @@ export default function App() {
                 language={language}
                 onExploreClick={handleExploreClick}
                 onRegisterClick={handleRegisterClick}
+                onRequestOffersClick={() => navigate('/requests?showForm=true')}
               />
-              <div className="max-w-5xl mx-auto px-4 py-6">
+
+              <CTABanner language={language} />
+
+              <SourcingJourney language={language} />
+
+              {/* <LiveDemandFeed language={language} /> */}
+
+              <GuidedStepsCarousel language={language} />
+
+
+              {/* <div className="max-w-5xl mx-auto px-4 py-6">
                 <Carousel language={language} />
-              </div>
+              </div> */}
 
 
               {/* Show RequestedOffersSection ONLY on / */}
               <FindSourcing language={language} resetKey={findSourcingResetKey} /> {/* New section on homepage */}
               {/* CTA instead of RequestedOffersSection */}
-              <div className="text-center mt-8 px-4">
+              {/* <div className="text-center mt-8 px-4">
                 <button
                   onClick={() => navigate('/requests?showForm=true')}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow hover:bg-red-700"
                 >
                   {language === 'fr'
-                    ? 'Découvrez ce que le Canada peut produire !'
-                    : 'Discover What Canada Can Make!'}
+                    ? 'Découvrez les Offres en demande !'
+                    : 'Discover in demand Offers'}
                 </button>
                 <p className="text-gray-600 mt-2 max-w-xl mx-auto">
                   {language === 'fr'
                     ? "Vous ne trouvez pas de fournisseur ? Soumettez une demande ou voyez ce que recherchent les autres."
                     : "Can’t find a supplier? Put a request out or see what other people are looking for."}
                 </p>
-              </div>
+              </div> */}
 
 
             </>
@@ -284,6 +302,20 @@ export default function App() {
         }}
         language={language}
       />
+      <TermsAndPrivacy
+  isOpen={showTermsModal}
+  onClose={() => setShowTermsModal(false)}
+  onAccept={() => setShowTermsModal(false)}
+  language={language}
+/>
+
+      <Footer
+  language={language}
+  onRegisterClick={handleRegisterClick}
+  onOpenTerms={() => setShowTermsModal(true)}
+/>
+
+
     </div>
   );
 }

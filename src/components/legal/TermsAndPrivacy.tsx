@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Language } from '../../types';
 import { X, Globe2 } from 'lucide-react';
 
@@ -12,6 +12,13 @@ interface TermsAndPrivacyProps {
 
 export function TermsAndPrivacy({ isOpen, onClose, onAccept, language, standalone = false }: TermsAndPrivacyProps) {
   const [displayLanguage, setDisplayLanguage] = useState<Language>('en');
+
+  useEffect(() => {
+    if (isOpen) {
+      setDisplayLanguage(language);
+    }
+  }, [isOpen, language]);
+  
 
   if (!isOpen) return null;
 

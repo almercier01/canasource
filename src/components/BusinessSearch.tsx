@@ -47,6 +47,8 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
+  const [recentBusinesses, setRecentBusinesses] = useState<BusinessResult[]>([]);
+
 
   const location = useLocation(); // Get the current location (URL)
 
@@ -61,22 +63,47 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
     }
   }, [location.search]);
 
+  useEffect(() => {
+    if (!searchTerm.trim()) {
+      fetchRecentBusinesses();
+    }
+  }, [searchTerm]);
+
+  const fetchRecentBusinesses = async () => {
+    setLoading(true);
+    try {
+      const { data, error } = await supabase
+        .from('businesses')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .limit(5);
+
+      if (error) throw error;
+      setRecentBusinesses(data || []);
+    } catch (error) {
+      console.error('Error fetching recent businesses:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
   const handleSearch = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-  
+
     if (!searchTerm.trim()) return;
-  
+
     setLoading(true);
     setError(null);
     setHasSearched(true);
-  
+
     try {
       const { data, error: rpcError } = await supabase.rpc('search_businesses', {
         term: searchTerm.trim()
       });
-  
+
       if (rpcError) throw rpcError;
-  
+
       setBusinesses((data || []) as BusinessResult[]);
     } catch (err) {
       setError(err instanceof Error ? err.message : translations.errors.generic[language]);
@@ -85,7 +112,7 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
       resetSearchTerm();
     }
   };
-  
+
 
 
 
@@ -156,40 +183,51 @@ export function BusinessSearch({ language, initialSearchTerm, onClose, resetSear
           </div>
         )}
 
-        {hasSearched && !loading && (
-          <div className="space-y-8">
-            {businesses.length === 0 ? (
-              <div className="text-center py-12 text-gray-500">
-                {translations.search.noResults[language]}
-              </div>
-            ) : (
-              businesses.map((business) => (
-                <BusinessListing
-                  key={business.id}
-                  business={{
-                    ...business,
-                    description_en: business.description_en,
-                    description_fr: business.description_fr,
-
-                    // ✅ Directly use category_en and category_fr
-                    category_en: business.category_en,
-                    category_fr: business.category_fr,
-
-                    // ✅ Directly use province_en and province_fr
-                    province_en: business.province_en,
-                    province_fr: business.province_fr,
-
-                    rating: business.rating || 0,
-                    reviewCount: business.review_count || 0,
-                    products: business.products || [],
-                    services: business.services || []
-                  }}
-                  language={language}
-                />
-              ))
-            )}
+        {hasSearched && businesses.length === 0 && !loading && (
+          <div className="text-center py-12 text-gray-500">
+            {translations.search.noResults[language]}
           </div>
         )}
+
+        {hasSearched && !loading && businesses.length > 0 && (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-red-600 mb-6">
+              {language === 'fr' ? 'Résultats de recherche' : 'Search Results'}
+            </h3>
+            {businesses.map((business) => (
+              <BusinessListing
+                key={business.id}
+                business={{
+                  ...business,
+                  reviewCount: business.review_count || 0, // ✅ Rename here
+                }}
+                language={language}
+              />
+            ))}
+
+          </div>
+        )}
+
+        {!hasSearched && recentBusinesses.length > 0 && (
+          <div className="space-y-8">
+            <h3 className="text-2xl font-bold text-red-600 mb-6">
+              {language === 'fr' ? 'Nouvelles inscriptions' : 'Newest Listings'}
+            </h3>
+
+            {recentBusinesses.map((business) => (
+              <BusinessListing
+                key={business.id}
+                business={{
+                  ...business,
+                  reviewCount: business.review_count || 0,
+                }}
+                language={language}
+              />
+            ))}
+
+          </div>
+        )}
+
 
         {loading && (
           <div className="text-center py-12">
