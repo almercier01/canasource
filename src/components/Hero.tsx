@@ -36,7 +36,8 @@ export function Hero({ language, onExploreClick, onRegisterClick, onRequestOffer
                   <div className="mt-5 max-w-xl mx-auto sm:flex sm:justify-center md:mt-8 gap-3 flex-col sm:flex-row">
                     <div className="rounded-md shadow">
                       <button
-                        onClick={onExploreClick}
+                       onClick={() => onExploreClick()}
+
                         className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10"
                       >
                         {translations.hero.exploreButton[language]}

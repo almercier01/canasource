@@ -4,6 +4,8 @@ import { translations } from '../i18n/translations';
 import { Language } from '../types';
 import { useLocation } from 'react-router-dom';
 import { RequestOfferForm } from './RequestOfferForm';
+import { TariffedTicker } from './TariffedTicker';
+
 
 interface RequestOffer {
   id: string;
@@ -16,14 +18,13 @@ interface RequestOffer {
 }
 
 interface RequestsPageProps {
-  language: Language; // 'en' | 'fr'
+  language: Language;
 }
 
 export function RequestsPage({ language }: RequestsPageProps) {
-  // State
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
-  const pageSize = 10; // Display 10 offers per page
+  const pageSize = 10;
 
   const [offers, setOffers] = useState<RequestOffer[]>([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -32,39 +33,33 @@ export function RequestsPage({ language }: RequestsPageProps) {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const showForm = searchParams.get('showForm') === 'true';
+  const [showFormPanel, setShowFormPanel] = useState(false); // allow auto-open from ?showForm=true
+
 
   useEffect(() => {
     fetchOffers();
-    // Re-fetch whenever searchTerm or page changes
   }, [searchTerm, page]);
 
   async function fetchOffers() {
     setLoading(true);
+    const from = (page - 1) * pageSize;
+    const to = from + pageSize - 1;
 
     try {
-      // We'll do 0-based range indexing. E.g. for page=1, from=0 to=9
-      const from = (page - 1) * pageSize;
-      const to = from + pageSize - 1;
-
-      // Start building the query
       let query = supabase
         .from('requested_offers')
-        // We only want approved offers
         .select('id, title_en, title_fr, description_en, description_fr, status, created_at', {
-          count: 'exact', // so we get total count
+          count: 'exact',
         })
         .eq('status', 'approved')
-        .range(from, to)  // pagination range
+        .range(from, to)
         .order('created_at', { ascending: false });
 
-      // If there's a searchTerm, we can do a case-insensitive match
-      // We might check both title + description in either language
-      // For simplicity, let’s assume the user’s language determines which columns to query:
-      query = query.or(
-        `title_en.ilike.%${searchTerm}%,description_en.ilike.%${searchTerm}%,title_fr.ilike.%${searchTerm}%,description_fr.ilike.%${searchTerm}%`
-      );
-      
-      
+      if (searchTerm) {
+        query = query.or(
+          `title_en.ilike.%${searchTerm}%,description_en.ilike.%${searchTerm}%,title_fr.ilike.%${searchTerm}%,description_fr.ilike.%${searchTerm}%`
+        );
+      }
 
       const { data, error, count } = await query;
       if (error) throw error;
@@ -78,84 +73,56 @@ export function RequestsPage({ language }: RequestsPageProps) {
     }
   }
 
-  // Switch to next/previous page
   const canPrev = page > 1;
   const maxPage = Math.ceil(totalCount / pageSize);
   const canNext = page < maxPage;
 
-  const handlePrevPage = () => {
-    if (canPrev) setPage(page - 1);
-  };
+  const handlePrevPage = () => canPrev && setPage(page - 1);
+  const handleNextPage = () => canNext && setPage(page + 1);
 
-  const handleNextPage = () => {
-    if (canNext) setPage(page + 1);
-  };
+  const getDisplayedTitle = (offer: RequestOffer) =>
+    language === 'fr' ? offer.title_fr || offer.title_en || '' : offer.title_en || offer.title_fr || '';
 
-  // For bilingual display
-  function getDisplayedTitle(offer: RequestOffer) {
-    const fallbackTitle = offer.title_en ?? offer.title_fr ?? '';
-    if (language === 'fr') {
-      return offer.title_fr || fallbackTitle;
-    } else {
-      return offer.title_en || fallbackTitle;
-    }
-  }
-
-  function getDisplayedDescription(offer: RequestOffer) {
-    const fallbackDesc = offer.description_en ?? offer.description_fr ?? '';
-    if (language === 'fr') {
-      return offer.description_fr || fallbackDesc;
-    } else {
-      return offer.description_en || fallbackDesc;
-    }
-  }
+  const getDisplayedDescription = (offer: RequestOffer) =>
+    language === 'fr' ? offer.description_fr || offer.description_en || '' : offer.description_en || offer.description_fr || '';
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
-       <h1 className="text-2xl font-bold mb-2">
-        {language === 'fr' ? 'Offres Recherchées' : 'Requested Offers'}
-      </h1>
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* Header */}
+      <div className="text-center mb-10">
+        <h1 className="text-3xl font-bold text-gray-800">
+          {language === 'fr' ? 'Offres Recherchées' : 'Requested Offers'}
+        </h1>
 
-      {showForm && (
-        <div className="mb-6">
-          <RequestOfferForm
-            language={language}
-            onCancel={() => window.history.pushState({}, '', '/requests')}
-            onSuccess={() => {
-              setSearchTerm('');
-              setPage(1);
-              fetchOffers(); // refresh list
-            }}
-          />
-        </div>
-      )}
-      <h1 className="text-2xl font-bold mb-2">
-        {language === 'fr' ? 'Offres Recherchées' : 'Requested Offers'}
-      </h1>
-      <p className="text-gray-600 mb-4">
-        {language === 'fr'
-          ? 'Produits ou services que notre communauté souhaite trouver au Canada.'
-          : 'Products or services our community wants to source in Canada.'}
-      </p>
+        <TariffedTicker language={language} />
 
-      {/* Search Field */}
-      <div className="mb-4">
+
+        <p className="text-sm text-gray-600 mt-2">
+          {language === 'fr'
+            ? 'Voici ce que recherchent d’autres Canadiens. Soumettez votre propre demande ou explorez les besoins actuels.'
+            : 'See what others are looking for. Submit your request or explore current needs.'}
+        </p>
+      </div>
+
+      {/* Search */}
+      <div className="mb-6">
         <input
           type="text"
-          className="border rounded w-full p-2"
+          className="w-full border border-gray-300 rounded px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
           placeholder={
             language === 'fr'
-              ? 'Rechercher une offre...'
-              : 'Search for a request...'
+              ? 'Rechercher une offre en demande...'
+              : 'Search for a requested offer...'
           }
           value={searchTerm}
           onChange={(e) => {
-            setPage(1); // Reset to page 1 upon new search
+            setPage(1);
             setSearchTerm(e.target.value);
           }}
         />
       </div>
 
+      {/* Results */}
       {loading ? (
         <p className="text-gray-500">{translations.common.loading[language]}</p>
       ) : (
@@ -165,44 +132,90 @@ export function RequestsPage({ language }: RequestsPageProps) {
               {language === 'fr' ? 'Aucune offre trouvée.' : 'No offers found.'}
             </p>
           ) : (
-            <ul className="space-y-4">
+            <div className="grid gap-4">
               {offers.map((offer) => (
-                <li key={offer.id} className="border p-4 rounded bg-white shadow-sm">
-                  <h3 className="text-lg font-semibold">
+                <div
+                  key={offer.id}
+                  className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition"
+                >
+                  <h3 className="text-md sm:text-lg font-semibold text-gray-800 mb-1">
                     {getDisplayedTitle(offer)}
                   </h3>
-                  <p className="mt-2">
-                    {getDisplayedDescription(offer)}
-                  </p>
-                </li>
+                  <p className="text-sm text-gray-700">{getDisplayedDescription(offer)}</p>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
 
-          {/* Pagination Buttons */}
-          <div className="flex justify-between items-center mt-4">
-            <button
-              onClick={handlePrevPage}
-              disabled={!canPrev}
-              className={`px-4 py-2 border rounded ${canPrev ? 'bg-gray-200' : 'bg-gray-100 text-gray-400'}`}
-            >
-              {language === 'fr' ? 'Précédent' : 'Previous'}
-            </button>
-            <span className="text-sm text-gray-500">
+          {/* Pagination */}
+          {totalCount > pageSize && (
+            <div className="flex justify-center items-center gap-4 mt-8">
+              <button
+                onClick={handlePrevPage}
+                disabled={!canPrev}
+                className={`px-4 py-2 rounded border ${canPrev ? 'bg-gray-100 hover:bg-gray-200' : 'text-gray-400 bg-gray-50'
+                  }`}
+              >
+                {language === 'fr' ? 'Précédent' : 'Previous'}
+              </button>
+
+              <span className="text-sm text-gray-600">
+                {language === 'fr' ? `Page ${page} sur ${maxPage}` : `Page ${page} of ${maxPage}`}
+              </span>
+
+              <button
+                onClick={handleNextPage}
+                disabled={!canNext}
+                className={`px-4 py-2 rounded border ${canNext ? 'bg-gray-100 hover:bg-gray-200' : 'text-gray-400 bg-gray-50'
+                  }`}
+              >
+                {language === 'fr' ? 'Suivant' : 'Next'}
+              </button>
+            </div>
+          )}
+
+          {/* CTA prompt + toggle */}
+          <div className="mt-12 text-center">
+            <p className="text-base sm:text-lg text-gray-700 font-medium mb-2">
               {language === 'fr'
-                ? `Page ${page} sur ${maxPage}`
-                : `Page ${page} of ${maxPage}`}
-            </span>
+                ? "Vous ne trouvez pas ce que vous cherchez ?"
+                : "Can't find what you're looking for?"}
+            </p>
             <button
-              onClick={handleNextPage}
-              disabled={!canNext}
-              className={`px-4 py-2 border rounded ${canNext ? 'bg-gray-200' : 'bg-gray-100 text-gray-400'}`}
+              onClick={() => setShowFormPanel((prev) => !prev)}
+              className="inline-block text-sm font-semibold text-white bg-red-600 px-6 py-2 rounded hover:bg-red-700 transition"
             >
-              {language === 'fr' ? 'Suivant' : 'Next'}
+              {showFormPanel
+                ? language === 'fr'
+                  ? 'Masquer le formulaire'
+                  : 'Hide the Form'
+                : language === 'fr'
+                  ? 'Soumettre une demande'
+                  : 'Submit a Request'}
             </button>
           </div>
+
+          {/* Toggleable Form Panel */}
+          {showFormPanel && (
+            <div className="mt-6 bg-gray-50 border border-gray-200 p-6 rounded shadow-sm">
+              <h2 className="text-lg font-semibold mb-2 text-center">
+                {language === 'fr' ? 'Soumettre une nouvelle demande' : 'Submit a New Request'}
+              </h2>
+              <RequestOfferForm
+                language={language}
+                onCancel={() => setShowFormPanel(false)}
+                onSuccess={() => {
+                  setSearchTerm('');
+                  setPage(1);
+                  fetchOffers();
+                  setShowFormPanel(false);
+                }}
+              />
+            </div>
+          )}
         </>
       )}
     </div>
   );
+
 }

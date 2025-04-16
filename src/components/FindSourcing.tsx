@@ -41,6 +41,16 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
     }
   }, [items, showAll]);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const forceShowAll = params.get('showAll') === 'true';
+  
+    setShowAll(forceShowAll); // ✅ force open if ?showAll=true
+    setSearchTerm('');
+    setCurrentIndex(0);
+  }, [resetKey]);
+  
+
   const filtered = items.filter((item) => {
     const search = searchTerm.toLowerCase();
     return (
