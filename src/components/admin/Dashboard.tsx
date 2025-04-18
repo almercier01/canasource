@@ -218,7 +218,10 @@ export function Dashboard({ language }: DashboardProps) {
   }
 
 
-  const handleRequestAction = async (offerId: string, newStatus: 'approved' | 'rejected') => {
+  const handleRequestAction = async (
+    offerId: string,
+    newStatus: 'approved' | 'rejected'
+  ) => {
     setLoading(true);
     try {
       const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -227,27 +230,75 @@ export function Dashboard({ language }: DashboardProps) {
         alert("You must be logged in to perform this action.");
         return;
       }
-
-      // Update the requested_offers row with the new status
-      const { data, error } = await supabase
+  
+      // Update the requested_offers row and get the updated row
+      const { data: updatedOffers, error: updateError } = await supabase
         .from('requested_offers')
         .update({ status: newStatus })
-        .eq('id', offerId);
-
-      if (error) {
-        console.error(`Error updating request status to '${newStatus}':`, error);
+        .eq('id', offerId)
+        .select();
+  
+      if (updateError || !updatedOffers || updatedOffers.length === 0) {
+        console.error(`Error updating offer:`, updateError);
         return;
       }
-
-      console.log(`Offer ${offerId} updated to status '${newStatus}'`);
-      // Re-fetch the updated list
+  
+      const offer = updatedOffers[0];
+  
+      // Determine bilingual title and message
+      const notificationTitle =
+        newStatus === 'approved'
+          ? {
+              en: 'Request Accepted',
+              fr: 'Demande acceptée'
+            }
+          : {
+              en: 'Request Rejected',
+              fr: 'Demande refusée'
+            };
+  
+      const notificationMessage =
+        newStatus === 'approved'
+          ? {
+              en: `Your product request "${offer.title_en}" has been approved!`,
+              fr: `Votre demande de produit "${offer.title_fr}" a été acceptée!`
+            }
+          : {
+              en: `Unfortunately, your product request "${offer.title_en}" was rejected.`,
+              fr: `Malheureusement, votre demande de produit "${offer.title_fr}" a été refusée.`
+            };
+  
+      // ✅ Insert bilingual notification
+      const { error: notifError } = await supabase.from('notifications').insert([
+        {
+          user_id: offer.user_id,
+          type: `request_${newStatus}`,
+          title: notificationTitle, // both en and fr
+          message: notificationMessage,
+          data: {
+            offer_id: offerId,
+            title_en: offer.title_en,
+            title_fr: offer.title_fr
+          },
+          read: false,
+          emailed: true,
+          created_at: new Date().toISOString()
+        }
+      ]);
+  
+      if (notifError) {
+        console.error("Notification insert failed:", notifError);
+      }
+  
+      // ✅ Refresh list
       await fetchRequests();
     } catch (err) {
-      console.error('Error in handleRequestAction:', err);
+      console.error("Error in handleRequestAction:", err);
     } finally {
       setLoading(false);
     }
   };
+  
 
 
   const handleLogout = async () => {
