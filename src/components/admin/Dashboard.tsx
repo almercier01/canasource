@@ -136,86 +136,86 @@ export function Dashboard({ language }: DashboardProps) {
   };
 
   // AdminDashboard.tsx or helpers.ts
-async function handleReportAction(
-  reportId: string, 
-  businessId: string, 
-  action: 'clear' | 'contact' | 'remove', 
-  reporterId: string
-) {
-  switch (action) {
-// Example "clear" action correctly inserting required notification fields
-case 'clear':
-  const { error: updateError } = await supabase
-    .from('business_reports')
-    .update({ status: 'cleared', reviewed_at: new Date().toISOString() })
-    .eq('id', reportId);
+  async function handleReportAction(
+    reportId: string,
+    businessId: string,
+    action: 'clear' | 'contact' | 'remove',
+    reporterId: string
+  ) {
+    switch (action) {
+      // Example "clear" action correctly inserting required notification fields
+      case 'clear':
+        const { error: updateError } = await supabase
+          .from('business_reports')
+          .update({ status: 'cleared', reviewed_at: new Date().toISOString() })
+          .eq('id', reportId);
 
-  if (updateError) {
-    console.error("Supabase error on clear:", updateError);
-    alert(`Error clearing report: ${updateError.message}`);
-    return;
+        if (updateError) {
+          console.error("Supabase error on clear:", updateError);
+          alert(`Error clearing report: ${updateError.message}`);
+          return;
+        }
+
+        // Insert a complete notification
+        const { error: notificationError } = await supabase.from('notifications').insert([{
+          user_id: reporterId,                         // required
+          type: 'report_cleared',                      // custom type for clarity
+          title: 'Report Cleared',                     // required
+          message: 'The report you submitted has been reviewed and cleared by an admin.', // required
+          data: { report_id: reportId },               // optional, but helpful
+          read: false,                                 // default unread notification
+          emailed: false,                              // initial email status
+          created_at: new Date().toISOString()         // timestamp
+        }]);
+
+        if (notificationError) {
+          console.error("Notification error:", notificationError);
+          alert(`Error adding notification: ${notificationError.message}`);
+        }
+
+        break;
+
+
+
+      case 'contact':
+        // Get user email from reporterId
+        const { data: userData, error: userError } = await supabase
+          .from('users')
+          .select('email')
+          .eq('id', reporterId)
+          .single();
+
+        if (userError || !userData) {
+          console.error('Unable to fetch user email:', userError);
+          alert('Unable to fetch user email.');
+          return;
+        }
+
+        const email = userData.email;
+        const subject = encodeURIComponent('Regarding Your Business Report');
+        const body = encodeURIComponent('We received your report and are looking into it. Thank you for your feedback.');
+
+        window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+        break;
+
+      case 'remove':
+        // Set display_listing to false
+        await supabase
+          .from('businesses')
+          .update({ display_listing: false })
+          .eq('id', businessId);
+
+        // Also mark report as cleared after removal
+        await supabase
+          .from('business_reports')
+          .update({ status: 'cleared', reviewed_at: new Date().toISOString() })
+          .eq('id', reportId);
+        break;
+    }
+
+    // Re-fetch reports to update UI
+    await fetchReports();
   }
-
-  // Insert a complete notification
-  const { error: notificationError } = await supabase.from('notifications').insert([{
-    user_id: reporterId,                         // required
-    type: 'report_cleared',                      // custom type for clarity
-    title: 'Report Cleared',                     // required
-    message: 'The report you submitted has been reviewed and cleared by an admin.', // required
-    data: { report_id: reportId },               // optional, but helpful
-    read: false,                                 // default unread notification
-    emailed: false,                              // initial email status
-    created_at: new Date().toISOString()         // timestamp
-  }]);
-
-  if (notificationError) {
-    console.error("Notification error:", notificationError);
-    alert(`Error adding notification: ${notificationError.message}`);
-  }
-
-  break;
-
-    
-
-    case 'contact':
-      // Get user email from reporterId
-      const { data: userData, error: userError } = await supabase
-        .from('users')
-        .select('email')
-        .eq('id', reporterId)
-        .single();
-
-      if (userError || !userData) {
-        console.error('Unable to fetch user email:', userError);
-        alert('Unable to fetch user email.');
-        return;
-      }
-
-      const email = userData.email;
-      const subject = encodeURIComponent('Regarding Your Business Report');
-      const body = encodeURIComponent('We received your report and are looking into it. Thank you for your feedback.');
-
-      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
-      break;
-
-    case 'remove':
-      // Set display_listing to false
-      await supabase
-        .from('businesses')
-        .update({ display_listing: false })
-        .eq('id', businessId);
-
-      // Also mark report as cleared after removal
-      await supabase
-        .from('business_reports')
-        .update({ status: 'cleared', reviewed_at: new Date().toISOString() })
-        .eq('id', reportId);
-      break;
-  }
-
-  // Re-fetch reports to update UI
-  await fetchReports();
-}
 
 
   const handleRequestAction = async (offerId: string, newStatus: 'approved' | 'rejected') => {
@@ -339,7 +339,7 @@ case 'clear':
         .select('*')
         .eq('status', 'pending')  // <-- Only fetch pending reports
         .order('created_at', { ascending: false });
-  
+
       if (error) throw error;
       setReports(data || []);
     } catch (error) {
@@ -348,7 +348,7 @@ case 'clear':
       setLoading(false);
     }
   };
-  
+
   // --------------------------------------------------------------------------------
   // 3) IMAGES TAB (pending)
   // --------------------------------------------------------------------------------
@@ -434,6 +434,28 @@ case 'clear':
 
       console.log(`Image ${status} successfully for business:`, businessId);
       await fetchPendingBusinesses(); // Refresh the list
+
+      if (status === 'approved') {
+        const { data: businessData, error: fetchError } = await supabase
+          .from('businesses')
+          .select('owner_id, name')
+          .eq('id', businessId)
+          .single();
+
+        if (!fetchError && businessData?.owner_id) {
+          await supabase.from('notifications').insert({
+            user_id: businessData.owner_id,
+            type: 'listing_approved',
+            title: 'Listing Approved',
+            message: `Your business listing "${businessData.name}" has been approved and is now visible.`,
+            data: { business_id: businessId },
+            read: false,
+            emailed: true,
+            created_at: new Date().toISOString()
+          });
+        }
+      }
+
     } catch (err) {
       console.error('Error in handleImageAction:', err);
     } finally {
@@ -473,20 +495,20 @@ case 'clear':
             <p>No businesses found</p>
           ) : (
             <ul>
-{overview.byProvince.map((p) => {
-  const rawKey = p.province ?? '';
-  const provinceKey = rawKey.trim() as keyof typeof translations.provinces;
+              {overview.byProvince.map((p) => {
+                const rawKey = p.province ?? '';
+                const provinceKey = rawKey.trim() as keyof typeof translations.provinces;
 
-  const label = provinceKey in translations.provinces
-  ? translations.provinces[provinceKey as keyof typeof translations.provinces][language]
-  : rawKey || 'N/A';
+                const label = provinceKey in translations.provinces
+                  ? translations.provinces[provinceKey as keyof typeof translations.provinces][language]
+                  : rawKey || 'N/A';
 
-  return (
-    <li key={provinceKey}>
-      Province: {label} – Count: {p.cnt}
-    </li>
-  );
-})}
+                return (
+                  <li key={provinceKey}>
+                    Province: {label} – Count: {p.cnt}
+                  </li>
+                );
+              })}
 
 
             </ul>
@@ -500,20 +522,20 @@ case 'clear':
             <p>No businesses found</p>
           ) : (
             <ul>
-             {overview.byCategory.map((c) => {
-  const rawKey = c.category ?? '';
-  const categoryKey = rawKey.trim();
+              {overview.byCategory.map((c) => {
+                const rawKey = c.category ?? '';
+                const categoryKey = rawKey.trim();
 
-  const label = categoryKey in translations.categories
-    ? translations.categories[categoryKey as keyof typeof translations.categories][language]
-    : rawKey || 'N/A';
+                const label = categoryKey in translations.categories
+                  ? translations.categories[categoryKey as keyof typeof translations.categories][language]
+                  : rawKey || 'N/A';
 
-  return (
-    <li key={categoryKey}>
-      Category: {label} – Count: {c.cnt}
-    </li>
-  );
-})}
+                return (
+                  <li key={categoryKey}>
+                    Category: {label} – Count: {c.cnt}
+                  </li>
+                );
+              })}
 
             </ul>
           )}
@@ -545,10 +567,10 @@ case 'clear':
               </a>
               <span className="text-sm text-gray-600 ml-2">({report.status})</span>
             </div>
-  
+
             <p className="mt-2 text-sm text-gray-700">{report.type}</p>
             <p className="mt-1 text-sm italic text-gray-500">{report.details}</p>
-  
+
             <div className="mt-4 flex gap-2">
               {report.status !== 'cleared' && (
                 <>
@@ -558,14 +580,14 @@ case 'clear':
                   >
                     Clear
                   </button>
-  
+
                   <button
                     onClick={() => handleReportAction(report.id, report.business_id, 'contact', report.reporter_id)}
                     className="px-3 py-1 bg-yellow-500 text-white rounded"
                   >
                     Contact User
                   </button>
-  
+
                   <button
                     onClick={() => handleReportAction(report.id, report.business_id, 'remove', report.reporter_id)}
                     className="px-3 py-1 bg-red-500 text-white rounded"
@@ -580,8 +602,8 @@ case 'clear':
       </ul>
     );
   };
-  
-  
+
+
 
   // Renders your existing Images tab
   const renderImagesTab = () => {
@@ -633,42 +655,42 @@ case 'clear':
 
     return (
       <div className="space-y-4">
-  {requests
-    .filter((offer) => offer.status === 'pending')
-    .map((offer) => {
-      const isFrench = language === 'fr';
-      const displayedTitle = isFrench ? offer.title_fr : offer.title_en;
-      const displayedDesc = isFrench ? offer.description_fr : offer.description_en;
+        {requests
+          .filter((offer) => offer.status === 'pending')
+          .map((offer) => {
+            const isFrench = language === 'fr';
+            const displayedTitle = isFrench ? offer.title_fr : offer.title_en;
+            const displayedDesc = isFrench ? offer.description_fr : offer.description_en;
 
-      return (
-        <div key={offer.id} className="border p-4 rounded bg-white shadow-sm">
-          <h4 className="text-lg font-semibold">
-            {displayedTitle}
-            <span className="text-sm text-gray-500 ml-2">({offer.status})</span>
-          </h4>
-          <p className="mt-2">{displayedDesc}</p>
-          <div className="mt-4 flex gap-2">
-            <button
-              onClick={() => handleRequestAction(offer.id, 'approved')}
-              className="px-4 py-2 bg-green-600 text-white rounded-md"
-            >
-              {translations.dashboard.approve[language]}
-            </button>
-            <button
-              onClick={() => handleRequestAction(offer.id, 'rejected')}
-              className="px-4 py-2 bg-red-600 text-white rounded-md"
-            >
-              {translations.dashboard.reject[language]}
-            </button>
-          </div>
-        </div>
-      );
-    })
-  }
-  {requests.filter((offer) => offer.status === 'pending').length === 0 && (
-    <p>{translations.dashboard.noRequests[language]}</p>
-  )}
-</div>
+            return (
+              <div key={offer.id} className="border p-4 rounded bg-white shadow-sm">
+                <h4 className="text-lg font-semibold">
+                  {displayedTitle}
+                  <span className="text-sm text-gray-500 ml-2">({offer.status})</span>
+                </h4>
+                <p className="mt-2">{displayedDesc}</p>
+                <div className="mt-4 flex gap-2">
+                  <button
+                    onClick={() => handleRequestAction(offer.id, 'approved')}
+                    className="px-4 py-2 bg-green-600 text-white rounded-md"
+                  >
+                    {translations.dashboard.approve[language]}
+                  </button>
+                  <button
+                    onClick={() => handleRequestAction(offer.id, 'rejected')}
+                    className="px-4 py-2 bg-red-600 text-white rounded-md"
+                  >
+                    {translations.dashboard.reject[language]}
+                  </button>
+                </div>
+              </div>
+            );
+          })
+        }
+        {requests.filter((offer) => offer.status === 'pending').length === 0 && (
+          <p>{translations.dashboard.noRequests[language]}</p>
+        )}
+      </div>
 
     );
   };
