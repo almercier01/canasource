@@ -1,5 +1,8 @@
 import { Handler } from '@netlify/functions';
 import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
+dotenv.config(); // 👈 Force load of .env
+
 
 const handler: Handler = async (event) => {
   if (event.httpMethod !== 'POST') {
@@ -9,34 +12,45 @@ const handler: Handler = async (event) => {
   const { name, email, message } = JSON.parse(event.body || '{}');
 
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
     auth: {
-      user: 'contact@canasource.ca',
+      user: 'gdrive@renotrend.com',
       pass: process.env.GMAIL_APP_PASSWORD,
+    },
+    tls: {
+      rejectUnauthorized: false,
     },
   });
 
-  try {
-    await transporter.sendMail({
-      from: `"CanaSource Contact" <contact@canasource.ca>`,
-      to: 'contact@canasource.ca',
-      subject: '📬 New Contact Form Message',
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong><br>${message}</p>
-      `,
-    });
+  const mailOptions = {
+    from: 'gdrive@renotrend.com',
+    to: 'contact@canasource.ca',
+    replyTo: email,
+    subject: `📬 Contact from ${name}`,
+    html: `
+      <p><strong>From:</strong> ${name} (${email})</p>
+      <p><strong>Message:</strong><br>${message}</p>
+    `,
+  };
+  
 
+  try {
+    await transporter.sendMail(mailOptions);
     return {
       statusCode: 200,
-      body: JSON.stringify({ success: true }),
+      body: JSON.stringify({ message: 'Contact form submission sent successfully' }),
     };
-  } catch (err) {
-    console.error('Email send error:', err);
+  } catch (error) {
+    console.error('Send email failed:', error);
+  
+    const message =
+      error instanceof Error ? error.message : 'Unknown error';
+  
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: 'Failed to send email' }),
+      body: JSON.stringify({ message: 'Failed to send email', error: message }),
     };
   }
 };

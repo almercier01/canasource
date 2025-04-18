@@ -23,8 +23,9 @@ export function Contact({ language, onClose }: ContactProps) {
     e.preventDefault();
     setLoading(true);
     setError(null);
-
+  
     try {
+      // 1. Store in Supabase
       const { error: submitError } = await supabase
         .from('contact_messages')
         .insert([
@@ -34,21 +35,32 @@ export function Contact({ language, onClose }: ContactProps) {
             message: formData.message
           }
         ]);
-
+  
       if (submitError) throw submitError;
-
-      setSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        message: ''
+  
+      // 2. Send the email via Netlify function
+      const emailResponse = await fetch('/.netlify/functions/send-contact-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
       });
+  
+      if (!emailResponse.ok) {
+        throw new Error('Email failed to send.');
+      }
+  
+      // 3. Success
+      setSuccess(true);
+      setFormData({ name: '', email: '', message: '' });
+  
     } catch (err) {
+      console.error(err);
       setError(translations.contact.error[language]);
     } finally {
       setLoading(false);
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
