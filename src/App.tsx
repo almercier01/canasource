@@ -196,7 +196,12 @@ export default function App() {
 
 
               {/* Show RequestedOffersSection ONLY on / */}
-              <FindSourcing language={language} resetKey={findSourcingResetKey} /> {/* New section on homepage */}
+              <FindSourcing
+                language={language}
+                resetKey={findSourcingResetKey}
+                user={user}
+                onRequireLogin={() => setShowAuthModal(true)}
+              /> {/* New section on homepage */}
               {/* CTA instead of RequestedOffersSection */}
               {/* <div className="text-center mt-8 px-4">
                 <button
@@ -297,23 +302,30 @@ export default function App() {
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
         onSuccess={() => {
+          const params = new URLSearchParams(window.location.search);
+          const code = params.get('code');
           setShowAuthModal(false);
-          navigate('/register');
+          if (code) {
+            navigate(`/register?code=${encodeURIComponent(code)}`);
+          } else {
+            navigate('/register');
+          }
         }}
+        
         language={language}
       />
       <TermsAndPrivacy
-  isOpen={showTermsModal}
-  onClose={() => setShowTermsModal(false)}
-  onAccept={() => setShowTermsModal(false)}
-  language={language}
-/>
+        isOpen={showTermsModal}
+        onClose={() => setShowTermsModal(false)}
+        onAccept={() => setShowTermsModal(false)}
+        language={language}
+      />
 
       <Footer
-  language={language}
-  onRegisterClick={handleRegisterClick}
-  onOpenTerms={() => setShowTermsModal(true)}
-/>
+        language={language}
+        onRegisterClick={handleRegisterClick}
+        onOpenTerms={() => setShowTermsModal(true)}
+      />
 
 
     </div>

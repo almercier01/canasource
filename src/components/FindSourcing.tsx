@@ -12,9 +12,12 @@ interface TariffedProduct {
 interface FindSourcingProps {
   language: 'en' | 'fr';
   resetKey?: number;
+  user?: any; // or use your actual User type
+  onRequireLogin?: () => void;
 }
 
-export function FindSourcing({ language, resetKey }: FindSourcingProps) {
+
+export function FindSourcing({ language, resetKey, user, onRequireLogin }: FindSourcingProps) {
   const [items, setItems] = useState<TariffedProduct[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
@@ -44,12 +47,12 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const forceShowAll = params.get('showAll') === 'true';
-  
+
     setShowAll(forceShowAll); // ✅ force open if ?showAll=true
     setSearchTerm('');
     setCurrentIndex(0);
   }, [resetKey]);
-  
+
 
   const filtered = items.filter((item) => {
     const search = searchTerm.toLowerCase();
@@ -137,12 +140,24 @@ export function FindSourcing({ language, resetKey }: FindSourcingProps) {
                   {item.productType} ({item.productNumber})
                 </h3>
                 <p className="text-sm text-gray-700 mt-1">{item.productDescription}</p>
-                <a
-                  href={`/register?code=${encodeURIComponent(item.productType)}`}
+                <button
+                  onClick={() => {
+                    if (user) {
+                      window.location.href = `/register?code=${encodeURIComponent(item.productType)}`;
+                    } else {
+                      // 👇 Append the product name in the URL so we can redirect later
+                      const url = new URL(window.location.href);
+                      url.searchParams.set('code', item.productType);
+                      window.history.pushState({}, '', url);
+                      onRequireLogin?.();
+                    }
+                  }}
                   className="inline-block text-blue-600 hover:underline mt-2 text-sm"
                 >
                   {language === 'fr' ? 'Proposer ce produit' : 'Provide This Product'}
-                </a>
+                </button>
+
+
               </li>
             );
           })}
