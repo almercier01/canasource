@@ -68,7 +68,7 @@ const shouldRefetch = searchParams.get('refetched') === 'true';
 
   const highlightedCommentId = searchParams.get('highlight');
 
-  const defaultImage = 'https://images.unsplash.com/photo-1516216628859-9bccecab13ca?...';
+  const defaultImage = '/images/default_listing_Temp_image2.png';
 
 
   // 1. If no `business` prop, fetch from Supabase using `id`

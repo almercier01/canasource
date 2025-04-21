@@ -3,7 +3,7 @@ import { BarChart3, Flag, Image, Settings, ClipboardCheck } from 'lucide-react';
 import { supabase } from '../../lib/supabaseClient';
 import { Language } from '../../types';
 import { translations } from '../../i18n/translations';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 interface DashboardProps {
   language: Language;
@@ -230,44 +230,44 @@ export function Dashboard({ language }: DashboardProps) {
         alert("You must be logged in to perform this action.");
         return;
       }
-  
+
       // Update the requested_offers row and get the updated row
       const { data: updatedOffers, error: updateError } = await supabase
         .from('requested_offers')
         .update({ status: newStatus })
         .eq('id', offerId)
         .select();
-  
+
       if (updateError || !updatedOffers || updatedOffers.length === 0) {
         console.error(`Error updating offer:`, updateError);
         return;
       }
-  
+
       const offer = updatedOffers[0];
-  
+
       // Determine bilingual title and message
       const notificationTitle =
         newStatus === 'approved'
           ? {
-              en: 'Request Accepted',
-              fr: 'Demande acceptée'
-            }
+            en: 'Request Accepted',
+            fr: 'Demande acceptée'
+          }
           : {
-              en: 'Request Rejected',
-              fr: 'Demande refusée'
-            };
-  
+            en: 'Request Rejected',
+            fr: 'Demande refusée'
+          };
+
       const notificationMessage =
         newStatus === 'approved'
           ? {
-              en: `Your product request "${offer.title_en}" has been approved!`,
-              fr: `Votre demande de produit "${offer.title_fr}" a été acceptée!`
-            }
+            en: `Your product request "${offer.title_en}" has been approved!`,
+            fr: `Votre demande de produit "${offer.title_fr}" a été acceptée!`
+          }
           : {
-              en: `Unfortunately, your product request "${offer.title_en}" was rejected.`,
-              fr: `Malheureusement, votre demande de produit "${offer.title_fr}" a été refusée.`
-            };
-  
+            en: `Unfortunately, your product request "${offer.title_en}" was rejected.`,
+            fr: `Malheureusement, votre demande de produit "${offer.title_fr}" a été refusée.`
+          };
+
       // ✅ Insert bilingual notification
       const { error: notifError } = await supabase.from('notifications').insert([
         {
@@ -285,11 +285,11 @@ export function Dashboard({ language }: DashboardProps) {
           created_at: new Date().toISOString()
         }
       ]);
-  
+
       if (notifError) {
         console.error("Notification insert failed:", notifError);
       }
-  
+
       // ✅ Refresh list
       await fetchRequests();
     } catch (err) {
@@ -298,7 +298,7 @@ export function Dashboard({ language }: DashboardProps) {
       setLoading(false);
     }
   };
-  
+
 
 
   const handleLogout = async () => {
@@ -674,7 +674,13 @@ export function Dashboard({ language }: DashboardProps) {
               className="w-full h-48 object-cover rounded-lg"
             />
             <h4 className="font-medium text-gray-900 mt-2">
+            <Link
+              to={`/business/${item.id}`}
+              target="_blank"
+              className="text-blue-600 font-medium hover:underline"
+            >
               {item.name || translations.dashboard.unknownBusiness[language]}
+            </Link>
             </h4>
             <div className="flex justify-between mt-4">
               <button

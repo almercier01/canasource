@@ -15,12 +15,13 @@ interface EditBusinessFormProps {
 export function EditBusinessForm({ business, onCancel, onSave, language }: EditBusinessFormProps) {
 
   const [searchParams] = useSearchParams();
-const newProduct = searchParams.get('code') || '';
+  const newProduct = searchParams.get('code') || '';
 
   const [formData, setFormData] = useState({
     name: business.name || '',
-    description_en: business.description_en || '',
-    description_fr: business.description_fr || '',
+    about_en: business.about_en || '',
+    about_fr: business.about_fr || '',
+    categoryKey: '',
     category_en: business.category_en || '',
     category_fr: business.category_fr || '',
     province_en: business.province_en || '',
@@ -51,40 +52,55 @@ const newProduct = searchParams.get('code') || '';
       }));
     }
   }, [newProduct]);
-  
+
+
+  useEffect(() => {
+    const key = Object.keys(translations.categories).find(
+      (cat) =>
+        translations.categories[cat].en === formData.category_en ||
+        translations.categories[cat].fr === formData.category_fr
+    );
+    if (key) {
+      setFormData((prev) => ({ ...prev, categoryKey: key }));
+    }
+  }, [formData.category_en, formData.category_fr]);
 
   const checkOwnership = async () => {
-
-    const { data: { user }, error } = await supabase.auth.getUser();
-console.log("Current User ID:", user?.id);
-
-    try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        setIsOwner(false);
-        return;
-      }
-
-      // Check if user is owner
-      const { data, error } = await supabase
-        .from('businesses')
-        .select('owner_id')
-        .eq('id', business.id)
-        .single();
-
-      if (error) throw error;
-      setIsOwner(data.owner_id === user.id);
-    } catch (err) {
-      console.error('Error checking ownership:', err);
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) {
       setIsOwner(false);
+      return;
     }
+
+    const { data, error } = await supabase
+      .from('businesses')
+      .select('owner_id')
+      .eq('id', business.id)
+      .single();
+
+    if (error) {
+      console.error('Error checking ownership:', error);
+      setIsOwner(false);
+    } else {
+      setIsOwner(data.owner_id === user.id);
+    }
+  };
+
+  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const key = e.target.value;
+    setFormData(prev => ({
+      ...prev,
+      categoryKey: key,
+      category_en: translations.categories[key].en,
+      category_fr: translations.categories[key].fr
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isOwner) {
-      setError(language === 'en' 
-        ? 'You do not have permission to edit this business' 
+      setError(language === 'en'
+        ? 'You do not have permission to edit this business'
         : 'Vous n\'avez pas la permission de modifier cette entreprise'
       );
       return;
@@ -119,8 +135,8 @@ console.log("Current User ID:", user?.id);
       // Prepare update data
       const updatedData = {
         name: formData.name,
-        description_en: formData.description_en,
-        description_fr: formData.description_fr,
+        about_en: formData.about_en,
+        about_fr: formData.about_fr,
         category_en: formData.category_en,
         category_fr: formData.category_fr,
         province_en: formData.province_en,
@@ -132,6 +148,7 @@ console.log("Current User ID:", user?.id);
         website: formData.website || null,
         phone: formData.phone || null,
         email: formData.email || null,
+        image_status: formData.image_url ? 'pending' : null,
         image_url: finalImageUrl || null
       };
 
@@ -157,41 +174,41 @@ console.log("Current User ID:", user?.id);
   const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-  
+
     // **1️⃣ Show the new image preview before uploading**
     const previewUrl = URL.createObjectURL(file);
     setFormData(prev => ({ ...prev, image_url: previewUrl }));
-  
+
     try {
       // **2️⃣ Upload to Supabase**
       const fileExt = file.name.split('.').pop();
       const fileName = `${business.id}_${Date.now()}.${fileExt}`;
       const filePath = `business_images/${fileName}`;
-  
+
       const { error: uploadError } = await supabase.storage
         .from('business-images')
         .upload(filePath, file);
-  
+
       if (uploadError) throw uploadError;
-  
+
       // **3️⃣ Retrieve the public URL from Supabase**
       const { data } = supabase.storage.from('business-images').getPublicUrl(filePath);
       const publicUrl = data.publicUrl;
-  
+
       if (!publicUrl) throw new Error('Failed to retrieve image URL.');
-  
+
       // **4️⃣ Update formData with the real public URL**
       setFormData(prev => ({ ...prev, image_url: publicUrl }));
-  
+
     } catch (error) {
       console.error('Error uploading image:', error);
-      setError(language === 'en' 
-        ? 'Error uploading image. Please try again.' 
+      setError(language === 'en'
+        ? 'Error uploading image. Please try again.'
         : "Erreur lors du téléchargement de l'image. Veuillez réessayer."
       );
     }
   };
-  
+
 
   const handleProvinceChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedName = e.target.value;
@@ -208,14 +225,14 @@ console.log("Current User ID:", user?.id);
     }
   };
 
-  const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCategory = e.target.value as keyof typeof translations.categories;
-    setFormData(prev => ({
-      ...prev,
-      category_en: translations.categories[selectedCategory].en,
-      category_fr: translations.categories[selectedCategory].fr
-    }));
-  };
+  // const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  //   const selectedCategory = e.target.value as keyof typeof translations.categories;
+  //   setFormData(prev => ({
+  //     ...prev,
+  //     category_en: translations.categories[selectedCategory].en,
+  //     category_fr: translations.categories[selectedCategory].fr
+  //   }));
+  // };
 
   if (isOwner === null) {
     return (
@@ -276,8 +293,8 @@ console.log("Current User ID:", user?.id);
             {translations.register.descriptionEn[language]}
           </label>
           <textarea
-            value={formData.description_en}
-            onChange={(e) => setFormData(prev => ({ ...prev, description_en: e.target.value }))}
+            value={formData.about_en}
+            onChange={(e) => setFormData(prev => ({ ...prev, about_en: e.target.value }))}
             rows={3}
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
           />
@@ -288,8 +305,8 @@ console.log("Current User ID:", user?.id);
             {translations.register.descriptionFr[language]}
           </label>
           <textarea
-            value={formData.description_fr}
-            onChange={(e) => setFormData(prev => ({ ...prev, description_fr: e.target.value }))}
+            value={formData.about_fr}
+            onChange={(e) => setFormData(prev => ({ ...prev, about_fr: e.target.value }))}
             rows={3}
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
           />
@@ -300,7 +317,7 @@ console.log("Current User ID:", user?.id);
             {translations.register.category[language]} *
           </label>
           <select
-            value={language === 'en' ? formData.category_en : formData.category_fr}
+            value={formData.categoryKey}
             onChange={handleCategoryChange}
             required
             className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
@@ -424,25 +441,25 @@ console.log("Current User ID:", user?.id);
         </div>
 
         <div>
-  <label className="block text-sm font-medium text-gray-700">
-    {language === 'en' ? 'Business Image' : "Image de l'entreprise"}
-  </label>
-  
-  <input
-    type="file"
-    accept="image/*"
-    onChange={handleImageUpload}
-    className="mt-2 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
-  />
-  
-  {formData.image_url && (
-    <img 
-      src={formData.image_url} 
-      alt="Business" 
-      className="mt-2 h-32 w-32 object-cover rounded-lg"
-    />
-  )}
-</div>
+          <label className="block text-sm font-medium text-gray-700">
+            {language === 'en' ? 'Business Image' : "Image de l'entreprise"}
+          </label>
+
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            className="mt-2 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-red-50 file:text-red-700 hover:file:bg-red-100"
+          />
+
+          {formData.image_url && (
+            <img
+              src={formData.image_url}
+              alt="Business"
+              className="mt-2 w-100% object-cover rounded-lg"
+            />
+          )}
+        </div>
 
 
         <div className="flex justify-end space-x-4 pt-6">

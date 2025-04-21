@@ -30,6 +30,7 @@ import { GuidedStepsCarousel } from './components/GuidedStepsCarousel';
 import { CTABanner } from './components/CTABanner';
 import { Footer } from './components/Footer';
 import { TermsAndPrivacy } from './components/legal/TermsAndPrivacy';
+import { ScrollToTopButton } from './components/ScrollToTopButton';
 
 
 export default function App() {
@@ -153,57 +154,59 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Header
-        language={language}
-        setLanguage={setLanguage}
-        config={config}
-        onUpdateConfig={handleSetupComplete}
-        adminState={adminState}
-        onAdminLogin={handleAdminLogin}
-        onAdminLogout={handleAdminLogout}
-        onRegisterClick={handleRegisterClick}
-        onAdminDashboardClick={() => navigate('/admin-dashboard')}
-        onSearch={handleExploreClick}
-        onNavigate={handleNavigate}
-      />
 
-      {/* Define all routes here */}
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero
-                language={language}
-                onExploreClick={handleExploreClick}
-                onRegisterClick={handleRegisterClick}
-                onRequestOffersClick={() => navigate('/requests?showForm=true')}
-              />
+    <div className="flex flex-col min-h-screen">
+      <div className="min-h-screen bg-gray-50">
+        <div className="relative">
+          <Header
+            language={language}
+            setLanguage={setLanguage}
+            config={config}
+            onUpdateConfig={handleSetupComplete}
+            adminState={adminState}
+            onAdminLogin={handleAdminLogin}
+            onAdminLogout={handleAdminLogout}
+            onRegisterClick={handleRegisterClick}
+            onAdminDashboardClick={() => navigate('/admin-dashboard')}
+            onSearch={handleExploreClick}
+            onNavigate={handleNavigate}
+          />
 
-              <CTABanner language={language} />
+          {/* Define all routes here */}
+          <main className="flex-grow pb-24">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Hero
+                      language={language}
+                      onExploreClick={handleExploreClick}
+                      onRegisterClick={handleRegisterClick}
+                      onRequestOffersClick={() => navigate('/requests?showForm=true')}
+                    />
 
-              <SourcingJourney language={language} />
+                    <SourcingJourney language={language} />
 
-              {/* <LiveDemandFeed language={language} /> */}
+                    {/* <LiveDemandFeed language={language} /> */}
 
-              <GuidedStepsCarousel language={language} />
+                    <GuidedStepsCarousel language={language} />
 
 
-              {/* <div className="max-w-5xl mx-auto px-4 py-6">
+                    {/* <div className="max-w-5xl mx-auto px-4 py-6">
                 <Carousel language={language} />
               </div> */}
 
 
-              {/* Show RequestedOffersSection ONLY on / */}
-              <FindSourcing
-                language={language}
-                resetKey={findSourcingResetKey}
-                user={user}
-                onRequireLogin={() => setShowAuthModal(true)}
-              /> {/* New section on homepage */}
-              {/* CTA instead of RequestedOffersSection */}
-              {/* <div className="text-center mt-8 px-4">
+                    {/* Show RequestedOffersSection ONLY on / */}
+                    <FindSourcing
+                      language={language}
+                      resetKey={findSourcingResetKey}
+                      user={user}
+                      onRequireLogin={() => setShowAuthModal(true)}
+                    /> {/* New section on homepage */}
+                    {/* CTA instead of RequestedOffersSection */}
+                    {/* <div className="text-center mt-8 px-4">
                 <button
                   onClick={() => navigate('/requests?showForm=true')}
                   className="bg-red-600 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow hover:bg-red-700"
@@ -220,115 +223,125 @@ export default function App() {
               </div> */}
 
 
-            </>
-          }
+                  </>
+                }
+              />
+
+              <Route
+                path="/register"
+                element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />}
+              />
+
+              <Route
+                path="/find-sourcing"
+                element={<FindSourcing language={language} resetKey={findSourcingResetKey} />}
+              />
+
+              <Route
+                path="/search"
+                element={
+                  <BusinessSearch
+                    language={language}
+                    initialSearchTerm={initialSearchTerm}
+                    onClose={() => navigate('/')}
+                    resetSearchTerm={resetSearchTerm}
+                  />
+                }
+              />
+
+              <Route path="/about" element={<About language={language} onClose={() => navigate('/')} />} />
+              <Route path="/contact" element={<Contact language={language} onClose={() => navigate('/')} />} />
+              <Route path="/business/:id" element={<BusinessListing language={language} />} />
+              <Route
+                path="/boutique"
+                element={
+                  <BoutiqueView
+                    boutiqueId="test-boutique"
+                    language={language}
+                    onClose={() => {
+                      setShowBoutique(false);
+                      handleNavigate('home');
+                    }}
+                  />
+                }
+              />
+              <Route path="/add-products/:businessId" element={<AddProducts language={language} />} />
+
+              <Route
+                path="/requests/new"
+                element={
+                  <RequestOfferForm
+                    language={language}
+                    onCancel={() => navigate('/')}
+                    onSuccess={() => navigate('/requests')}
+                  />
+                }
+              />
+
+              <Route
+                path="/requests"
+                element={<RequestsPage language={language}   user={user}
+                onRequireLogin={() => setShowAuthModal(true)}/>}
+              />
+
+              <Route
+                path="/edit-business"
+                element={
+                  <EditBusinessRouteWrapper
+                    language={language}
+                    onCancel={() => navigate('/')}
+                    onSave={() => navigate('/user-dashboard')}
+                  />
+                }
+              />
+
+              <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
+              <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
+              <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
+              <Route path="/chat/:roomId" element={<ChatRoute language={language} />} />
+            </Routes>
+          </main>
+
+          <div id="cta-sticky-container">
+            <CTABanner language={language} />
+          </div>
+
+          <ScrollToTopButton />
+          {/* Auth Modal (available globally) */}
+          <AuthModal
+            isOpen={showAuthModal}
+            onClose={() => setShowAuthModal(false)}
+            onSuccess={() => {
+              const params = new URLSearchParams(window.location.search);
+              const code = params.get('code');
+              setShowAuthModal(false);
+              if (code) {
+                navigate(`/register?code=${encodeURIComponent(code)}`);
+              } else {
+                navigate('/register');
+              }
+            }}
+
+            language={language}
+          />
+          <TermsAndPrivacy
+            isOpen={showTermsModal}
+            onClose={() => setShowTermsModal(false)}
+            onAccept={() => setShowTermsModal(false)}
+            language={language}
+          />
+        </div>
+
+        <Footer
+          language={language}
+          onRegisterClick={handleRegisterClick}
+          onOpenTerms={() => setShowTermsModal(true)}
         />
 
-        <Route
-          path="/register"
-          element={<RegisterForm language={language} onCancel={() => navigate('/')} handleNavigate={handleNavigate} />}
-        />
 
-        <Route
-          path="/find-sourcing"
-          element={<FindSourcing language={language} resetKey={findSourcingResetKey} />}
-        />
-
-        <Route
-          path="/search"
-          element={
-            <BusinessSearch
-              language={language}
-              initialSearchTerm={initialSearchTerm}
-              onClose={() => navigate('/')}
-              resetSearchTerm={resetSearchTerm}
-            />
-          }
-        />
-
-        <Route path="/about" element={<About language={language} onClose={() => navigate('/')} />} />
-        <Route path="/contact" element={<Contact language={language} onClose={() => navigate('/')} />} />
-        <Route path="/business/:id" element={<BusinessListing language={language} />} />
-        <Route
-          path="/boutique"
-          element={
-            <BoutiqueView
-              boutiqueId="test-boutique"
-              language={language}
-              onClose={() => {
-                setShowBoutique(false);
-                handleNavigate('home');
-              }}
-            />
-          }
-        />
-        <Route path="/add-products/:businessId" element={<AddProducts language={language} />} />
-
-        <Route
-          path="/requests/new"
-          element={
-            <RequestOfferForm
-              language={language}
-              onCancel={() => navigate('/')}
-              onSuccess={() => navigate('/requests')}
-            />
-          }
-        />
-
-        <Route
-          path="/requests"
-          element={<RequestsPage language={language} />}
-        />
-
-        <Route
-          path="/edit-business"
-          element={
-            <EditBusinessRouteWrapper
-              language={language}
-              onCancel={() => navigate('/')}
-              onSave={() => navigate('/user-dashboard')}
-            />
-          }
-        />
-
-        <Route path="/user-dashboard" element={<UserDashboard language={language} onClose={() => navigate('/')} />} />
-        <Route path="/admin-dashboard" element={<Dashboard language={language} />} />
-        <Route path="/admin/setup" element={<Setup onComplete={handleSetupComplete} />} />
-        <Route path="/chat/:roomId" element={<ChatRoute language={language} />} />
-      </Routes>
-
-      {/* Auth Modal (available globally) */}
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        onSuccess={() => {
-          const params = new URLSearchParams(window.location.search);
-          const code = params.get('code');
-          setShowAuthModal(false);
-          if (code) {
-            navigate(`/register?code=${encodeURIComponent(code)}`);
-          } else {
-            navigate('/register');
-          }
-        }}
-        
-        language={language}
-      />
-      <TermsAndPrivacy
-        isOpen={showTermsModal}
-        onClose={() => setShowTermsModal(false)}
-        onAccept={() => setShowTermsModal(false)}
-        language={language}
-      />
-
-      <Footer
-        language={language}
-        onRegisterClick={handleRegisterClick}
-        onOpenTerms={() => setShowTermsModal(true)}
-      />
-
-
+      </div>
     </div>
+
   );
 }
 

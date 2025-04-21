@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import tariffedProductsEn from '../data/tarriffedProductsEn.json';
 import tariffedProductsFr from '../data/tarriffedProductsFr.json';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Package } from 'lucide-react';
 
 interface TariffedProduct {
@@ -22,6 +23,10 @@ export function FindSourcing({ language, resetKey, user, onRequireLogin }: FindS
   const [currentIndex, setCurrentIndex] = useState(0);
   const [showAll, setShowAll] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+
+  const location = useLocation();
+const navigate = useNavigate();
+const showBack = location.state?.from === 'requests';
 
   useEffect(() => {
     const data = language === 'fr' ? tariffedProductsFr : tariffedProductsEn;
@@ -67,6 +72,16 @@ export function FindSourcing({ language, resetKey, user, onRequireLogin }: FindS
 
   return (
     <div className="bg-white py-12 px-4">
+              {showBack && (
+  <div className="mb-4">
+    <button
+      onClick={() => navigate('/requests')}
+      className="text-blue-600 underline text-sm hover:text-blue-800"
+    >
+      ← {language === 'fr' ? 'Retour aux Offres' : 'Back to Requested Offers'}
+    </button>
+  </div>
+)}
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <h2 className="text-2xl font-bold text-gray-800 mb-2 flex items-center gap-2">

@@ -84,7 +84,7 @@ export function RequestOfferForm({
     <div className="max-w-2xl mx-auto px-4 py-8">
       <div className="bg-white rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-900 mb-6">
-          {language === 'en' ? 'Request an Offer' : 'Demandez une Offre'}
+          {language === 'en' ? 'What service or product are you looking for?' : 'Quel produit ou service recherchez-vous?'}
         </h2>
 
         {error && (

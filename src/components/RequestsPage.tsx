@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { supabase } from '../lib/supabaseClient';
 import { translations } from '../i18n/translations';
 import { Language } from '../types';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { RequestOfferForm } from './RequestOfferForm';
 import { TariffedTicker } from './TariffedTicker';
-
 
 interface RequestOffer {
   id: string;
@@ -15,13 +14,18 @@ interface RequestOffer {
   description_fr: string | null;
   status: string;
   created_at: string;
+  is_sample: boolean;
+  business_id?: string | null;
 }
 
 interface RequestsPageProps {
   language: Language;
+  user?: any;
+  userBusinessId?: string;
+  onRequireLogin?: () => void;
 }
 
-export function RequestsPage({ language }: RequestsPageProps) {
+export function RequestsPage({ language, user, userBusinessId, onRequireLogin }: RequestsPageProps) {
   const [searchTerm, setSearchTerm] = useState('');
   const [page, setPage] = useState(1);
   const pageSize = 10;
@@ -31,10 +35,10 @@ export function RequestsPage({ language }: RequestsPageProps) {
   const [loading, setLoading] = useState(false);
 
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const showForm = searchParams.get('showForm') === 'true';
-  const [showFormPanel, setShowFormPanel] = useState(false); // allow auto-open from ?showForm=true
-
+  const [showFormPanel, setShowFormPanel] = useState(showForm);
 
   useEffect(() => {
     fetchOffers();
@@ -48,7 +52,7 @@ export function RequestsPage({ language }: RequestsPageProps) {
     try {
       let query = supabase
         .from('requested_offers')
-        .select('id, title_en, title_fr, description_en, description_fr, status, created_at', {
+        .select('id, title_en, title_fr, description_en, description_fr, status, created_at, is_sample, business_id', {
           count: 'exact',
         })
         .eq('status', 'approved')
@@ -77,9 +81,6 @@ export function RequestsPage({ language }: RequestsPageProps) {
   const maxPage = Math.ceil(totalCount / pageSize);
   const canNext = page < maxPage;
 
-  const handlePrevPage = () => canPrev && setPage(page - 1);
-  const handleNextPage = () => canNext && setPage(page + 1);
-
   const getDisplayedTitle = (offer: RequestOffer) =>
     language === 'fr' ? offer.title_fr || offer.title_en || '' : offer.title_en || offer.title_fr || '';
 
@@ -88,14 +89,12 @@ export function RequestsPage({ language }: RequestsPageProps) {
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      {/* Header */}
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-800">
-          {language === 'fr' ? 'Offres Recherchées' : 'Requested Offers'}
+          {language === 'fr' ? 'Exemples de produits importés tarrifés' : 'Tariffed imported products example'}
         </h1>
 
         <TariffedTicker language={language} />
-
 
         <p className="text-sm text-gray-600 mt-2">
           {language === 'fr'
@@ -104,16 +103,11 @@ export function RequestsPage({ language }: RequestsPageProps) {
         </p>
       </div>
 
-      {/* Search */}
       <div className="mb-6">
         <input
           type="text"
           className="w-full border border-gray-300 rounded px-4 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-red-500"
-          placeholder={
-            language === 'fr'
-              ? 'Rechercher une offre en demande...'
-              : 'Search for a requested offer...'
-          }
+          placeholder={language === 'fr' ? 'Rechercher une offre en demande...' : 'Search for a requested offer...'}
           value={searchTerm}
           onChange={(e) => {
             setPage(1);
@@ -122,7 +116,6 @@ export function RequestsPage({ language }: RequestsPageProps) {
         />
       </div>
 
-      {/* Results */}
       {loading ? (
         <p className="text-gray-500">{translations.common.loading[language]}</p>
       ) : (
@@ -133,28 +126,63 @@ export function RequestsPage({ language }: RequestsPageProps) {
             </p>
           ) : (
             <div className="grid gap-4">
-              {offers.map((offer) => (
-                <div
-                  key={offer.id}
-                  className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition"
-                >
-                  <h3 className="text-md sm:text-lg font-semibold text-gray-800 mb-1">
-                    {getDisplayedTitle(offer)}
-                  </h3>
-                  <p className="text-sm text-gray-700">{getDisplayedDescription(offer)}</p>
-                </div>
-              ))}
+              {offers.map((offer) => {
+                const title = getDisplayedTitle(offer);
+                const description = getDisplayedDescription(offer);
+
+                return (
+                  <div key={offer.id} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                    <h3 className="text-md sm:text-lg font-semibold text-gray-800 mb-1">{title}</h3>
+                    <p className="text-sm text-gray-700">{description}</p>
+
+                    {offer.is_sample && (
+                      <p className="mt-2 text-xs text-yellow-600">
+                        {language === 'fr' ? 'Exemple de demande (non réelle)' : 'Sample request (not real)'}
+                      </p>
+                    )}
+
+                    <div className="flex flex-wrap gap-4 mt-3 text-sm">
+                      {offer.business_id ? (
+                        <Link
+                          to={`/business/${offer.business_id}`}
+                          className="text-gray-600 hover:text-blue-700"
+                        >
+                          {language === 'fr' ? 'Demande comblée — Voir la fiche' : 'Request Fulfilled — See Listing'}
+                        </Link>
+                      ) : (
+                        <button
+                          onClick={() => {
+                            if (!user) {
+                              const url = new URL(window.location.href);
+                              url.searchParams.set('code', title);
+                              window.history.pushState({}, '', url);
+                              return onRequireLogin?.();
+                            }
+
+                            if (userBusinessId) {
+                              navigate(`/edit-business?addProduct=${encodeURIComponent(title)}`);
+                            } else {
+                              navigate(`/register?code=${encodeURIComponent(title)}`);
+                            }
+                          }}
+                          className="text-blue-600 hover:underline"
+                        >
+                          {language === 'fr' ? 'Proposer une solution' : 'Respond to This Offer'}
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           )}
 
-          {/* Pagination */}
           {totalCount > pageSize && (
             <div className="flex justify-center items-center gap-4 mt-8">
               <button
-                onClick={handlePrevPage}
+                onClick={() => canPrev && setPage(page - 1)}
                 disabled={!canPrev}
-                className={`px-4 py-2 rounded border ${canPrev ? 'bg-gray-100 hover:bg-gray-200' : 'text-gray-400 bg-gray-50'
-                  }`}
+                className={`px-4 py-2 rounded border ${canPrev ? 'bg-gray-100 hover:bg-gray-200' : 'text-gray-400 bg-gray-50'}`}
               >
                 {language === 'fr' ? 'Précédent' : 'Previous'}
               </button>
@@ -164,42 +192,33 @@ export function RequestsPage({ language }: RequestsPageProps) {
               </span>
 
               <button
-                onClick={handleNextPage}
+                onClick={() => canNext && setPage(page + 1)}
                 disabled={!canNext}
-                className={`px-4 py-2 rounded border ${canNext ? 'bg-gray-100 hover:bg-gray-200' : 'text-gray-400 bg-gray-50'
-                  }`}
+                className={`px-4 py-2 rounded border ${canNext ? 'bg-gray-100 hover:bg-gray-200' : 'text-gray-400 bg-gray-50'}`}
               >
                 {language === 'fr' ? 'Suivant' : 'Next'}
               </button>
             </div>
           )}
 
-          {/* CTA prompt + toggle */}
           <div className="mt-12 text-center">
             <p className="text-base sm:text-lg text-gray-700 font-medium mb-2">
-              {language === 'fr'
-                ? "Vous ne trouvez pas ce que vous cherchez ?"
-                : "Can't find what you're looking for?"}
+              {language === 'fr' ? "Vous ne trouvez pas ce que vous cherchez ?" : "Can't find what you're looking for?"}
             </p>
             <button
               onClick={() => setShowFormPanel((prev) => !prev)}
               className="inline-block text-sm font-semibold text-white bg-red-600 px-6 py-2 rounded hover:bg-red-700 transition"
             >
               {showFormPanel
-                ? language === 'fr'
-                  ? 'Masquer le formulaire'
-                  : 'Hide the Form'
-                : language === 'fr'
-                  ? 'Soumettre une demande'
-                  : 'Submit a Request'}
+                ? language === 'fr' ? 'Masquer le formulaire' : 'Hide the Form'
+                : language === 'fr' ? 'Soumettre une demande' : 'Submit a Request'}
             </button>
           </div>
 
-          {/* Toggleable Form Panel */}
           {showFormPanel && (
             <div className="mt-6 bg-gray-50 border border-gray-200 p-6 rounded shadow-sm">
               <h2 className="text-lg font-semibold mb-2 text-center">
-                {language === 'fr' ? 'Soumettre une nouvelle demande' : 'Submit a New Request'}
+                {language === 'fr' ? 'Soumettre une demande pour évaluation' : 'Submit a Request for evaluation'}
               </h2>
               <RequestOfferForm
                 language={language}
@@ -217,5 +236,4 @@ export function RequestsPage({ language }: RequestsPageProps) {
       )}
     </div>
   );
-
 }
