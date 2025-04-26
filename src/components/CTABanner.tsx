@@ -18,25 +18,27 @@ export function CTABanner({ language }: { language: Language }) {
     localStorage.setItem('ctaBannerDismissed', 'true');
   };
 
-  useEffect(() => {
-    const footer = document.querySelector('footer');
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsSticky(false); // Reached footer, stop sticking
-        } else {
-          setIsSticky(true);
-        }
-      },
-      {
-        root: null,
-        threshold: 0,
-      }
-    );
+useEffect(() => {
+  const footer = document.querySelector('footer');
 
-    if (footer) observer.observe(footer);
-    return () => observer.disconnect();
-  }, []);
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+        setIsSticky(false); // Footer is truly in view
+      } else {
+        setIsSticky(true);
+      }
+    },
+    {
+      root: null,
+      threshold: 0.5, // 👈 not 0 anymore
+    }
+  );
+
+  if (footer) observer.observe(footer);
+  return () => observer.disconnect();
+}, []);
+
 
   if (!visible) return null;
 

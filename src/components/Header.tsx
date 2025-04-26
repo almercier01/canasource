@@ -116,12 +116,12 @@ export function Header({
                 onClick={() => handleMobileNavigation('home')}
                 className="flex items-center"
               >
-               <img
-  src="/favicon/android-chrome-192x192.png"
-  alt="CanaSource Icon"
-  className="h-8 w-8"
-/>
-<span className="ml-2 text-xl font-bold text-gray-900">CanaSource</span>
+                <img
+                  src="/favicon/android-chrome-192x192.png"
+                  alt="CanaSource Icon"
+                  className="h-8 w-8"
+                />
+                <span className="ml-2 text-xl font-bold text-gray-900">CanaSource</span>
 
               </button>
 
@@ -177,8 +177,12 @@ export function Header({
                 className="flex items-center text-gray-700 hover:text-red-600"
               >
                 <Globe2 className="h-5 w-5 mr-1" />
-                <span className="uppercase">{language === 'en' ? 'FR' : 'EN'}</span>
+                <div className="flex items-center space-x-1">
+                  <span className="h-3 w-3 rounded-full" style={{ backgroundColor: language === 'en' ? '#dc2626' : '#3b82f6' }} />
+                  <span className="uppercase">{language === 'en' ? 'FR' : 'EN'}</span>
+                </div>
               </button>
+
 
               {user ? (
                 <div className="relative flex items-center space-x-4">

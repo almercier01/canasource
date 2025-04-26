@@ -5,6 +5,8 @@ import { Language } from '../types';
 import { useLocation, Link, useNavigate } from 'react-router-dom';
 import { RequestOfferForm } from './RequestOfferForm';
 import { TariffedTicker } from './TariffedTicker';
+import { useParams } from 'react-router-dom';
+
 
 interface RequestOffer {
   id: string;
@@ -40,14 +42,25 @@ export function RequestsPage({ language, user, userBusinessId, onRequireLogin }:
   const showForm = searchParams.get('showForm') === 'true';
   const [showFormPanel, setShowFormPanel] = useState(showForm);
 
+  const { id: highlightId } = useParams<{ id: string }>();
+
+
   useEffect(() => {
     fetchOffers();
   }, [searchTerm, page]);
 
+  useEffect(() => {
+    if (highlightId) {
+      const el = document.getElementById(`offer-${highlightId}`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+  }, [offers, highlightId]);
+  
+
   async function fetchOffers() {
     setLoading(true);
-    const from = (page - 1) * pageSize;
-    const to = from + pageSize - 1;
 
     try {
       let query = supabase
@@ -56,8 +69,16 @@ export function RequestsPage({ language, user, userBusinessId, onRequireLogin }:
           count: 'exact',
         })
         .eq('status', 'approved')
-        .range(from, to)
         .order('created_at', { ascending: false });
+
+      if (highlightId) {
+        // If user clicked a specific offer → find only that
+        query = query.eq('id', highlightId);
+      } else {
+        const from = (page - 1) * pageSize;
+        const to = from + pageSize - 1;
+        query = query.range(from, to);
+      }
 
       if (searchTerm) {
         query = query.or(
@@ -76,6 +97,7 @@ export function RequestsPage({ language, user, userBusinessId, onRequireLogin }:
       setLoading(false);
     }
   }
+
 
   const canPrev = page > 1;
   const maxPage = Math.ceil(totalCount / pageSize);
@@ -131,7 +153,13 @@ export function RequestsPage({ language, user, userBusinessId, onRequireLogin }:
                 const description = getDisplayedDescription(offer);
 
                 return (
-                  <div key={offer.id} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition">
+                  <div
+                    key={offer.id}
+                    id={`offer-${offer.id}`}
+                    className={`bg-white border rounded-lg p-4 shadow-sm hover:shadow-md transition ${offer.id === highlightId ? 'border-2 border-red-500 shadow-lg' : 'border-gray-200'
+                      }`}
+                  >
+
                     <h3 className="text-md sm:text-lg font-semibold text-gray-800 mb-1">{title}</h3>
                     <p className="text-sm text-gray-700">{description}</p>
 

@@ -31,6 +31,8 @@ import { CTABanner } from './components/CTABanner';
 import { Footer } from './components/Footer';
 import { TermsAndPrivacy } from './components/legal/TermsAndPrivacy';
 import { ScrollToTopButton } from './components/ScrollToTopButton';
+import { NetworkFeed } from './components/NetworkFeed';
+
 
 
 export default function App() {
@@ -190,6 +192,12 @@ export default function App() {
 
                     {/* <LiveDemandFeed language={language} /> */}
 
+                    {/* ✨ Add it here between Journey and GuidedSteps */}
+                    <div className="max-w-5xl mx-auto px-4 py-8">
+                    <NetworkFeed language={language} key={language} />
+
+                    </div>
+
                     <GuidedStepsCarousel language={language} />
 
 
@@ -280,9 +288,26 @@ export default function App() {
 
               <Route
                 path="/requests"
-                element={<RequestsPage language={language}   user={user}
-                onRequireLogin={() => setShowAuthModal(true)}/>}
+                element={
+                  <RequestsPage
+                    language={language}
+                    user={user}
+                    onRequireLogin={() => setShowAuthModal(true)}
+                  />
+                }
               />
+
+              <Route
+                path="/requests/:id"
+                element={
+                  <RequestsPage
+                    language={language}
+                    user={user}
+                    onRequireLogin={() => setShowAuthModal(true)}
+                  />
+                }
+              />
+
 
               <Route
                 path="/edit-business"
