@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.6",
-    "@netlify/functions": "^3.0.4",
     "@stripe/stripe-js": "^5.10.0",
     "@supabase/supabase-js": "^2.39.7",
+    "axios": "^1.9.0",
     "dotenv": "^16.5.0",
     "firebase": "^11.6.0",
     "framer-motion": "^12.7.3",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
+    "@netlify/functions": "^3.1.5",
     "@types/google.maps": "^3.58.1",
     "@types/lodash": "^4.17.16",
     "@types/nodemailer": "^6.4.17",
