@@ -54,6 +54,8 @@ export function ProductForm({ language, businessId, onProductAdded }: ProductFor
         fetchBoutique();
     }, [resolvedBoutiqueId]);
 
+    console.log("boutique id before submiting",resolvedBoutiqueId)
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         setLoading(true);
@@ -96,7 +98,19 @@ export function ProductForm({ language, businessId, onProductAdded }: ProductFor
           onProductAdded();
         } catch (err) {
           console.error("Product insert error:", err);
-          setError(language === 'en' ? 'Error adding product' : 'Erreur lors de l\'ajout du produit');
+          let errorMsg = '';
+          if (err instanceof Error) {
+            errorMsg = err.message;
+          } else if (typeof err === 'string') {
+            errorMsg = err;
+          } else {
+            errorMsg = JSON.stringify(err);
+          }
+          setError(
+            language === 'en'
+              ? `Error adding product: ${errorMsg}`
+              : `Erreur lors de l'ajout du produit: ${errorMsg}`
+          );
         } finally {
           setLoading(false);
         }
@@ -200,13 +214,41 @@ export function ProductForm({ language, businessId, onProductAdded }: ProductFor
                 </div>
 
                 <div className="flex justify-between space-x-4">
-                    <button type="submit" disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded-md">
-                        {loading ? 'Adding...' : language === 'en' ? 'Add Another' : 'Ajouter un autre'}
-                    </button>
-                    <button type="button" onClick={() => window.location.reload()} className="px-4 py-2 bg-gray-600 text-white rounded-md">
-                        {language === 'en' ? 'Finish' : 'Terminer'}
-                    </button>
-                </div>
+    {!successMessage ? (
+        <>
+            <button type="submit" disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded-md">
+                {loading
+                    ? (language === 'en' ? 'Adding...' : 'Ajout...')
+                    : (language === 'en' ? 'Add' : 'Ajouter')}
+            </button>
+            <button
+                type="button"
+                onClick={onProductAdded}
+                className="px-4 py-2 bg-gray-600 text-white rounded-md"
+            >
+                {language === 'en' ? 'Cancel' : 'Annuler'}
+            </button>
+        </>
+    ) : (
+        <>
+            <button
+                type="button"
+                onClick={() => setSuccessMessage(null)}
+                className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            >
+                {language === 'en' ? 'Add Another' : 'Ajouter un autre'}
+            </button>
+            <button
+                type="button"
+                onClick={onProductAdded}
+                className="px-4 py-2 bg-gray-600 text-white rounded-md"
+            >
+                {language === 'en' ? 'Finish' : 'Terminer'}
+            </button>
+        </>
+    )}
+</div>
+
             </form>
         </div>
     );

@@ -28,6 +28,10 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
     business_name: '',
     province: '' as ProvinceCode | '',
     city: '',
+    address: '',
+    postal_code: '',
+    country: 'Canada',
+    phone: '',
     languagePref: language,
   });
   
@@ -68,7 +72,7 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
 
   const handleSignUp = async () => {
     setLoading(true);
-    const { email, password, firstName, lastName, province, city, languagePref, business_name } = formData;
+    const { email, password, firstName, lastName, province, city, languagePref, business_name, address, postal_code, country, phone } = formData;
   
     try {
       const { data, error } = await supabase.auth.signUp({ email, password });
@@ -82,6 +86,10 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
             business_name,
             province: province ? PROVINCES[province as ProvinceCode][language] : '',
             city,
+            address,
+            postal_code,
+            country,
+            phone,
             language: languagePref,
           })
           .eq('id', data.user.id);
@@ -110,6 +118,10 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
       business_name: '',
       province: '',
       city: '',
+      address: '',
+      postal_code: '',
+      country: 'Canada',
+      phone: '',
       languagePref: language,
     });
   };
@@ -225,6 +237,42 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
                     language={language}
                     onChange={(city) => setFormData(prev => ({ ...prev, city }))}
                     onValidityChange={setCityValid}
+                  />
+
+                  <input
+                    type="text"
+                    required
+                    placeholder={language === 'en' ? 'Address' : 'Adresse'}
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    className="w-full border-gray-300 rounded-md shadow-sm"
+                  />
+
+                  <input
+                    type="text"
+                    required
+                    placeholder={language === 'en' ? 'Postal Code' : 'Code postal'}
+                    value={formData.postal_code}
+                    onChange={(e) => setFormData({ ...formData, postal_code: e.target.value })}
+                    className="w-full border-gray-300 rounded-md shadow-sm"
+                  />
+
+                  <input
+                    type="text"
+                    required
+                    placeholder={language === 'en' ? 'Country' : 'Pays'}
+                    value={formData.country}
+                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                    className="w-full border-gray-300 rounded-md shadow-sm"
+                  />
+
+                  <input
+                    type="tel"
+                    required
+                    placeholder={language === 'en' ? 'Phone' : 'Téléphone'}
+                    value={formData.phone}
+                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                    className="w-full border-gray-300 rounded-md shadow-sm"
                   />
 
                   <select

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, CreditCard, Truck, AlertCircle } from 'lucide-react';
 import { Language } from '../../types';
 import { supabase } from '../../lib/supabaseClient';
@@ -18,6 +18,7 @@ interface CartItem {
   price: number;
   currency: string;
   quantity: number;
+  businessName: string;
 }
 
 interface ShippingAddress {
@@ -38,7 +39,7 @@ export function CheckoutModal({
   boutiqueId,
   language 
 }: CheckoutModalProps) {
-  const [step, setStep] = useState<'shipping' | 'payment'>('shipping');
+  const [step, setStep] = useState<'shipping' | 'payment' | 'done'>('shipping');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [shippingAddress, setShippingAddress] = useState<ShippingAddress>({
@@ -51,6 +52,32 @@ export function CheckoutModal({
     country: 'Canada',
     phone: ''
   });
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchUserAddress = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return;
+      const { data, error } = await supabase
+        .from('users')
+        .select('first_name, last_name, address, city, province, postal_code, country, phone')
+        .eq('id', user.id)
+        .single();
+      if (data) {
+        setShippingAddress({
+          firstName: data.first_name || '',
+          lastName: data.last_name || '',
+          address: data.address || '',
+          city: data.city || '',
+          province: data.province || '',
+          postalCode: data.postal_code || '',
+          country: data.country || 'Canada',
+          phone: data.phone || ''
+        });
+      }
+    };
+    fetchUserAddress();
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -62,8 +89,6 @@ export function CheckoutModal({
   };
 
   const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-  const shippingCost = 15; // Example fixed shipping cost
-  const total = subtotal + shippingCost;
 
   const handleShippingSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,71 +100,47 @@ export function CheckoutModal({
     setError(null);
 
     try {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        throw new Error(language === 'en' ? 'Please sign in to complete your purchase' : 'Veuillez vous connecter pour finaliser votre achat');
-      }
-
-      // Create order in database
-      const { data: order, error: orderError } = await supabase
-        .from('boutique_orders')
-        .insert([
-          {
-            boutique_id: boutiqueId,
-            customer_id: user.id,
-            total_amount: total,
-            shipping_address: shippingAddress
-          }
-        ])
-        .select()
+      // 1. Fetch boutique (get owner_id)
+      const { data: boutique, error: boutiqueError } = await supabase
+        .from('boutiques')
+        .select('name, owner_id')
+        .eq('id', boutiqueId)
         .single();
 
-      if (orderError) throw orderError;
+      if (boutiqueError || !boutique) throw new Error('Could not find business info.');
 
-      // Create order items
-      const orderItems = cart.map(item => ({
-        order_id: order.id,
-        product_id: item.id,
-        quantity: item.quantity,
-        price_at_time: item.price
-      }));
+      // 2. Fetch owner's email
+      const { data: owner, error: ownerError } = await supabase
+        .from('users')
+        .select('email')
+        .eq('id', boutique.owner_id)
+        .single();
 
-      const { error: itemsError } = await supabase
-        .from('boutique_order_items')
-        .insert(orderItems);
+      if (ownerError || !owner) throw new Error('Could not find business owner email.');
 
-      if (itemsError) throw itemsError;
-
-      // Initialize Stripe
-      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
-      if (!stripe) throw new Error('Stripe failed to initialize');
-
-      // Create payment session
-      const response = await fetch('/api/create-checkout-session', {
+      // 3. Send order email
+      const response = await fetch('/.netlify/functions/send-order-email', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          orderId: order.id,
-          items: cart,
-          shipping: shippingAddress
+          businessEmail: owner.email,
+          businessName: boutique.name,
+          cart,
+          shippingAddress,
+          language,
         }),
       });
 
-      const session = await response.json();
+      if (!response.ok) throw new Error('Failed to send order email.');
 
-      // Redirect to Stripe Checkout
-      const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
-      });
-
-      if (result.error) {
-        throw new Error(result.error.message);
-      }
+      setSuccessMessage(
+        language === 'en'
+          ? `Thank you for your order! ${boutique.name} will contact you to finalize payment and shipping.`
+          : `Merci pour votre commande! ${boutique.name} vous contactera pour finaliser le paiement et la livraison.`
+      );
+      setStep('done');
     } catch (err) {
-      console.error('Checkout error:', err);
-      setError(err instanceof Error ? err.message : 'An error occurred during checkout');
+      setError(err instanceof Error ? err.message : 'An error occurred sending your order');
     } finally {
       setLoading(false);
     }
@@ -171,6 +172,12 @@ export function CheckoutModal({
                   <AlertCircle className="h-5 w-5 text-red-400 mr-2" />
                   <p className="text-sm text-red-700">{error}</p>
                 </div>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-md text-green-700">
+                {successMessage}
               </div>
             )}
 
@@ -313,7 +320,7 @@ export function CheckoutModal({
                       <CreditCard className="h-5 w-5 mr-2" />
                       {loading
                         ? (language === 'en' ? 'Processing...' : 'Traitement...')
-                        : (language === 'en' ? 'Pay Now' : 'Payer maintenant')}
+                        : (language === 'en' ? 'Send your order' : 'Envoyer votre commande')}
                     </button>
 
                     <button
@@ -340,6 +347,9 @@ export function CheckoutModal({
                         <p className="text-sm text-gray-500">
                           {language === 'en' ? 'Quantity' : 'Quantité'}: {item.quantity}
                         </p>
+                        <p className="text-xs text-gray-400">
+                          {language === 'en' ? 'Seller:' : 'Vendeur:'} {item.businessName}
+                        </p>
                       </div>
                       <p className="font-medium">
                         {formatPrice(item.price * item.quantity, item.currency)}
@@ -354,11 +364,15 @@ export function CheckoutModal({
                     </div>
                     <div className="flex justify-between mt-2">
                       <p>{language === 'en' ? 'Shipping' : 'Livraison'}</p>
-                      <p>{formatPrice(shippingCost, cart[0].currency)}</p>
+                      <p className="italic text-gray-500">
+                        {language === 'en'
+                          ? 'Shipping will be determined by the seller'
+                          : 'Les frais de livraison seront déterminés par le vendeur'}
+                      </p>
                     </div>
                     <div className="flex justify-between font-bold mt-4 pt-4 border-t">
                       <p>{language === 'en' ? 'Total' : 'Total'}</p>
-                      <p>{formatPrice(total, cart[0].currency)}</p>
+                      <p>{formatPrice(subtotal, cart[0].currency)}</p>
                     </div>
                   </div>
                 </div>

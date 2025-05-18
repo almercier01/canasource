@@ -10,6 +10,7 @@ interface CartItem {
   quantity: number;
   images: string[];
   image_url: string;
+  businessName: string;
 }
 
 
@@ -126,6 +127,22 @@ export function CartDrawer({
                         </li>
                       ))}
                     </ul>
+                    {cart.map((item) => (
+                      <div key={item.id} className="flex justify-between items-center">
+                        <div>
+                          <p className="font-medium">{item.name}</p>
+                          <p className="text-sm text-gray-500">
+                            {language === 'en' ? 'Quantity' : 'Quantité'}: {item.quantity}
+                          </p>
+                          <p className="text-xs text-gray-400">
+                            {language === 'en' ? 'Seller:' : 'Vendeur:'} {item.businessName}
+                          </p>
+                        </div>
+                        <p className="font-medium">
+                          {formatPrice(item.price * item.quantity, item.currency)}
+                        </p>
+                      </div>
+                    ))}
                   </div>
                 )}
               </div>

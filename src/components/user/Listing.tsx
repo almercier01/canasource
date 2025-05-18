@@ -25,7 +25,7 @@ export function Listing({ language, businessId }: ListingProps) {
     const fetchListingData = async () => {
         try {
             console.log("Fetching listing data...");
-    
+
             // Fetch authenticated user
             const { data: { user }, error: authError } = await supabase.auth.getUser();
             if (authError || !user) {
@@ -33,31 +33,31 @@ export function Listing({ language, businessId }: ListingProps) {
                 return;
             }
             console.log("User ID:", user.id);
-    
+
             // Fetch business details using businessId
             const { data: businessData, error: businessError } = await supabase
                 .from('businesses')
                 .select('*')
                 .eq('id', businessId)
                 .single();
-    
+
             if (businessError) throw businessError;
             console.log("Fetched business:", businessData);
             setBusiness(businessData);
-    
+
             // Fetch boutique details using owner_id
             const { data: boutiqueData, error: boutiqueError } = await supabase
                 .from('boutiques')
                 .select('*')
                 .eq('owner_id', user.id) // ✅ Fetching boutique using owner_id
                 .maybeSingle(); // Avoids errors when no boutique is found
-    
+
             if (boutiqueError && boutiqueError.code !== 'PGRST116') throw boutiqueError;
-            
+
             console.log("Fetched boutique:", boutiqueData);
-    
+
             setBoutique(boutiqueData);
-    
+
             // ✅ Check Ownership
             if (boutiqueData && boutiqueData.owner_id === user.id) {
                 console.log("User is the owner.");
@@ -66,16 +66,16 @@ export function Listing({ language, businessId }: ListingProps) {
                 console.log("User is NOT the owner.");
                 setIsOwner(false);
             }
-            
+
         } catch (err) {
             console.error('Error fetching listing data:', err);
         } finally {
             setLoading(false);
         }
     };
-    
-    
-    
+
+
+
 
 
     const activateBoutique = async () => {
@@ -108,14 +108,14 @@ export function Listing({ language, businessId }: ListingProps) {
                     : 'Vous devez être connecté pour créer une boutique.');
                 return;
             }
-    
+
             // ✅ Check if the user already has a boutique
             const { data: existingBoutique, error: fetchError } = await supabase
                 .from('boutiques')
                 .select('*')
                 .eq('owner_id', user.id)
                 .maybeSingle(); // Ensures we don't throw an error if there's no boutique
-    
+
             if (fetchError) throw fetchError;
             if (existingBoutique) {
                 alert(language === 'en'
@@ -123,7 +123,7 @@ export function Listing({ language, businessId }: ListingProps) {
                     : 'Vous avez déjà une boutique. Veuillez gérer votre boutique existante.');
                 return;
             }
-    
+
             // ✅ Create the boutique
             const { data, error } = await supabase
                 .from('boutiques')
@@ -140,18 +140,18 @@ export function Listing({ language, businessId }: ListingProps) {
                 })
                 .select()
                 .single();
-    
+
             if (error) throw error;
-    
+
             // ✅ Success - Notify & Refresh
             alert(language === 'en'
                 ? 'Boutique created successfully! You can now customize it.'
                 : 'Boutique créée avec succès ! Vous pouvez maintenant la personnaliser.');
-    
+
             if (typeof fetchListingData === 'function') {
                 fetchListingData();
             }
-    
+
             return data;
         } catch (err) {
             console.error('Error creating boutique:', err);
@@ -160,7 +160,7 @@ export function Listing({ language, businessId }: ListingProps) {
                 : 'Une erreur est survenue lors de la création de la boutique.');
         }
     };
-    
+
 
 
 
@@ -171,7 +171,7 @@ export function Listing({ language, businessId }: ListingProps) {
     return (
         <div className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold">{business?.name}</h2>
-    
+
             {boutique ? (
                 boutique.status === 'active' ? (
                     <>
@@ -182,14 +182,15 @@ export function Listing({ language, businessId }: ListingProps) {
                         >
                             {language === 'en' ? 'Add Products' : 'Ajouter des produits'}
                         </button>
-    
+
                         {showProductForm && (
                             <ProductForm
                                 language={language}
                                 businessId={businessId}
+                                boutiqueId={boutique?.id} // <-- Pass the boutique id here!
                                 onProductAdded={() => {
                                     setShowProductForm(false);
-                                    fetchListingData(); // Refresh boutique after product addition
+                                    fetchListingData();
                                 }}
                             />
                         )}
@@ -230,6 +231,6 @@ export function Listing({ language, businessId }: ListingProps) {
             )}
         </div>
     );
-    
-    
+
+
 }
