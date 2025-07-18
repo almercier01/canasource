@@ -115,7 +115,7 @@ export function Dashboard({ language }: DashboardProps) {
       const { data: admin, error: adminError } = await supabase
         .from('users') // Ensure this matches your table where admin users are stored
         .select('id')
-        .eq('email', 'admin@test.com') // ✅ Fetch dynamically instead of hardcoding
+        .eq('email', 'agervais@renotrend.com') // ✅ Fetch dynamically instead of hardcoding
         .single();
 
       if (adminError || !admin) {

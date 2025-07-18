@@ -70,7 +70,8 @@ export default function App() {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       const currentUser = session?.user;
       setUser(currentUser);
-      setAdminState({ isAuthenticated: currentUser?.email === 'admin@test.com', user: currentUser });
+      setAdminState({ isAuthenticated: currentUser?.email === 'agervais@renotrend.com', user: currentUser });
+      console.log('Auth state change adminState:', { isAuthenticated: currentUser?.email === 'agervais@renotrend.com', user: currentUser }); // <--- Add this line
     });
 
     return () => subscription.unsubscribe();
@@ -92,7 +93,8 @@ export default function App() {
   const checkSession = async () => {
     const { data: { user } } = await supabase.auth.getUser();
     setUser(user);
-    setAdminState({ isAuthenticated: user?.email === 'admin@test.com', user });
+    setAdminState({ isAuthenticated: user?.email === 'agervais@renotrend.com', user });
+    console.log('Check session adminState:', { isAuthenticated: user?.email === 'agervais@renotrend.com', user }); // <--- Add this line
   };
 
   const handleSetupComplete = (newConfig: SiteConfig) => {
@@ -108,6 +110,8 @@ export default function App() {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) return false;
       setAdminState({ isAuthenticated: true, user: data.user });
+      console.log('Admin logged in:', data.user);
+      console.log('Admin state after login:', { isAuthenticated: true, user: data.user }); // <--- Add this line
       return true;
     }
     return false;
@@ -336,7 +340,7 @@ export default function App() {
           <AuthModal
             isOpen={showAuthModal}
             onClose={() => setShowAuthModal(false)}
-            onSuccess={() => {
+            onSuccess={async () => {
               const params = new URLSearchParams(window.location.search);
               const code = params.get('code');
               setShowAuthModal(false);
@@ -346,8 +350,8 @@ export default function App() {
                 navigate('/register');
               }
             }}
-
             language={language}
+            onAdminLogin={handleAdminLogin} // <-- Add this line
           />
           <TermsAndPrivacy
             isOpen={showTermsModal}

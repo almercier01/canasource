@@ -4,11 +4,12 @@ import { LogIn, Mail, Lock, UserPlus, X } from 'lucide-react';
 import { TermsAndPrivacy } from '../legal/TermsAndPrivacy';
 import { Language } from '../../types';
 
-interface AuthModalProps {
+export interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onSuccess: () => void;
+  onSuccess: () => Promise<void>;
   language: Language;
+  onAdminLogin: (email: string, password: string) => Promise<boolean>; // <-- Add this line
 }
 
 export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalProps) {

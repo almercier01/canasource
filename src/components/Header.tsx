@@ -36,6 +36,8 @@ export function Header({
   onSearch,
   onNavigate
 }: HeaderProps) {
+  console.log('Header adminState:', adminState); // <--- Add this line
+
   const [showSettings, setShowSettings] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showUserDashboard, setShowUserDashboard] = useState(false);
@@ -338,6 +340,7 @@ export function Header({
         onClose={() => setShowAuthModal(false)}
         onSuccess={handleAuthSuccess}
         language={language}
+        onAdminLogin={onAdminLogin} // Pass the prop down
       />
 
       {showUserDashboard && (
