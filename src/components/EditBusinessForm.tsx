@@ -4,6 +4,7 @@ import { PROVINCES, ProvinceCode, Language, Business } from '../types';
 import { translations } from '../i18n/translations';
 import { supabase } from '../lib/supabaseClient';
 import { useSearchParams } from 'react-router-dom';
+import { CityAutocomplete } from './CityAutocomplete';
 
 interface EditBusinessFormProps {
   business: Business;
@@ -39,6 +40,7 @@ export function EditBusinessForm({ business, onCancel, onSave, language }: EditB
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [isOwner, setIsOwner] = useState<boolean | null>(null);
+  const [cityValid, setCityValid] = useState(true);
 
   useEffect(() => {
     checkOwnership();
@@ -225,6 +227,15 @@ export function EditBusinessForm({ business, onCancel, onSave, language }: EditB
     }
   };
 
+  // Helper function to get the current province code for CityAutocomplete
+  const getCurrentProvinceCode = (): ProvinceCode | '' => {
+    const foundCode = Object.entries(PROVINCES).find(
+      ([, names]) => names.en === formData.province_en && names.fr === formData.province_fr
+    )?.[0] as ProvinceCode | undefined;
+    
+    return foundCode || '';
+  };
+
   // const handleCategoryChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
   //   const selectedCategory = e.target.value as keyof typeof translations.categories;
   //   setFormData(prev => ({
@@ -353,12 +364,12 @@ export function EditBusinessForm({ business, onCancel, onSave, language }: EditB
           <label className="block text-sm font-medium text-gray-700">
             {translations.register.city[language]} *
           </label>
-          <input
-            type="text"
+          <CityAutocomplete
+            province={getCurrentProvinceCode()}
             value={formData.city}
-            onChange={(e) => setFormData(prev => ({ ...prev, city: e.target.value }))}
-            className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-red-500 focus:border-red-500"
-            required
+            onChange={(value) => setFormData(prev => ({ ...prev, city: value }))}
+            language={language}
+            onValidityChange={setCityValid}
           />
         </div>
 

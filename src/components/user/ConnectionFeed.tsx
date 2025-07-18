@@ -99,8 +99,9 @@ export function ConnectionFeed({ language }: ConnectionFeedProps) {
                   {language === 'en' ? 'Chat available' : 'Discussion disponible'}
                 </div>
               ) : (
-                <div className="mt-2 text-xs text-yellow-600 font-medium">
-                  {language === 'en' ? 'Waiting for response' : 'En attente de réponse'}
+                <div className="mt-2 text-xs text-blue-600 font-medium flex items-center">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                  {language === 'en' ? 'Connected' : 'Connecté'}
                 </div>
               )}
             </li>

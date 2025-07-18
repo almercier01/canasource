@@ -1,7 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { MapPin } from 'lucide-react';
 import { CANADIAN_CITIES } from '../utils/canadianCities';
-import { PROVINCES, ProvinceCode, Language } from '../types';
+import { ProvinceCode, Language } from '../types';
 
 interface CityAutocompleteProps {
   province: ProvinceCode | '';

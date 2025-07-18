@@ -35,7 +35,7 @@ export function Boutique({ language, onClose, handleNavigate }: BoutiqueProps) {
   
       // Fetch the first boutique for the user (ensures only one is returned)
       const { data, error } = await supabase
-        .from('boutiques')
+        .from('boutiques_with_owner')
         .select('*')
         .eq('owner_id', user.id)
         .order('created_at', { ascending: true }) // Ensures the oldest boutique is picked first

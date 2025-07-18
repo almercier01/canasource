@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { supabase } from '../../lib/supabaseClient';
-import { LogIn, Mail, Lock, UserPlus, X, User, Globe, MapPin } from 'lucide-react';
+import { LogIn, Mail, Lock, UserPlus, X } from 'lucide-react';
 import { TermsAndPrivacy } from '../legal/TermsAndPrivacy';
 import { Language } from '../../types';
-import { PROVINCES, ProvinceCode } from '../../types';
-import { CityAutocomplete } from '../CityAutocomplete';
 
 interface AuthModalProps {
   isOpen: boolean;
@@ -18,33 +16,23 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [showTerms, setShowTerms] = useState(false);
-  const [cityValid, setCityValid] = useState(true);
 
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     firstName: '',
     lastName: '',
-    business_name: '',
-    province: '' as ProvinceCode | '',
-    city: '',
-    address: '',
-    postal_code: '',
-    country: 'Canada',
-    phone: '',
     languagePref: language,
   });
   
   useEffect(() => {
     if (!isOpen) {
-      setLoading(false); // ✅ Reset loading when modal closes
+      setLoading(false);
       setError(null);
     }
   }, [isOpen]);
 
   if (!isOpen) return null;
-
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,29 +60,31 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
 
   const handleSignUp = async () => {
     setLoading(true);
-    const { email, password, firstName, lastName, province, city, languagePref, business_name, address, postal_code, country, phone } = formData;
+    const { email, password, firstName, lastName, languagePref } = formData;
   
     try {
       const { data, error } = await supabase.auth.signUp({ email, password });
       if (error) throw error;
   
       if (data?.user) {
-        const { error: updateError } = await supabase.from('users')
-          .update({
+        // Insert basic user profile in users table
+        const { error: upsertError } = await supabase.from('users')
+          .upsert({
+            id: data.user.id,
+            email: email,
             first_name: firstName,
             last_name: lastName,
-            business_name,
-            province: province ? PROVINCES[province as ProvinceCode][language] : '',
-            city,
-            address,
-            postal_code,
-            country,
-            phone,
-            language: languagePref,
-          })
-          .eq('id', data.user.id);
+            preferred_language: languagePref,
+          }, {
+            onConflict: 'id'
+          });
   
-        if (updateError) throw updateError;
+        if (upsertError) {
+          console.error('User profile creation error:', upsertError);
+          throw upsertError;
+        }
+
+        // Note: Additional profile information and business registration can be completed later
       }
   
       resetForm();
@@ -106,8 +96,6 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
       setLoading(false);
     }
   };
-  
-  
 
   const resetForm = () => {
     setFormData({
@@ -115,13 +103,6 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
       password: '',
       firstName: '',
       lastName: '',
-      business_name: '',
-      province: '',
-      city: '',
-      address: '',
-      postal_code: '',
-      country: 'Canada',
-      phone: '',
       languagePref: language,
     });
   };
@@ -191,106 +172,55 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
 
               {!isLogin && (
                 <>
-                  <input
-                    type="text"
-                    required
-                    placeholder={language === 'en' ? 'First Name' : 'Prénom'}
-                    value={formData.firstName}
-                    onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      {language === 'en' ? 'First Name' : 'Prénom'}
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.firstName}
+                      onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
+                      className="mt-1 w-full border-gray-300 rounded-md shadow-sm"
+                      placeholder={language === 'en' ? 'First Name' : 'Prénom'}
+                    />
+                  </div>
 
-                  <input
-                    type="text"
-                    required
-                    placeholder={language === 'en' ? 'Last Name' : 'Nom'}
-                    value={formData.lastName}
-                    onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  />
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      {language === 'en' ? 'Last Name' : 'Nom'}
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.lastName}
+                      onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
+                      className="mt-1 w-full border-gray-300 rounded-md shadow-sm"
+                      placeholder={language === 'en' ? 'Last Name' : 'Nom'}
+                    />
+                  </div>
 
-                  <input
-                    type="text"
-                    required
-                    placeholder={language === 'en' ? 'Business Name' : 'Nom de l\'entreprise'}
-                    value={formData.business_name}
-                    onChange={(e) => setFormData({ ...formData, business_name: e.target.value })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  />
-
-
-                  <select
-                    required
-                    value={formData.province}
-                    onChange={(e) => setFormData({ ...formData, province: e.target.value as ProvinceCode, city: '' })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  >
-                    <option value="">{language === 'en' ? 'Select Province' : 'Choisissez une province'}</option>
-                    {Object.entries(PROVINCES).map(([code, names]) => (
-                      <option key={code} value={code}>{names[language]}</option>
-                    ))}
-                  </select>
-
-                  <CityAutocomplete
-                    province={formData.province}
-                    value={formData.city}
-                    language={language}
-                    onChange={(city) => setFormData(prev => ({ ...prev, city }))}
-                    onValidityChange={setCityValid}
-                  />
-
-                  <input
-                    type="text"
-                    required
-                    placeholder={language === 'en' ? 'Address' : 'Adresse'}
-                    value={formData.address}
-                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  />
-
-                  <input
-                    type="text"
-                    required
-                    placeholder={language === 'en' ? 'Postal Code' : 'Code postal'}
-                    value={formData.postal_code}
-                    onChange={(e) => setFormData({ ...formData, postal_code: e.target.value })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  />
-
-                  <input
-                    type="text"
-                    required
-                    placeholder={language === 'en' ? 'Country' : 'Pays'}
-                    value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  />
-
-                  <input
-                    type="tel"
-                    required
-                    placeholder={language === 'en' ? 'Phone' : 'Téléphone'}
-                    value={formData.phone}
-                    onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  />
-
-                  <select
-                    required
-                    value={formData.languagePref}
-                    onChange={(e) => setFormData({ ...formData, languagePref: e.target.value as Language })}
-                    className="w-full border-gray-300 rounded-md shadow-sm"
-                  >
-                    <option value="en">English</option>
-                    <option value="fr">Français</option>
-                  </select>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700">
+                      {language === 'en' ? 'Preferred Language' : 'Langue préférée'}
+                    </label>
+                    <select
+                      required
+                      value={formData.languagePref}
+                      onChange={(e) => setFormData({ ...formData, languagePref: e.target.value as Language })}
+                      className="mt-1 w-full border-gray-300 rounded-md shadow-sm"
+                    >
+                      <option value="en">English</option>
+                      <option value="fr">Français</option>
+                    </select>
+                  </div>
                 </>
               )}
 
               <button
                 type="submit"
-                disabled={loading || (!cityValid && !isLogin)}
-                className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 text-white rounded-md"
+                disabled={loading}
+                className="w-full py-2 px-4 bg-red-600 hover:bg-red-700 disabled:opacity-50 text-white rounded-md"
               >
                 {loading
                   ? (language === 'en' ? 'Processing...' : 'Traitement...')
@@ -299,7 +229,6 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
                     : (language === 'en' ? 'Sign Up' : "S'inscrire")}
               </button>
 
-              {/* Toggle Sign-in/Sign-up button added here */}
               <div className="text-center">
                 <button
                   type="button"
@@ -323,9 +252,8 @@ export function AuthModal({ isOpen, onClose, onSuccess, language }: AuthModalPro
         isOpen={showTerms}
         onClose={() => setShowTerms(false)}
         onAccept={() => { setShowTerms(false); handleSignUp(); }}
-        language={language}
+        language={formData.languagePref}
       />
     </>
   );
-
 }

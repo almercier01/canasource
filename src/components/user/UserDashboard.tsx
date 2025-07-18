@@ -33,7 +33,7 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
   const [receivedRequests, setReceivedRequests] = useState<ConnectionRequest[]>([]);
   const [sentRequests, setSentRequests] = useState<ConnectionRequest[]>([]);
   const [businessId, setBusinessId] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'received' | 'sent'>(hasListings ? 'received' : 'sent');
+  const [activeTab, setActiveTab] = useState<'received' | 'sent'>('sent'); // Start with 'sent', will be updated after checkListings
 
 
   const navigate = useNavigate();
@@ -54,6 +54,7 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
   }, []);
 
   useEffect(() => {
+    console.log('🔄 Active tab changed to:', activeTab);
     if (activeTab === 'received') {
       fetchReceivedRequests();
     } else {
@@ -62,21 +63,28 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
   }, [activeTab]);
 
   const checkListings = async () => {
+    console.log('🏢 Checking if user has business listings...');
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) return;
+
+      console.log('🏢 User ID for business check:', user.id);
 
       const { data, error } = await supabase
         .from('businesses')
         .select('id')
         .eq('owner_id', user.id);
 
+      console.log('🏢 Business query result:', { data, error });
+
       if (error || !data || data.length === 0) {
+        console.log('🏢 User has NO business listings');
         setHasListings(false);
         setBusinessId(null);
         return;
       }
 
+      console.log('🏢 User HAS business listings:', data);
       setHasListings(true);
       setBusinessId(data[0].id);
     } catch (err) {
@@ -87,17 +95,25 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
   };
 
   useEffect(() => {
-    if (!hasListings && activeTab === 'received') {
+    console.log('👤 hasListings changed:', hasListings);
+    if (hasListings) {
+      // User has business listings, show received requests by default
+      setActiveTab('received');
+    } else if (!hasListings && activeTab === 'received') {
+      // User doesn't have listings but is on received tab, switch to sent
       setActiveTab('sent');
     }
   }, [hasListings]);
 
 
   const fetchReceivedRequests = async () => {
+    console.log('📥 Fetching received requests...');
     setLoading(true);
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error(language === 'en' ? 'Please sign in' : 'Veuillez vous connecter');
+
+      console.log('📥 User ID for received requests:', user.id);
 
       const { data: requests, error } = await supabase
         .from('connection_requests_with_details')
@@ -105,8 +121,11 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
         .eq('business_owner_id', user.id)
         .order('created_at', { ascending: false });
 
+      console.log('📥 Received requests query result:', { requests, error });
+
       if (error) throw error;
 
+      console.log('📥 Setting received requests:', requests);
       setReceivedRequests(requests || []);
     } catch (err) {
       console.error('Error fetching received requests:', err);
@@ -117,10 +136,13 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
   };
 
   const fetchSentRequests = async () => {
+    console.log('📤 Fetching sent requests...');
     setLoading(true);
     try {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error(language === 'en' ? 'Please sign in' : 'Veuillez vous connecter');
+
+      console.log('📤 User ID for sent requests:', user.id);
 
       const { data: requests, error } = await supabase
         .from('connection_requests_with_details')
@@ -128,8 +150,11 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
         .eq('requester_id', user.id)
         .order('created_at', { ascending: false });
 
+      console.log('📤 Sent requests query result:', { requests, error });
+
       if (error) throw error;
 
+      console.log('📤 Setting sent requests:', requests);
       setSentRequests(requests || []);
     } catch (err) {
       console.error('Error fetching sent requests:', err);
@@ -155,30 +180,70 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
       await supabase.from('connection_requests').update({ status }).eq('id', requestId);
 
       if (status === 'accepted') {
+        // Create entry in accepted_connections_feed for the Connection Feed
+        await supabase.from('accepted_connections_feed_old').insert({
+          business_id: request.business_id,
+          user_id: request.business_owner_id,
+          connected_user_id: request.requester_id
+        });
+
+        // Check if chat room already exists
         const { data: existingRoom } = await supabase
           .from('chat_rooms')
           .select('id')
           .eq('business_id', request.business_id)
-          .eq('member_id', request.requester_id)
+          .or(`and(user_1.eq.${request.requester_id},user_2.eq.${request.business_owner_id}),and(user_1.eq.${request.business_owner_id},user_2.eq.${request.requester_id})`)
           .maybeSingle();
 
+        let roomId = existingRoom?.id;
+
+        // Create chat room if it doesn't exist
         if (!existingRoom) {
-          await supabase.from('chat_rooms').insert({
-            business_id: request.business_id,
-            owner_id: request.business_owner_id,
-            member_id: request.requester_id,
-            connection_request_id: requestId
-          });
+          const { data: newRoom, error: roomError } = await supabase
+            .from('chat_rooms')
+            .insert({
+              business_id: request.business_id,
+              user_1: request.business_owner_id,  // business owner
+              user_2: request.requester_id        // requester
+            })
+            .select('id')
+            .single();
+
+          if (roomError) {
+            console.error('Error creating chat room:', roomError);
+          } else {
+            roomId = newRoom.id;
+          }
         }
 
+        // Send notification to requester about chat room creation
         await supabase.from('notifications').insert({
           user_id: request.requester_id,
-          type: 'connection_request_accepted',
-          title: 'Request Accepted',
-          message: 'Your request was accepted!',
+          type: 'chat_room_created',
+          title: 'Chat Room Created',
+          message: `Your connection with ${request.business_name} is ready! You can now start a conversation.`,
           data: {
             business_id: request.business_id,
             business_name: request.business_name,
+            room_id: roomId,
+            request_id: requestId
+          },
+          read: false,
+          emailed: true,
+          created_at: new Date().toISOString()
+        });
+
+        // Send notification to business owner about chat room creation
+        await supabase.from('notifications').insert({
+          user_id: request.business_owner_id,
+          type: 'chat_room_created',
+          title: 'New Connection Established',
+          message: `A new connection has been established with ${request.requester_email}. You can now start a conversation.`,
+          data: {
+            business_id: request.business_id,
+            business_name: request.business_name,
+            room_id: roomId,
+            requester_email: request.requester_email,
             request_id: requestId
           },
           read: false,
@@ -232,7 +297,7 @@ export function UserDashboard({ language, onClose }: UserDashboardProps) {
           </h1>
         </div>
 
-        {/* Always show connection feed */}
+        {/* Connection feed shows accepted/active connections */}
         <ConnectionFeed language={language} />
 
         {hasListings && businessId && <Listing language={language} businessId={businessId} />}

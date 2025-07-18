@@ -104,7 +104,7 @@ export default function App() {
   };
 
   const handleAdminLogin = async (email: string, password: string) => {
-    if (email === 'admin@test.com' && password === 'admin123') {
+    if (email === 'agervais@renotrend.com' && password === 'admin123') {
       const { data, error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) return false;
       setAdminState({ isAuthenticated: true, user: data.user });

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Bell, X, Check, AlertCircle, Eye, EyeOff, Trash2 } from 'lucide-react';
+import { Bell, X, Check, AlertCircle, Eye, EyeOff, Trash2, MessageSquare } from 'lucide-react';
 import { supabase } from '../../lib/supabaseClient';
 import { Language } from '../../types';
 import { useNavigate } from 'react-router-dom';
@@ -152,6 +152,8 @@ export function NotificationCenter({ language }: NotificationCenterProps) {
         return <X className="h-5 w-5 text-red-500" />;
       case 'report_cleared':
         return <AlertCircle className="h-5 w-5 text-blue-500" />;
+      case 'chat_room_created':
+        return <MessageSquare className="h-5 w-5 text-green-500" />;
       default:
         return <Bell className="h-5 w-5 text-gray-500" />;
     }
@@ -283,26 +285,41 @@ export function NotificationCenter({ language }: NotificationCenterProps) {
                           case 'offer_response':
                             navigate('/user-dashboard');
                             break;
-                            case 'comment_received':
-                              if (n.data?.business_id && n.data?.comment_id) {
-                                navigate(`/business/${n.data.business_id}?highlight=${n.data.comment_id}`);
-                              }
-                              break;
+                          case 'comment_received':
+                            if (n.data?.business_id && n.data?.comment_id) {
+                              navigate(`/business/${n.data.business_id}?highlight=${n.data.comment_id}`);
+                            }
+                            break;
+                          case 'chat_room_created':
+                            if (n.data?.room_id) {
+                              navigate(`/chat/${n.data.room_id}`);
+                            }
+                            break;
                           default:
                             break;
                         }
-
                       }}
                     >
                       <div className="flex justify-between items-start">
                         <div className="flex items-start">
                           <div className="flex-shrink-0">{getNotificationIcon(n.type)}</div>
-                          <div className="ml-3">
+                          <div className="ml-3 flex-1">
                             <p className="text-sm font-medium text-gray-900">{n.title}</p>
                             <p className="text-sm text-gray-500">{n.message}</p>
                             <p className="text-xs text-gray-400">
                               {n.created_at ? new Date(n.created_at).toLocaleString() : ''}
                             </p>
+                            {n.type === 'chat_room_created' && n.data?.room_id && (
+                              <button
+                                className="mt-2 bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded text-xs font-medium"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  navigate(`/chat/${n.data.room_id}`);
+                                }}
+                              >
+                                {language === 'en' ? 'Start Chat' : 'Commencer Discussion'}
+                              </button>
+                            )}
                           </div>
                         </div>
                         <button
